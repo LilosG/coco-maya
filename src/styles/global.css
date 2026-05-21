@@ -32,3 +32,81 @@
     box-shadow: 0 1px 12px rgba(0,0,0,0.06);
   }
 }
+
+@layer components {
+  .btn-primary {
+    display: inline-block;
+    background-color: var(--color-teal);
+    color: var(--color-cream);
+    font-family: var(--font-stamp);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    border: 2px solid var(--color-teal);
+    transition: all 0.2s;
+    box-shadow: 0 2px 12px rgba(61,138,138,0.18);
+  }
+  .btn-primary:hover {
+    background-color: var(--color-teal-dark);
+    border-color: var(--color-teal-dark);
+    box-shadow: 0 4px 20px rgba(61,138,138,0.28);
+    transform: translateY(-1px);
+  }
+  .btn-outline {
+    display: inline-block;
+    background-color: transparent;
+    color: var(--color-teal);
+    font-family: var(--font-stamp);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.875rem 2.5rem;
+    border: 2px solid var(--color-teal);
+    transition: all 0.2s;
+  }
+  .btn-outline:hover {
+    background-color: var(--color-teal);
+    color: var(--color-cream);
+    transform: translateY(-1px);
+  }
+  .btn-white {
+    display: inline-block;
+    background-color: white;
+    color: var(--color-teal);
+    font-family: var(--font-stamp);
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 1rem 2.5rem;
+    border: 2px solid white;
+    transition: all 0.2s;
+    box-shadow: 0 2px 16px rgba(0,0,0,0.15);
+  }
+  .btn-white:hover {
+    background-color: var(--color-cream);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.2);
+  }
+  .info-card {
+    border: 1.5px solid var(--color-teal);
+    padding: 2rem 1.5rem;
+    text-align: center;
+    position: relative;
+    background: white;
+  }
+  .info-card::before {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border: 1px solid rgba(61,138,138,0.2);
+    pointer-events: none;
+  }
+  .section-label {
+    font-family: var(--font-stamp);
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--color-teal);
+  }
+}

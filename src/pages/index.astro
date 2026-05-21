@@ -56,29 +56,28 @@ const todayHours = (() => {
   </section>
 
   <!-- QUICK INFO BAR -->
-  <section class="bg-[var(--color-teal)] text-[var(--color-cream)]">
-    <div class="max-w-7xl mx-auto px-6 py-5 grid grid-cols-2 lg:grid-cols-4">
-      <div class="text-center py-2 border-r border-white/20 px-4">
-        <p class="font-[family-name:var(--font-stamp)] text-white/70 text-xs tracking-[0.2em] uppercase mb-2">Hours Today</p>
-        <p class="font-[family-name:var(--font-body)] text-white text-sm font-medium">{todayHours}</p>
-      </div>
-      <div class="text-center py-2 border-r border-white/20 px-4">
-        <p class="font-[family-name:var(--font-stamp)] text-white/70 text-xs tracking-[0.2em] uppercase mb-2">Happy Hour</p>
-        <p class="font-[family-name:var(--font-body)] text-white text-sm font-medium">{SITE.happyHour.hours}</p>
-        <p class="font-[family-name:var(--font-body)] text-white/60 text-xs">{SITE.happyHour.days}</p>
-      </div>
-      <div class="text-center py-2 border-r border-white/20 px-4">
-        <p class="font-[family-name:var(--font-stamp)] text-white/70 text-xs tracking-[0.2em] uppercase mb-2">Brunch</p>
-        <p class="font-[family-name:var(--font-body)] text-white text-sm font-medium">{SITE.brunch.hours}</p>
-        <p class="font-[family-name:var(--font-body)] text-white/60 text-xs">{SITE.brunch.days}</p>
-      </div>
-      <div class="text-center py-2 px-4">
-        <p class="font-[family-name:var(--font-stamp)] text-white/70 text-xs tracking-[0.2em] uppercase mb-2">Location</p>
-        <a href={SITE.address.mapsUrl} target="_blank" rel="noopener noreferrer"
-          class="font-[family-name:var(--font-body)] text-white text-sm font-medium hover:text-white/80 transition-colors">
-          {SITE.address.neighborhood}, San Diego
-        </a>
-      </div>
+  <section class="bg-[var(--color-teal)]">
+    <div class="max-w-7xl mx-auto px-6 py-0 grid grid-cols-2 lg:grid-cols-4">
+      {[
+        { label: "Hours Today", value: todayHours, sub: null, href: null },
+        { label: "Happy Hour", value: SITE.happyHour.hours, sub: SITE.happyHour.days, href: "/happy-hour" },
+        { label: "Weekend Brunch", value: SITE.brunch.hours, sub: SITE.brunch.days, href: "/brunch" },
+        { label: "Location", value: SITE.address.neighborhood + ", SD", sub: "1660 India St", href: SITE.address.mapsUrl },
+      ].map((item, i) => (
+        <div class:list={["flex flex-col items-center justify-center py-6 px-4", i < 3 ? "border-r border-white/20" : ""]}>
+          <p class="font-[family-name:var(--font-stamp)] text-white/60 text-xs tracking-[0.25em] uppercase mb-2">{item.label}</p>
+          {item.href ? (
+            <a href={item.href} target={item.href.startsWith("http") ? "_blank" : undefined}
+              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              class="font-[family-name:var(--font-display)] text-white text-lg italic hover:text-white/80 transition-colors leading-tight text-center">
+              {item.value}
+            </a>
+          ) : (
+            <p class="font-[family-name:var(--font-display)] text-white text-lg italic leading-tight text-center">{item.value}</p>
+          )}
+          {item.sub && <p class="font-[family-name:var(--font-body)] text-white/60 text-xs mt-1">{item.sub}</p>}
+        </div>
+      ))}
     </div>
   </section>
 
@@ -135,10 +134,7 @@ const todayHours = (() => {
         ))}
       </div>
       <div class="text-center mt-12">
-        <a href="/menu"
-          class="inline-block border border-white/20 text-[var(--color-sand)] font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase px-8 py-3 hover:border-[var(--color-teal-light)] hover:text-[var(--color-teal-light)] transition-colors">
-          Full Cocktail Menu
-        </a>
+        <a href="/menu" class="btn-outline !border-white/40 !text-white hover:!bg-white/10 hover:!border-white">Full Cocktail Menu</a>
       </div>
     </div>
   </section>
@@ -192,10 +188,7 @@ const todayHours = (() => {
         ))}
       </div>
       <div class="text-center mt-10">
-        <a href="/menu"
-          class="inline-block border border-[var(--color-teal)] text-[var(--color-teal)] font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase px-8 py-3 hover:bg-[var(--color-teal)] hover:text-[var(--color-cream)] transition-colors">
-          Full Food Menu
-        </a>
+        <a href="/menu" class="btn-outline">Full Food Menu</a>
       </div>
     </div>
   </section>
@@ -209,18 +202,15 @@ const todayHours = (() => {
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-8">
           Discounted cocktails, wines, and select bites every single day of the week. The elevated patio at its most accessible.
         </p>
-        <a href="/happy-hour"
-          class="inline-block bg-[var(--color-teal)] text-[var(--color-cream)] font-[family-name:var(--font-stamp)] text-sm tracking-widest uppercase px-8 py-4 hover:bg-[var(--color-teal-dark)] transition-colors">
-          See Happy Hour Menu
-        </a>
+        <a href="/happy-hour" class="btn-primary">See Happy Hour Details</a>
       </div>
       <div class="grid grid-cols-2 gap-4">
-        <div class="border border-[var(--color-teal)]/30 p-6 text-center">
-          <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-widest uppercase mb-2">Days</p>
+        <div class="info-card">
+          <p class="section-label mb-3">Days</p>
           <p class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-dark)] italic">{SITE.happyHour.days}</p>
         </div>
-        <div class="border border-[var(--color-teal)]/30 p-6 text-center bg-[var(--color-teal)]/5">
-          <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-widest uppercase mb-2">Hours</p>
+        <div class="info-card bg-[var(--color-teal)]/5">
+          <p class="section-label mb-3">Hours</p>
           <p class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-dark)] italic">{SITE.happyHour.hours}</p>
         </div>
       </div>
@@ -244,34 +234,32 @@ const todayHours = (() => {
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-6">
           Birthdays, bachelorette parties, rehearsal dinners, corporate events. Coco Maya provides a private event space in San Diego that your guests will actually talk about.
         </p>
-        <ul class="space-y-3 mb-8">
+        <div class="grid grid-cols-1 gap-2 mb-8">
           {["Bachelorette Parties", "Birthday Celebrations", "Rehearsal Dinners", "Corporate Events", "Baby Showers"].map((item) => (
-            <li class="flex items-center gap-3 font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 text-sm">
-              <span class="w-1.5 h-1.5 bg-[var(--color-teal)] rounded-full flex-shrink-0"></span>
-              {item}
-            </li>
+            <div class="flex items-center gap-4 py-3 border-b border-[var(--color-teal)]/15">
+              <span class="w-5 h-px bg-[var(--color-teal)] flex-shrink-0"></span>
+              <span class="font-[family-name:var(--font-body)] text-[var(--color-dark)] text-sm tracking-wide">{item}</span>
+            </div>
           ))}
-        </ul>
-        <a href="/private-events"
-          class="inline-block bg-[var(--color-teal)] text-[var(--color-cream)] font-[family-name:var(--font-stamp)] text-sm tracking-widest uppercase px-8 py-4 hover:bg-[var(--color-teal-dark)] transition-colors">
-          Inquire About Your Event
-        </a>
+        </div>
+        <a href="/private-events" class="btn-primary">Inquire About Your Event</a>
       </div>
     </div>
   </section>
 
   <!-- STATS -->
-  <section class="py-16 bg-[var(--color-teal)] px-6">
-    <div class="max-w-4xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 text-center text-[var(--color-cream)]">
+  <section class="py-20 bg-[var(--color-dark)] px-6">
+    <div class="max-w-5xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/10">
       {[
-        { number: "4.5★", label: "Google Rating" },
-        { number: "Little Italy", label: "San Diego" },
-        { number: "Daily", label: "Happy Hour" },
-        { number: "Sat & Sun", label: "Brunch" },
+        { number: "4.5★", label: "Google Rating", sub: "Little Italy" },
+        { number: "Daily", label: "Happy Hour", sub: "3:00 – 5:00 PM" },
+        { number: "Sat & Sun", label: "Weekend Brunch", sub: "11 AM – 3 PM" },
+        { number: "Open Daily", label: "1660 India St", sub: "San Diego, CA" },
       ].map((stat) => (
-        <div>
-          <p class="font-[family-name:var(--font-display)] text-3xl sm:text-4xl text-white italic mb-2">{stat.number}</p>
-          <p class="font-[family-name:var(--font-stamp)] text-white/70 text-xs tracking-widest uppercase">{stat.label}</p>
+        <div class="bg-[var(--color-dark)] py-10 px-6 text-center">
+          <p class="font-[family-name:var(--font-display)] text-3xl sm:text-4xl text-[var(--color-teal-light)] italic mb-2">{stat.number}</p>
+          <p class="font-[family-name:var(--font-stamp)] text-white text-xs tracking-widest uppercase mb-1">{stat.label}</p>
+          <p class="font-[family-name:var(--font-body)] text-white/40 text-xs">{stat.sub}</p>
         </div>
       ))}
     </div>
@@ -288,10 +276,7 @@ const todayHours = (() => {
         </a>
       </p>
       <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-40 text-sm mb-10">Little Italy San Diego &bull; Open Daily</p>
-      <a href={SITE.address.mapsUrl} target="_blank" rel="noopener noreferrer"
-        class="inline-block border border-[var(--color-teal)] text-[var(--color-teal)] font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase px-8 py-3 hover:bg-[var(--color-teal)] hover:text-[var(--color-cream)] transition-colors">
-        Get Directions
-      </a>
+      <a href={SITE.address.mapsUrl} target="_blank" rel="noopener noreferrer" class="btn-primary">Get Directions</a>
     </div>
   </section>
 
