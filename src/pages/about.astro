@@ -1,0 +1,53 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import PageHero from "../components/PageHero.astro";
+import CTASection from "../components/CTASection.astro";
+import { SITE } from "../data/site";
+---
+<BaseLayout title="About | Coco Maya by Miss B's | Little Italy San Diego" description="Coco Maya by Miss B's is an elevated coastal Mexican restaurant in Little Italy San Diego. Glass atrium, elevated patio, craft cocktails. 1660 India St." image="/images/venue-interior-dining.jpg">
+  <Nav />
+  <PageHero label="Our Story" title="About Coco Maya" subtitle="Elevated coastal Mexican cuisine in the heart of Little Italy, San Diego." image="/images/venue-interior-dining.jpg" imageAlt="Coco Maya dining room Little Italy San Diego" />
+
+  <section class="py-24 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-[0.3em] uppercase mb-4">The Concept</p>
+        <h2 class="font-[family-name:var(--font-display)] text-4xl text-[var(--color-dark)] italic mb-6">Coastal Mexican, Elevated</h2>
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-4">
+          Coco Maya by Miss B's is San Diego's elevated coastal Mexican dining destination. Situated at 1660 India St in the heart of Little Italy, the restaurant is built around a stunning glass atrium bar, an elevated outdoor patio, and a kitchen that takes the food as seriously as the cocktails.
+        </p>
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-4">
+          The menu draws from coastal Mexican culinary traditions — fresh seafood, bold sauces, house-made tortillas — elevated with the creativity and execution of a fine dining kitchen served in a setting that feels genuinely relaxed.
+        </p>
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed">
+          Daily happy hour, weekend brunch, private events, and a cocktail program that draws from Mexico's agave traditions and tropical coastal flavors.
+        </p>
+      </div>
+      <div class="relative">
+        <img src="/images/venue-bar-to-patio.jpg" alt="Coco Maya interior looking out to elevated patio San Diego" class="w-full aspect-[4/5] object-cover" width="700" height="875" loading="lazy" />
+        <div class="absolute -bottom-4 -right-4 w-full h-full border border-[var(--color-teal)]/20 -z-10"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-[var(--color-teal)]/8 px-6">
+    <div class="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+      {[
+        { value: "1660", label: "India Street" },
+        { value: "Little Italy", label: "San Diego" },
+        { value: "Daily", label: "Happy Hour" },
+        { value: "Sat & Sun", label: "Brunch" },
+      ].map((s) => (
+        <div class="border border-[var(--color-teal)]/20 p-6">
+          <p class="font-[family-name:var(--font-display)] text-3xl text-[var(--color-teal)] italic mb-2">{s.value}</p>
+          <p class="font-[family-name:var(--font-stamp)] text-[var(--color-dark)] opacity-60 text-xs tracking-widest uppercase">{s.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CTASection title="Come Experience It" subtitle="1660 India St, Little Italy San Diego. Open daily." primaryLabel="Reserve a Table" primaryHref={SITE.reservations.url} secondaryLabel="Get Directions" secondaryHref={SITE.address.mapsUrl} />
+  <Footer />
+</BaseLayout>

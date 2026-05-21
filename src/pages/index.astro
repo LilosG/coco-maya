@@ -1,0 +1,297 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import CTASection from "../components/CTASection.astro";
+import { SITE } from "../data/site";
+import { FEATURED_COCKTAILS, FEATURED_FOOD, FEATURED_BRUNCH } from "../data/menu";
+import { RECURRING_EVENTS } from "../data/events";
+
+const todayHours = (() => {
+  const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+  const h = SITE.hours.find(d => d.day === days[new Date().getDay()]);
+  return h?.hours ?? "Closed";
+})();
+---
+
+<BaseLayout
+  title="Coco Maya by Miss B's | Elevated Mexican Restaurant Little Italy San Diego"
+  description="Elevated coastal Mexican cuisine, craft cocktails, and San Diego's best brunch. Coco Maya by Miss B's in Little Italy at 1660 India St, San Diego CA."
+  image="/images/venue-hero-bar.jpg"
+>
+  <Nav />
+
+  <!-- HERO -->
+  <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0">
+      <img src="/images/venue-hero-bar.jpg"
+        alt="Coco Maya by Miss Bs — elevated patio bar in Little Italy San Diego"
+        class="w-full h-full object-cover object-center"
+        width="1800" height="1200" fetchpriority="high" />
+      <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60"></div>
+    </div>
+    <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+      <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal-light)] text-xs tracking-[0.4em] uppercase mb-6">Little Italy, San Diego</p>
+      <h1 class="font-[family-name:var(--font-display)] text-6xl sm:text-7xl lg:text-9xl text-white leading-none mb-4 italic">Coco Maya</h1>
+      <p class="font-[family-name:var(--font-stamp)] text-white/80 text-sm tracking-[0.3em] uppercase mb-4">by Miss B's</p>
+      <p class="font-[family-name:var(--font-body)] text-white/70 text-base sm:text-lg max-w-xl mx-auto mb-10 leading-relaxed">
+        Elevated coastal Mexican cuisine, craft cocktails, and San Diego's best brunch. Open daily in the heart of Little Italy.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer"
+          class="bg-[var(--color-teal)] text-[var(--color-cream)] font-[family-name:var(--font-stamp)] text-sm tracking-widest uppercase px-8 py-4 hover:bg-[var(--color-teal-dark)] transition-colors">
+          Reserve a Table
+        </a>
+        <a href="/menu"
+          class="border border-white/60 text-white font-[family-name:var(--font-stamp)] text-sm tracking-widest uppercase px-8 py-4 hover:border-white hover:bg-white/10 transition-colors">
+          View the Menu
+        </a>
+      </div>
+    </div>
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 9l-7 7-7-7" />
+      </svg>
+    </div>
+  </section>
+
+  <!-- QUICK INFO BAR -->
+  <section class="bg-[var(--color-teal)] text-[var(--color-cream)]">
+    <div class="max-w-7xl mx-auto px-6 py-5 grid grid-cols-2 lg:grid-cols-4">
+      <div class="text-center py-2 border-r border-white/20 px-4">
+        <p class="font-[family-name:var(--font-stamp)] text-white/70 text-xs tracking-[0.2em] uppercase mb-2">Hours Today</p>
+        <p class="font-[family-name:var(--font-body)] text-white text-sm font-medium">{todayHours}</p>
+      </div>
+      <div class="text-center py-2 border-r border-white/20 px-4">
+        <p class="font-[family-name:var(--font-stamp)] text-white/70 text-xs tracking-[0.2em] uppercase mb-2">Happy Hour</p>
+        <p class="font-[family-name:var(--font-body)] text-white text-sm font-medium">{SITE.happyHour.hours}</p>
+        <p class="font-[family-name:var(--font-body)] text-white/60 text-xs">{SITE.happyHour.days}</p>
+      </div>
+      <div class="text-center py-2 border-r border-white/20 px-4">
+        <p class="font-[family-name:var(--font-stamp)] text-white/70 text-xs tracking-[0.2em] uppercase mb-2">Brunch</p>
+        <p class="font-[family-name:var(--font-body)] text-white text-sm font-medium">{SITE.brunch.hours}</p>
+        <p class="font-[family-name:var(--font-body)] text-white/60 text-xs">{SITE.brunch.days}</p>
+      </div>
+      <div class="text-center py-2 px-4">
+        <p class="font-[family-name:var(--font-stamp)] text-white/70 text-xs tracking-[0.2em] uppercase mb-2">Location</p>
+        <a href={SITE.address.mapsUrl} target="_blank" rel="noopener noreferrer"
+          class="font-[family-name:var(--font-body)] text-white text-sm font-medium hover:text-white/80 transition-colors">
+          {SITE.address.neighborhood}, San Diego
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRAND STATEMENT -->
+  <section class="py-24 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-[0.3em] uppercase mb-4">Little Italy's Culinary Destination</p>
+        <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl text-[var(--color-dark)] leading-tight mb-6 italic">
+          Where Little Italy<br />
+          <span class="text-[var(--color-teal)]">Comes to Drink Well</span>
+        </h2>
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-6">
+          Coco Maya brings elevated coastal Mexican cuisine to the heart of San Diego's Little Italy. An open-air glass atrium, a stunning teal bar, and a menu that takes both the food and the cocktails seriously.
+        </p>
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-8">
+          Daily happy hour, weekend brunch, and private dining that transforms any occasion. 1660 India St — right in the middle of everything.
+        </p>
+        <a href="/the-space"
+          class="inline-block border border-[var(--color-teal)] text-[var(--color-teal)] font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase px-6 py-3 hover:bg-[var(--color-teal)] hover:text-[var(--color-cream)] transition-colors">
+          See The Space
+        </a>
+      </div>
+      <div class="relative">
+        <img src="/images/venue-bar-patio.jpg"
+          alt="Coco Maya bar and elevated patio — glass atrium dining in Little Italy San Diego"
+          class="w-full aspect-[4/5] object-cover" width="800" height="1000" loading="lazy" />
+        <div class="absolute -bottom-4 -right-4 w-full h-full border border-[var(--color-teal)]/30 -z-10"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COCKTAILS -->
+  <section class="py-24 px-6 bg-[var(--color-dark)]">
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-16">
+        <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal-light)] text-xs tracking-[0.3em] uppercase mb-3">Craft Program</p>
+        <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl text-[var(--color-cream)] italic">Signature Cocktails</h2>
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-sand)] opacity-60 mt-4 max-w-xl mx-auto">Coastal Mexican-inspired cocktails built for the patio.</p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {FEATURED_COCKTAILS.map((drink) => (
+          <div class="group overflow-hidden bg-[var(--color-dark)] border border-white/10 hover:border-[var(--color-teal)]/40 transition-colors">
+            <div class="aspect-square overflow-hidden">
+              <img src={drink.image} alt={`${drink.name} cocktail at Coco Maya Little Italy San Diego`}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                width="400" height="400" loading="lazy" />
+            </div>
+            <div class="p-5">
+              <h3 class="font-[family-name:var(--font-stamp)] text-[var(--color-cream)] text-sm tracking-wide mb-2">{drink.name}</h3>
+              <p class="font-[family-name:var(--font-body)] text-[var(--color-sand)] opacity-50 text-xs leading-relaxed">{drink.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-12">
+        <a href="/menu"
+          class="inline-block border border-white/20 text-[var(--color-sand)] font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase px-8 py-3 hover:border-[var(--color-teal-light)] hover:text-[var(--color-teal-light)] transition-colors">
+          Full Cocktail Menu
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BRUNCH -->
+  <section class="relative py-28 overflow-hidden px-6">
+    <div class="absolute inset-0">
+      <img src="/images/food-tacos-patio.jpg" alt="Weekend brunch at Coco Maya Little Italy San Diego"
+        class="w-full h-full object-cover opacity-30" width="1400" height="900" loading="lazy" />
+      <div class="absolute inset-0 bg-[var(--color-teal)]/80"></div>
+    </div>
+    <div class="relative z-10 max-w-4xl mx-auto text-center text-[var(--color-cream)]">
+      <p class="font-[family-name:var(--font-stamp)] text-white/70 text-xs tracking-[0.3em] uppercase mb-4">Sat & Sun 11AM–3PM</p>
+      <h2 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl lg:text-7xl italic mb-4">Weekend Brunch</h2>
+      <p class="font-[family-name:var(--font-script)] text-white/80 text-3xl mb-8">in Little Italy</p>
+      <p class="font-[family-name:var(--font-body)] text-white/80 max-w-xl mx-auto mb-10 leading-relaxed">
+        San Diego's best brunch on the elevated patio. Bottomless options, coastal Mexican plates, and craft cocktails every Saturday and Sunday.
+      </p>
+      <a href="/brunch"
+        class="inline-block bg-white text-[var(--color-teal)] font-[family-name:var(--font-stamp)] text-sm tracking-widest uppercase px-8 py-4 hover:bg-[var(--color-cream)] transition-colors">
+        See Brunch Menu
+      </a>
+    </div>
+  </section>
+
+  <!-- FOOD -->
+  <section class="py-24 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-7xl mx-auto">
+      <div class="grid lg:grid-cols-2 gap-16 items-center mb-16">
+        <div>
+          <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-[0.3em] uppercase mb-3">The Kitchen</p>
+          <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl text-[var(--color-dark)] italic leading-tight">Coastal Mexican<br />Done Right</h2>
+        </div>
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-60 leading-relaxed">
+          Elevated Mexican coastal cuisine built around fresh ingredients, bold flavors, and plates worth photographing. From skirt steak to lobster flatbread.
+        </p>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {FEATURED_FOOD.map((item) => (
+          <div class="group relative overflow-hidden aspect-square">
+            <img src={item.image} alt={`${item.name} at Coco Maya San Diego Little Italy`}
+              class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+              width="500" height="500" loading="lazy" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
+            <div class="absolute bottom-0 left-0 right-0 p-4">
+              <h3 class="font-[family-name:var(--font-stamp)] text-white text-sm tracking-wide">{item.name}</h3>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="text-center mt-10">
+        <a href="/menu"
+          class="inline-block border border-[var(--color-teal)] text-[var(--color-teal)] font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase px-8 py-3 hover:bg-[var(--color-teal)] hover:text-[var(--color-cream)] transition-colors">
+          Full Food Menu
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HAPPY HOUR -->
+  <section class="py-20 bg-[var(--color-sand-dark)] px-6">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-[0.3em] uppercase mb-4">Every Day</p>
+        <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl text-[var(--color-dark)] italic mb-4">Happy Hour</h2>
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-8">
+          Discounted cocktails, wines, and select bites every single day of the week. The elevated patio at its most accessible.
+        </p>
+        <a href="/happy-hour"
+          class="inline-block bg-[var(--color-teal)] text-[var(--color-cream)] font-[family-name:var(--font-stamp)] text-sm tracking-widest uppercase px-8 py-4 hover:bg-[var(--color-teal-dark)] transition-colors">
+          See Happy Hour Menu
+        </a>
+      </div>
+      <div class="grid grid-cols-2 gap-4">
+        <div class="border border-[var(--color-teal)]/30 p-6 text-center">
+          <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-widest uppercase mb-2">Days</p>
+          <p class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-dark)] italic">{SITE.happyHour.days}</p>
+        </div>
+        <div class="border border-[var(--color-teal)]/30 p-6 text-center bg-[var(--color-teal)]/5">
+          <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-widest uppercase mb-2">Hours</p>
+          <p class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-dark)] italic">{SITE.happyHour.hours}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRIVATE EVENTS -->
+  <section class="py-24 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <div class="relative">
+        <img src="/images/events-private-dining-1.jpg"
+          alt="Private dining at Coco Maya San Diego — Little Italy event venue"
+          class="w-full aspect-[4/3] object-cover" width="800" height="600" loading="lazy" />
+        <div class="absolute -top-4 -left-4 w-full h-full border border-[var(--color-teal)]/20 -z-10"></div>
+      </div>
+      <div>
+        <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-[0.3em] uppercase mb-4">Group Bookings</p>
+        <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl text-[var(--color-dark)] italic leading-tight mb-6">
+          Private Events<br />in Little Italy
+        </h2>
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-6">
+          Birthdays, bachelorette parties, rehearsal dinners, corporate events. Coco Maya provides a private event space in San Diego that your guests will actually talk about.
+        </p>
+        <ul class="space-y-3 mb-8">
+          {["Bachelorette Parties", "Birthday Celebrations", "Rehearsal Dinners", "Corporate Events", "Baby Showers"].map((item) => (
+            <li class="flex items-center gap-3 font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 text-sm">
+              <span class="w-1.5 h-1.5 bg-[var(--color-teal)] rounded-full flex-shrink-0"></span>
+              {item}
+            </li>
+          ))}
+        </ul>
+        <a href="/private-events"
+          class="inline-block bg-[var(--color-teal)] text-[var(--color-cream)] font-[family-name:var(--font-stamp)] text-sm tracking-widest uppercase px-8 py-4 hover:bg-[var(--color-teal-dark)] transition-colors">
+          Inquire About Your Event
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- STATS -->
+  <section class="py-16 bg-[var(--color-teal)] px-6">
+    <div class="max-w-4xl mx-auto grid grid-cols-2 lg:grid-cols-4 gap-8 text-center text-[var(--color-cream)]">
+      {[
+        { number: "4.5★", label: "Google Rating" },
+        { number: "Little Italy", label: "San Diego" },
+        { number: "Daily", label: "Happy Hour" },
+        { number: "Sat & Sun", label: "Brunch" },
+      ].map((stat) => (
+        <div>
+          <p class="font-[family-name:var(--font-display)] text-3xl sm:text-4xl text-white italic mb-2">{stat.number}</p>
+          <p class="font-[family-name:var(--font-stamp)] text-white/70 text-xs tracking-widest uppercase">{stat.label}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- FIND US -->
+  <section class="py-24 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-5xl mx-auto text-center">
+      <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-[0.3em] uppercase mb-3">Come Visit</p>
+      <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl text-[var(--color-dark)] italic mb-6">Find Us in Little Italy</h2>
+      <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-60 mb-2">
+        <a href={SITE.address.mapsUrl} target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-teal)] transition-colors">
+          {SITE.address.full}
+        </a>
+      </p>
+      <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-40 text-sm mb-10">Little Italy San Diego &bull; Open Daily</p>
+      <a href={SITE.address.mapsUrl} target="_blank" rel="noopener noreferrer"
+        class="inline-block border border-[var(--color-teal)] text-[var(--color-teal)] font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase px-8 py-3 hover:bg-[var(--color-teal)] hover:text-[var(--color-cream)] transition-colors">
+        Get Directions
+      </a>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

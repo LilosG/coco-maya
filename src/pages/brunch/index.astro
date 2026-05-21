@@ -1,0 +1,52 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import PageHero from "../../components/PageHero.astro";
+import CTASection from "../../components/CTASection.astro";
+import { SITE } from "../../data/site";
+import { FEATURED_BRUNCH } from "../../data/menu";
+---
+<BaseLayout
+  title="Best Brunch Little Italy San Diego | Coco Maya | Sat & Sun 11AM–3PM"
+  description="Weekend brunch at Coco Maya in Little Italy San Diego. Bottomless options, coastal Mexican brunch plates, and craft cocktails. Saturday and Sunday 11AM–3PM."
+  image="/images/food-brunch-sandwich.jpg"
+>
+  <Nav />
+  <PageHero label="Saturday & Sunday" title="Weekend Brunch" subtitle="San Diego's best brunch in Little Italy. Coastal Mexican plates, bottomless options, and craft cocktails on the elevated patio." image="/images/food-tacos-patio.jpg" imageAlt="Brunch at Coco Maya Little Italy San Diego" />
+
+  <section class="py-20 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-4xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+        <div class="text-center border border-[var(--color-teal)]/20 p-8">
+          <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-widest uppercase mb-3">Days</p>
+          <p class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-dark)] italic">{SITE.brunch.days}</p>
+        </div>
+        <div class="text-center border border-[var(--color-teal)]/40 p-8 bg-[var(--color-teal)]/5">
+          <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-widest uppercase mb-3">Hours</p>
+          <p class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-dark)] italic">{SITE.brunch.hours}</p>
+        </div>
+        <div class="text-center border border-[var(--color-teal)]/20 p-8">
+          <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-widest uppercase mb-3">Location</p>
+          <p class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-dark)] italic">Little Italy</p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        {FEATURED_BRUNCH.map((item) => (
+          <div class="group flex gap-4 border border-[var(--color-teal)]/10 hover:border-[var(--color-teal)]/40 transition-colors p-4">
+            <div class="w-24 h-24 flex-shrink-0 overflow-hidden">
+              <img src={item.image} alt={item.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" width="96" height="96" loading="lazy" />
+            </div>
+            <div>
+              <h3 class="font-[family-name:var(--font-stamp)] text-[var(--color-dark)] text-sm tracking-wide mb-1">{item.name}</h3>
+              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-50 text-xs leading-relaxed">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection title="Join Us for Brunch" subtitle="Reserve your weekend brunch table at Coco Maya in Little Italy." primaryLabel="Reserve a Table" primaryHref={SITE.reservations.url} />
+  <Footer />
+</BaseLayout>

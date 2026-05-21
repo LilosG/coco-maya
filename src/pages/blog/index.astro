@@ -1,0 +1,44 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import PageHero from "../../components/PageHero.astro";
+
+const posts = [
+  { slug: "best-restaurants-little-italy-san-diego", title: "Best Restaurants in Little Italy San Diego | 2026 Guide", excerpt: "Little Italy has become one of San Diego's most competitive dining neighborhoods. Here is the definitive guide to the best restaurants in Little Italy San Diego — and why Coco Maya belongs at the top of the list.", date: "2026-05-01", image: "/images/venue-hero-bar.jpg" },
+  { slug: "best-brunch-san-diego", title: "Best Brunch in San Diego 2026 | Little Italy & Beyond", excerpt: "San Diego's brunch scene has exploded. From Little Italy to the beaches, here is where to find the best brunch in San Diego — and why the elevated patio at Coco Maya is the standard.", date: "2026-04-15", image: "/images/food-brunch-sandwich.jpg" },
+  { slug: "best-happy-hour-little-italy", title: "Best Happy Hour in Little Italy San Diego | 2026 Guide", excerpt: "Finding the right happy hour in Little Italy takes knowing where to look. We have rounded up the best deals and the best vibes — with one clear winner on India Street.", date: "2026-04-01", image: "/images/cocktail-happy-hour-group.jpg" },
+  { slug: "bachelorette-party-san-diego", title: "Bachelorette Party Ideas in San Diego | Little Italy Guide", excerpt: "Planning a bachelorette in San Diego? Little Italy is the neighborhood. Here is how to build the perfect bachelorette weekend — with Coco Maya as your anchor stop.", date: "2026-03-15", image: "/images/cocktail-tower-pink.jpg" },
+  { slug: "things-to-do-little-italy-san-diego", title: "Things to Do in Little Italy San Diego | Local Guide", excerpt: "Little Italy is more than a restaurant row. From morning coffee to late-night cocktails, here is how locals actually spend time in one of San Diego's best neighborhoods.", date: "2026-03-01", image: "/images/venue-patio.jpg" },
+];
+---
+<BaseLayout title="Blog | Coco Maya | San Diego Dining, Brunch & Little Italy Guides" description="San Diego restaurant guides, brunch recommendations, happy hour guides, and Little Italy content from Coco Maya by Miss B's.">
+  <Nav />
+  <PageHero label="Guides & Stories" title="The Blog" subtitle="San Diego dining guides, brunch recommendations, and Little Italy content from Coco Maya." />
+
+  <section class="py-16 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+      {posts.map((post, i) => (
+        <a href={`/blog/${post.slug}`}
+          class:list={["group block border border-[var(--color-teal)]/10 hover:border-[var(--color-teal)]/40 transition-colors overflow-hidden", i === 0 ? "md:col-span-2" : ""]}>
+          <div class:list={["overflow-hidden", i === 0 ? "aspect-[21/9]" : "aspect-video"]}>
+            <img src={post.image} alt={post.title}
+              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+              width={i === 0 ? 1200 : 600} height={i === 0 ? 514 : 338}
+              loading={i === 0 ? "eager" : "lazy"} />
+          </div>
+          <div class="p-6">
+            <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-widest uppercase mb-2">
+              {new Date(post.date).toLocaleDateString("en-US", { month: "long", year: "numeric" })}
+            </p>
+            <h2 class:list={["font-[family-name:var(--font-display)] text-[var(--color-dark)] italic group-hover:text-[var(--color-teal)] transition-colors mb-3", i === 0 ? "text-3xl" : "text-xl"]}>
+              {post.title}
+            </h2>
+            <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-50 text-sm leading-relaxed">{post.excerpt}</p>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>

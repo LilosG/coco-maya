@@ -1,0 +1,63 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import PageHero from "../../components/PageHero.astro";
+import CTASection from "../../components/CTASection.astro";
+import { SITE } from "../../data/site";
+
+const eventTypes = [
+  { name: "Bachelorette Parties", description: "The elevated patio, the pink cocktail tower, the view. A bachelorette setting that delivers.", image: "/images/cocktail-tower-pink.jpg" },
+  { name: "Birthday Celebrations", description: "Custom menus, private dining room, and a space that makes the occasion feel like one.", image: "/images/events-private-dining-1.jpg" },
+  { name: "Rehearsal Dinners", description: "Intimate pre-wedding gatherings with custom menus and the full Coco Maya experience.", image: "/images/events-table-setting.jpg" },
+  { name: "Corporate Events", description: "Team dinners and client entertaining in a space that makes an impression.", image: "/images/events-private-dining-2.jpg" },
+  { name: "Baby Showers", description: "Daytime social gatherings with brunch menus and the lush patio atmosphere.", image: "/images/venue-patio.jpg" },
+  { name: "Outdoor Evening Events", description: "The patio after dark. City lights, tropical greenery, and the Little Italy skyline.", image: "/images/events-patio-night.jpg" },
+];
+---
+<BaseLayout
+  title="Private Events San Diego Little Italy | Coco Maya | Group Bookings"
+  description="Book a private event at Coco Maya in Little Italy San Diego. Bachelorette parties, birthdays, rehearsal dinners, corporate events. 1660 India St."
+  image="/images/events-private-dining-1.jpg"
+>
+  <Nav />
+  <PageHero label="Group Bookings" title="Private Events in San Diego" subtitle="Coco Maya provides a private event space in Little Italy that your guests will actually talk about." image="/images/events-private-dining-1.jpg" imageAlt="Private event dining at Coco Maya Little Italy San Diego" />
+
+  <section class="py-24 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-[family-name:var(--font-display)] text-4xl text-[var(--color-dark)] italic mb-12 text-center">What We Host</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {eventTypes.map((event) => (
+          <div class="group overflow-hidden border border-[var(--color-teal)]/10 hover:border-[var(--color-teal)]/40 transition-colors">
+            <div class="aspect-video overflow-hidden">
+              <img src={event.image} alt={event.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-400" width="600" height="338" loading="lazy" />
+            </div>
+            <div class="p-5">
+              <h3 class="font-[family-name:var(--font-stamp)] text-[var(--color-dark)] text-sm tracking-wide mb-2">{event.name}</h3>
+              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-50 text-xs leading-relaxed">{event.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-20 bg-[var(--color-teal)] px-6">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-3 gap-8 text-center text-[var(--color-cream)]">
+      {[
+        { label: "Capacity", value: "Full Venue", note: "Indoor + patio" },
+        { label: "Cuisine", value: "Custom Menus", note: "Tailored to your event" },
+        { label: "Location", value: "Little Italy", note: "1660 India St, SD" },
+      ].map((item) => (
+        <div class="border border-white/20 p-8">
+          <p class="font-[family-name:var(--font-stamp)] text-white/70 text-xs tracking-widest uppercase mb-2">{item.label}</p>
+          <p class="font-[family-name:var(--font-display)] text-2xl text-white italic mb-1">{item.value}</p>
+          <p class="font-[family-name:var(--font-body)] text-white/60 text-sm">{item.note}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <CTASection title="Plan Your Event" subtitle="Tell us what you have in mind. We will put together a package that works for your group." primaryLabel="Email Us" primaryHref={`mailto:${SITE.email}?subject=Private Event Inquiry`} secondaryLabel={SITE.phone.display} secondaryHref={`tel:${SITE.phone.tel}`} />
+  <Footer />
+</BaseLayout>

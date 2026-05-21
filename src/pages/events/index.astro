@@ -1,0 +1,40 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import PageHero from "../../components/PageHero.astro";
+import CTASection from "../../components/CTASection.astro";
+import { SITE } from "../../data/site";
+import { RECURRING_EVENTS, UPCOMING_EVENTS } from "../../data/events";
+---
+<BaseLayout title="Events | Coco Maya | Little Italy San Diego" description="Events at Coco Maya in Little Italy San Diego. Weekend brunch, happy hour, and private events. 1660 India St." image="/images/events-patio-night.jpg">
+  <Nav />
+  <PageHero label="Weekly & Special" title="Events at Coco Maya" subtitle="Weekend brunch, daily happy hour, and private events in Little Italy." image="/images/events-patio-night.jpg" imageAlt="Evening event at Coco Maya patio Little Italy San Diego" />
+
+  <section class="py-24 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-7xl mx-auto">
+      <h2 class="font-[family-name:var(--font-display)] text-4xl text-[var(--color-dark)] italic mb-12">Weekly Events</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        {RECURRING_EVENTS.map((event) => (
+          <div class="group relative overflow-hidden border border-[var(--color-teal)]/10 hover:border-[var(--color-teal)]/40 transition-colors">
+            <div class="aspect-video overflow-hidden">
+              <img src={event.image} alt={`${event.name} at Coco Maya Little Italy San Diego`}
+                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                width="800" height="450" loading="lazy" />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+            </div>
+            <div class="p-6">
+              <span class="inline-block bg-[var(--color-teal)] text-[var(--color-cream)] font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase px-3 py-1 mb-3">{event.highlight}</span>
+              <h3 class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-dark)] italic mb-2">{event.name}</h3>
+              <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-wider uppercase mb-3">{event.day} &bull; {event.time}</p>
+              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-60 text-sm leading-relaxed">{event.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CTASection title="Host a Private Event" subtitle="Book Coco Maya for your next birthday, bachelorette, or corporate event." primaryLabel="Inquire About Events" primaryHref="/private-events" secondaryLabel="Reserve a Table" secondaryHref={SITE.reservations.url} />
+  <Footer />
+</BaseLayout>

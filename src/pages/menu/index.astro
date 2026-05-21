@@ -1,0 +1,87 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import CTASection from "../../components/CTASection.astro";
+import { SITE } from "../../data/site";
+import { FEATURED_COCKTAILS, FEATURED_FOOD, FEATURED_BRUNCH } from "../../data/menu";
+---
+<BaseLayout
+  title="Menu | Coco Maya by Miss B's | Little Italy San Diego"
+  description="Full menu at Coco Maya in Little Italy San Diego. Elevated coastal Mexican cuisine, craft cocktails, weekend brunch. 1660 India St."
+  image="/images/food-spread-overhead.jpg"
+>
+  <Nav />
+  <section class="relative pt-32 pb-12 px-6 text-center bg-[var(--color-cream)]">
+    <div class="relative z-10">
+      <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-[0.3em] uppercase mb-4">Coastal Mexican Cuisine</p>
+      <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl text-[var(--color-dark)] italic mb-4">The Menu</h1>
+      <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-60 max-w-xl mx-auto">Elevated coastal Mexican plates, craft cocktails, and weekend brunch.</p>
+    </div>
+  </section>
+
+  <div class="sticky top-16 z-30 bg-[var(--color-cream)]/95 backdrop-blur-sm border-b border-[var(--color-teal)]/20">
+    <div class="max-w-7xl mx-auto px-6 flex gap-8 overflow-x-auto py-4">
+      {[["cocktails","Cocktails"],["food","Food"],["brunch","Brunch"]].map(([id, label]) => (
+        <a href={`#${id}`} class="font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase text-[var(--color-dark)] opacity-60 hover:opacity-100 hover:text-[var(--color-teal)] transition-all whitespace-nowrap">{label}</a>
+      ))}
+    </div>
+  </div>
+
+  <div class="max-w-7xl mx-auto px-6 py-16 space-y-24 bg-[var(--color-cream)]">
+    <section id="cocktails">
+      <h2 class="font-[family-name:var(--font-display)] text-4xl text-[var(--color-dark)] italic mb-10">Cocktails</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {FEATURED_COCKTAILS.map((drink) => (
+          <div class="group overflow-hidden border border-[var(--color-teal)]/10 hover:border-[var(--color-teal)]/40 transition-colors">
+            <div class="aspect-square overflow-hidden">
+              <img src={drink.image} alt={drink.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" width="300" height="300" loading="lazy" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-[family-name:var(--font-stamp)] text-[var(--color-dark)] text-sm tracking-wide mb-1">{drink.name}</h3>
+              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-50 text-xs leading-relaxed">{drink.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="food">
+      <h2 class="font-[family-name:var(--font-display)] text-4xl text-[var(--color-dark)] italic mb-10">Food</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {FEATURED_FOOD.map((item) => (
+          <div class="group overflow-hidden border border-[var(--color-teal)]/10 hover:border-[var(--color-teal)]/40 transition-colors">
+            <div class="aspect-square overflow-hidden">
+              <img src={item.image} alt={item.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" width="300" height="300" loading="lazy" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-[family-name:var(--font-stamp)] text-[var(--color-dark)] text-sm tracking-wide mb-1">{item.name}</h3>
+              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-50 text-xs leading-relaxed">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <section id="brunch">
+      <h2 class="font-[family-name:var(--font-display)] text-4xl text-[var(--color-dark)] italic mb-4">Brunch</h2>
+      <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-widest uppercase mb-10">Saturday & Sunday 11AM – 3PM</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {FEATURED_BRUNCH.map((item) => (
+          <div class="group overflow-hidden border border-[var(--color-teal)]/10 hover:border-[var(--color-teal)]/40 transition-colors">
+            <div class="aspect-square overflow-hidden">
+              <img src={item.image} alt={item.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" width="300" height="300" loading="lazy" />
+            </div>
+            <div class="p-4">
+              <h3 class="font-[family-name:var(--font-stamp)] text-[var(--color-dark)] text-sm tracking-wide mb-1">{item.name}</h3>
+              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-50 text-xs leading-relaxed">{item.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+
+  <CTASection title="Ready to Dine?" subtitle="Reserve your table at Coco Maya in Little Italy." primaryLabel="Reserve a Table" primaryHref={SITE.reservations.url} secondaryLabel="Order Online" secondaryHref={SITE.order.url} />
+  <Footer />
+</BaseLayout>

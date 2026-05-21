@@ -1,0 +1,38 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { SITE } from "../data/site";
+const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const todayName = dayNames[new Date().getDay()];
+---
+<BaseLayout title="Reservations | Coco Maya | Little Italy San Diego" description="Reserve a table at Coco Maya by Miss B's in Little Italy San Diego. Book online or call (619) 943-9439. 1660 India St.">
+  <Nav />
+  <section class="min-h-screen pt-32 pb-24 px-6 flex flex-col items-center justify-center text-center bg-[var(--color-cream)]">
+    <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-[0.3em] uppercase mb-4">Book Your Table</p>
+    <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl text-[var(--color-dark)] italic mb-4">Reservations</h1>
+    <p class="font-[family-name:var(--font-script)] text-[var(--color-teal)] text-3xl mb-8">at Coco Maya</p>
+    <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-60 max-w-lg mx-auto mb-10 leading-relaxed">Reserve your table online or call us directly. Walk-ins welcome based on availability.</p>
+    <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+      <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer"
+        class="bg-[var(--color-teal)] text-[var(--color-cream)] font-[family-name:var(--font-stamp)] text-sm tracking-widest uppercase px-10 py-4 hover:bg-[var(--color-teal-dark)] transition-colors">
+        Book Online
+      </a>
+      <a href={`tel:${SITE.phone.tel}`}
+        class="border border-[var(--color-teal)] text-[var(--color-teal)] font-[family-name:var(--font-stamp)] text-sm tracking-widest uppercase px-10 py-4 hover:bg-[var(--color-teal)] hover:text-[var(--color-cream)] transition-colors">
+        {SITE.phone.display}
+      </a>
+    </div>
+    <div class="w-full max-w-sm border border-[var(--color-teal)]/20 p-8">
+      <h2 class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-widest uppercase mb-6">Hours</h2>
+      <ul class="space-y-3">
+        {SITE.hours.map((h) => (
+          <li class:list={["flex justify-between font-[family-name:var(--font-body)] text-sm", h.day === todayName ? "text-[var(--color-dark)]" : "text-[var(--color-dark)] opacity-50"]}>
+            <span>{h.day}</span><span>{h.hours}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+  <Footer />
+</BaseLayout>

@@ -1,0 +1,43 @@
+---
+import { SITE } from "../data/site";
+interface Props {
+  title?: string;
+  subtitle?: string;
+  primaryLabel?: string;
+  primaryHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+  dark?: boolean;
+}
+const {
+  title = "Ready to Visit?",
+  subtitle = "Reserve your table or come on in.",
+  primaryLabel = "Reserve a Table",
+  primaryHref = SITE.reservations.url,
+  secondaryLabel,
+  secondaryHref,
+  dark = false,
+} = Astro.props;
+---
+<section class:list={["py-20 px-6 text-center", dark ? "bg-[var(--color-dark)] text-[var(--color-cream)]" : "bg-[var(--color-teal)]/8"]}>
+  <div class="max-w-2xl mx-auto">
+    <h2 class:list={["font-[family-name:var(--font-display)] text-3xl sm:text-4xl mb-4", dark ? "text-[var(--color-cream)]" : "text-[var(--color-dark)]"]}>{title}</h2>
+    {subtitle && <p class:list={["font-[family-name:var(--font-body)] mb-8 leading-relaxed", dark ? "text-[var(--color-sand)] opacity-70" : "text-[var(--color-dark)] opacity-60"]}>{subtitle}</p>}
+    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+      <a href={primaryHref} target={primaryHref.startsWith("http") ? "_blank" : undefined}
+        rel={primaryHref.startsWith("http") ? "noopener noreferrer" : undefined}
+        class="bg-[var(--color-teal)] text-[var(--color-cream)] font-[family-name:var(--font-stamp)] text-sm tracking-widest uppercase px-8 py-4 hover:bg-[var(--color-teal-dark)] transition-colors">
+        {primaryLabel}
+      </a>
+      {secondaryLabel && secondaryHref && (
+        <a href={secondaryHref} target={secondaryHref.startsWith("http") ? "_blank" : undefined}
+          rel={secondaryHref.startsWith("http") ? "noopener noreferrer" : undefined}
+          class:list={["font-[family-name:var(--font-stamp)] text-sm tracking-widest uppercase px-8 py-4 transition-colors border",
+            dark ? "border-[var(--color-sand)] opacity-60 text-[var(--color-sand)] hover:opacity-100" : "border-[var(--color-teal)] text-[var(--color-teal)] hover:bg-[var(--color-teal)] hover:text-[var(--color-cream)]"
+          ]}>
+          {secondaryLabel}
+        </a>
+      )}
+    </div>
+  </div>
+</section>
