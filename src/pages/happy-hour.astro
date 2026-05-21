@@ -12,30 +12,75 @@ import { SITE } from "../data/site";
   image="/images/cocktail-happy-hour-group.jpg"
 >
   <Nav />
-  <PageHero label="Every Day 3–5PM" title="Happy Hour" subtitle="Discounted cocktails, wines, and bites every day of the week on the elevated patio." image="/images/cocktail-happy-hour-group.jpg" imageAlt="Happy hour cocktails at Coco Maya Little Italy San Diego" />
+  <PageHero
+    label="Every Day 3–5PM"
+    title="Happy Hour"
+    subtitle="Discounted cocktails, wines, and bites every day of the week on the elevated patio."
+    image="/images/cocktail-happy-hour-group.jpg"
+    imageAlt="Happy hour cocktails at Coco Maya Little Italy San Diego"
+    tall={true}
+  />
 
   <section class="py-20 px-6 bg-[var(--color-cream)]">
-    <div class="max-w-3xl mx-auto">
-      <div class="grid grid-cols-2 gap-8 mb-16">
-        <div class="text-center border border-[var(--color-teal)]/20 p-8">
-          <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-widest uppercase mb-3">Days</p>
-          <p class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-dark)] italic">{SITE.happyHour.days}</p>
+    <div class="max-w-4xl mx-auto">
+
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
+        <div class="info-card">
+          <p class="section-label mb-3">Days</p>
+          <p class="font-[family-name:var(--font-display)] text-3xl text-[var(--color-dark)] italic">{SITE.happyHour.days}</p>
         </div>
-        <div class="text-center border border-[var(--color-teal)]/40 p-8 bg-[var(--color-teal)]/5">
-          <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-widest uppercase mb-3">Hours</p>
-          <p class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-dark)] italic">{SITE.happyHour.hours}</p>
+        <div class="info-card" style="background-color: rgba(61,138,138,0.04)">
+          <p class="section-label mb-3">Hours</p>
+          <p class="font-[family-name:var(--font-display)] text-3xl text-[var(--color-dark)] italic">{SITE.happyHour.hours}</p>
         </div>
       </div>
-      <h2 class="font-[family-name:var(--font-display)] text-3xl text-[var(--color-dark)] italic mb-4">Little Italy's Best Happy Hour</h2>
-      <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-6">
-        Coco Maya runs daily happy hour from 3 to 5 PM. Discounted cocktails, wines, and select bites served on one of San Diego's most distinctive patios — under the glass atrium, surrounded by tropical greenery.
-      </p>
-      <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed">
-        Whether you're coming from the office or starting the evening early, the elevated patio in Little Italy is the right call.
-      </p>
+
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div>
+          <p class="section-label mb-4">The Details</p>
+          <h2 class="font-[family-name:var(--font-display)] text-4xl text-[var(--color-dark)] italic mb-6">Little Italy's Best Happy Hour</h2>
+          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-4">
+            Coco Maya runs daily happy hour from 3 to 5 PM. Discounted cocktails, wines, and select bites served on one of San Diego's most distinctive patios — under the glass atrium, surrounded by tropical greenery.
+          </p>
+          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-8">
+            Whether you're coming from the office or starting the evening early, the elevated patio in Little Italy is the right call.
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">Reserve a Table</a>
+            <a href="/menu" class="btn-outline">See Full Menu</a>
+          </div>
+        </div>
+        <div class="relative">
+          <img src="/images/cocktail-negroni-patio.jpg" alt="Happy hour cocktails at Coco Maya" class="w-full aspect-square object-cover" width="600" height="600" loading="lazy" />
+          <div class="absolute -bottom-3 -right-3 w-full h-full border border-[var(--color-teal)]/20 -z-10"></div>
+        </div>
+      </div>
+
+      <div class="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-5">
+        {[
+          { icon: "🍹", title: "Cocktails", body: "Discounted house cocktails and wines — rotating seasonal specials." },
+          { icon: "🥑", title: "Bites", body: "Select appetizers and small plates from the full Coco Maya kitchen." },
+          { icon: "🌿", title: "The Patio", body: "San Diego's best happy hour setting — the elevated glass atrium patio." },
+        ].map((item) => (
+          <div class="info-card text-left">
+            <p class="text-2xl mb-3">{item.icon}</p>
+            <p class="section-label mb-2">{item.title}</p>
+            <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-60 text-sm leading-relaxed">{item.body}</p>
+          </div>
+        ))}
+      </div>
+
     </div>
   </section>
 
-  <CTASection title="Join Us for Happy Hour" subtitle="1660 India St, Little Italy San Diego. Daily 3–5PM." primaryLabel="Reserve a Table" primaryHref={SITE.reservations.url} secondaryLabel="See Full Menu" secondaryHref="/menu" />
+  <CTASection
+    title="Join Us for Happy Hour"
+    subtitle="1660 India St, Little Italy San Diego. Every day 3–5PM."
+    primaryLabel="Reserve a Table"
+    primaryHref={SITE.reservations.url}
+    secondaryLabel="Get Directions"
+    secondaryHref={SITE.address.mapsUrl}
+    dark={true}
+  />
   <Footer />
 </BaseLayout>

@@ -5,28 +5,49 @@ import Footer from "../../components/Footer.astro";
 import PageHero from "../../components/PageHero.astro";
 import CTASection from "../../components/CTASection.astro";
 import { SITE } from "../../data/site";
-import { RECURRING_EVENTS, UPCOMING_EVENTS } from "../../data/events";
+import { RECURRING_EVENTS } from "../../data/events";
 ---
-<BaseLayout title="Events | Coco Maya | Little Italy San Diego" description="Events at Coco Maya in Little Italy San Diego. Weekend brunch, happy hour, and private events. 1660 India St." image="/images/events-patio-night.jpg">
+<BaseLayout
+  title="Events | Coco Maya | Little Italy San Diego"
+  description="Events at Coco Maya in Little Italy San Diego. Weekend brunch, happy hour, and private events. 1660 India St."
+  image="/images/events-patio-night.jpg"
+>
   <Nav />
-  <PageHero label="Weekly & Special" title="Events at Coco Maya" subtitle="Weekend brunch, daily happy hour, and private events in Little Italy." image="/images/events-patio-night.jpg" imageAlt="Evening event at Coco Maya patio Little Italy San Diego" />
+  <PageHero
+    label="Weekly & Special"
+    title="Events at Coco Maya"
+    subtitle="Weekend brunch, daily happy hour, and private events in Little Italy."
+    image="/images/events-patio-night.jpg"
+    imageAlt="Evening event at Coco Maya patio Little Italy San Diego"
+    tall={true}
+  />
 
   <section class="py-24 px-6 bg-[var(--color-cream)]">
-    <div class="max-w-7xl mx-auto">
-      <h2 class="font-[family-name:var(--font-display)] text-4xl text-[var(--color-dark)] italic mb-12">Weekly Events</h2>
+    <div class="max-w-6xl mx-auto">
+      <div class="mb-14">
+        <p class="section-label mb-4">Weekly</p>
+        <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl text-[var(--color-dark)] italic">Recurring Events</h2>
+      </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {RECURRING_EVENTS.map((event) => (
-          <div class="group relative overflow-hidden border border-[var(--color-teal)]/10 hover:border-[var(--color-teal)]/40 transition-colors">
-            <div class="aspect-video overflow-hidden">
+          <div class="group border border-[var(--color-teal)]/15 hover:border-[var(--color-teal)]/50 hover:shadow-lg transition-all overflow-hidden">
+            <div class="relative aspect-video overflow-hidden">
               <img src={event.image} alt={`${event.name} at Coco Maya Little Italy San Diego`}
                 class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                 width="800" height="450" loading="lazy" />
               <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+              <div class="absolute bottom-4 left-4">
+                <span class="bg-[var(--color-teal)] text-white font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase px-3 py-1.5">
+                  {event.highlight}
+                </span>
+              </div>
             </div>
-            <div class="p-6">
-              <span class="inline-block bg-[var(--color-teal)] text-[var(--color-cream)] font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase px-3 py-1 mb-3">{event.highlight}</span>
+            <div class="p-7">
               <h3 class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-dark)] italic mb-2">{event.name}</h3>
-              <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-wider uppercase mb-3">{event.day} &bull; {event.time}</p>
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-4 h-px bg-[var(--color-teal)]"></div>
+                <p class="section-label text-[var(--color-teal)]">{event.day} &bull; {event.time}</p>
+              </div>
               <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-60 text-sm leading-relaxed">{event.description}</p>
             </div>
           </div>
@@ -35,6 +56,34 @@ import { RECURRING_EVENTS, UPCOMING_EVENTS } from "../../data/events";
     </div>
   </section>
 
-  <CTASection title="Host a Private Event" subtitle="Book Coco Maya for your next birthday, bachelorette, or corporate event." primaryLabel="Inquire About Events" primaryHref="/private-events" secondaryLabel="Reserve a Table" secondaryHref={SITE.reservations.url} />
+  <section class="py-20 bg-[var(--color-dark)] px-6">
+    <div class="max-w-4xl mx-auto grid md:grid-cols-2 gap-px bg-white/10">
+      <div class="bg-[var(--color-dark)] p-12">
+        <p class="section-label text-[var(--color-teal-light)] mb-4">Private Events</p>
+        <h3 class="font-[family-name:var(--font-display)] text-3xl text-white italic mb-4">Host Your Own Event</h3>
+        <p class="font-[family-name:var(--font-body)] text-white/60 leading-relaxed mb-8 text-sm">
+          Birthdays, bachelorettes, rehearsal dinners, corporate events. Coco Maya has a private event space in Little Italy your guests will remember.
+        </p>
+        <a href="/private-events" class="btn-primary">Learn More</a>
+      </div>
+      <div class="bg-[var(--color-dark)] p-12">
+        <p class="section-label text-[var(--color-teal-light)] mb-4">Reservations</p>
+        <h3 class="font-[family-name:var(--font-display)] text-3xl text-white italic mb-4">Book a Table</h3>
+        <p class="font-[family-name:var(--font-body)] text-white/60 leading-relaxed mb-8 text-sm">
+          Reserve your table online. Walk-ins welcome based on availability. Open daily in Little Italy at 1660 India St.
+        </p>
+        <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">Reserve Now</a>
+      </div>
+    </div>
+  </section>
+
+  <CTASection
+    title="See You at Coco Maya"
+    subtitle="1660 India St, Little Italy San Diego. Open daily."
+    primaryLabel="Reserve a Table"
+    primaryHref={SITE.reservations.url}
+    secondaryLabel="Private Events"
+    secondaryHref="/private-events"
+  />
   <Footer />
 </BaseLayout>
