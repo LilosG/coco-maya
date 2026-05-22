@@ -1,77 +1,32 @@
 ---
 import { SITE } from "../data/site";
-const pathname = Astro.url.pathname;
-const isHome = pathname === "/";
 ---
 
-<header id="site-header" class:list={[
-  "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-  isHome ? "" : "nav-scrolled"
-]}>
+<header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
   <div class="max-w-7xl mx-auto px-6 lg:px-10 py-4 flex items-center justify-between">
 
-    <a href="/" aria-label="Coco Maya — Home" class="flex-shrink-0">
+    <a href="/" aria-label="Coco Maya Home" class="flex-shrink-0">
       <img
+        id="nav-logo"
         src="/images/logo-teal.png"
         alt="Coco Maya by Miss Bs Little Italy San Diego"
-        class:list={["h-11 w-auto transition-all duration-300", isHome ? "brightness-0 invert" : ""]}
+        class="h-11 w-auto transition-all duration-300"
         width="160" height="44"
       />
     </a>
 
     <nav class="hidden lg:flex items-center gap-7" aria-label="Main navigation">
       {SITE.nav.map((item) => (
-        
-          href={item.href}
-          class:list={[
-            "font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase transition-colors duration-200",
-            pathname === item.href || pathname.startsWith(item.href + "/")
-              ? "text-[var(--color-teal)]"
-              : isHome
-                ? "text-white/90 hover:text-[var(--color-teal-light)]"
-                : "text-[var(--color-dark)] hover:text-[var(--color-teal)]",
-          ]}
-        >
-          {item.label}
-        </a>
+        <a href={item.href} class="nav-link font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase transition-colors duration-200">{item.label}</a>
       ))}
     </nav>
 
     <div class="hidden lg:flex items-center gap-3">
-      
-        href={SITE.order.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        class:list={[
-          "font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase px-4 py-2 border transition-colors duration-200",
-          isHome
-            ? "border-white/50 text-white hover:border-white hover:bg-white/10"
-            : "border-[var(--color-teal)] text-[var(--color-teal)] hover:bg-[var(--color-teal)] hover:text-white"
-        ]}
-      >
-        Order
-      </a>
-      
-        href={SITE.reservations.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        class:list={[
-          "font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase px-5 py-2 border-2 transition-colors duration-200",
-          isHome
-            ? "bg-white/10 border-white/70 text-white hover:bg-white hover:text-[var(--color-teal-dark)]"
-            : "bg-[var(--color-teal)] border-[var(--color-teal)] text-white hover:bg-[var(--color-teal-dark)] hover:border-[var(--color-teal-dark)]"
-        ]}
-      >
-        Reserve
-      </a>
+      <a href={SITE.order.url} target="_blank" rel="noopener noreferrer" class="nav-btn-order font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase px-4 py-2 border transition-colors duration-200">Order</a>
+      <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="nav-btn-reserve font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase px-5 py-2 border-2 transition-colors duration-200">Reserve</a>
     </div>
 
-    <button
-      id="mobile-menu-btn"
-      class:list={["lg:hidden p-2 transition-colors", isHome ? "text-white" : "text-[var(--color-dark)]"]}
-      aria-label="Open menu"
-      aria-expanded="false"
-    >
+    <button id="mobile-menu-btn" class="lg:hidden p-2 nav-mobile-btn transition-colors" aria-label="Open menu" aria-expanded="false">
       <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
       </svg>
@@ -79,11 +34,7 @@ const isHome = pathname === "/";
   </div>
 </header>
 
-<div
-  id="mobile-menu"
-  class="fixed inset-0 z-40 bg-[var(--color-cream)] flex flex-col items-center justify-center gap-7 translate-x-full transition-transform duration-300 lg:hidden"
-  aria-hidden="true"
->
+<div id="mobile-menu" class="fixed inset-0 z-40 bg-[var(--color-cream)] flex flex-col items-center justify-center gap-7 translate-x-full transition-transform duration-300 lg:hidden" aria-hidden="true">
   <button id="mobile-menu-close" class="absolute top-6 right-6 text-[var(--color-dark)] p-2" aria-label="Close menu">
     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -91,12 +42,7 @@ const isHome = pathname === "/";
   </button>
   <img src="/images/logo-teal.png" alt="Coco Maya" class="h-12 w-auto mb-4" width="160" height="48" />
   {SITE.nav.map((item) => (
-    
-      href={item.href}
-      class="font-[family-name:var(--font-stamp)] text-xl tracking-widest uppercase text-[var(--color-dark)] hover:text-[var(--color-teal)] transition-colors"
-    >
-      {item.label}
-    </a>
+    <a href={item.href} class="font-[family-name:var(--font-stamp)] text-xl tracking-widest uppercase text-[var(--color-dark)] hover:text-[var(--color-teal)] transition-colors">{item.label}</a>
   ))}
   <div class="flex flex-col gap-3 mt-4 w-48">
     <a href={SITE.order.url} target="_blank" rel="noopener noreferrer" class="btn-outline text-center">Order Online</a>
@@ -106,30 +52,53 @@ const isHome = pathname === "/";
 
 <script>
   const header = document.getElementById("site-header");
+  const logo = document.getElementById("nav-logo");
   const btn = document.getElementById("mobile-menu-btn");
   const closeBtn = document.getElementById("mobile-menu-close");
   const menu = document.getElementById("mobile-menu");
-  const logo = header?.querySelector("img");
-  const isHome = window.location.pathname === "/";
+  const pathname = window.location.pathname;
+  const isHome = pathname === "/";
 
-  if (isHome && header) {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 80) {
-        header.classList.add("nav-scrolled");
-        logo?.classList.remove("brightness-0", "invert");
-      } else {
-        header.classList.remove("nav-scrolled");
-        logo?.classList.add("brightness-0", "invert");
-      }
-    });
+  function setLight() {
+    header?.classList.remove("nav-scrolled");
+    logo?.classList.add("brightness-0", "invert");
+    document.querySelectorAll(".nav-link").forEach(function(el) { el.classList.add("nav-link-light"); });
+    document.querySelectorAll(".nav-btn-order").forEach(function(el) { el.classList.add("nav-btn-order-light"); });
+    document.querySelectorAll(".nav-btn-reserve").forEach(function(el) { el.classList.add("nav-btn-reserve-light"); });
+    document.querySelectorAll(".nav-mobile-btn").forEach(function(el) { el.classList.add("nav-mobile-btn-light"); });
   }
 
-  btn?.addEventListener("click", () => {
+  function setDark() {
+    header?.classList.add("nav-scrolled");
+    logo?.classList.remove("brightness-0", "invert");
+    document.querySelectorAll(".nav-link").forEach(function(el) { el.classList.remove("nav-link-light"); });
+    document.querySelectorAll(".nav-btn-order").forEach(function(el) { el.classList.remove("nav-btn-order-light"); });
+    document.querySelectorAll(".nav-btn-reserve").forEach(function(el) { el.classList.remove("nav-btn-reserve-light"); });
+    document.querySelectorAll(".nav-mobile-btn").forEach(function(el) { el.classList.remove("nav-mobile-btn-light"); });
+  }
+
+  if (isHome) {
+    setLight();
+    window.addEventListener("scroll", function() {
+      if (window.scrollY > 80) { setDark(); } else { setLight(); }
+    });
+  } else {
+    setDark();
+  }
+
+  document.querySelectorAll(".nav-link").forEach(function(el) {
+    var href = el.getAttribute("href") || "";
+    if (pathname === href || (href !== "/" && pathname.indexOf(href) === 0)) {
+      el.classList.add("nav-link-active");
+    }
+  });
+
+  btn?.addEventListener("click", function() {
     menu?.classList.remove("translate-x-full");
     menu?.setAttribute("aria-hidden", "false");
     btn.setAttribute("aria-expanded", "true");
   });
-  closeBtn?.addEventListener("click", () => {
+  closeBtn?.addEventListener("click", function() {
     menu?.classList.add("translate-x-full");
     menu?.setAttribute("aria-hidden", "true");
     btn?.setAttribute("aria-expanded", "false");

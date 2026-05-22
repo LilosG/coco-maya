@@ -230,4 +230,25 @@
     background: linear-gradient(to right, transparent, rgba(61,138,138,0.3), transparent);
     margin: 0;
   }
+
+  /* Nav state classes — set by JS, no slash-opacity in templates */
+  .nav-link { color: var(--color-dark); }
+  .nav-link:hover { color: var(--color-teal); }
+  .nav-link-active { color: var(--color-teal); }
+  .nav-link-light { color: rgba(255,255,255,0.9); }
+  .nav-link-light:hover { color: var(--color-teal-light); }
+
+  .nav-btn-order { color: var(--color-teal); border-color: var(--color-teal); }
+  .nav-btn-order:hover { background-color: var(--color-teal); color: white; }
+  .nav-btn-order-light { color: white; border-color: rgba(255,255,255,0.5); background-color: transparent; }
+  .nav-btn-order-light:hover { border-color: white; background-color: rgba(255,255,255,0.1); }
+
+  .nav-btn-reserve { background-color: var(--color-teal); border-color: var(--color-teal); color: white; }
+  .nav-btn-reserve:hover { background-color: var(--color-teal-dark); border-color: var(--color-teal-dark); }
+  .nav-btn-reserve-light { background-color: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.7); color: white; }
+  .nav-btn-reserve-light:hover { background-color: white; color: var(--color-teal-dark); }
+
+  .nav-mobile-btn { color: var(--color-dark); }
+  .nav-mobile-btn-light { color: white; }
+
 }

@@ -23,8 +23,8 @@ import { FEATURED_COCKTAILS, FEATURED_FOOD, FEATURED_BRUNCH } from "../../data/m
   <div class="sticky top-0 z-30 bg-[var(--color-cream)]/97 backdrop-blur-md border-b border-[var(--color-teal)]/12 shadow-sm">
     <div class="max-w-7xl mx-auto px-6 flex gap-8 overflow-x-auto py-4">
       {[["cocktails","Cocktails"],["food","Food"],["brunch","Brunch"]].map(([id, label]) => (
-        
-          href={`#${id}`}
+        <a
+          href={"#" + id}
           class="font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase text-[var(--color-dark)]/50 hover:text-[var(--color-teal)] transition-colors whitespace-nowrap"
         >
           {label}

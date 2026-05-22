@@ -21,10 +21,14 @@ const {
   image,
 } = Astro.props;
 
-const isExternal = (href: string) => href.startsWith("http") || href.startsWith("mailto") || href.startsWith("tel");
+const isDark = dark || !!image;
+const primaryTarget = (primaryHref.startsWith("http") || primaryHref.startsWith("mailto") || primaryHref.startsWith("tel")) ? "_blank" : undefined;
+const primaryRel = primaryTarget === "_blank" ? "noopener noreferrer" : undefined;
+const secondaryTarget = secondaryHref && (secondaryHref.startsWith("http") || secondaryHref.startsWith("mailto") || secondaryHref.startsWith("tel")) ? "_blank" : undefined;
+const secondaryRel = secondaryTarget === "_blank" ? "noopener noreferrer" : undefined;
 ---
 
-<section class:list={["relative py-24 px-6 overflow-hidden", dark || image ? "bg-[var(--color-dark)]" : "bg-[var(--color-teal)]/6"]}>
+<section class:list={["relative py-24 px-6 overflow-hidden", isDark ? "bg-[var(--color-dark)]" : "bg-[var(--color-teal)]/6"]}>
 
   {image && (
     <div class="absolute inset-0">
@@ -35,11 +39,11 @@ const isExternal = (href: string) => href.startsWith("http") || href.startsWith(
 
   <div class="relative z-10 max-w-2xl mx-auto text-center">
 
-    <div class:list={["mx-auto mb-7", dark || image ? "rule-light" : "rule"]} style="margin-left: auto; margin-right: auto;"></div>
+    <div class:list={["mx-auto mb-7", isDark ? "rule-light" : "rule"]} style="margin-left: auto; margin-right: auto;"></div>
 
     <h2 class:list={[
       "font-[family-name:var(--font-display)] italic text-[clamp(2rem,5vw,3rem)] leading-tight mb-4",
-      dark || image ? "text-white" : "text-[var(--color-dark)]"
+      isDark ? "text-white" : "text-[var(--color-dark)]"
     ]}>
       {title}
     </h2>
@@ -47,28 +51,18 @@ const isExternal = (href: string) => href.startsWith("http") || href.startsWith(
     {subtitle && (
       <p class:list={[
         "font-[family-name:var(--font-body)] text-base leading-relaxed mb-10",
-        dark || image ? "text-white/60" : "text-[var(--color-dark)]/60"
+        isDark ? "text-white/60" : "text-[var(--color-dark)]/60"
       ]}>
         {subtitle}
       </p>
     )}
 
     <div class="flex flex-col sm:flex-row gap-4 justify-center">
-      
-        href={primaryHref}
-        target={isExternal(primaryHref) ? "_blank" : undefined}
-        rel={isExternal(primaryHref) ? "noopener noreferrer" : undefined}
-        class:list={[dark || image ? "btn-primary" : "btn-primary"]}
-      >
+      <a href={primaryHref} target={primaryTarget} rel={primaryRel} class="btn-primary">
         {primaryLabel}
       </a>
       {secondaryLabel && secondaryHref && (
-        
-          href={secondaryHref}
-          target={isExternal(secondaryHref) ? "_blank" : undefined}
-          rel={isExternal(secondaryHref) ? "noopener noreferrer" : undefined}
-          class:list={[dark || image ? "btn-ghost" : "btn-outline"]}
-        >
+        <a href={secondaryHref} target={secondaryTarget} rel={secondaryRel} class:list={[isDark ? "btn-ghost" : "btn-outline"]}>
           {secondaryLabel}
         </a>
       )}
