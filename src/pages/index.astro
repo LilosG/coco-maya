@@ -7,6 +7,8 @@ import InfoCard from "../components/InfoCard.astro";
 import { SITE } from "../data/site";
 import { FEATURED_COCKTAILS, FEATURED_FOOD, FEATURED_BRUNCH } from "../data/menu";
 import { RECURRING_EVENTS } from "../data/events";
+import HappyHour from "../components/HappyHour.astro";
+import FindUs from "../components/FindUs.astro";
 
 const todayHours = (() => {
   const d = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -224,6 +226,7 @@ const infoBar = [
   </section>
 
   <!-- ── HAPPY HOUR ─────────────────────────────────────── -->
+  {/* OLD Happy Hour — kept for rollback
   <section class="py-28 px-6 bg-[var(--color-sand-dark)]">
     <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
       <div>
@@ -246,6 +249,8 @@ const infoBar = [
       </div>
     </div>
   </section>
+  */}
+  <HappyHour menuHref="/happy-hour" />
 
   <!-- ── PRIVATE EVENTS ─────────────────────────────────── -->
   <section class="py-28 px-6 bg-[var(--color-cream)]">
@@ -305,6 +310,7 @@ const infoBar = [
   </section>
 
   <!-- ── FIND US ─────────────────────────────────────────── -->
+  {/* OLD Find Us — kept for rollback
   <section class="py-28 px-6 bg-[var(--color-cream)]">
     <div class="max-w-3xl mx-auto text-center">
       <span class="eyebrow mx-auto block">Come Visit</span>
@@ -338,6 +344,13 @@ const infoBar = [
       </div>
     </div>
   </section>
+  */}
+  <FindUs
+    address={SITE.address.street}
+    cityLine={`${SITE.address.neighborhood}, ${SITE.address.city}, ${SITE.address.state} ${SITE.address.zip}`}
+    phone={SITE.phone.display}
+    mapsHref={SITE.address.mapsUrl}
+  />
 
   <Footer />
 </BaseLayout>
