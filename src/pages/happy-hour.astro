@@ -7,13 +7,13 @@ import CTASection from "../components/CTASection.astro";
 import { SITE } from "../data/site";
 ---
 <BaseLayout
-  title="Happy Hour Little Italy San Diego | Coco Maya | Daily 3–5PM"
-  description="Best happy hour in Little Italy San Diego. Coco Maya: discounted cocktails and bites every day 3–5PM. 1660 India St, San Diego CA."
+  title="Happy Hour Little Italy San Diego | Coco Maya | Daily 3-5PM"
+  description="Best happy hour in Little Italy San Diego. Coco Maya: discounted cocktails and bites every day 3-5PM. 1660 India St, San Diego CA."
   image="/images/cocktail-happy-hour-group.jpg"
 >
   <Nav />
   <PageHero
-    label="Every Day 3–5PM"
+    label="Every Day 3-5PM"
     title="Happy Hour"
     subtitle="Discounted cocktails, wines, and bites every day of the week on the elevated patio."
     image="/images/cocktail-happy-hour-group.jpg"
@@ -38,12 +38,13 @@ import { SITE } from "../data/site";
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
           <p class="section-label mb-4">The Details</p>
-          <h2 class="font-[family-name:var(--font-display)] text-4xl text-[var(--color-dark)] italic mb-6">Little Italy's Best Happy Hour</h2>
+          <h2 class="font-[family-name:var(--font-display)] text-4xl text-[var(--color-dark)] italic mb-6">Little Italy Best Happy Hour</h2>
+          <div class="w-10 h-px bg-[var(--color-teal)] mb-6"></div>
           <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-4">
-            Coco Maya runs daily happy hour from 3 to 5 PM. Discounted cocktails, wines, and select bites served on one of San Diego's most distinctive patios — under the glass atrium, surrounded by tropical greenery.
+            Coco Maya runs daily happy hour from 3 to 5 PM. Discounted cocktails, wines, and select bites served on one of San Diego most distinctive patios under the glass atrium, surrounded by tropical greenery.
           </p>
           <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-8">
-            Whether you're coming from the office or starting the evening early, the elevated patio in Little Italy is the right call.
+            Whether you are coming from the office or starting the evening early, the elevated patio in Little Italy is the right call.
           </p>
           <div class="flex flex-wrap gap-4">
             <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">Reserve a Table</a>
@@ -58,13 +59,12 @@ import { SITE } from "../data/site";
 
       <div class="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-5">
         {[
-          { icon: "🍹", title: "Cocktails", body: "Discounted house cocktails and wines — rotating seasonal specials." },
-          { icon: "🥑", title: "Bites", body: "Select appetizers and small plates from the full Coco Maya kitchen." },
-          { icon: "🌿", title: "The Patio", body: "San Diego's best happy hour setting — the elevated glass atrium patio." },
+          { icon: "Cocktails", body: "Discounted house cocktails and wines with rotating seasonal specials." },
+          { icon: "Bites", body: "Select appetizers and small plates from the full Coco Maya kitchen." },
+          { icon: "The Patio", body: "San Diego best happy hour setting on the elevated glass atrium patio." },
         ].map((item) => (
           <div class="info-card text-left">
-            <p class="text-2xl mb-3">{item.icon}</p>
-            <p class="section-label mb-2">{item.title}</p>
+            <p class="section-label mb-3">{item.icon}</p>
             <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-60 text-sm leading-relaxed">{item.body}</p>
           </div>
         ))}
@@ -75,7 +75,7 @@ import { SITE } from "../data/site";
 
   <CTASection
     title="Join Us for Happy Hour"
-    subtitle="1660 India St, Little Italy San Diego. Every day 3–5PM."
+    subtitle="1660 India St, Little Italy San Diego. Every day 3-5PM."
     primaryLabel="Reserve a Table"
     primaryHref={SITE.reservations.url}
     secondaryLabel="Get Directions"

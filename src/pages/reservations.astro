@@ -8,17 +8,15 @@ const todayName = dayNames[new Date().getDay()];
 ---
 <BaseLayout
   title="Reservations | Coco Maya | Little Italy San Diego"
-  description="Reserve a table at Coco Maya by Miss B's in Little Italy San Diego. Book online or call (619) 943-9439. 1660 India St."
+  description="Reserve a table at Coco Maya by Miss Bs in Little Italy San Diego. Book online or call (619) 943-9439. 1660 India St."
 >
   <Nav />
-
   <section class="relative min-h-screen flex items-center overflow-hidden">
     <div class="absolute inset-0">
       <img src="/images/venue-hero-bar.jpg" alt="Coco Maya Little Italy San Diego"
         class="w-full h-full object-cover" width="1800" height="1200" fetchpriority="high" />
       <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20"></div>
     </div>
-
     <div class="relative z-10 w-full max-w-6xl mx-auto px-6 py-32 grid lg:grid-cols-2 gap-16 items-center">
       <div>
         <p class="section-label text-[var(--color-teal-light)] mb-4">Book Your Table</p>
@@ -32,10 +30,9 @@ const todayName = dayNames[new Date().getDay()];
           <a href={`tel:${SITE.phone.tel}`} class="btn-white">{SITE.phone.display}</a>
         </div>
       </div>
-
       <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8">
         <p class="section-label text-[var(--color-teal-light)] mb-6">Hours</p>
-        <div class="space-y-0 divide-y divide-white/10">
+        <div class="divide-y divide-white/10">
           {SITE.hours.map((h) => (
             <div class:list={[
               "flex justify-between py-3 font-[family-name:var(--font-body)] text-sm",
@@ -47,11 +44,10 @@ const todayName = dayNames[new Date().getDay()];
           ))}
         </div>
         <div class="border-t border-white/10 mt-4 pt-4">
-          <p class="font-[family-name:var(--font-body)] text-white/50 text-xs">Brunch Sat & Sun 11AM–3PM &bull; Happy Hour Daily 3–5PM</p>
+          <p class="font-[family-name:var(--font-body)] text-white/50 text-xs">Brunch Sat and Sun 11AM to 3PM. Happy Hour Daily 3 to 5PM.</p>
         </div>
       </div>
     </div>
   </section>
-
   <Footer />
 </BaseLayout>
