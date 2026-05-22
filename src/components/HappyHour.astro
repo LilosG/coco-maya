@@ -1,0 +1,211 @@
+---
+// src/components/HappyHour.astro
+// Coco Maya — Happy Hour section
+// Drop-in replacement for the current Happy Hour section.
+//
+// Image paths default to /public/images/... — change props if yours differ.
+// Required Google Fonts (add to your base Layout if not already):
+//   Cormorant Garamond (ital 400–600), Inter (400–600), JetBrains Mono (400–500)
+
+interface Props {
+  cocktailImage?: string;
+  patioImage?: string;
+  menuHref?: string;
+}
+
+const {
+  cocktailImage = '/images/cocktails.jpg',
+  patioImage = '/images/elevated-patio.jpg',
+  menuHref = '#happy-hour-menu',
+} = Astro.props;
+---
+
+<section class="hh-section" aria-labelledby="hh-title">
+  <div class="sec-head">
+    <div class="eyebrow">Every day · 3 to 5</div>
+    <h2 id="hh-title" class="title">Happy Hour</h2>
+    <p class="sub">
+      Discounted cocktails, wines, and select bites every single day of the week —
+      on the elevated patio, where the breeze comes off India Street.
+    </p>
+  </div>
+
+  <div class="hh-grid">
+    <!-- Card 1 — WHEN + HOURS -->
+    <article class="hh-card">
+      <div class="photo">
+        <img src={cocktailImage} alt="Coco Maya signature cocktails on the patio" loading="lazy" />
+      </div>
+      <div class="body">
+        <span class="tag teal">★ Daily ★</span>
+        <div class="hh-hours-row">
+          <div class="col">
+            <div class="label">When</div>
+            <div class="big">Daily</div>
+            <div class="sub-small">Monday through Sunday</div>
+          </div>
+          <div class="divider"></div>
+          <div class="col accent">
+            <div class="label">Hours</div>
+            <div class="big">3 – 5pm</div>
+            <div class="sub-small">Two golden hours</div>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 2 — WHERE -->
+    <article class="hh-card">
+      <div class="photo">
+        <img src={patioImage} alt="The elevated patio and bar area at Coco Maya" loading="lazy" />
+      </div>
+      <div class="body">
+        <span class="tag coral">Where</span>
+        <div class="hh-where">
+          <div class="label">Location</div>
+          <div class="big">Elevated Patio<br />&amp; Bar Area</div>
+          <div class="addr">1660 India St · Little Italy</div>
+        </div>
+      </div>
+    </article>
+  </div>
+
+  <div class="hh-cta">
+    <a href={menuHref} class="btn btn-primary">SEE HAPPY HOUR MENU</a>
+  </div>
+</section>
+
+<style>
+  .hh-section {
+    --cream-deep: #F1E8D2;
+    --ink: #1A2624;
+    --ink-soft: #5C6664;
+    --ink-muted: #8A918F;
+    --teal: #2E7873;
+    --teal-deep: #1F5752;
+    --coral: #D67D5C;
+    --paper-shadow: 0 1px 2px rgba(40,30,15,0.04), 0 30px 60px -22px rgba(40,30,15,0.18);
+    --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
+    --sans: "Inter", "Helvetica Neue", system-ui, sans-serif;
+    --mono: "JetBrains Mono", "IBM Plex Mono", monospace;
+
+    background: #E8D8B5;
+    padding: 80px 80px;
+    font-family: var(--sans);
+    color: var(--ink);
+  }
+
+  /* Header */
+  .sec-head { text-align: center; margin-bottom: 44px; }
+  .eyebrow {
+    font-family: var(--sans);
+    font-size: 12px;
+    letter-spacing: 0.32em;
+    font-weight: 500;
+    color: var(--teal-deep);
+    text-transform: uppercase;
+  }
+  .title {
+    font-family: var(--serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: clamp(44px, 5.5vw, 72px);
+    line-height: 1.02;
+    letter-spacing: -0.01em;
+    margin: 18px 0 0;
+  }
+  .sub {
+    max-width: 540px; margin: 18px auto 0;
+    color: var(--ink-soft); font-size: 15px; line-height: 1.55;
+  }
+
+  /* Grid */
+  .hh-grid {
+    max-width: 1180px; margin: 0 auto;
+    display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px;
+  }
+
+  /* Card */
+  .hh-card {
+    background: #fff;
+    box-shadow: var(--paper-shadow);
+    display: grid; grid-template-rows: 1fr auto;
+    overflow: hidden; position: relative;
+  }
+  .photo { display: block; position: relative; overflow: hidden; background: #E8D9B8; aspect-ratio: 16 / 9; }
+  .photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+  .body { padding: 30px 36px 32px; position: relative; }
+  .tag {
+    position: absolute; top: -22px; left: 44px;
+    padding: 8px 14px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.3em;
+    color: #fff; text-transform: uppercase;
+  }
+  .tag.teal { background: var(--teal); }
+  .tag.coral { background: var(--coral); }
+
+  /* Hours row */
+  .hh-hours-row {
+    display: grid; grid-template-columns: 1fr 1px 1fr;
+    align-items: center; gap: 28px;
+  }
+  .hh-hours-row .divider { width: 1px; height: 60px; background: var(--cream-deep); justify-self: center; }
+  .hh-hours-row .col .label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.26em;
+    color: var(--ink-muted); margin-bottom: 8px; text-transform: uppercase;
+  }
+  .hh-hours-row .col.accent .label { color: var(--coral); }
+  .hh-hours-row .col .big {
+    font-family: var(--serif); font-style: italic;
+    font-size: 34px; line-height: 1; color: var(--ink);
+  }
+  .hh-hours-row .col .sub-small { font-size: 12px; color: var(--ink-soft); margin-top: 6px; }
+
+  /* Where */
+  .hh-where .label {
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.26em;
+    color: var(--ink-muted); margin-bottom: 8px; text-transform: uppercase;
+  }
+  .hh-where .big {
+    font-family: var(--serif); font-style: italic;
+    font-size: 28px; line-height: 1.1; color: var(--ink); margin-bottom: 6px;
+  }
+  .hh-where .addr { font-size: 14px; color: var(--ink-soft); }
+
+  /* CTA */
+  .hh-cta { display: flex; justify-content: center; margin-top: 44px; }
+  .btn {
+    font-family: var(--sans); font-weight: 500; cursor: pointer;
+    padding: 18px 36px; border: none; text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary {
+    background: var(--teal); color: #fff;
+    font-size: 12px; letter-spacing: 0.3em;
+    transition: background 0.2s ease;
+  }
+  .btn-primary:hover { background: var(--teal-deep); }
+
+  /* Responsive */
+  @media (max-width: 960px) {
+    .hh-section { padding: 88px 40px; }
+    .sec-head { margin-bottom: 48px; }
+    .hh-grid { grid-template-columns: 1fr; gap: 24px; }
+    .body { padding: 32px 32px 36px; }
+  }
+  @media (max-width: 640px) {
+    .hh-section { padding: 72px 20px; }
+    .sec-head { margin-bottom: 40px; }
+    .title { font-size: 44px; }
+    .sub { font-size: 15px; }
+    .body { padding: 28px 22px; }
+    .tag { left: 22px; }
+    .hh-hours-row { grid-template-columns: 1fr; gap: 16px; }
+    .hh-hours-row .divider { display: none; }
+    .hh-hours-row .col .big { font-size: 32px; }
+    .hh-where .big { font-size: 26px; }
+    .btn { padding: 16px 24px; font-size: 11px; }
+    .hh-cta { margin-top: 40px; }
+  }
+</style>
