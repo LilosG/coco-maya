@@ -11,8 +11,8 @@ const { label, title, subtitle, image, imageAlt = "", tall = false } = Astro.pro
 ---
 
 <section class:list={[
-  "relative overflow-hidden flex items-center justify-start",
-  tall ? "min-h-[75vh]" : "min-h-[55vh]"
+  "relative overflow-hidden flex items-center",
+  tall ? "min-h-[80vh]" : "min-h-[60vh]"
 ]}>
   {image && (
     <div class="absolute inset-0">
@@ -23,18 +23,18 @@ const { label, title, subtitle, image, imageAlt = "", tall = false } = Astro.pro
         width="1800" height="900"
         fetchpriority="high"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/10"></div>
+      <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.15) 100%);"></div>
     </div>
   )}
   {!image && (
     <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-teal)]/6 to-transparent"></div>
   )}
 
-  <div class="relative z-10 w-full max-w-5xl mx-auto px-6 lg:px-10 pb-16 pt-44">
-    {label && <span class="eyebrow-light">{label}</span>}
+  <div class="relative z-10 w-full max-w-5xl mx-auto px-6 lg:px-10 pb-20 pt-48">
+    {label && <span class="eyebrow-light tracking-[0.25em]">{label}</span>}
     <h1 class:list={[
-      "font-[family-name:var(--font-display)] italic leading-[0.95] mb-5 max-w-3xl",
-      tall ? "text-[clamp(3.5rem,8vw,6.5rem)]" : "text-[clamp(3rem,7vw,5.5rem)]",
+      "font-[family-name:var(--font-display)] italic leading-[0.92] mb-6",
+      tall ? "text-[clamp(4rem,9vw,7rem)]" : "text-[clamp(3.5rem,8vw,6rem)]",
       image ? "text-white" : "text-[var(--color-dark)]"
     ]}>
       {title}
@@ -42,7 +42,7 @@ const { label, title, subtitle, image, imageAlt = "", tall = false } = Astro.pro
     {subtitle && (
       <p class:list={[
         "font-[family-name:var(--font-body)] text-lg max-w-xl leading-relaxed",
-        image ? "text-white/75" : "text-[var(--color-dark)]/60"
+        image ? "text-white/80" : "text-[var(--color-dark)]/60"
       ]}>
         {subtitle}
       </p>
