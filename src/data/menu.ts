@@ -1,5 +1,5 @@
 export const FEATURED_COCKTAILS = [
-  { name: 'Signature Margarita', description: 'House blend tequila, fresh lime, agave, tajin rim', image: '/images/cocktail-red-black-salt.jpg', featured: true },
+  { name: 'Coconut Water', description: 'Fresh coconut, house spirits, tropical garnish — served in a branded Coco Maya coconut', image: '/images/cocktail-coconut-water.jpg', featured: true },
   { name: 'Patio Spritz', description: 'Light, floral, and perfect for the elevated patio', image: '/images/cocktail-patio-pair.jpg', featured: true },
   { name: 'Cocktail Tower', description: 'Our signature pink cocktail tower — four frozen margaritas with fresh florals', image: '/images/cocktail-tower-pink.jpg', featured: true },
   { name: 'Pineapple Mezcal', description: 'Smoky mezcal, fresh pineapple, orchid garnish', image: '/images/cocktail-pineapple-rocks.jpg', featured: true },
