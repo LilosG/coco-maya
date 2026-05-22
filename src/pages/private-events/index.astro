@@ -7,18 +7,12 @@ import CTASection from "../../components/CTASection.astro";
 import { SITE } from "../../data/site";
 
 const eventTypes = [
-  { name: "Bachelorette Parties", description: "The elevated patio, the pink cocktail tower, the view. A bachelorette setting that delivers.", image: "/images/cocktail-tower-pink.jpg" },
-  { name: "Birthday Celebrations", description: "Custom menus, private dining room, and a space that makes the occasion feel like one.", image: "/images/events-private-dining-1.jpg" },
-  { name: "Rehearsal Dinners", description: "Intimate pre-wedding gatherings with custom menus and the full Coco Maya experience.", image: "/images/events-table-setting.jpg" },
-  { name: "Corporate Events", description: "Team dinners and client entertaining in a space that makes an impression.", image: "/images/events-private-dining-2.jpg" },
-  { name: "Baby Showers", description: "Daytime social gatherings with brunch menus and the lush patio atmosphere.", image: "/images/venue-patio.jpg" },
-  { name: "Outdoor Evening Events", description: "The patio after dark. City lights, tropical greenery, and the Little Italy skyline.", image: "/images/events-patio-night.jpg" },
-];
-
-const specs = [
-  { label: "Capacity", value: "Full Venue", note: "Indoor + patio options" },
-  { label: "Cuisine", value: "Custom Menus", note: "Tailored to your event" },
-  { label: "Location", value: "Little Italy", note: "1660 India St, San Diego" },
+  { name: "Bachelorette Parties",  description: "The elevated patio, the pink cocktail tower, the view. A bachelorette setting that delivers.",                  image: "/images/cocktail-tower-pink.jpg" },
+  { name: "Birthday Celebrations", description: "Custom menus, private dining room, and a space that makes the occasion feel like one.",                         image: "/images/events-private-dining-1.jpg" },
+  { name: "Rehearsal Dinners",     description: "Intimate pre-wedding gatherings with custom menus and the full Coco Maya experience.",                           image: "/images/events-table-setting.jpg" },
+  { name: "Corporate Events",      description: "Team dinners and client entertaining in a space that makes an impression.",                                      image: "/images/events-private-dining-2.jpg" },
+  { name: "Baby Showers",          description: "Daytime social gatherings with brunch menus and the lush patio atmosphere.",                                     image: "/images/venue-patio.jpg" },
+  { name: "Evening Buyouts",       description: "The patio after dark. City lights, tropical greenery, and the Little Italy skyline.",                            image: "/images/events-patio-night.jpg" },
 ];
 ---
 <BaseLayout
@@ -38,24 +32,28 @@ const specs = [
 
   <section class="py-24 px-6 bg-[var(--color-cream)]">
     <div class="max-w-7xl mx-auto">
-      <div class="max-w-2xl mb-14">
-        <p class="section-label mb-4">What We Host</p>
-        <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl text-[var(--color-dark)] italic leading-tight">
+      <div class="max-w-2xl mb-16">
+        <span class="eyebrow">What We Host</span>
+        <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] leading-tight">
           Every occasion deserves a space worth remembering.
         </h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {eventTypes.map((event) => (
-          <div class="group overflow-hidden border border-[var(--color-teal)]/15 hover:border-[var(--color-teal)]/50 hover:shadow-lg transition-all">
+          <div class="cm-media-card group">
             <div class="aspect-video overflow-hidden">
-              <img src={event.image} alt={event.name}
-                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                width="600" height="338" loading="lazy" />
+              <img
+                src={event.image}
+                alt={event.name}
+                class="w-full h-full object-cover"
+                width="600" height="338"
+                loading="lazy"
+              />
             </div>
-            <div class="p-6 border-t border-[var(--color-teal)]/10">
-              <h3 class="font-[family-name:var(--font-display)] text-xl text-[var(--color-dark)] italic mb-2">{event.name}</h3>
+            <div class="p-6">
+              <h3 class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-xl mb-2">{event.name}</h3>
               <div class="w-6 h-px bg-[var(--color-teal)] mb-3"></div>
-              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-55 text-sm leading-relaxed">{event.description}</p>
+              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/50 text-sm leading-relaxed">{event.description}</p>
             </div>
           </div>
         ))}
@@ -63,15 +61,19 @@ const specs = [
     </div>
   </section>
 
-  <section class="py-20 bg-[var(--color-dark)] px-6">
+  <section class="bg-[var(--color-dark)] px-6 py-20">
     <div class="max-w-4xl mx-auto">
-      <p class="section-label text-[var(--color-teal-light)] mb-8 text-center">Event Specs</p>
-      <div class="grid md:grid-cols-3 gap-px bg-white/10">
-        {specs.map((item) => (
-          <div class="bg-[var(--color-dark)] py-12 px-8 text-center">
-            <p class="section-label text-[var(--color-teal-light)] mb-4">{item.label}</p>
-            <p class="font-[family-name:var(--font-display)] text-3xl text-white italic mb-2">{item.value}</p>
-            <p class="font-[family-name:var(--font-body)] text-white/40 text-sm">{item.note}</p>
+      <span class="eyebrow-light mx-auto block text-center mb-10">Event Specs</span>
+      <div class="cm-dark-grid" style="grid-template-columns: repeat(3, 1fr);">
+        {[
+          { label: "Capacity",  value: "Full Venue",    note: "Indoor + patio options" },
+          { label: "Cuisine",   value: "Custom Menus",  note: "Tailored to your event" },
+          { label: "Location",  value: "Little Italy",  note: "1660 India St, San Diego" },
+        ].map((item) => (
+          <div class="cm-dark-grid-cell py-12">
+            <span class="eyebrow-light mb-4">{item.label}</span>
+            <p class="font-[family-name:var(--font-display)] italic text-white text-2xl sm:text-3xl mb-2">{item.value}</p>
+            <p class="font-[family-name:var(--font-body)] text-white/35 text-sm">{item.note}</p>
           </div>
         ))}
       </div>

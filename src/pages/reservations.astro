@@ -9,20 +9,26 @@ const todayName = dayNames[new Date().getDay()];
 <BaseLayout
   title="Reservations | Coco Maya | Little Italy San Diego"
   description="Reserve a table at Coco Maya by Miss Bs in Little Italy San Diego. Book online or call (619) 943-9439. 1660 India St."
+  image="/images/venue-hero-bar.jpg"
 >
   <Nav />
   <section class="relative min-h-screen flex items-center overflow-hidden">
     <div class="absolute inset-0">
-      <img src="/images/venue-hero-bar.jpg" alt="Coco Maya Little Italy San Diego"
-        class="w-full h-full object-cover" width="1800" height="1200" fetchpriority="high" />
-      <div class="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-black/20"></div>
+      <img
+        src="/images/venue-hero-bar.jpg"
+        alt="Coco Maya Little Italy San Diego"
+        class="w-full h-full object-cover"
+        width="1800" height="1200"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/55 to-black/25"></div>
     </div>
-    <div class="relative z-10 w-full max-w-6xl mx-auto px-6 py-32 grid lg:grid-cols-2 gap-16 items-center">
+    <div class="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-10 py-36 grid lg:grid-cols-2 gap-16 items-center">
       <div>
-        <p class="section-label text-[var(--color-teal-light)] mb-4">Book Your Table</p>
-        <h1 class="font-[family-name:var(--font-display)] text-6xl sm:text-7xl text-white italic mb-3">Reservations</h1>
-        <p class="font-[family-name:var(--font-script)] text-white/70 text-3xl mb-8">at Coco Maya</p>
-        <p class="font-[family-name:var(--font-body)] text-white/70 max-w-md leading-relaxed mb-10">
+        <span class="eyebrow-light">Book Your Table</span>
+        <h1 class="font-[family-name:var(--font-display)] italic text-[clamp(3.5rem,8vw,6rem)] text-white leading-none mb-3">Reservations</h1>
+        <p class="font-[family-name:var(--font-script)] text-white/65 text-3xl mb-8">at Coco Maya</p>
+        <p class="font-[family-name:var(--font-body)] text-white/70 max-w-md leading-relaxed mb-11">
           Reserve your table online or call us directly. Walk-ins always welcome based on availability.
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
@@ -30,21 +36,23 @@ const todayName = dayNames[new Date().getDay()];
           <a href={`tel:${SITE.phone.tel}`} class="btn-white">{SITE.phone.display}</a>
         </div>
       </div>
-      <div class="bg-white/10 backdrop-blur-md border border-white/20 p-8">
-        <p class="section-label text-[var(--color-teal-light)] mb-6">Hours</p>
+      <div class="bg-white/8 backdrop-blur-md border border-white/18 p-8">
+        <span class="eyebrow-light mb-6">Hours</span>
         <div class="divide-y divide-white/10">
           {SITE.hours.map((h) => (
             <div class:list={[
-              "flex justify-between py-3 font-[family-name:var(--font-body)] text-sm",
+              "flex justify-between py-3.5 font-[family-name:var(--font-body)] text-sm",
               h.day === todayName ? "text-white" : "text-white/40"
             ]}>
-              <span class:list={[h.day === todayName ? "text-[var(--color-teal-light)]" : ""]}>{h.day}</span>
+              <span class:list={[h.day === todayName ? "text-[var(--color-teal-light)] font-medium" : ""]}>{h.day}</span>
               <span>{h.hours}</span>
             </div>
           ))}
         </div>
         <div class="border-t border-white/10 mt-4 pt-4">
-          <p class="font-[family-name:var(--font-body)] text-white/50 text-xs">Brunch Sat and Sun 11AM to 3PM. Happy Hour Daily 3 to 5PM.</p>
+          <p class="font-[family-name:var(--font-body)] text-white/45 text-xs leading-relaxed">
+            Brunch Sat & Sun 11AM-3PM &bull; Happy Hour Daily 3-5PM
+          </p>
         </div>
       </div>
     </div>

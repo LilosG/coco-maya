@@ -5,33 +5,47 @@ interface Props {
   subtitle?: string;
   image?: string;
   imageAlt?: string;
-  light?: boolean;
   tall?: boolean;
 }
-const { label, title, subtitle, image, imageAlt = "", light = false, tall = false } = Astro.props;
+const { label, title, subtitle, image, imageAlt = "", tall = false } = Astro.props;
 ---
-<section class:list={["relative overflow-hidden flex items-end", tall ? "min-h-[70vh]" : "min-h-[50vh]"]}>
+
+<section class:list={[
+  "relative overflow-hidden flex items-end",
+  tall ? "min-h-[75vh]" : "min-h-[55vh]"
+]}>
   {image && (
     <div class="absolute inset-0">
-      <img src={image} alt={imageAlt} class="w-full h-full object-cover" width="1800" height="700" fetchpriority="high" />
-      <div class:list={["absolute inset-0", light ? "bg-white/50" : "bg-gradient-to-t from-black/75 via-black/30 to-black/20"]}></div>
+      <img
+        src={image}
+        alt={imageAlt}
+        class="w-full h-full object-cover"
+        width="1800" height="900"
+        fetchpriority="high"
+      />
+      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/15"></div>
     </div>
   )}
-  {!image && <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-teal)]/8 to-transparent"></div>}
-  <div class="relative z-10 w-full max-w-5xl mx-auto px-6 pb-16 pt-40">
-    {label && (
-      <p class:list={["section-label mb-4", image && !light ? "text-[var(--color-teal-light)]" : ""]}>{label}</p>
-    )}
+  {!image && (
+    <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-teal)]/6 to-transparent"></div>
+  )}
+
+  <div class="relative z-10 w-full max-w-5xl mx-auto px-6 lg:px-10 pb-16 pt-44">
+    {label && <span class="eyebrow-light">{label}</span>}
     <h1 class:list={[
-      "font-[family-name:var(--font-display)] italic leading-none mb-4",
-      tall ? "text-6xl sm:text-7xl lg:text-8xl" : "text-5xl sm:text-6xl lg:text-7xl",
-      image && !light ? "text-white" : "text-[var(--color-dark)]"
-    ]}>{title}</h1>
+      "font-[family-name:var(--font-display)] italic leading-[0.95] mb-5",
+      tall ? "text-[clamp(3.5rem,8vw,6.5rem)]" : "text-[clamp(3rem,7vw,5.5rem)]",
+      image ? "text-white" : "text-[var(--color-dark)]"
+    ]}>
+      {title}
+    </h1>
     {subtitle && (
       <p class:list={[
         "font-[family-name:var(--font-body)] text-lg max-w-2xl leading-relaxed",
-        image && !light ? "text-white/80" : "text-[var(--color-dark)] opacity-60"
-      ]}>{subtitle}</p>
+        image ? "text-white/75" : "text-[var(--color-dark)]/60"
+      ]}>
+        {subtitle}
+      </p>
     )}
     <slot />
   </div>

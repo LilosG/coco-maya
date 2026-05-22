@@ -11,55 +11,66 @@ const todayName = dayNames[new Date().getDay()];
   description="Find Coco Maya by Miss Bs at 1660 India St, San Diego CA 92101. Call (619) 943-9439. Open daily in Little Italy San Diego."
 >
   <Nav />
-  <section class="relative pt-40 pb-24 px-6 bg-[var(--color-cream)]">
+  <section class="relative pt-44 pb-28 px-6 bg-[var(--color-cream)]">
+    <div class="absolute inset-x-0 top-0 h-1 bg-[var(--color-teal)]"></div>
     <div class="max-w-5xl mx-auto">
-      <div class="mb-12">
-        <p class="section-label mb-4">Come Find Us</p>
-        <h1 class="font-[family-name:var(--font-display)] text-5xl sm:text-6xl text-[var(--color-dark)] italic">Contact</h1>
+      <div class="mb-14">
+        <span class="eyebrow">Come Find Us</span>
+        <h1 class="font-[family-name:var(--font-display)] italic text-[clamp(3rem,7vw,5.5rem)] text-[var(--color-dark)]">Contact</h1>
       </div>
       <div class="grid md:grid-cols-2 gap-16 items-start">
         <div class="space-y-10">
           <div>
-            <p class="section-label mb-4">Address</p>
-            <a href={SITE.address.mapsUrl} target="_blank" rel="noopener noreferrer"
-              class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-dark)] italic hover:text-[var(--color-teal)] transition-colors leading-snug block">
+            <span class="eyebrow">Address</span>
+            
+              href={SITE.address.mapsUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl hover:text-[var(--color-teal)] transition-colors leading-snug block"
+            >
               {SITE.address.street}<br />{SITE.address.neighborhood}<br />{SITE.address.city}, {SITE.address.state}
             </a>
           </div>
           <div>
-            <p class="section-label mb-4">Phone</p>
-            <a href={`tel:${SITE.phone.tel}`}
-              class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-dark)] italic hover:text-[var(--color-teal)] transition-colors">
+            <span class="eyebrow">Phone</span>
+            
+              href={`tel:${SITE.phone.tel}`}
+              class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl hover:text-[var(--color-teal)] transition-colors"
+            >
               {SITE.phone.display}
             </a>
           </div>
           <div>
-            <p class="section-label mb-5">Hours</p>
+            <span class="eyebrow">Hours</span>
             <div class="divide-y divide-[var(--color-teal)]/10">
               {SITE.hours.map((h) => (
                 <div class:list={[
-                  "flex justify-between py-3 font-[family-name:var(--font-body)] text-sm",
-                  h.day === todayName ? "text-[var(--color-dark)] font-medium" : "text-[var(--color-dark)] opacity-45"
+                  "flex justify-between py-3.5 font-[family-name:var(--font-body)] text-sm",
+                  h.day === todayName ? "text-[var(--color-dark)] font-medium" : "text-[var(--color-dark)]/40"
                 ]}>
-                  <span class:list={[h.day === todayName ? "text-[var(--color-teal)]" : ""]}>{h.day}</span>
+                  <span class:list={[h.day === todayName ? "text-[var(--color-teal)] font-semibold" : ""]}>{h.day}</span>
                   <span>{h.hours}</span>
                 </div>
               ))}
             </div>
           </div>
-          <div class="flex flex-wrap gap-4 pt-4">
+          <div class="flex flex-wrap gap-4 pt-2">
             <a href={SITE.address.mapsUrl} target="_blank" rel="noopener noreferrer" class="btn-primary">Get Directions</a>
             <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-outline">Reserve a Table</a>
           </div>
         </div>
         <div class="relative">
-          <img src="/images/venue-arch-patio.jpg"
-            alt="Coco Maya by Miss Bs at 1660 India St Little Italy San Diego"
-            class="w-full aspect-square object-cover" width="700" height="700" loading="lazy" />
-          <div class="absolute -bottom-4 -right-4 w-full h-full border border-[var(--color-teal)]/20 -z-10"></div>
-          <div class="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-sm p-4 border-l-2 border-[var(--color-teal)]">
-            <p class="section-label mb-1">Happy Hour</p>
-            <p class="font-[family-name:var(--font-display)] text-lg text-[var(--color-dark)] italic">Daily 3:00 to 5:00 PM</p>
+          <img
+            src="/images/venue-arch-patio.jpg"
+            alt="Coco Maya by Miss Bs — 1660 India St Little Italy San Diego"
+            class="w-full aspect-square object-cover"
+            width="700" height="700"
+            loading="lazy"
+          />
+          <div class="absolute -bottom-5 -right-5 w-full h-full border border-[var(--color-teal)]/20 -z-10"></div>
+          <div class="absolute bottom-6 left-6 right-6 bg-white/92 backdrop-blur-sm p-4 border-l-3 border-[var(--color-teal)]" style="border-left-width: 3px;">
+            <span class="eyebrow mb-0.5">Happy Hour</span>
+            <p class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-lg">Daily 3:00 PM to 5:00 PM</p>
           </div>
         </div>
       </div>

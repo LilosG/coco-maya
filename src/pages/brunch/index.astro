@@ -8,38 +8,50 @@ import { SITE } from "../../data/site";
 import { FEATURED_BRUNCH } from "../../data/menu";
 ---
 <BaseLayout
-  title="Best Brunch Little Italy San Diego | Coco Maya | Sat & Sun 11AM–3PM"
-  description="Weekend brunch at Coco Maya in Little Italy San Diego. Bottomless options, coastal Mexican brunch plates, and craft cocktails. Saturday and Sunday 11AM–3PM."
+  title="Best Brunch Little Italy San Diego | Coco Maya | Sat & Sun 11AM-3PM"
+  description="Weekend brunch at Coco Maya in Little Italy San Diego. Bottomless options, coastal Mexican brunch plates, and craft cocktails. Saturday and Sunday 11AM-3PM."
   image="/images/food-brunch-sandwich.jpg"
 >
   <Nav />
-  <PageHero label="Saturday & Sunday" title="Weekend Brunch" subtitle="San Diego's best brunch in Little Italy. Coastal Mexican plates, bottomless options, and craft cocktails on the elevated patio." image="/images/food-tacos-patio.jpg" imageAlt="Brunch at Coco Maya Little Italy San Diego" />
+  <PageHero
+    label="Saturday & Sunday"
+    title="Weekend Brunch"
+    subtitle="San Diego best brunch in Little Italy. Coastal Mexican plates, bottomless options, and craft cocktails on the elevated patio."
+    image="/images/food-tacos-patio.jpg"
+    imageAlt="Brunch at Coco Maya Little Italy San Diego"
+    tall={true}
+  />
 
-  <section class="py-20 px-6 bg-[var(--color-cream)]">
+  <section class="py-24 px-6 bg-[var(--color-cream)]">
     <div class="max-w-4xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16">
-        <div class="info-card">
-          <p class="section-label mb-3">Days</p>
-          <p class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-dark)] italic">{SITE.brunch.days}</p>
+
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-20">
+        <div class="cm-card text-center">
+          <span class="eyebrow">Days</span>
+          <p class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl mt-1">{SITE.brunch.days}</p>
         </div>
-        <div class="info-card bg-[var(--color-teal)]/5">
-          <p class="section-label mb-3">Hours</p>
-          <p class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-dark)] italic">{SITE.brunch.hours}</p>
+        <div class="cm-card-accent text-center">
+          <span class="eyebrow">Hours</span>
+          <p class="font-[family-name:var(--font-display)] italic text-[var(--color-teal)] text-2xl mt-1">{SITE.brunch.hours}</p>
         </div>
-        <div class="info-card">
-          <p class="section-label mb-3">Location</p>
-          <p class="font-[family-name:var(--font-display)] text-2xl text-[var(--color-dark)] italic">Little Italy</p>
+        <div class="cm-card text-center">
+          <span class="eyebrow">Location</span>
+          <p class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl mt-1">Little Italy</p>
         </div>
       </div>
+
+      <span class="eyebrow">On the Menu</span>
+      <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-10">Brunch Favorites</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {FEATURED_BRUNCH.map((item) => (
-          <div class="group flex gap-5 border-l-2 border-[var(--color-teal)] pl-5 py-3 hover:border-l-4 transition-all">
-            <div class="w-20 h-20 flex-shrink-0 overflow-hidden">
-              <img src={item.image} alt={item.name} class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" width="80" height="80" loading="lazy" />
+          <div class="cm-media-card group flex gap-0 flex-col sm:flex-row">
+            <div class="w-full sm:w-32 flex-shrink-0 overflow-hidden aspect-square sm:aspect-auto">
+              <img src={item.image} alt={item.name} class="w-full h-full object-cover" width="128" height="128" loading="lazy" />
             </div>
-            <div class="flex-1">
-              <h3 class="font-[family-name:var(--font-display)] text-[var(--color-dark)] text-lg italic mb-1">{item.name}</h3>
-              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-50 text-xs leading-relaxed">{item.description}</p>
+            <div class="p-5 flex-1">
+              <h3 class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-lg mb-1.5">{item.name}</h3>
+              <div class="w-5 h-px bg-[var(--color-teal)] mb-2"></div>
+              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/50 text-xs leading-relaxed">{item.description}</p>
             </div>
           </div>
         ))}
@@ -47,6 +59,14 @@ import { FEATURED_BRUNCH } from "../../data/menu";
     </div>
   </section>
 
-  <CTASection title="Join Us for Brunch" subtitle="Reserve your weekend brunch table at Coco Maya in Little Italy." primaryLabel="Reserve a Table" primaryHref={SITE.reservations.url} dark={true} />
+  <CTASection
+    title="Join Us for Brunch"
+    subtitle="Reserve your weekend brunch table at Coco Maya in Little Italy."
+    primaryLabel="Reserve a Table"
+    primaryHref={SITE.reservations.url}
+    secondaryLabel="View Full Menu"
+    secondaryHref="/menu"
+    dark={true}
+  />
   <Footer />
 </BaseLayout>

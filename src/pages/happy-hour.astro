@@ -21,30 +21,36 @@ import { SITE } from "../data/site";
     tall={true}
   />
 
-  <section class="py-20 px-6 bg-[var(--color-cream)]">
-    <div class="max-w-4xl mx-auto">
+  <section class="py-24 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-5xl mx-auto">
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-16">
-        <div class="info-card">
-          <p class="section-label mb-3">Days</p>
-          <p class="font-[family-name:var(--font-display)] text-3xl text-[var(--color-dark)] italic">{SITE.happyHour.days}</p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-20">
+        <div class="cm-card text-center">
+          <span class="eyebrow">Days</span>
+          <p class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl mt-1">{SITE.happyHour.days}</p>
         </div>
-        <div class="info-card" style="background-color: rgba(61,138,138,0.04)">
-          <p class="section-label mb-3">Hours</p>
-          <p class="font-[family-name:var(--font-display)] text-3xl text-[var(--color-dark)] italic">{SITE.happyHour.hours}</p>
+        <div class="cm-card-accent text-center">
+          <span class="eyebrow">Hours</span>
+          <p class="font-[family-name:var(--font-display)] italic text-[var(--color-teal)] text-2xl mt-1">{SITE.happyHour.hours}</p>
+        </div>
+        <div class="cm-card text-center">
+          <span class="eyebrow">Location</span>
+          <p class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl mt-1">Elevated Patio</p>
         </div>
       </div>
 
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
-          <p class="section-label mb-4">The Details</p>
-          <h2 class="font-[family-name:var(--font-display)] text-4xl text-[var(--color-dark)] italic mb-6">Little Italy Best Happy Hour</h2>
-          <div class="w-10 h-px bg-[var(--color-teal)] mb-6"></div>
-          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-4">
+          <span class="eyebrow">The Details</span>
+          <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-4">
+            Little Italy Best Happy Hour
+          </h2>
+          <div class="rule"></div>
+          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-4 text-[1.0625rem]">
             Coco Maya runs daily happy hour from 3 to 5 PM. Discounted cocktails, wines, and select bites served on one of San Diego most distinctive patios under the glass atrium, surrounded by tropical greenery.
           </p>
-          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-8">
-            Whether you are coming from the office or starting the evening early, the elevated patio in Little Italy is the right call.
+          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-10 text-[1.0625rem]">
+            Whether coming from the office or starting the evening early, the elevated patio in Little Italy is the right call.
           </p>
           <div class="flex flex-wrap gap-4">
             <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">Reserve a Table</a>
@@ -52,20 +58,27 @@ import { SITE } from "../data/site";
           </div>
         </div>
         <div class="relative">
-          <img src="/images/cocktail-negroni-patio.jpg" alt="Happy hour cocktails at Coco Maya" class="w-full aspect-square object-cover" width="600" height="600" loading="lazy" />
-          <div class="absolute -bottom-3 -right-3 w-full h-full border border-[var(--color-teal)]/20 -z-10"></div>
+          <img
+            src="/images/cocktail-negroni-patio.jpg"
+            alt="Happy hour cocktails at Coco Maya"
+            class="w-full aspect-square object-cover"
+            width="600" height="600"
+            loading="lazy"
+          />
+          <div class="absolute -bottom-4 -right-4 w-full h-full border border-[var(--color-teal)]/20 -z-10"></div>
         </div>
       </div>
 
       <div class="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-5">
         {[
-          { icon: "Cocktails", body: "Discounted house cocktails and wines with rotating seasonal specials." },
-          { icon: "Bites", body: "Select appetizers and small plates from the full Coco Maya kitchen." },
-          { icon: "The Patio", body: "San Diego best happy hour setting on the elevated glass atrium patio." },
+          { label: "Cocktails", body: "Discounted house cocktails and wines with rotating seasonal specials." },
+          { label: "Bites",     body: "Select appetizers and small plates from the full Coco Maya kitchen." },
+          { label: "The Patio", body: "San Diego best happy hour setting on the elevated glass atrium patio." },
         ].map((item) => (
-          <div class="info-card text-left">
-            <p class="section-label mb-3">{item.icon}</p>
-            <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-60 text-sm leading-relaxed">{item.body}</p>
+          <div class="cm-card">
+            <span class="eyebrow">{item.label}</span>
+            <div class="rule"></div>
+            <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/55 text-sm leading-relaxed">{item.body}</p>
           </div>
         ))}
       </div>

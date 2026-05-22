@@ -7,10 +7,10 @@ import CTASection from "../components/CTASection.astro";
 import { SITE } from "../data/site";
 
 const stats = [
-  { value: "1660", label: "India Street", sub: "Little Italy, San Diego" },
-  { value: "Open Daily", label: "Mon-Thu 10:30AM", sub: "Fri-Sun from 9AM" },
-  { value: "Daily 3-5", label: "Happy Hour", sub: "Every day of the week" },
-  { value: "Sat and Sun", label: "Weekend Brunch", sub: "11:00 AM to 3:00 PM" },
+  { value: "1660",       label: "India Street",    sub: "Little Italy, San Diego" },
+  { value: "Open Daily", label: "Every Week",       sub: "Mon-Thu 10:30 AM on" },
+  { value: "3-5 PM",     label: "Happy Hour",       sub: "Every day of the week" },
+  { value: "Sat & Sun",  label: "Weekend Brunch",   sub: "11:00 AM to 3:00 PM" },
 ];
 ---
 <BaseLayout
@@ -29,20 +29,20 @@ const stats = [
   />
 
   <section class="py-24 px-6 bg-[var(--color-cream)]">
-    <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
       <div>
-        <p class="section-label mb-4">The Concept</p>
-        <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl text-[var(--color-dark)] italic leading-tight mb-6">
+        <span class="eyebrow">The Concept</span>
+        <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] leading-tight mb-4">
           Coastal Mexican, Elevated
         </h2>
-        <div class="w-10 h-px bg-[var(--color-teal)] mb-6"></div>
-        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-4">
+        <div class="rule"></div>
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-4 text-[1.0625rem]">
           Coco Maya by Miss Bs is San Diego elevated coastal Mexican dining destination. Situated at 1660 India St in the heart of Little Italy, the restaurant is built around a stunning glass atrium bar, an elevated outdoor patio, and a kitchen that takes the food as seriously as the cocktails.
         </p>
-        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-4">
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-4 text-[1.0625rem]">
           The menu draws from coastal Mexican culinary traditions including fresh seafood, bold sauces, and house-made tortillas, elevated with the creativity and execution of a fine dining kitchen served in a setting that feels genuinely relaxed.
         </p>
-        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-10">
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-10 text-[1.0625rem]">
           Daily happy hour, weekend brunch, private events, and a cocktail program that draws from agave traditions and tropical coastal flavors.
         </p>
         <div class="flex flex-wrap gap-4">
@@ -51,23 +51,27 @@ const stats = [
         </div>
       </div>
       <div class="relative">
-        <img src="/images/venue-neon-sign.jpg"
+        <img
+          src="/images/venue-neon-sign.jpg"
           alt="In Love with the Coco neon sign at Coco Maya Little Italy San Diego"
-          class="w-full aspect-[4/5] object-cover" width="700" height="875" loading="lazy" />
-        <div class="absolute -bottom-4 -right-4 w-full h-full border border-[var(--color-teal)]/20 -z-10"></div>
+          class="w-full aspect-[4/5] object-cover"
+          width="700" height="875"
+          loading="lazy"
+        />
+        <div class="absolute -bottom-5 -right-5 w-full h-full border border-[var(--color-teal)]/20 -z-10"></div>
       </div>
     </div>
   </section>
 
-  <section class="py-20 bg-[var(--color-dark)] px-6">
+  <section class="bg-[var(--color-dark)] px-6 py-20">
     <div class="max-w-5xl mx-auto">
-      <p class="section-label text-[var(--color-teal-light)] mb-10 text-center">At a Glance</p>
-      <div class="grid grid-cols-2 md:grid-cols-4 gap-px bg-white/10">
+      <span class="eyebrow-light mx-auto block text-center mb-12">At a Glance</span>
+      <div class="cm-dark-grid" style="grid-template-columns: repeat(4, 1fr);">
         {stats.map((s) => (
-          <div class="bg-[var(--color-dark)] py-10 px-6 text-center">
-            <p class="font-[family-name:var(--font-display)] text-3xl text-[var(--color-teal-light)] italic mb-2">{s.value}</p>
+          <div class="cm-dark-grid-cell py-12">
+            <p class="font-[family-name:var(--font-display)] italic text-[var(--color-teal-light)] text-3xl mb-2">{s.value}</p>
             <p class="font-[family-name:var(--font-stamp)] text-white text-xs tracking-widest uppercase mb-1">{s.label}</p>
-            <p class="font-[family-name:var(--font-body)] text-white/40 text-xs">{s.sub}</p>
+            <p class="font-[family-name:var(--font-body)] text-white/35 text-xs">{s.sub}</p>
           </div>
         ))}
       </div>
@@ -75,23 +79,27 @@ const stats = [
   </section>
 
   <section class="py-24 px-6 bg-[var(--color-cream)]">
-    <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+    <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
       <div class="relative order-2 lg:order-1">
-        <img src="/images/venue-bar-to-patio.jpg"
+        <img
+          src="/images/venue-bar-to-patio.jpg"
           alt="Coco Maya bar looking out to the elevated patio in Little Italy"
-          class="w-full aspect-[4/5] object-cover" width="700" height="875" loading="lazy" />
-        <div class="absolute -top-4 -left-4 w-full h-full border border-[var(--color-teal)]/20 -z-10"></div>
+          class="w-full aspect-[4/5] object-cover"
+          width="700" height="875"
+          loading="lazy"
+        />
+        <div class="absolute -top-5 -left-5 w-full h-full border border-[var(--color-teal)]/20 -z-10"></div>
       </div>
       <div class="order-1 lg:order-2">
-        <p class="section-label mb-4">The Experience</p>
-        <h2 class="font-[family-name:var(--font-display)] text-4xl text-[var(--color-dark)] italic mb-6">
+        <span class="eyebrow">The Experience</span>
+        <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-4 leading-tight">
           Indoor meets outdoor in the heart of Little Italy
         </h2>
-        <div class="w-10 h-px bg-[var(--color-teal)] mb-6"></div>
-        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-4">
-          The glass atrium bar connects seamlessly to the elevated outdoor patio. The design reflects the San Diego climate: lush botanical elements, warm natural materials, and a teal palette that ties the whole venue together.
+        <div class="rule"></div>
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-4 text-[1.0625rem]">
+          The glass atrium bar connects seamlessly to the elevated outdoor patio. The design reflects the San Diego climate with lush botanical elements, warm natural materials, and a teal palette that ties the whole venue together.
         </p>
-        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed">
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed text-[1.0625rem]">
           Whether at the bar for happy hour or seated on the patio for a private dinner, Coco Maya is a space that makes every occasion feel considered.
         </p>
       </div>

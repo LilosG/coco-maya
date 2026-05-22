@@ -7,33 +7,9 @@ import CTASection from "../../components/CTASection.astro";
 import { SITE } from "../../data/site";
 
 const spaces = [
-  {
-    label: "The Bar",
-    title: "The Glass Atrium",
-    body1: "The centerpiece of Coco Maya is the open-air glass atrium with a retractable roof that opens to the San Diego sky. Teal bar tiles, rattan bar chairs, hanging botanicals, and a cocktail program worth sitting down for.",
-    body2: "Whether the roof is open or closed, the atmosphere inside the atrium is unlike anything else in Little Italy.",
-    image: "/images/venue-bar-patio.jpg",
-    imageAlt: "Glass atrium bar at Coco Maya Little Italy San Diego",
-    reverse: false,
-  },
-  {
-    label: "Outdoor Dining",
-    title: "The Elevated Patio",
-    body1: "The outdoor patio at Coco Maya is one of the most distinctive dining spaces in San Diego. Pink striped umbrellas, lush tropical greenery, and the Little Italy skyline as the backdrop.",
-    body2: "Perfect for brunch, happy hour, and private events. The patio is available for full buyouts and partial reservations.",
-    image: "/images/venue-patio-skyline.jpg",
-    imageAlt: "Elevated patio with city skyline at Coco Maya San Diego",
-    reverse: true,
-  },
-  {
-    label: "Private Dining",
-    title: "The Dining Room",
-    body1: "The interior dining room features warm rattan chairs, a hand-woven ceiling, illuminated shelving, and the signature tropical mural. Intimate, curated, and completely private when needed.",
-    body2: "Available for private event buyouts, rehearsal dinners, and large group bookings.",
-    image: "/images/venue-interior-dining.jpg",
-    imageAlt: "Private dining room at Coco Maya Little Italy San Diego",
-    reverse: false,
-  },
+  { label: "The Bar",        title: "The Glass Atrium",    body1: "The centerpiece of Coco Maya is the open-air glass atrium with a retractable roof that opens to the San Diego sky. Teal bar tiles, rattan bar chairs, hanging botanicals, and a cocktail program worth sitting down for.", body2: "Whether the roof is open or closed, the atmosphere inside the atrium is unlike anything else in Little Italy.", image: "/images/venue-bar-patio.jpg",        imageAlt: "Glass atrium bar at Coco Maya Little Italy San Diego",                  reverse: false },
+  { label: "Outdoor Dining", title: "The Elevated Patio",  body1: "The outdoor patio at Coco Maya is one of the most distinctive dining spaces in San Diego. Pink striped umbrellas, lush tropical greenery, and the Little Italy skyline as the backdrop.",                                   body2: "Perfect for brunch, happy hour, and private events. The patio is available for full buyouts and partial reservations.",            image: "/images/venue-patio-skyline.jpg",    imageAlt: "Elevated patio with city skyline at Coco Maya San Diego",             reverse: true  },
+  { label: "Private Dining", title: "The Dining Room",     body1: "The interior dining room features warm rattan chairs, a hand-woven ceiling, illuminated shelving, and the signature tropical mural. Intimate, curated, and completely private when needed.",                                   body2: "Available for private event buyouts, rehearsal dinners, and large group bookings.",                                                image: "/images/venue-interior-dining.jpg",  imageAlt: "Private dining room at Coco Maya Little Italy San Diego",             reverse: false },
 ];
 ---
 <BaseLayout
@@ -51,16 +27,16 @@ const spaces = [
     tall={true}
   />
 
-  <section class="bg-[var(--color-teal)] px-6 py-5">
-    <div class="max-w-4xl mx-auto grid grid-cols-3 divide-x divide-white/20 text-center text-white">
+  <section class="bg-[var(--color-teal)]">
+    <div class="max-w-4xl mx-auto px-6 grid grid-cols-3 divide-x divide-white/20 text-center">
       {[
-        { label: "The Bar", value: "Glass Atrium" },
-        { label: "Outdoor", value: "Elevated Patio" },
-        { label: "Private", value: "Dining Room" },
+        { label: "The Bar",  value: "Glass Atrium"  },
+        { label: "Outdoor",  value: "Elevated Patio" },
+        { label: "Private",  value: "Dining Room"   },
       ].map((item) => (
-        <div class="px-6 py-3">
-          <p class="section-label text-white/60 mb-1">{item.label}</p>
-          <p class="font-[family-name:var(--font-display)] text-lg text-white italic">{item.value}</p>
+        <div class="px-6 py-5">
+          <span class="eyebrow-light mb-1">{item.label}</span>
+          <p class="font-[family-name:var(--font-display)] italic text-white text-lg">{item.value}</p>
         </div>
       ))}
     </div>
@@ -68,20 +44,25 @@ const spaces = [
 
   {spaces.map((space) => (
     <section class="py-24 px-6 bg-[var(--color-cream)]">
-      <div class:list={["max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center", space.reverse ? "lg:grid-flow-dense" : ""]}>
+      <div class:list={["max-w-5xl mx-auto grid lg:grid-cols-2 gap-20 items-center", space.reverse ? "lg:grid-flow-dense" : ""]}>
         <div class:list={[space.reverse ? "lg:col-start-2" : ""]}>
-          <p class="section-label mb-4">{space.label}</p>
-          <h2 class="font-[family-name:var(--font-display)] text-4xl sm:text-5xl text-[var(--color-dark)] italic mb-6">{space.title}</h2>
-          <div class="w-10 h-px bg-[var(--color-teal)] mb-6"></div>
-          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed mb-4">{space.body1}</p>
-          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)] opacity-70 leading-relaxed">{space.body2}</p>
+          <span class="eyebrow">{space.label}</span>
+          <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-4">{space.title}</h2>
+          <div class="rule"></div>
+          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-4 text-[1.0625rem]">{space.body1}</p>
+          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed text-[1.0625rem]">{space.body2}</p>
         </div>
         <div class:list={["relative", space.reverse ? "lg:col-start-1 lg:row-start-1" : ""]}>
-          <img src={space.image} alt={space.imageAlt}
-            class="w-full aspect-[4/5] object-cover" width="700" height="875" loading="lazy" />
+          <img
+            src={space.image}
+            alt={space.imageAlt}
+            class="w-full aspect-[4/5] object-cover"
+            width="700" height="875"
+            loading="lazy"
+          />
           <div class:list={[
             "absolute w-full h-full border border-[var(--color-teal)]/20 -z-10",
-            space.reverse ? "-top-4 -right-4" : "-bottom-4 -right-4"
+            space.reverse ? "-top-5 -right-5" : "-bottom-5 -right-5"
           ]}></div>
         </div>
       </div>

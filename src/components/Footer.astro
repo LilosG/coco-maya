@@ -1,31 +1,39 @@
 ---
 import { SITE } from "../data/site";
 const year = new Date().getFullYear();
-const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-const todayName = dayNames[new Date().getDay()];
+const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const todayName = days[new Date().getDay()];
 ---
 
 <footer class="bg-[var(--color-dark)] text-[var(--color-sand)]">
-  <div class="max-w-7xl mx-auto px-6 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+
+  <div class="cm-divider opacity-20"></div>
+
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
 
     <div>
       <a href="/" aria-label="Coco Maya">
-        <img src="/images/logo-teal.png" alt="Coco Maya by Miss Bs San Diego"
-          class="h-16 w-auto mb-6" width="200" height="64" loading="lazy" />
+        <img
+          src="/images/logo-teal.png"
+          alt="Coco Maya by Miss Bs San Diego"
+          class="h-14 w-auto mb-6 brightness-0 invert opacity-80"
+          width="180" height="56"
+          loading="lazy"
+        />
       </a>
-      <p class="text-[var(--color-sand)] opacity-60 text-sm leading-relaxed font-[family-name:var(--font-body)]">
+      <p class="text-white/50 text-sm leading-relaxed font-[family-name:var(--font-body)] mb-6">
         Elevated coastal Mexican cuisine and craft cocktails in the heart of Little Italy, San Diego.
       </p>
-      <div class="flex gap-4 mt-6">
-        <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer"
-          aria-label="Instagram" class="text-[var(--color-sand)] opacity-40 hover:opacity-100 hover:text-[var(--color-teal-light)] transition-all">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+      <div class="flex gap-4">
+        <a href={SITE.social.instagram} target="_blank" rel="noopener noreferrer" aria-label="Instagram"
+          class="w-9 h-9 border border-white/20 flex items-center justify-center text-white/40 hover:text-[var(--color-teal-light)] hover:border-[var(--color-teal-light)] transition-all">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
             <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
           </svg>
         </a>
-        <a href={SITE.social.facebook} target="_blank" rel="noopener noreferrer"
-          aria-label="Facebook" class="text-[var(--color-sand)] opacity-40 hover:opacity-100 hover:text-[var(--color-teal-light)] transition-all">
-          <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+        <a href={SITE.social.facebook} target="_blank" rel="noopener noreferrer" aria-label="Facebook"
+          class="w-9 h-9 border border-white/20 flex items-center justify-center text-white/40 hover:text-[var(--color-teal-light)] hover:border-[var(--color-teal-light)] transition-all">
+          <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
             <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
           </svg>
         </a>
@@ -33,66 +41,69 @@ const todayName = dayNames[new Date().getDay()];
     </div>
 
     <div>
-      <h3 class="font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase text-[var(--color-teal-light)] mb-6">Explore</h3>
-      <ul class="space-y-3">
+      <h3 class="eyebrow-light mb-5">Explore</h3>
+      <ul class="space-y-2.5">
         {SITE.nav.map((item) => (
           <li>
-            <a href={item.href}
-              class="text-[var(--color-sand)] opacity-60 hover:opacity-100 text-sm font-[family-name:var(--font-body)] transition-opacity">
+            <a href={item.href} class="text-white/50 hover:text-[var(--color-teal-light)] text-sm font-[family-name:var(--font-body)] transition-colors">
               {item.label}
             </a>
           </li>
         ))}
-        <li><a href="/reservations" class="text-[var(--color-sand)] opacity-60 hover:opacity-100 text-sm transition-opacity">Reservations</a></li>
-        <li><a href="/blog" class="text-[var(--color-sand)] opacity-60 hover:opacity-100 text-sm transition-opacity">Blog</a></li>
-        <li><a href="/contact" class="text-[var(--color-sand)] opacity-60 hover:opacity-100 text-sm transition-opacity">Contact</a></li>
+        <li><a href="/reservations" class="text-white/50 hover:text-[var(--color-teal-light)] text-sm transition-colors">Reservations</a></li>
+        <li><a href="/blog" class="text-white/50 hover:text-[var(--color-teal-light)] text-sm transition-colors">Blog</a></li>
+        <li><a href="/contact" class="text-white/50 hover:text-[var(--color-teal-light)] text-sm transition-colors">Contact</a></li>
       </ul>
     </div>
 
     <div>
-      <h3 class="font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase text-[var(--color-teal-light)] mb-6">Hours</h3>
-      <ul class="space-y-2">
+      <h3 class="eyebrow-light mb-5">Hours</h3>
+      <ul class="space-y-0 divide-y divide-white/8">
         {SITE.hours.map((h) => (
           <li class:list={[
-            "flex justify-between text-sm gap-4",
-            h.day === todayName ? "text-[var(--color-sand)]" : "text-[var(--color-sand)] opacity-50"
+            "flex justify-between py-2.5 text-sm font-[family-name:var(--font-body)]",
+            h.day === todayName ? "text-[var(--color-teal-light)]" : "text-white/40"
           ]}>
-            <span class="font-[family-name:var(--font-body)]">{h.day.slice(0,3)}</span>
-            <span class="font-[family-name:var(--font-body)]">{h.hours}</span>
+            <span class:list={[h.day === todayName ? "font-medium" : ""]}>{h.day.slice(0,3)}</span>
+            <span>{h.hours}</span>
           </li>
         ))}
       </ul>
-      <p class="text-[var(--color-teal-light)] text-xs font-[family-name:var(--font-stamp)] tracking-widest uppercase mt-4">
-        Brunch Sat & Sun 11AM–3PM
+      <p class="text-[var(--color-teal-light)] text-xs font-[family-name:var(--font-stamp)] tracking-widest uppercase mt-5 opacity-80">
+        Brunch Sat & Sun 11–3PM
       </p>
     </div>
 
     <div>
-      <h3 class="font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase text-[var(--color-teal-light)] mb-6">Find Us</h3>
-      <address class="not-italic space-y-3 text-sm text-[var(--color-sand)] opacity-60 font-[family-name:var(--font-body)]">
+      <h3 class="eyebrow-light mb-5">Find Us</h3>
+      <address class="not-italic space-y-4 text-sm text-white/50 font-[family-name:var(--font-body)]">
         <p>
-          <a href={SITE.address.mapsUrl} target="_blank" rel="noopener noreferrer"
-            class="hover:opacity-100 transition-opacity">
+          <a href={SITE.address.mapsUrl} target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-teal-light)] transition-colors leading-relaxed block">
             {SITE.address.street}<br />{SITE.address.neighborhood}<br />{SITE.address.city}, {SITE.address.state} {SITE.address.zip}
           </a>
         </p>
-        <p><a href={`tel:${SITE.phone.tel}`} class="hover:opacity-100 transition-opacity">{SITE.phone.display}</a></p>
+        <p><a href={`tel:${SITE.phone.tel}`} class="hover:text-[var(--color-teal-light)] transition-colors">{SITE.phone.display}</a></p>
       </address>
-      <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer"
-        class="inline-block mt-6 bg-[var(--color-teal)] text-[var(--color-cream)] font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase px-6 py-3 hover:bg-[var(--color-teal-dark)] transition-colors w-full text-center">
+      
+        href={SITE.reservations.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary w-full text-center mt-6 block"
+      >
         Reserve a Table
       </a>
     </div>
+
   </div>
 
-  <div class="border-t border-white/10">
-    <div class="max-w-7xl mx-auto px-6 py-6 flex flex-col sm:flex-row justify-between items-center gap-4">
-      <p class="text-[var(--color-sand)] opacity-30 text-xs font-[family-name:var(--font-body)]">
+  <div class="border-t border-white/8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
+      <p class="text-white/25 text-xs font-[family-name:var(--font-body)]">
         &copy; {year} Coco Maya by Miss B's &bull; 1660 India St, San Diego, CA 92101
       </p>
-      <div class="flex gap-6">
-        <a href="/sitemap-index.xml" class="text-[var(--color-sand)] opacity-30 hover:opacity-60 text-xs transition-opacity">Sitemap</a>
-        <a href="/contact" class="text-[var(--color-sand)] opacity-30 hover:opacity-60 text-xs transition-opacity">Contact</a>
+      <div class="flex gap-5">
+        <a href="/sitemap-index.xml" class="text-white/25 hover:text-white/50 text-xs transition-colors">Sitemap</a>
+        <a href="/contact" class="text-white/25 hover:text-white/50 text-xs transition-colors">Contact</a>
       </div>
     </div>
   </div>
