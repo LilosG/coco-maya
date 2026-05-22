@@ -237,18 +237,27 @@ const infoBar = [
         <a href="/happy-hour" class="btn-primary">See Happy Hour Details</a>
       </div>
       <div class="grid grid-cols-2 gap-4">
-        <div class="cm-card text-center">
-          <span class="eyebrow">Days</span>
-          <p class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl mt-1">{SITE.happyHour.days}</p>
+        <div class="cm-card">
+          <div class="cm-card-bar"></div>
+          <div class="cm-card-inner text-center">
+            <span class="cm-card-label">Days</span>
+            <span class="cm-card-value">{SITE.happyHour.days}</span>
+          </div>
         </div>
-        <div class="cm-card-accent text-center">
-          <span class="eyebrow-light">Hours</span>
-          <p class="font-[family-name:var(--font-display)] italic text-white text-2xl mt-1">{SITE.happyHour.hours}</p>
+        <div class="cm-card-accent">
+          <div class="cm-card-bar"></div>
+          <div class="cm-card-inner text-center">
+            <span class="cm-card-label">Hours</span>
+            <span class="cm-card-value">{SITE.happyHour.hours}</span>
+          </div>
         </div>
-        <div class="cm-card text-center col-span-2">
-          <span class="eyebrow">Location</span>
-          <p class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-xl mt-1">Elevated Patio &amp; Glass Atrium</p>
-          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/45 text-xs mt-1">1660 India St, Little Italy</p>
+        <div class="cm-card col-span-2">
+          <div class="cm-card-bar"></div>
+          <div class="cm-card-inner text-center">
+            <span class="cm-card-label">Location</span>
+            <span class="cm-card-value">Elevated Patio &amp; Glass Atrium</span>
+            <span class="cm-card-sub">1660 India St, Little Italy</span>
+          </div>
         </div>
       </div>
     </div>

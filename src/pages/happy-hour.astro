@@ -25,17 +25,27 @@ import { SITE } from "../data/site";
     <div class="max-w-5xl mx-auto">
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-20">
-        <div class="cm-card text-center">
-          <span class="eyebrow">Days</span>
-          <p class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl mt-1">{SITE.happyHour.days}</p>
+        <div class="cm-card">
+          <div class="cm-card-bar"></div>
+          <div class="cm-card-inner text-center">
+            <span class="cm-card-label">Days</span>
+            <span class="cm-card-value">{SITE.happyHour.days}</span>
+          </div>
         </div>
-        <div class="cm-card-accent text-center">
-          <span class="eyebrow-light">Hours</span>
-          <p class="font-[family-name:var(--font-display)] italic text-white text-2xl mt-1">{SITE.happyHour.hours}</p>
+        <div class="cm-card-accent">
+          <div class="cm-card-bar"></div>
+          <div class="cm-card-inner text-center">
+            <span class="cm-card-label">Hours</span>
+            <span class="cm-card-value">{SITE.happyHour.hours}</span>
+          </div>
         </div>
-        <div class="cm-card text-center">
-          <span class="eyebrow">Location</span>
-          <p class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl mt-1">Elevated Patio</p>
+        <div class="cm-card">
+          <div class="cm-card-bar"></div>
+          <div class="cm-card-inner text-center">
+            <span class="cm-card-label">Location</span>
+            <span class="cm-card-value">Elevated Patio</span>
+            <span class="cm-card-sub">Glass Atrium, 1660 India St</span>
+          </div>
         </div>
       </div>
 
@@ -76,9 +86,12 @@ import { SITE } from "../data/site";
           { label: "The Patio", body: "San Diego best happy hour setting on the elevated glass atrium patio." },
         ].map((item) => (
           <div class="cm-card">
-            <span class="eyebrow">{item.label}</span>
-            <div class="rule"></div>
-            <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/55 text-sm leading-relaxed">{item.body}</p>
+            <div class="cm-card-bar"></div>
+            <div class="cm-card-inner">
+              <span class="cm-card-label">{item.label}</span>
+              <div class="rule mt-3"></div>
+              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/55 text-sm leading-relaxed">{item.body}</p>
+            </div>
           </div>
         ))}
       </div>
