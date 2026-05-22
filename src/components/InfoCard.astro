@@ -1,0 +1,19 @@
+---
+interface Props {
+  label: string;
+  value: string;
+  sub?: string;
+  accent?: boolean;
+  center?: boolean;
+}
+const { label, value, sub, accent = false, center = true } = Astro.props;
+---
+
+<div class:list={["ic-card", accent && "ic-card--accent"]}>
+  <div class="ic-card__top-bar"></div>
+  <div class:list={["ic-card__body", center && "ic-card__body--center"]}>
+    <span class="ic-card__label">{label}</span>
+    <span class="ic-card__value">{value}</span>
+    {sub && <span class="ic-card__sub">{sub}</span>}
+  </div>
+</div>

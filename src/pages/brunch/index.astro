@@ -4,6 +4,7 @@ import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import PageHero from "../../components/PageHero.astro";
 import CTASection from "../../components/CTASection.astro";
+import InfoCard from "../../components/InfoCard.astro";
 import { SITE } from "../../data/site";
 import { FEATURED_BRUNCH } from "../../data/menu";
 ---
@@ -26,28 +27,9 @@ import { FEATURED_BRUNCH } from "../../data/menu";
     <div class="max-w-4xl mx-auto">
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-20">
-        <div class="cm-card">
-          <div class="cm-card-bar"></div>
-          <div class="cm-card-inner text-center">
-            <span class="cm-card-label">Days</span>
-            <span class="cm-card-value">{SITE.brunch.days}</span>
-          </div>
-        </div>
-        <div class="cm-card-accent">
-          <div class="cm-card-bar"></div>
-          <div class="cm-card-inner text-center">
-            <span class="cm-card-label">Hours</span>
-            <span class="cm-card-value">{SITE.brunch.hours}</span>
-          </div>
-        </div>
-        <div class="cm-card">
-          <div class="cm-card-bar"></div>
-          <div class="cm-card-inner text-center">
-            <span class="cm-card-label">Location</span>
-            <span class="cm-card-value">Little Italy</span>
-            <span class="cm-card-sub">1660 India St, San Diego</span>
-          </div>
-        </div>
+        <InfoCard label="Days" value={SITE.brunch.days} />
+        <InfoCard label="Hours" value={SITE.brunch.hours} accent={true} />
+        <InfoCard label="Location" value="Little Italy" sub="1660 India St, San Diego" />
       </div>
 
       <span class="eyebrow">On the Menu</span>

@@ -4,6 +4,8 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import PageHero from "../components/PageHero.astro";
 import CTASection from "../components/CTASection.astro";
+import InfoCard from "../components/InfoCard.astro";
+import ContentCard from "../components/ContentCard.astro";
 import { SITE } from "../data/site";
 ---
 <BaseLayout
@@ -25,28 +27,9 @@ import { SITE } from "../data/site";
     <div class="max-w-5xl mx-auto">
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-20">
-        <div class="cm-card">
-          <div class="cm-card-bar"></div>
-          <div class="cm-card-inner text-center">
-            <span class="cm-card-label">Days</span>
-            <span class="cm-card-value">{SITE.happyHour.days}</span>
-          </div>
-        </div>
-        <div class="cm-card-accent">
-          <div class="cm-card-bar"></div>
-          <div class="cm-card-inner text-center">
-            <span class="cm-card-label">Hours</span>
-            <span class="cm-card-value">{SITE.happyHour.hours}</span>
-          </div>
-        </div>
-        <div class="cm-card">
-          <div class="cm-card-bar"></div>
-          <div class="cm-card-inner text-center">
-            <span class="cm-card-label">Location</span>
-            <span class="cm-card-value">Elevated Patio</span>
-            <span class="cm-card-sub">Glass Atrium, 1660 India St</span>
-          </div>
-        </div>
+        <InfoCard label="Days" value={SITE.happyHour.days} />
+        <InfoCard label="Hours" value={SITE.happyHour.hours} accent={true} />
+        <InfoCard label="Location" value="Elevated Patio" sub="Glass Atrium, 1660 India St" />
       </div>
 
       <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -85,14 +68,7 @@ import { SITE } from "../data/site";
           { label: "Bites",     body: "Select appetizers and small plates from the full Coco Maya kitchen." },
           { label: "The Patio", body: "San Diego best happy hour setting on the elevated glass atrium patio." },
         ].map((item) => (
-          <div class="cm-card">
-            <div class="cm-card-bar"></div>
-            <div class="cm-card-inner">
-              <span class="cm-card-label">{item.label}</span>
-              <div class="rule mt-3"></div>
-              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/55 text-sm leading-relaxed">{item.body}</p>
-            </div>
-          </div>
+          <ContentCard label={item.label} body={item.body} />
         ))}
       </div>
 

@@ -3,6 +3,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import CTASection from "../components/CTASection.astro";
+import InfoCard from "../components/InfoCard.astro";
 import { SITE } from "../data/site";
 import { FEATURED_COCKTAILS, FEATURED_FOOD, FEATURED_BRUNCH } from "../data/menu";
 import { RECURRING_EVENTS } from "../data/events";
@@ -237,27 +238,10 @@ const infoBar = [
         <a href="/happy-hour" class="btn-primary">See Happy Hour Details</a>
       </div>
       <div class="grid grid-cols-2 gap-4">
-        <div class="cm-card">
-          <div class="cm-card-bar"></div>
-          <div class="cm-card-inner text-center">
-            <span class="cm-card-label">Days</span>
-            <span class="cm-card-value">{SITE.happyHour.days}</span>
-          </div>
-        </div>
-        <div class="cm-card-accent">
-          <div class="cm-card-bar"></div>
-          <div class="cm-card-inner text-center">
-            <span class="cm-card-label">Hours</span>
-            <span class="cm-card-value">{SITE.happyHour.hours}</span>
-          </div>
-        </div>
-        <div class="cm-card col-span-2">
-          <div class="cm-card-bar"></div>
-          <div class="cm-card-inner text-center">
-            <span class="cm-card-label">Location</span>
-            <span class="cm-card-value">Elevated Patio &amp; Glass Atrium</span>
-            <span class="cm-card-sub">1660 India St, Little Italy</span>
-          </div>
+        <InfoCard label="Days" value={SITE.happyHour.days} />
+        <InfoCard label="Hours" value={SITE.happyHour.hours} accent={true} />
+        <div class="col-span-2">
+          <InfoCard label="Location" value="Elevated Patio & Glass Atrium" sub="1660 India St, Little Italy" />
         </div>
       </div>
     </div>
