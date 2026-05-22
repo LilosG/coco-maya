@@ -276,11 +276,11 @@ const infoBar = [
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-8 text-[1.0625rem]">
           Birthdays, bachelorette parties, rehearsal dinners, corporate events. Coco Maya provides a private event space in San Diego that your guests will actually talk about.
         </p>
-        <div class="space-y-0 divide-y divide-[var(--color-teal)]/12 mb-10">
+        <div class="mb-10">
           {["Bachelorette Parties", "Birthday Celebrations", "Rehearsal Dinners", "Corporate Events", "Baby Showers"].map((item) => (
-            <div class="flex items-center gap-4 py-3.5">
-              <span class="w-5 h-px bg-[var(--color-teal)] flex-shrink-0"></span>
-              <span class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/70 text-sm tracking-wide">{item}</span>
+            <div class="cm-event-item">
+              <span class="cm-event-item-dot"></span>
+              <span class="cm-event-item-label">{item}</span>
             </div>
           ))}
         </div>

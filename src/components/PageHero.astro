@@ -11,7 +11,7 @@ const { label, title, subtitle, image, imageAlt = "", tall = false } = Astro.pro
 ---
 
 <section class:list={[
-  "relative overflow-hidden flex items-end",
+  "relative overflow-hidden flex items-center justify-start",
   tall ? "min-h-[75vh]" : "min-h-[55vh]"
 ]}>
   {image && (
@@ -19,11 +19,11 @@ const { label, title, subtitle, image, imageAlt = "", tall = false } = Astro.pro
       <img
         src={image}
         alt={imageAlt}
-        class="w-full h-full object-cover"
+        class="w-full h-full object-cover object-center"
         width="1800" height="900"
         fetchpriority="high"
       />
-      <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/15"></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/40 to-black/10"></div>
     </div>
   )}
   {!image && (
@@ -33,7 +33,7 @@ const { label, title, subtitle, image, imageAlt = "", tall = false } = Astro.pro
   <div class="relative z-10 w-full max-w-5xl mx-auto px-6 lg:px-10 pb-16 pt-44">
     {label && <span class="eyebrow-light">{label}</span>}
     <h1 class:list={[
-      "font-[family-name:var(--font-display)] italic leading-[0.95] mb-5",
+      "font-[family-name:var(--font-display)] italic leading-[0.95] mb-5 max-w-3xl",
       tall ? "text-[clamp(3.5rem,8vw,6.5rem)]" : "text-[clamp(3rem,7vw,5.5rem)]",
       image ? "text-white" : "text-[var(--color-dark)]"
     ]}>
@@ -41,7 +41,7 @@ const { label, title, subtitle, image, imageAlt = "", tall = false } = Astro.pro
     </h1>
     {subtitle && (
       <p class:list={[
-        "font-[family-name:var(--font-body)] text-lg max-w-2xl leading-relaxed",
+        "font-[family-name:var(--font-body)] text-lg max-w-xl leading-relaxed",
         image ? "text-white/75" : "text-[var(--color-dark)]/60"
       ]}>
         {subtitle}
