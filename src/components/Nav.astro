@@ -77,14 +77,11 @@ import { SITE } from "../data/site";
     document.querySelectorAll(".nav-mobile-btn").forEach(function(el) { el.classList.remove("nav-mobile-btn-light"); });
   }
 
-  if (isHome) {
-    setLight();
-    window.addEventListener("scroll", function() {
-      if (window.scrollY > 80) { setDark(); } else { setLight(); }
-    });
-  } else {
-    setDark();
-  }
+  // Set nav state on load and scroll for all pages
+  if (window.scrollY > 80) { setDark(); } else { setLight(); }
+  window.addEventListener("scroll", function() {
+    if (window.scrollY > 80) { setDark(); } else { setLight(); }
+  });
 
   document.querySelectorAll(".nav-link").forEach(function(el) {
     var href = el.getAttribute("href") || "";

@@ -3,6 +3,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import CTASection from "../../components/CTASection.astro";
+import PageHero from "../../components/PageHero.astro";
 import { SITE } from "../../data/site";
 import { FEATURED_COCKTAILS, FEATURED_FOOD, FEATURED_BRUNCH } from "../../data/menu";
 ---
@@ -12,13 +13,14 @@ import { FEATURED_COCKTAILS, FEATURED_FOOD, FEATURED_BRUNCH } from "../../data/m
   image="/images/food-spread-overhead.jpg"
 >
   <Nav />
-
-  <section class="relative pt-44 pb-16 px-6 text-center bg-[var(--color-cream)] overflow-hidden">
-    <div class="absolute inset-x-0 top-0 h-1 bg-[var(--color-teal)]"></div>
-    <span class="eyebrow mx-auto block">Coastal Mexican Cuisine</span>
-    <h1 class="font-[family-name:var(--font-display)] italic text-[clamp(3rem,7vw,5.5rem)] text-[var(--color-dark)] mb-4">The Menu</h1>
-    <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/55 max-w-md mx-auto">Elevated coastal Mexican plates, craft cocktails, and weekend brunch.</p>
-  </section>
+  <PageHero
+    label="Coastal Mexican Cuisine"
+    title="The Menu"
+    subtitle="Elevated coastal Mexican plates, craft cocktails, and weekend brunch."
+    image="/images/food-menu-hero.jpg"
+    imageAlt="Full spread of Coco Maya dishes on the patio at Little Italy San Diego"
+    tall={false}
+  />
 
   <div class="sticky top-0 z-30 bg-[var(--color-cream)]/97 backdrop-blur-md border-b border-[var(--color-teal)]/12 shadow-sm">
     <div class="max-w-7xl mx-auto px-6 flex gap-8 overflow-x-auto py-4">
