@@ -1,8 +1,8 @@
 export const SITE = {
   name: 'Coco Maya',
   fullName: 'Coco Maya by Miss B\'s',
-  tagline: 'Elevated Coastal Mexican Dining in Little Italy, San Diego',
-  description: 'Elevated coastal Mexican cuisine, craft cocktails, and San Diego\'s best brunch. Coco Maya by Miss B\'s in Little Italy at 1660 India St.',
+  tagline: 'Modern American Coastal Dining in Little Italy, San Diego',
+  description: 'Modern American coastal cuisine, craft cocktails, and San Diego\'s best brunch. Coco Maya by Miss B\'s in Little Italy at 1660 India St.',
   url: 'https://inlovewiththecoco.com',
 
   address: {
@@ -71,7 +71,7 @@ export const SITE = {
   schema: {
     type: 'Restaurant',
     priceRange: '$$$',
-    servesCuisine: ['Mexican', 'Coastal', 'American', 'Brunch'],
+    servesCuisine: ['Modern American', 'Coastal', 'Seafood', 'Brunch'],
     geo: { lat: 32.7245, lng: -117.1699 },
   },
 } as const;

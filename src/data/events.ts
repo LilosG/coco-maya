@@ -5,7 +5,7 @@ export const RECURRING_EVENTS = [
     day: 'Saturday & Sunday',
     time: '11:00 AM – 3:00 PM',
     highlight: 'Weekend Only',
-    description: 'San Diego\'s best brunch in Little Italy. Bottomless options, coastal Mexican plates, and craft cocktails on the elevated patio.',
+    description: 'San Diego\'s best brunch in Little Italy. Bottomless options, modern coastal plates, and craft cocktails on the elevated patio.',
     image: '/images/food-brunch-sandwich.jpg',
   },
   {
