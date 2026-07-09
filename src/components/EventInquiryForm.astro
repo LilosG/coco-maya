@@ -1,0 +1,153 @@
+---
+import { SITE } from "../data/site";
+
+interface Props {
+  label?: string;
+  title?: string;
+  subtitle?: string;
+  formUrl?: string;
+  dark?: boolean;
+}
+
+const {
+  label = "Book Your Event",
+  title = "Start Your Event Inquiry",
+  subtitle = "Tell us your date, headcount, and vision. We'll follow up within 24 hours with a custom proposal.",
+  formUrl = SITE.inquiryForm.url,
+  dark = false,
+} = Astro.props;
+
+const uid = Math.random().toString(36).slice(2, 9);
+---
+
+<section class:list={["eif-section", dark && "eif-section--dark"]}>
+  <div class="eif-head">
+    <span class:list={dark ? "eyebrow-light" : "eyebrow"}>{label}</span>
+    <h2 class:list={["eif-title", dark && "eif-title--dark"]}>{title}</h2>
+    {subtitle && (
+      <p class:list={["eif-sub", dark && "eif-sub--dark"]}>{subtitle}</p>
+    )}
+  </div>
+
+  <div class="eif-frame">
+    <div class="eif-loading" id={`eif-loading-${uid}`}>
+      <span class="eif-loading-dot"></span>
+      <span class="eif-loading-dot"></span>
+      <span class="eif-loading-dot"></span>
+    </div>
+    <iframe
+      id={`eif-iframe-${uid}`}
+      src={formUrl}
+      title="Coco Maya private event inquiry form"
+      class="eif-iframe"
+      loading="lazy"
+    ></iframe>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLIFrameElement>(".eif-iframe").forEach((frame) => {
+    frame.addEventListener("load", () => {
+      frame.classList.add("eif-iframe--ready");
+      const loader = document.getElementById(`eif-loading-${frame.id.replace("eif-iframe-", "")}`);
+      loader?.classList.add("eif-loading--hidden");
+    });
+  });
+</script>
+
+<style>
+  .eif-section {
+    padding: 96px 24px;
+    background: var(--color-cream);
+  }
+  .eif-section--dark {
+    background: var(--color-dark);
+  }
+
+  .eif-head {
+    text-align: center;
+    max-width: 640px;
+    margin: 0 auto 3rem;
+  }
+  .eif-title {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--color-dark);
+    line-height: 1.1;
+  }
+  .eif-title--dark {
+    color: white;
+  }
+  .eif-sub {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    line-height: 1.6;
+    color: rgba(23, 20, 16, 0.55);
+    margin-top: 0.875rem;
+  }
+  .eif-sub--dark {
+    color: rgba(255, 255, 255, 0.55);
+  }
+
+  .eif-frame {
+    position: relative;
+    max-width: 760px;
+    margin: 0 auto;
+    background: white;
+    border: 1px solid rgba(61, 138, 138, 0.14);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), 0 12px 40px rgba(0, 0, 0, 0.08);
+    min-height: 500px;
+  }
+
+  .eif-iframe {
+    display: block;
+    width: 100%;
+    height: 800px;
+    max-height: 90vh;
+    border: 0;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    position: relative;
+    z-index: 1;
+  }
+  .eif-iframe--ready {
+    opacity: 1;
+  }
+
+  .eif-loading {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    background: white;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+  }
+  .eif-loading--hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
+  .eif-loading-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-teal);
+    opacity: 0.35;
+    animation: eif-pulse 1.1s ease-in-out infinite;
+  }
+  .eif-loading-dot:nth-child(2) { animation-delay: 0.15s; }
+  .eif-loading-dot:nth-child(3) { animation-delay: 0.3s; }
+
+  @keyframes eif-pulse {
+    0%, 80%, 100% { opacity: 0.25; transform: scale(0.85); }
+    40% { opacity: 1; transform: scale(1.1); }
+  }
+
+  @media (max-width: 640px) {
+    .eif-section { padding: 72px 16px; }
+    .eif-iframe { height: 900px; }
+  }
+</style>

@@ -5,6 +5,7 @@ import Footer from "../../components/Footer.astro";
 import PageHero from "../../components/PageHero.astro";
 import CTASection from "../../components/CTASection.astro";
 import FAQSection from "../../components/FAQSection.astro";
+import EventInquiryForm from "../../components/EventInquiryForm.astro";
 import { SITE } from "../../data/site";
 import { PRIVATE_EVENT_TYPES } from "../../data/privateEvents";
 import { faqPageSchema } from "../../lib/schema";
@@ -93,6 +94,12 @@ const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.n
   </section>
 
   <FAQSection faqs={event.faqs} label="Questions" title={`${event.name} FAQ`} />
+
+  <EventInquiryForm
+    label="Book Your Event"
+    title={`Inquire About Your ${event.name}`}
+    subtitle={`Share your date, headcount, and vision for your ${event.name.toLowerCase()} and we'll follow up within 24 hours with a custom proposal.`}
+  />
 
   <CTASection
     title="Ready to Start Planning?"

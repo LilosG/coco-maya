@@ -27,6 +27,10 @@ export const SITE = {
     label: 'Reserve a Table',
   },
 
+  inquiryForm: {
+    url: 'https://www.toasttab.com/invoice/lead?rx=179fe648-b771-40b6-a75f-9cb86f67a3e4&ot=25f16565-a67d-463c-ad37-b0ffb59c64e5&form=1',
+  },
+
   order: {
     url: 'https://inlovewiththecoco.com/order',
     label: 'Order Online',

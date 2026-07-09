@@ -5,6 +5,7 @@ import Footer from "../../components/Footer.astro";
 import PageHero from "../../components/PageHero.astro";
 import CTASection from "../../components/CTASection.astro";
 import InfoCard from "../../components/InfoCard.astro";
+import EventInquiryForm from "../../components/EventInquiryForm.astro";
 import { SITE } from "../../data/site";
 import { PRIVATE_EVENT_TYPES } from "../../data/privateEvents";
 
@@ -230,6 +231,12 @@ const specs = [
       </div>
     </div>
   </section>
+
+  <EventInquiryForm
+    label="Book Your Event"
+    title="Send Us Your Event Details"
+    subtitle="Prefer to fill out a form? Share your date, headcount, and event type below and we'll follow up within 24 hours."
+  />
 
   <CTASection
     title="Ready to Start Planning?"
