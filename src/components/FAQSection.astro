@@ -1,0 +1,130 @@
+---
+import type { FaqItem } from "../lib/schema";
+
+interface Props {
+  label?: string;
+  title?: string;
+  subtitle?: string;
+  faqs: FaqItem[];
+  dark?: boolean;
+  showHeading?: boolean;
+}
+
+const {
+  label = "Good to Know",
+  title = "Frequently Asked Questions",
+  subtitle,
+  faqs,
+  dark = false,
+  showHeading = true,
+} = Astro.props;
+---
+
+<section class:list={["py-24 px-6", dark ? "bg-[var(--color-dark)]" : "bg-[var(--color-cream)]"]}>
+  <div class="max-w-3xl mx-auto">
+    {showHeading && (
+      <div class="text-center mb-14">
+        <span class:list={label && (dark ? "eyebrow-light" : "eyebrow")}>{label}</span>
+        <h2 class:list={[
+          "font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3rem)]",
+          dark ? "text-white" : "text-[var(--color-dark)]"
+        ]}>
+          {title}
+        </h2>
+        {subtitle && (
+          <p class:list={[
+            "font-[family-name:var(--font-body)] mt-4 max-w-lg mx-auto text-[0.9375rem] leading-relaxed",
+            dark ? "text-white/50" : "text-[var(--color-dark)]/55"
+          ]}>
+            {subtitle}
+          </p>
+        )}
+      </div>
+    )}
+
+    <div class="faq-list">
+      {faqs.map((item) => (
+        <details class:list={["faq-item", dark && "faq-item--dark"]}>
+          <summary class="faq-item__q">
+            <span>{item.question}</span>
+            <svg class="faq-item__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 5v14M5 12h14" />
+            </svg>
+          </summary>
+          <p class="faq-item__a">{item.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .faq-item {
+    background-color: var(--color-cream);
+    border: 1px solid rgba(61, 138, 138, 0.14);
+    padding: 0;
+    transition: border-color 0.2s;
+  }
+  .faq-item[open] {
+    border-color: rgba(61, 138, 138, 0.35);
+  }
+  .faq-item--dark {
+    background-color: var(--color-dark-mid);
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  .faq-item--dark[open] {
+    border-color: rgba(126, 207, 191, 0.35);
+  }
+
+  .faq-item__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1.375rem 1.5rem;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-body);
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--color-dark);
+    user-select: none;
+  }
+  .faq-item--dark .faq-item__q {
+    color: white;
+  }
+  .faq-item__q::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq-item__icon {
+    width: 1.125rem;
+    height: 1.125rem;
+    flex-shrink: 0;
+    color: var(--color-teal);
+    transition: transform 0.25s ease;
+  }
+  .faq-item--dark .faq-item__icon {
+    color: var(--color-teal-light);
+  }
+  .faq-item[open] .faq-item__icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-item__a {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    line-height: 1.75;
+    color: rgba(23, 20, 16, 0.62);
+    padding: 0 1.5rem 1.5rem;
+  }
+  .faq-item--dark .faq-item__a {
+    color: rgba(255, 255, 255, 0.55);
+  }
+</style>

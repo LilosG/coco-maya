@@ -6,15 +6,7 @@ import PageHero from "../../components/PageHero.astro";
 import CTASection from "../../components/CTASection.astro";
 import InfoCard from "../../components/InfoCard.astro";
 import { SITE } from "../../data/site";
-
-const eventTypes = [
-  { name: "Bachelorette Parties",  description: "The elevated patio, the pink cocktail tower, the view. A bachelorette setting that delivers.",       image: "/images/cocktail-tower-pink.jpg" },
-  { name: "Birthday Celebrations", description: "Custom menus, private dining room, and a space that makes the occasion feel like one.",              image: "/images/events-private-dining-1.jpg" },
-  { name: "Rehearsal Dinners",     description: "Intimate pre-wedding gatherings with custom menus and the full Coco Maya experience.",              image: "/images/events-table-setting.jpg" },
-  { name: "Corporate Events",      description: "Team dinners and client entertaining in a space that makes an impression.",                         image: "/images/events-private-dining-2.jpg" },
-  { name: "Baby Showers",          description: "Daytime social gatherings with brunch menus and the lush patio atmosphere.",                        image: "/images/venue-patio.jpg" },
-  { name: "Evening Buyouts",       description: "The patio after dark. City lights, tropical greenery, and the Little Italy skyline.",               image: "/images/events-patio-night.jpg" },
-];
+import { PRIVATE_EVENT_TYPES } from "../../data/privateEvents";
 
 const process = [
   { step: "01", label: "Get in Touch", body: "Email or call us with your date, group size, and what you have in mind. We will respond within 24 hours." },
@@ -103,22 +95,22 @@ const specs = [
         </h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {eventTypes.map((event) => (
-          <div class="cm-media-card group">
+        {PRIVATE_EVENT_TYPES.map((event) => (
+          <a href={`/private-events/${event.slug}`} class="cm-media-card group block">
             <div class="aspect-video overflow-hidden">
               <img
-                src={event.image}
-                alt={event.name}
+                src={event.heroImage}
+                alt={event.heroImageAlt}
                 class="w-full h-full object-cover"
                 width="600" height="338" loading="lazy"
               />
             </div>
             <div class="p-6">
-              <h3 class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-xl mb-2">{event.name}</h3>
+              <h3 class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-xl mb-2 group-hover:text-[var(--color-teal)] transition-colors">{event.name}</h3>
               <div class="w-6 h-px bg-[var(--color-teal)] mb-3"></div>
-              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/50 text-sm leading-relaxed">{event.description}</p>
+              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/50 text-sm leading-relaxed">{event.shortDescription}</p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
