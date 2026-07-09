@@ -9,6 +9,7 @@ interface Props {
   cityLine?: string;
   phone?: string;
   mapsHref?: string;
+  openLine?: string;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
   cityLine = 'Little Italy, San Diego, CA 92101',
   phone = '(619) 943-9439',
   mapsHref = 'https://maps.google.com/?q=1660+India+St+San+Diego+CA+92101',
+  openLine = 'Open Daily',
 } = Astro.props;
 
 const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
@@ -61,7 +63,7 @@ const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
         <div class="field">
           <span class="label">Open</span>
           <span class="leader"></span>
-          <span class="value">Daily, 4pm – late</span>
+          <span class="value">{openLine}</span>
         </div>
         <div class="field accent">
           <span class="label">Happy Hour</span>

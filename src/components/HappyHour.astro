@@ -11,12 +11,14 @@ interface Props {
   cocktailImage?: string;
   patioImage?: string;
   menuHref?: string;
+  addressLine?: string;
 }
 
 const {
   cocktailImage = '/images/cocktails.jpg',
   patioImage = '/images/elevated-patio.jpg',
   menuHref = '#happy-hour-menu',
+  addressLine = '1660 India St · Little Italy',
 } = Astro.props;
 ---
 
@@ -64,7 +66,7 @@ const {
         <div class="hh-where">
           <div class="label">Location</div>
           <div class="big">Elevated Patio<br />&amp; Bar Area</div>
-          <div class="addr">1660 India St · Little Italy</div>
+          <div class="addr">{addressLine}</div>
         </div>
       </div>
     </article>

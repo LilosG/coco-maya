@@ -22,7 +22,7 @@ const todayName = dayNames[new Date().getDay()];
         <div class="space-y-10">
           <div>
             <span class="eyebrow">Address</span>
-            
+            <a
               href={SITE.address.mapsUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -33,7 +33,7 @@ const todayName = dayNames[new Date().getDay()];
           </div>
           <div>
             <span class="eyebrow">Phone</span>
-            
+            <a
               href={`tel:${SITE.phone.tel}`}
               class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl hover:text-[var(--color-teal)] transition-colors"
             >
