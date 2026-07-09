@@ -6,6 +6,8 @@ interface Props {
   phone?: string;
   mapsHref?: string;
   openLine?: string;
+  accentLabel?: string;
+  accentValue?: string;
 }
 
 const {
@@ -15,6 +17,8 @@ const {
   phone = '(619) 943-9439',
   mapsHref = 'https://maps.google.com/?q=1660+India+St+San+Diego+CA+92101',
   openLine = 'Open Daily',
+  accentLabel = 'Rooftop Patio',
+  accentValue = 'Open Daily',
 } = Astro.props;
 
 const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
@@ -62,9 +66,9 @@ const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
           <span class="fu-value">{openLine}</span>
         </div>
         <div class="fu-field fu-field--accent">
-          <span class="fu-field-label">Happy Hour</span>
+          <span class="fu-field-label">{accentLabel}</span>
           <span class="fu-leader"></span>
-          <span class="fu-value">3 – 5pm every day</span>
+          <span class="fu-value">{accentValue}</span>
         </div>
         <div class="fu-field">
           <span class="fu-field-label">Call</span>

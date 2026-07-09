@@ -4,7 +4,7 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import { SITE } from "../data/site";
 import { FEATURED_COCKTAILS, FEATURED_FOOD } from "../data/menu";
-import HappyHour from "../components/HappyHour.astro";
+import RooftopBar from "../components/RooftopBar.astro";
 import FindUs from "../components/FindUs.astro";
 
 const todayHours = (() => {
@@ -15,7 +15,7 @@ const todayHours = (() => {
 
 const infoBar = [
   { label: "Hours Today",     value: todayHours,              sub: null,                  href: null },
-  { label: "Happy Hour",      value: SITE.happyHour.hours,    sub: SITE.happyHour.days,   href: "/happy-hour" },
+  { label: "Rooftop Patio",   value: "Open Daily",            sub: "Glass Atrium Bar",    href: "/happy-hour" },
   { label: "Weekend Brunch",  value: SITE.brunch.hours,       sub: SITE.brunch.days,      href: "/brunch" },
   { label: "Location",        value: SITE.address.neighborhood + ", SD", sub: "1660 India St", href: SITE.address.mapsUrl },
 ];
@@ -99,7 +99,7 @@ const infoBar = [
           Coco Maya brings elevated modern American coastal cuisine to the heart of San Diego's Little Italy. An open-air glass atrium, a stunning teal bar, and a menu that takes both the food and the cocktails seriously.
         </p>
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-10 text-[1.0625rem]">
-          Daily happy hour, weekend brunch, and private dining that transforms any occasion. 1660 India St — right in the middle of everything.
+          An elevated rooftop patio, weekend brunch, and private dining that transforms any occasion. 1660 India St — right in the middle of everything.
         </p>
         <div class="flex flex-wrap gap-4">
           <a href="/the-space" class="btn-primary">See The Space</a>
@@ -125,7 +125,7 @@ const infoBar = [
       <div class="text-center mb-16">
         <span class="eyebrow-light mx-auto block">Craft Program</span>
         <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2.5rem,5vw,4rem)] text-white">
-          Craft Cocktails &amp; Happy Hour in Little Italy San Diego
+          Craft Cocktails &amp; Rooftop Bar in Little Italy San Diego
         </h2>
         <p class="font-[family-name:var(--font-body)] text-white/50 mt-4 max-w-md mx-auto">
           Craft cocktails built for the elevated patio.
@@ -222,32 +222,8 @@ const infoBar = [
     </div>
   </section>
 
-  <!-- ── HAPPY HOUR ─────────────────────────────────────── -->
-  {/* OLD Happy Hour — kept for rollback
-  <section class="py-28 px-6 bg-[var(--color-sand-dark)]">
-    <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-      <div>
-        <span class="eyebrow">Every Day</span>
-        <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2.5rem,5vw,4rem)] text-[var(--color-dark)] mb-4 leading-tight">
-          Happy Hour in Little Italy San Diego
-        </h2>
-        <div class="rule"></div>
-        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-10 text-[1.0625rem]">
-          Discounted cocktails, wines, and select bites every single day of the week. The elevated patio at its most accessible.
-        </p>
-        <a href="/happy-hour" class="btn-primary">See Happy Hour Details</a>
-      </div>
-      <div class="grid grid-cols-2 gap-4">
-        <InfoCard label="Days" value={SITE.happyHour.days} />
-        <InfoCard label="Hours" value={SITE.happyHour.hours} accent={true} />
-        <div class="col-span-2">
-          <InfoCard label="Location" value="Elevated Patio & Glass Atrium" sub="1660 India St, Little Italy" />
-        </div>
-      </div>
-    </div>
-  </section>
-  */}
-  <HappyHour menuHref="/happy-hour" addressLine={`${SITE.address.street} · ${SITE.address.neighborhood}`} />
+  <!-- ── ROOFTOP BAR ─────────────────────────────────────── -->
+  <RooftopBar menuHref="/happy-hour" addressLine={`${SITE.address.street} · ${SITE.address.neighborhood}`} />
 
   <!-- ── PRIVATE EVENTS ─────────────────────────────────── -->
   <section class="py-28 px-6 bg-[var(--color-cream)]">
@@ -290,7 +266,7 @@ const infoBar = [
       <div class="cm-dark-grid" style="grid-template-columns: repeat(4, 1fr);">
         {[
           { number: "4.5", unit: "★", label: "Google Rating", sub: "Little Italy" },
-          { number: "Daily", unit: "", label: "Happy Hour", sub: "3:00 – 5:00 PM" },
+          { number: "Rooftop", unit: "", label: "Patio & Bar", sub: "Open Daily" },
           { number: "Sat & Sun", unit: "", label: "Weekend Brunch", sub: "11 AM – 3 PM" },
           { number: "Open", unit: " Daily", label: "1660 India St", sub: "San Diego, CA" },
         ].map((stat) => (
@@ -307,47 +283,14 @@ const infoBar = [
   </section>
 
   <!-- ── FIND US ─────────────────────────────────────────── -->
-  {/* OLD Find Us — kept for rollback
-  <section class="py-28 px-6 bg-[var(--color-cream)]">
-    <div class="max-w-3xl mx-auto text-center">
-      <span class="eyebrow mx-auto block">Come Visit</span>
-      <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2.5rem,5vw,4rem)] text-[var(--color-dark)] mb-8">
-        Rooftop Restaurant · 1660 India St · Little Italy San Diego
-      </h2>
-      <div class="cm-card max-w-sm mx-auto mb-10 text-left">
-        <div class="flex gap-4 items-start mb-5">
-          <div class="w-8 h-8 bg-[var(--color-teal)]/10 flex items-center justify-center flex-shrink-0 mt-0.5">
-            <svg class="w-4 h-4 text-[var(--color-teal)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
-            </svg>
-          </div>
-          <div>
-            <p class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-xl leading-snug">
-              <a href={SITE.address.mapsUrl} target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-teal)] transition-colors">
-                {SITE.address.street}
-              </a>
-            </p>
-            <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/45 text-sm mt-1">{SITE.address.neighborhood}, {SITE.address.city}, {SITE.address.state} {SITE.address.zip}</p>
-          </div>
-        </div>
-        <div class="border-t border-[var(--color-teal)]/10 pt-4">
-          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/50 text-sm">Open Daily &bull; Happy Hour 3–5PM Every Day</p>
-        </div>
-      </div>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href={SITE.address.mapsUrl} target="_blank" rel="noopener noreferrer" class="btn-primary">Get Directions</a>
-        <a href={`tel:${SITE.phone.tel}`} class="btn-outline">{SITE.phone.display}</a>
-      </div>
-    </div>
-  </section>
-  */}
   <FindUs
     address={SITE.address.street}
     cityLine={`${SITE.address.neighborhood}, ${SITE.address.city}, ${SITE.address.state} ${SITE.address.zip}`}
     phone={SITE.phone.display}
     mapsHref={SITE.address.mapsUrl}
     openLine={`${todayHours} Today`}
+    accentLabel="Rooftop Patio"
+    accentValue={SITE.rooftopBar.tagline}
   />
 
   <Footer />

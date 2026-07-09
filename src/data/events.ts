@@ -9,12 +9,12 @@ export const RECURRING_EVENTS = [
     image: '/images/food-brunch-sandwich.jpg',
   },
   {
-    slug: 'happy-hour',
-    name: 'Happy Hour',
+    slug: 'rooftop-bar',
+    name: 'Rooftop Patio & Bar',
     day: 'Daily',
-    time: '3:00 PM – 5:00 PM',
-    highlight: 'Daily Deals',
-    description: 'Discounted cocktails, wines, and select bites every day of the week. The elevated patio at its best.',
+    time: 'Open Daily',
+    highlight: 'Anytime',
+    description: 'Craft cocktails and the elevated glass atrium patio, open every day of the week for walk-ins and reservations alike.',
     image: '/images/cocktail-patio-pair.jpg',
   },
 ] as const;

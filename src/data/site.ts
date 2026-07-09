@@ -46,9 +46,9 @@ export const SITE = {
     { day: 'Sunday',    open: true,  hours: '9:00 AM – 8:00 PM' },
   ],
 
-  happyHour: {
-    days: 'Daily',
-    hours: '3:00 PM – 5:00 PM',
+  rooftopBar: {
+    tagline: 'Open Daily',
+    detail: 'Elevated Patio & Glass Atrium',
   },
 
   brunch: {
@@ -65,7 +65,7 @@ export const SITE = {
   nav: [
     { label: 'Menu',           href: '/menu' },
     { label: 'Brunch',         href: '/brunch' },
-    { label: 'Happy Hour',     href: '/happy-hour' },
+    { label: 'Blog',           href: '/blog' },
     { label: 'Events',         href: '/events' },
     { label: 'Private Events', href: '/private-events' },
     { label: 'The Space',      href: '/the-space' },

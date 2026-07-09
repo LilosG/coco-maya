@@ -6,20 +6,42 @@ import PageHero from "../components/PageHero.astro";
 import CTASection from "../components/CTASection.astro";
 import InfoCard from "../components/InfoCard.astro";
 import ContentCard from "../components/ContentCard.astro";
+import FAQSection from "../components/FAQSection.astro";
 import { SITE } from "../data/site";
+import { faqPageSchema } from "../lib/schema";
+
+const faqs = [
+  {
+    question: "Does Coco Maya have a happy hour?",
+    answer:
+      "Coco Maya doesn't currently run a discounted happy hour. The full cocktail program and the elevated rooftop patio are open and available every day, no special time window required.",
+  },
+  {
+    question: "What are the best times to visit the rooftop patio?",
+    answer:
+      "The patio is open daily and works well any time, though late afternoon into early evening tends to have the best light for the glass atrium bar and skyline views.",
+  },
+  {
+    question: "Do I need a reservation to sit on the patio?",
+    answer:
+      "Reservations are recommended, especially on weekends, but walk-ins are welcome on the patio based on availability.",
+  },
+];
+const schema = [faqPageSchema(faqs)];
 ---
 <BaseLayout
-  title="Happy Hour Little Italy San Diego | Coco Maya | Daily 3-5PM"
-  description="Best happy hour in Little Italy San Diego. Coco Maya: discounted cocktails and bites every day 3-5PM. 1660 India St, San Diego CA."
-  image="/images/cocktail-happy-hour-group.jpg"
+  title="Rooftop Bar & Patio in Little Italy San Diego | Coco Maya"
+  description="Coco Maya's rooftop patio and glass atrium bar in Little Italy, San Diego. Craft cocktails, an elevated open-air setting, open daily. 1660 India St."
+  image="/images/cocktail-negroni-patio.jpg"
+  extraSchema={schema}
 >
   <Nav />
   <PageHero
-    label="Every Day 3-5PM"
-    title="Happy Hour"
-    subtitle="Discounted cocktails, wines, and bites every day of the week on the elevated patio."
-    image="/images/cocktail-happy-hour-group.jpg"
-    imageAlt="Happy hour cocktails at Coco Maya Little Italy San Diego"
+    label="Open Daily"
+    title="Rooftop Patio & Bar"
+    subtitle="Craft cocktails and an open-air glass atrium, one of Little Italy's most distinctive rooftop settings."
+    image="/images/cocktail-negroni-patio.jpg"
+    imageAlt="Rooftop patio and glass atrium bar at Coco Maya Little Italy San Diego"
     tall={true}
   />
 
@@ -27,23 +49,23 @@ import { SITE } from "../data/site";
     <div class="max-w-5xl mx-auto">
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-20">
-        <InfoCard label="Days" value={SITE.happyHour.days} />
-        <InfoCard label="Hours" value={SITE.happyHour.hours} accent={true} />
-        <InfoCard label="Location" value="Elevated Patio" sub="Glass Atrium, 1660 India St" />
+        <InfoCard label="Open" value="Daily" />
+        <InfoCard label="Setting" value="Elevated Patio" accent={true} />
+        <InfoCard label="Location" value="Glass Atrium Bar" sub="1660 India St, Little Italy" />
       </div>
 
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
-          <span class="eyebrow">The Details</span>
+          <span class="eyebrow">The Rooftop Bar</span>
           <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-4">
-            Little Italy Best Happy Hour
+            Little Italy's Rooftop Bar
           </h2>
           <div class="rule"></div>
           <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-4 text-[1.0625rem]">
-            Coco Maya runs daily happy hour from 3 to 5 PM. Discounted cocktails, wines, and select bites served on one of San Diego most distinctive patios under the glass atrium, surrounded by tropical greenery.
+            Coco Maya's glass atrium bar opens onto an elevated outdoor patio, one of San Diego's most distinctive rooftop settings, surrounded by tropical greenery with views over Little Italy.
           </p>
           <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-10 text-[1.0625rem]">
-            Whether coming from the office or starting the evening early, the elevated patio in Little Italy is the right call.
+            The full craft cocktail program is available daily, no special time window required, whether you're stopping by after work or starting an evening out.
           </p>
           <div class="flex flex-wrap gap-4">
             <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">Reserve a Table</a>
@@ -53,7 +75,7 @@ import { SITE } from "../data/site";
         <div class="relative">
           <img
             src="/images/cocktail-negroni-patio.jpg"
-            alt="Happy hour cocktails at Coco Maya"
+            alt="Craft cocktail on the rooftop patio at Coco Maya"
             class="w-full aspect-square object-cover"
             width="600" height="600"
             loading="lazy"
@@ -64,9 +86,9 @@ import { SITE } from "../data/site";
 
       <div class="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-5">
         {[
-          { label: "Cocktails", body: "Discounted house cocktails and wines with rotating seasonal specials." },
-          { label: "Bites",     body: "Select appetizers and small plates from the full Coco Maya kitchen." },
-          { label: "The Patio", body: "San Diego best happy hour setting on the elevated glass atrium patio." },
+          { label: "Craft Cocktails", body: "House-made cocktails built around fresh juice, small-batch spirits, and seasonal ingredients." },
+          { label: "Signature Tower", body: "Our pink cocktail tower, four frozen margaritas built for the table, is the one most photos end up featuring." },
+          { label: "The Patio", body: "An open-air glass atrium setting, one of the more distinctive rooftop bars in Little Italy." },
         ].map((item) => (
           <ContentCard label={item.label} body={item.body} />
         ))}
@@ -75,9 +97,11 @@ import { SITE } from "../data/site";
     </div>
   </section>
 
+  <FAQSection faqs={faqs} label="Good to Know" title="Rooftop Bar FAQ" />
+
   <CTASection
-    title="Join Us for Happy Hour"
-    subtitle="1660 India St, Little Italy San Diego. Every day 3-5PM."
+    title="Visit the Rooftop"
+    subtitle="1660 India St, Little Italy San Diego. Open daily."
     primaryLabel="Reserve a Table"
     primaryHref={SITE.reservations.url}
     secondaryLabel="Get Directions"

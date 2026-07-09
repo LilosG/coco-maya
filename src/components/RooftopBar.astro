@@ -9,40 +9,40 @@ interface Props {
 const {
   cocktailImage = '/images/cocktails.jpg',
   patioImage = '/images/elevated-patio.jpg',
-  menuHref = '#happy-hour-menu',
+  menuHref = '/happy-hour',
   addressLine = '1660 India St · Little Italy',
 } = Astro.props;
 ---
 
 <section class="hh-section" aria-labelledby="hh-title">
   <div class="sec-head">
-    <span class="eyebrow mx-auto block">Every day · 3 to 5</span>
-    <h2 id="hh-title" class="hh-title">Happy Hour</h2>
+    <span class="eyebrow mx-auto block">Open Daily</span>
+    <h2 id="hh-title" class="hh-title">Rooftop Patio &amp; Bar</h2>
     <p class="hh-sub">
-      Discounted cocktails, wines, and select bites every single day of the week —
-      on the elevated patio, where the breeze comes off India Street.
+      Craft cocktails and an open-air glass atrium bar —
+      one of Little Italy's most distinctive rooftop settings, every day of the week.
     </p>
   </div>
 
   <div class="hh-grid">
-    <!-- Card 1 — WHEN + HOURS -->
+    <!-- Card 1 — THE COCKTAIL PROGRAM -->
     <article class="hh-card">
       <div class="hh-photo">
-        <img src={cocktailImage} alt="Coco Maya signature cocktails on the patio" loading="lazy" />
+        <img src={cocktailImage} alt="Coco Maya signature cocktails on the rooftop patio" loading="lazy" />
       </div>
       <div class="hh-body">
-        <span class="hh-tag hh-tag--teal">★ Daily ★</span>
+        <span class="hh-tag hh-tag--teal">★ Signature ★</span>
         <div class="hh-hours-row">
           <div class="hh-col">
-            <div class="hh-label">When</div>
-            <div class="hh-big">Daily</div>
-            <div class="hh-sub-small">Monday through Sunday</div>
+            <div class="hh-label">The Pour</div>
+            <div class="hh-big">Craft Cocktails</div>
+            <div class="hh-sub-small">Fresh juice, small-batch spirits</div>
           </div>
           <div class="hh-divider"></div>
           <div class="hh-col hh-col--accent">
-            <div class="hh-label">Hours</div>
-            <div class="hh-big">3 – 5pm</div>
-            <div class="hh-sub-small">Two golden hours</div>
+            <div class="hh-label">Signature</div>
+            <div class="hh-big">Cocktail Tower</div>
+            <div class="hh-sub-small">Four margaritas, fresh florals</div>
           </div>
         </div>
       </div>
@@ -51,7 +51,7 @@ const {
     <!-- Card 2 — WHERE -->
     <article class="hh-card">
       <div class="hh-photo">
-        <img src={patioImage} alt="The elevated patio and bar area at Coco Maya" loading="lazy" />
+        <img src={patioImage} alt="The elevated rooftop patio and bar area at Coco Maya" loading="lazy" />
       </div>
       <div class="hh-body">
         <span class="hh-tag hh-tag--accent">Where</span>
@@ -65,7 +65,7 @@ const {
   </div>
 
   <div class="hh-cta">
-    <a href={menuHref} class="btn-primary">SEE HAPPY HOUR MENU</a>
+    <a href={menuHref} class="btn-primary">SEE THE ROOFTOP PATIO</a>
   </div>
 </section>
 
@@ -135,7 +135,7 @@ const {
   .hh-col--accent .hh-label { color: var(--color-teal-dark); }
   .hh-col .hh-big {
     font-family: var(--font-display); font-style: italic;
-    font-size: 2.125rem; line-height: 1; color: var(--color-dark);
+    font-size: 2rem; line-height: 1.05; color: var(--color-dark);
   }
   .hh-col .hh-sub-small { font-size: 12px; color: rgba(23,20,16,0.5); margin-top: 6px; font-family: var(--font-body); }
 
@@ -167,9 +167,8 @@ const {
     .hh-tag { left: 22px; }
     .hh-hours-row { grid-template-columns: 1fr; gap: 16px; }
     .hh-divider { display: none; }
-    .hh-col .hh-big { font-size: 1.875rem; }
+    .hh-col .hh-big { font-size: 1.625rem; }
     .hh-where .hh-big { font-size: 1.5rem; }
     .hh-cta { margin-top: 40px; }
   }
 </style>
-
