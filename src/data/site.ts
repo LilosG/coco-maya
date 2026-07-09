@@ -65,10 +65,10 @@ export const SITE = {
   nav: [
     { label: 'Menu',           href: '/menu' },
     { label: 'Brunch',         href: '/brunch' },
-    { label: 'Blog',           href: '/blog' },
     { label: 'Events',         href: '/events' },
     { label: 'Private Events', href: '/private-events' },
     { label: 'The Space',      href: '/the-space' },
+    { label: 'Blog',           href: '/blog' },
     { label: 'About',          href: '/about' },
   ],
 
