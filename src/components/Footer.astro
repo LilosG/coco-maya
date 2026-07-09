@@ -1,6 +1,8 @@
 ---
 import { SITE } from "../data/site";
+import { GPH_NETWORK, GRIND_AND_PROSPER_URL } from "../data/gphNetwork";
 const year = new Date().getFullYear();
+const portfolio = GPH_NETWORK.filter((v) => v.url !== SITE.url);
 const days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 const todayName = days[new Date().getDay()];
 ---
@@ -91,13 +93,38 @@ const todayName = days[new Date().getDay()];
   </div>
 
   <div class="border-t border-white/8">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 py-8">
+      <div class="flex flex-col sm:flex-row sm:items-center gap-4 sm:gap-8">
+        <a href={GRIND_AND_PROSPER_URL} target="_blank" rel="noopener noreferrer"
+          class="text-[10px] font-bold tracking-[0.28em] uppercase text-white/30 hover:text-[var(--color-teal-light)] transition-colors whitespace-nowrap">
+          Grind &amp; Prosper Hospitality
+        </a>
+        <div class="flex flex-wrap gap-x-6 gap-y-2">
+          {portfolio.map((v) => (
+            <a href={v.url} target="_blank" rel="noopener noreferrer"
+              class="text-xs text-white/25 hover:text-white/50 transition-colors">
+              {v.name}
+            </a>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-white/8">
     <div class="max-w-7xl mx-auto px-6 lg:px-10 py-5 flex flex-col sm:flex-row justify-between items-center gap-3">
       <p class="text-white/25 text-xs font-[family-name:var(--font-body)]">
         &copy; {year} Coco Maya by Miss B's &bull; {SITE.address.full}
       </p>
-      <div class="flex gap-5">
-        <a href="/sitemap-index.xml" class="text-white/25 hover:text-white/50 text-xs transition-colors">Sitemap</a>
-        <a href="/contact" class="text-white/25 hover:text-white/50 text-xs transition-colors">Contact</a>
+      <div class="flex items-center gap-6">
+        <div class="flex gap-5">
+          <a href="/sitemap-index.xml" class="text-white/25 hover:text-white/50 text-xs transition-colors">Sitemap</a>
+          <a href="/contact" class="text-white/25 hover:text-white/50 text-xs transition-colors">Contact</a>
+        </div>
+        <a href="https://lilosgrowth.com" target="_blank" rel="noopener noreferrer"
+          class="text-white/50 hover:text-[var(--color-teal-light)] text-[13px] transition-colors">
+          Website by Lilos Growth
+        </a>
       </div>
     </div>
   </div>
