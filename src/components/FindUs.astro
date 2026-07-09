@@ -1,8 +1,4 @@
 ---
-// src/components/FindUs.astro
-// Coco Maya — Find Us in Little Italy section
-// Drop-in replacement for the current Find Us section.
-
 interface Props {
   interiorImage?: string;
   address?: string;
@@ -26,19 +22,19 @@ const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
 
 <section class="find-section" aria-labelledby="find-title">
   <div class="sec-head">
-    <div class="eyebrow">Come Visit</div>
-    <h2 id="find-title" class="title">Find Us in Little Italy</h2>
+    <span class="eyebrow mx-auto block">Come Visit</span>
+    <h2 id="find-title" class="find-title">Find Us in Little Italy</h2>
   </div>
 
   <article class="find-card">
     <div class="photo-side">
-      <div class="photo">
+      <div class="find-photo">
         <img src={interiorImage} alt="Coco Maya interior — In Love with the Coast neon wall" loading="lazy" />
       </div>
       <div class="map-badge" aria-hidden="true">
         <div class="map">
           <svg viewBox="0 0 180 110" preserveAspectRatio="none">
-            <g stroke="#9CC4BF" stroke-width="0.8" opacity="0.7" fill="none">
+            <g stroke="var(--color-teal-light)" stroke-width="0.8" opacity="0.7" fill="none">
               <line x1="0" y1="30" x2="180" y2="22" />
               <line x1="0" y1="60" x2="180" y2="54" />
               <line x1="0" y1="90" x2="180" y2="84" />
@@ -46,11 +42,11 @@ const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
               <line x1="100" y1="0" x2="96" y2="110" />
               <line x1="140" y1="0" x2="136" y2="110" />
             </g>
-            <line x1="70" y1="0" x2="66" y2="110" stroke="#D67D5C" stroke-width="2" opacity="0.7" />
-            <circle cx="68" cy="55" r="4.5" fill="#D67D5C" stroke="#fff" stroke-width="1.5" />
+            <line x1="70" y1="0" x2="66" y2="110" stroke="var(--color-teal-dark)" stroke-width="2" opacity="0.7" />
+            <circle cx="68" cy="55" r="4.5" fill="var(--color-teal-dark)" stroke="#fff" stroke-width="1.5" />
           </svg>
         </div>
-        <div class="label">India St × W Ash</div>
+        <div class="map-label">India St × W Ash</div>
       </div>
     </div>
 
@@ -59,27 +55,27 @@ const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
       <h3 class="place-name">{address}</h3>
       <p class="place-sub">{cityLine}</p>
 
-      <div class="fields">
-        <div class="field">
-          <span class="label">Open</span>
-          <span class="leader"></span>
-          <span class="value">{openLine}</span>
+      <div class="fu-fields">
+        <div class="fu-field">
+          <span class="fu-field-label">Open</span>
+          <span class="fu-leader"></span>
+          <span class="fu-value">{openLine}</span>
         </div>
-        <div class="field accent">
-          <span class="label">Happy Hour</span>
-          <span class="leader"></span>
-          <span class="value">3 – 5pm every day</span>
+        <div class="fu-field fu-field--accent">
+          <span class="fu-field-label">Happy Hour</span>
+          <span class="fu-leader"></span>
+          <span class="fu-value">3 – 5pm every day</span>
         </div>
-        <div class="field">
-          <span class="label">Call</span>
-          <span class="leader"></span>
-          <span class="value">{phone}</span>
+        <div class="fu-field">
+          <span class="fu-field-label">Call</span>
+          <span class="fu-leader"></span>
+          <span class="fu-value">{phone}</span>
         </div>
       </div>
 
       <div class="find-actions">
-        <a href={mapsHref} target="_blank" rel="noopener" class="btn btn-primary">GET DIRECTIONS</a>
-        <a href={telHref} class="btn btn-ghost">{phone}</a>
+        <a href={mapsHref} target="_blank" rel="noopener" class="btn-primary">GET DIRECTIONS</a>
+        <a href={telHref} class="btn-outline">{phone}</a>
       </div>
     </div>
   </article>
@@ -87,65 +83,49 @@ const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
 
 <style>
   .find-section {
-    --cream-deep: #F1E8D2;
-    --ink: #1A2624;
-    --ink-soft: #5C6664;
-    --ink-muted: #8A918F;
-    --teal: #2E7873;
-    --teal-deep: #1F5752;
-    --teal-tint: #E2EEEC;
-    --coral: #D67D5C;
-    --paper-shadow: 0 1px 2px rgba(40,30,15,0.04), 0 30px 60px -22px rgba(40,30,15,0.18);
-    --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
-    --sans: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    --mono: "JetBrains Mono", "IBM Plex Mono", monospace;
-
-    background: #F8F1E1;
-    padding: 80px 80px;
-    font-family: var(--sans);
-    color: var(--ink);
+    background: var(--color-cream);
+    padding: 96px 80px;
+    font-family: var(--font-body);
+    color: var(--color-dark);
   }
 
   /* Header */
   .sec-head { text-align: center; margin-bottom: 44px; }
-  .eyebrow {
-    font-family: var(--sans);
-    font-size: 12px; letter-spacing: 0.32em; font-weight: 500;
-    color: var(--teal); text-transform: uppercase;
-  }
-  .title {
-    font-family: var(--serif); font-style: italic; font-weight: 400;
-    font-size: clamp(44px, 5.5vw, 72px); line-height: 1.02;
-    letter-spacing: -0.01em; margin: 18px 0 0;
+  .find-title {
+    font-family: var(--font-display); font-style: italic; font-weight: 400;
+    font-size: clamp(2.75rem, 5.5vw, 4.5rem); line-height: 1.02;
+    letter-spacing: -0.01em; margin: 0.75rem 0 0;
+    color: var(--color-dark);
   }
 
   /* Card */
   .find-card {
     max-width: 1180px; margin: 0 auto;
-    background: #fff;
-    box-shadow: var(--paper-shadow);
+    background: white;
+    border: 1px solid rgba(61,138,138,0.14);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05), 0 8px 28px rgba(0,0,0,0.07);
     display: grid; grid-template-columns: 1.1fr 1fr;
     overflow: hidden;
   }
   .photo-side { position: relative; min-height: 460px; max-height: 600px; }
-  .photo { display: block; position: relative; overflow: hidden; background: #E8D9B8; height: 100%; min-height: 460px; max-height: 600px; }
-  .photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .find-photo { display: block; position: relative; overflow: hidden; background: var(--color-sand-dark); height: 100%; min-height: 460px; max-height: 600px; }
+  .find-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
   /* Inset map badge */
   .map-badge {
     position: absolute; bottom: 22px; right: 22px;
-    background: #fff; padding: 12px; width: 180px;
+    background: white; padding: 12px; width: 180px;
     box-shadow: 0 12px 30px rgba(0,0,0,0.22);
   }
   .map-badge .map {
-    background: var(--teal-tint);
+    background: rgba(61,138,138,0.08);
     height: 110px; position: relative; overflow: hidden;
   }
   .map-badge .map svg { width: 100%; height: 100%; }
-  .map-badge .label {
+  .map-badge .map-label {
     margin-top: 8px;
-    font-family: var(--mono); font-size: 9px; letter-spacing: 0.22em;
-    color: var(--ink-muted); text-align: center;
+    font-family: var(--font-stamp); font-size: 9px; letter-spacing: 0.22em;
+    color: rgba(23,20,16,0.4); text-align: center; text-transform: uppercase;
   }
 
   /* Info side */
@@ -154,84 +134,67 @@ const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
     display: flex; flex-direction: column; justify-content: center;
   }
   .place-eyebrow {
-    font-family: var(--sans); font-size: 11px; letter-spacing: 0.32em;
-    color: var(--teal); font-weight: 500; text-transform: uppercase;
+    font-family: var(--font-stamp); font-size: 11px; letter-spacing: 0.32em;
+    color: var(--color-teal); font-weight: 500; text-transform: uppercase;
   }
   .place-name {
-    font-family: var(--serif); font-style: italic;
-    font-size: 52px; line-height: 0.98;
-    margin: 16px 0 8px;
+    font-family: var(--font-display); font-style: italic;
+    font-size: 3.25rem; line-height: 0.98;
+    margin: 16px 0 8px; color: var(--color-dark);
   }
-  .place-sub { font-size: 15px; color: var(--ink-soft); margin: 0 0 20px; }
+  .place-sub { font-size: 15px; color: rgba(23,20,16,0.5); margin: 0 0 20px; font-family: var(--font-body); }
 
   /* Fields with dotted leader */
-  .field {
+  .fu-field {
     display: grid; grid-template-columns: auto 1fr auto;
     align-items: baseline; gap: 14px;
     padding: 10px 0;
-    border-bottom: 1px dotted var(--cream-deep);
+    border-bottom: 1px dotted var(--color-sand-dark);
   }
-  .field:last-child { border-bottom: none; }
-  .field .label {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.24em;
-    color: var(--ink-muted); text-transform: uppercase;
+  .fu-field:last-child { border-bottom: none; }
+  .fu-field-label {
+    font-family: var(--font-stamp); font-size: 10px; letter-spacing: 0.24em;
+    color: rgba(23,20,16,0.4); text-transform: uppercase;
   }
-  .field .leader { border-top: 1px dotted #C5BFAD; transform: translateY(-2px); }
-  .field .value {
-    font-family: var(--serif); font-style: italic;
-    font-size: 19px; color: var(--ink);
+  .fu-leader { border-top: 1px dotted rgba(23,20,16,0.2); transform: translateY(-2px); }
+  .fu-value {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 19px; color: var(--color-dark);
   }
-  .field.accent .label { color: var(--coral); }
+  .fu-field--accent .fu-field-label { color: var(--color-teal-dark); }
 
   /* Actions */
   .find-actions { display: flex; gap: 12px; margin-top: 28px; }
-  .btn {
-    font-family: var(--sans); font-weight: 500; cursor: pointer;
-    padding: 18px 36px; border: none; text-decoration: none;
-    display: inline-block; text-align: center;
-  }
-  .btn-primary {
-    background: var(--teal); color: #fff;
-    font-size: 12px; letter-spacing: 0.3em; flex: 1.3;
-    transition: background 0.2s ease;
-  }
-  .btn-primary:hover { background: var(--teal-deep); }
-  .btn-ghost {
-    background: transparent; color: var(--teal);
-    border: 1.5px solid var(--teal);
-    font-size: 12px; letter-spacing: 0.22em; flex: 1;
-    transition: all 0.2s ease;
-  }
-  .btn-ghost:hover { background: var(--teal); color: #fff; }
+  .find-actions .btn-primary { flex: 1.3; }
+  .find-actions .btn-outline { flex: 1; }
 
   /* Responsive */
   @media (max-width: 960px) {
     .find-section { padding: 88px 40px; }
     .sec-head { margin-bottom: 48px; }
     .find-card { grid-template-columns: 1fr; }
-    .photo-side, .photo { min-height: 380px; }
+    .photo-side, .find-photo { min-height: 380px; }
     .info-side { padding: 48px 40px; }
-    .place-name { font-size: 52px; }
+    .place-name { font-size: 3.25rem; }
   }
   @media (max-width: 640px) {
     .find-section { padding: 72px 20px; }
     .sec-head { margin-bottom: 40px; }
-    .title { font-size: 44px; }
-    .photo-side, .photo { min-height: 320px; }
+    .photo-side, .find-photo { min-height: 320px; }
     .info-side { padding: 36px 24px 32px; }
     .place-eyebrow { font-size: 10px; letter-spacing: 0.26em; }
-    .place-name { font-size: 42px; margin-top: 16px; }
+    .place-name { font-size: 2.625rem; margin-top: 16px; }
     .place-sub { font-size: 15px; margin-bottom: 24px; }
 
-    .field { grid-template-columns: auto 1fr; gap: 12px; padding: 12px 0; }
-    .field .leader { display: none; }
-    .field .value { font-size: 18px; justify-self: end; text-align: right; }
+    .fu-field { grid-template-columns: auto 1fr; gap: 12px; padding: 12px 0; }
+    .fu-leader { display: none; }
+    .fu-value { font-size: 18px; justify-self: end; text-align: right; }
 
     .find-actions { flex-direction: column; gap: 10px; margin-top: 32px; }
-    .btn { padding: 16px 24px; font-size: 11px; width: 100%; }
 
     .map-badge { width: 140px; padding: 10px; bottom: 14px; right: 14px; }
     .map-badge .map { height: 80px; }
-    .map-badge .label { font-size: 8px; }
+    .map-badge .map-label { font-size: 8px; }
   }
 </style>
+

@@ -1,12 +1,4 @@
 ---
-// src/components/HappyHour.astro
-// Coco Maya — Happy Hour section
-// Drop-in replacement for the current Happy Hour section.
-//
-// Image paths default to /public/images/... — change props if yours differ.
-// Required Google Fonts (add to your base Layout if not already):
-//   Cormorant Garamond (ital 400–600), Inter (400–600), JetBrains Mono (400–500)
-
 interface Props {
   cocktailImage?: string;
   patioImage?: string;
@@ -24,9 +16,9 @@ const {
 
 <section class="hh-section" aria-labelledby="hh-title">
   <div class="sec-head">
-    <div class="eyebrow">Every day · 3 to 5</div>
-    <h2 id="hh-title" class="title">Happy Hour</h2>
-    <p class="sub">
+    <span class="eyebrow mx-auto block">Every day · 3 to 5</span>
+    <h2 id="hh-title" class="hh-title">Happy Hour</h2>
+    <p class="hh-sub">
       Discounted cocktails, wines, and select bites every single day of the week —
       on the elevated patio, where the breeze comes off India Street.
     </p>
@@ -35,22 +27,22 @@ const {
   <div class="hh-grid">
     <!-- Card 1 — WHEN + HOURS -->
     <article class="hh-card">
-      <div class="photo">
+      <div class="hh-photo">
         <img src={cocktailImage} alt="Coco Maya signature cocktails on the patio" loading="lazy" />
       </div>
-      <div class="body">
-        <span class="tag teal">★ Daily ★</span>
+      <div class="hh-body">
+        <span class="hh-tag hh-tag--teal">★ Daily ★</span>
         <div class="hh-hours-row">
-          <div class="col">
-            <div class="label">When</div>
-            <div class="big">Daily</div>
-            <div class="sub-small">Monday through Sunday</div>
+          <div class="hh-col">
+            <div class="hh-label">When</div>
+            <div class="hh-big">Daily</div>
+            <div class="hh-sub-small">Monday through Sunday</div>
           </div>
-          <div class="divider"></div>
-          <div class="col accent">
-            <div class="label">Hours</div>
-            <div class="big">3 – 5pm</div>
-            <div class="sub-small">Two golden hours</div>
+          <div class="hh-divider"></div>
+          <div class="hh-col hh-col--accent">
+            <div class="hh-label">Hours</div>
+            <div class="hh-big">3 – 5pm</div>
+            <div class="hh-sub-small">Two golden hours</div>
           </div>
         </div>
       </div>
@@ -58,67 +50,49 @@ const {
 
     <!-- Card 2 — WHERE -->
     <article class="hh-card">
-      <div class="photo">
+      <div class="hh-photo">
         <img src={patioImage} alt="The elevated patio and bar area at Coco Maya" loading="lazy" />
       </div>
-      <div class="body">
-        <span class="tag coral">Where</span>
+      <div class="hh-body">
+        <span class="hh-tag hh-tag--accent">Where</span>
         <div class="hh-where">
-          <div class="label">Location</div>
-          <div class="big">Elevated Patio<br />&amp; Bar Area</div>
-          <div class="addr">{addressLine}</div>
+          <div class="hh-label">Location</div>
+          <div class="hh-big">Elevated Patio<br />&amp; Bar Area</div>
+          <div class="hh-addr">{addressLine}</div>
         </div>
       </div>
     </article>
   </div>
 
   <div class="hh-cta">
-    <a href={menuHref} class="btn btn-primary">SEE HAPPY HOUR MENU</a>
+    <a href={menuHref} class="btn-primary">SEE HAPPY HOUR MENU</a>
   </div>
 </section>
 
 <style>
   .hh-section {
-    --cream-deep: #F1E8D2;
-    --ink: #1A2624;
-    --ink-soft: #5C6664;
-    --ink-muted: #8A918F;
-    --teal: #2E7873;
-    --teal-deep: #1F5752;
-    --coral: #D67D5C;
-    --paper-shadow: 0 1px 2px rgba(40,30,15,0.04), 0 30px 60px -22px rgba(40,30,15,0.18);
-    --serif: "Cormorant Garamond", "Playfair Display", Georgia, serif;
-    --sans: "Inter", "Helvetica Neue", system-ui, sans-serif;
-    --mono: "JetBrains Mono", "IBM Plex Mono", monospace;
-
-    background: #E8D8B5;
-    padding: 80px 80px;
-    font-family: var(--sans);
-    color: var(--ink);
+    background: var(--color-sand);
+    padding: 96px 80px;
+    font-family: var(--font-body);
+    color: var(--color-dark);
   }
 
   /* Header */
   .sec-head { text-align: center; margin-bottom: 44px; }
-  .eyebrow {
-    font-family: var(--sans);
-    font-size: 12px;
-    letter-spacing: 0.32em;
-    font-weight: 500;
-    color: var(--teal-deep);
-    text-transform: uppercase;
-  }
-  .title {
-    font-family: var(--serif);
+  .hh-title {
+    font-family: var(--font-display);
     font-style: italic;
     font-weight: 400;
-    font-size: clamp(44px, 5.5vw, 72px);
+    font-size: clamp(2.75rem, 5.5vw, 4.5rem);
     line-height: 1.02;
     letter-spacing: -0.01em;
-    margin: 18px 0 0;
+    margin: 0.75rem 0 0;
+    color: var(--color-dark);
   }
-  .sub {
-    max-width: 540px; margin: 18px auto 0;
-    color: var(--ink-soft); font-size: 15px; line-height: 1.55;
+  .hh-sub {
+    max-width: 540px; margin: 1rem auto 0;
+    color: rgba(23,20,16,0.55); font-size: 0.9375rem; line-height: 1.55;
+    font-family: var(--font-body);
   }
 
   /* Grid */
@@ -129,85 +103,73 @@ const {
 
   /* Card */
   .hh-card {
-    background: #fff;
-    box-shadow: var(--paper-shadow);
+    background: var(--color-cream);
+    border: 1px solid rgba(61,138,138,0.14);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05), 0 8px 28px rgba(0,0,0,0.07);
     display: grid; grid-template-rows: 1fr auto;
     overflow: hidden; position: relative;
   }
-  .photo { display: block; position: relative; overflow: hidden; background: #E8D9B8; aspect-ratio: 16 / 9; }
-  .photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+  .hh-photo { display: block; position: relative; overflow: hidden; background: var(--color-sand-dark); aspect-ratio: 16 / 9; }
+  .hh-photo img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
 
-  .body { padding: 30px 36px 32px; position: relative; }
-  .tag {
+  .hh-body { padding: 30px 36px 32px; position: relative; }
+  .hh-tag {
     position: absolute; top: -22px; left: 44px;
     padding: 8px 14px;
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.3em;
-    color: #fff; text-transform: uppercase;
+    font-family: var(--font-stamp); font-size: 10px; font-weight: 500; letter-spacing: 0.3em;
+    color: white; text-transform: uppercase;
   }
-  .tag.teal { background: var(--teal); }
-  .tag.coral { background: var(--coral); }
+  .hh-tag--teal { background: var(--color-teal); }
+  .hh-tag--accent { background: var(--color-teal-dark); }
 
   /* Hours row */
   .hh-hours-row {
     display: grid; grid-template-columns: 1fr 1px 1fr;
     align-items: center; gap: 28px;
   }
-  .hh-hours-row .divider { width: 1px; height: 60px; background: var(--cream-deep); justify-self: center; }
-  .hh-hours-row .col .label {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.26em;
-    color: var(--ink-muted); margin-bottom: 8px; text-transform: uppercase;
+  .hh-divider { width: 1px; height: 60px; background: var(--color-sand-dark); justify-self: center; }
+  .hh-col .hh-label {
+    font-family: var(--font-stamp); font-size: 10px; font-weight: 500; letter-spacing: 0.26em;
+    color: rgba(23,20,16,0.4); margin-bottom: 8px; text-transform: uppercase;
   }
-  .hh-hours-row .col.accent .label { color: var(--coral); }
-  .hh-hours-row .col .big {
-    font-family: var(--serif); font-style: italic;
-    font-size: 34px; line-height: 1; color: var(--ink);
+  .hh-col--accent .hh-label { color: var(--color-teal-dark); }
+  .hh-col .hh-big {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 2.125rem; line-height: 1; color: var(--color-dark);
   }
-  .hh-hours-row .col .sub-small { font-size: 12px; color: var(--ink-soft); margin-top: 6px; }
+  .hh-col .hh-sub-small { font-size: 12px; color: rgba(23,20,16,0.5); margin-top: 6px; font-family: var(--font-body); }
 
   /* Where */
-  .hh-where .label {
-    font-family: var(--mono); font-size: 10px; letter-spacing: 0.26em;
-    color: var(--ink-muted); margin-bottom: 8px; text-transform: uppercase;
+  .hh-where .hh-label {
+    font-family: var(--font-stamp); font-size: 10px; font-weight: 500; letter-spacing: 0.26em;
+    color: rgba(23,20,16,0.4); margin-bottom: 8px; text-transform: uppercase;
   }
-  .hh-where .big {
-    font-family: var(--serif); font-style: italic;
-    font-size: 28px; line-height: 1.1; color: var(--ink); margin-bottom: 6px;
+  .hh-where .hh-big {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 1.75rem; line-height: 1.1; color: var(--color-dark); margin-bottom: 6px;
   }
-  .hh-where .addr { font-size: 14px; color: var(--ink-soft); }
+  .hh-where .hh-addr { font-size: 14px; color: rgba(23,20,16,0.5); font-family: var(--font-body); }
 
   /* CTA */
   .hh-cta { display: flex; justify-content: center; margin-top: 44px; }
-  .btn {
-    font-family: var(--sans); font-weight: 500; cursor: pointer;
-    padding: 18px 36px; border: none; text-decoration: none;
-    display: inline-block;
-  }
-  .btn-primary {
-    background: var(--teal); color: #fff;
-    font-size: 12px; letter-spacing: 0.3em;
-    transition: background 0.2s ease;
-  }
-  .btn-primary:hover { background: var(--teal-deep); }
 
   /* Responsive */
   @media (max-width: 960px) {
     .hh-section { padding: 88px 40px; }
     .sec-head { margin-bottom: 48px; }
     .hh-grid { grid-template-columns: 1fr; gap: 24px; }
-    .body { padding: 32px 32px 36px; }
+    .hh-body { padding: 32px 32px 36px; }
   }
   @media (max-width: 640px) {
     .hh-section { padding: 72px 20px; }
     .sec-head { margin-bottom: 40px; }
-    .title { font-size: 44px; }
-    .sub { font-size: 15px; }
-    .body { padding: 28px 22px; }
-    .tag { left: 22px; }
+    .hh-body { padding: 28px 22px; }
+    .hh-tag { left: 22px; }
     .hh-hours-row { grid-template-columns: 1fr; gap: 16px; }
-    .hh-hours-row .divider { display: none; }
-    .hh-hours-row .col .big { font-size: 32px; }
-    .hh-where .big { font-size: 26px; }
-    .btn { padding: 16px 24px; font-size: 11px; }
+    .hh-divider { display: none; }
+    .hh-col .hh-big { font-size: 1.875rem; }
+    .hh-where .hh-big { font-size: 1.5rem; }
     .hh-cta { margin-top: 40px; }
   }
 </style>
+
