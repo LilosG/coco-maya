@@ -2,11 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
-import CTASection from "../components/CTASection.astro";
-import InfoCard from "../components/InfoCard.astro";
 import { SITE } from "../data/site";
-import { FEATURED_COCKTAILS, FEATURED_FOOD, FEATURED_BRUNCH } from "../data/menu";
-import { RECURRING_EVENTS } from "../data/events";
+import { FEATURED_COCKTAILS, FEATURED_FOOD } from "../data/menu";
 import HappyHour from "../components/HappyHour.astro";
 import FindUs from "../components/FindUs.astro";
 
@@ -67,7 +64,7 @@ const infoBar = [
   <!-- ── INFO BAR ──────────────────────────────────────── -->
   <section class="bg-[var(--color-teal)]">
     <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/20">
-      {infoBar.map((item, i) => (
+      {infoBar.map((item) => (
         <div class="flex flex-col items-center justify-center py-6 px-4 text-center">
           <span class="eyebrow-light mb-2" style="color: rgba(255,255,255,0.55);">{item.label}</span>
           {item.href ? (

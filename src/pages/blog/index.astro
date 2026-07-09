@@ -1,16 +1,20 @@
 ---
+import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import PageHero from "../../components/PageHero.astro";
 
-const posts = [
-  { slug: "best-restaurants-little-italy-san-diego", title: "Best Restaurants in Little Italy San Diego | 2026 Guide", excerpt: "Little Italy has become one of San Diego's most competitive dining neighborhoods. Here is the definitive guide to the best restaurants in Little Italy San Diego — and why Coco Maya belongs at the top of the list.", date: "2026-05-01", image: "/images/venue-hero-bar.jpg" },
-  { slug: "best-brunch-san-diego", title: "Best Brunch in San Diego 2026 | Little Italy & Beyond", excerpt: "San Diego's brunch scene has exploded. From Little Italy to the beaches, here is where to find the best brunch in San Diego — and why the elevated patio at Coco Maya is the standard.", date: "2026-04-15", image: "/images/food-brunch-sandwich.jpg" },
-  { slug: "best-happy-hour-little-italy", title: "Best Happy Hour in Little Italy San Diego | 2026 Guide", excerpt: "Finding the right happy hour in Little Italy takes knowing where to look. We have rounded up the best deals and the best vibes — with one clear winner on India Street.", date: "2026-04-01", image: "/images/cocktail-happy-hour-group.jpg" },
-  { slug: "bachelorette-party-san-diego", title: "Bachelorette Party Ideas in San Diego | Little Italy Guide", excerpt: "Planning a bachelorette in San Diego? Little Italy is the neighborhood. Here is how to build the perfect bachelorette weekend — with Coco Maya as your anchor stop.", date: "2026-03-15", image: "/images/cocktail-tower-pink.jpg" },
-  { slug: "things-to-do-little-italy-san-diego", title: "Things to Do in Little Italy San Diego | Local Guide", excerpt: "Little Italy is more than a restaurant row. From morning coffee to late-night cocktails, here is how locals actually spend time in one of San Diego's best neighborhoods.", date: "2026-03-01", image: "/images/venue-patio.jpg" },
-];
+const allPosts = await getCollection("blog");
+const posts = allPosts
+  .map((post) => ({
+    slug: post.id,
+    title: post.data.title,
+    excerpt: post.data.description,
+    date: post.data.date,
+    image: post.data.image,
+  }))
+  .sort((a, b) => b.date.valueOf() - a.date.valueOf());
 ---
 <BaseLayout title="Blog | Coco Maya | San Diego Dining, Brunch & Little Italy Guides" description="San Diego restaurant guides, brunch recommendations, happy hour guides, and Little Italy content from Coco Maya by Miss B's.">
   <Nav />

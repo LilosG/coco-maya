@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import PageHero from "../components/PageHero.astro";
+import FAQSection from "../components/FAQSection.astro";
+import CTASection from "../components/CTASection.astro";
+import { GENERAL_FAQS } from "../data/faq";
+import { faqPageSchema } from "../lib/schema";
+
+const schema = [faqPageSchema(GENERAL_FAQS)];
+---
+<BaseLayout
+  title="FAQ | Coco Maya | Little Italy San Diego"
+  description="Answers to common questions about reservations, hours, brunch, happy hour, private events, and parking at Coco Maya in Little Italy, San Diego."
+  image="/images/venue-hero-bar.jpg"
+  extraSchema={schema}
+>
+  <Nav />
+
+  <PageHero
+    label="Good to Know"
+    title="Frequently Asked Questions"
+    subtitle="Everything you need to know about visiting Coco Maya in Little Italy."
+  />
+
+  <FAQSection faqs={GENERAL_FAQS} showHeading={false} />
+
+  <CTASection
+    title="Still Have a Question?"
+    subtitle="Call or email us directly and we'll get you sorted."
+    primaryLabel="Call (619) 943-9439"
+    primaryHref="tel:+16199439439"
+    secondaryLabel="Email Us"
+    secondaryHref="mailto:info@inlovewiththecoco.com"
+    dark={true}
+  />
+  <Footer />
+</BaseLayout>
