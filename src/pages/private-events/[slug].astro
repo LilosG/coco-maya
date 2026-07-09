@@ -6,6 +6,8 @@ import PageHero from "../../components/PageHero.astro";
 import CTASection from "../../components/CTASection.astro";
 import FAQSection from "../../components/FAQSection.astro";
 import EventInquiryForm from "../../components/EventInquiryForm.astro";
+import InfoCard from "../../components/InfoCard.astro";
+import ContentCard from "../../components/ContentCard.astro";
 import { SITE } from "../../data/site";
 import { PRIVATE_EVENT_TYPES } from "../../data/privateEvents";
 import { faqPageSchema } from "../../lib/schema";
@@ -42,6 +44,17 @@ const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.n
     </div>
   </PageHero>
 
+  <!-- SPECS -->
+  <section class="py-16 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5">
+      <InfoCard label="Guests" value={event.specs.guests} accent={true} />
+      <InfoCard label="Typical Duration" value={event.specs.duration} />
+      <InfoCard label="Space" value={event.specs.space} />
+    </div>
+  </section>
+
+  <div class="cm-divider"></div>
+
   <!-- INTRO + GALLERY IMAGE -->
   <section class="py-24 px-6 bg-[var(--color-cream)]">
     <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
@@ -73,22 +86,64 @@ const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.n
     </div>
   </section>
 
-  <!-- HIGHLIGHTS -->
-  <section class="py-20 px-6 bg-[var(--color-sand-dark)]/25">
-    <div class="max-w-4xl mx-auto">
+  <!-- GALLERY GRID -->
+  <section class="py-20 px-6 bg-[var(--color-sand-dark)]/20">
+    <div class="max-w-6xl mx-auto">
       <div class="text-center mb-12">
+        <span class="eyebrow">The Setting</span>
+        <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3rem)] text-[var(--color-dark)]">
+          A Closer Look
+        </h2>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+        {event.gallery.map((item) => (
+          <div class="cm-media-card group">
+            <div class="aspect-[4/5] overflow-hidden">
+              <img
+                src={item.image}
+                alt={item.alt}
+                class="w-full h-full object-cover"
+                width="500" height="625" loading="lazy"
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HIGHLIGHTS -->
+  <section class="py-24 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
         <span class="eyebrow">What's Included</span>
         <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3rem)] text-[var(--color-dark)]">
           Built for {event.name.toLowerCase()}
         </h2>
       </div>
-      <div class="space-y-0 max-w-2xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
         {event.highlights.map((item) => (
-          <div class="cm-event-item">
-            <span class="cm-event-item-dot"></span>
-            <span class="cm-event-item-label">{item}</span>
-          </div>
+          <ContentCard label={item.label} body={item.detail} />
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ATMOSPHERE BREAK -->
+  <section class="relative h-[55vh] overflow-hidden">
+    <img
+      src={event.atmosphereImage}
+      alt={event.atmosphereImageAlt}
+      class="w-full h-full object-cover object-center"
+      width="1800" height="900" loading="lazy"
+    />
+    <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.3) 60%, rgba(0,0,0,0.1) 100%);"></div>
+    <div class="absolute inset-0 flex items-center px-8 md:px-20">
+      <div class="max-w-lg">
+        <span class="eyebrow-light">{event.eyebrow}</span>
+        <p class="font-[family-name:var(--font-display)] italic text-white text-[clamp(1.75rem,4vw,3rem)] leading-tight">
+          {event.atmosphereLine}
+        </p>
       </div>
     </div>
   </section>
