@@ -247,7 +247,7 @@ const infoBar = [
     </div>
   </section>
   */}
-  <HappyHour menuHref="/happy-hour" />
+  <HappyHour menuHref="/happy-hour" addressLine={`${SITE.address.street} · ${SITE.address.neighborhood}`} />
 
   <!-- ── PRIVATE EVENTS ─────────────────────────────────── -->
   <section class="py-28 px-6 bg-[var(--color-cream)]">
@@ -347,6 +347,7 @@ const infoBar = [
     cityLine={`${SITE.address.neighborhood}, ${SITE.address.city}, ${SITE.address.state} ${SITE.address.zip}`}
     phone={SITE.phone.display}
     mapsHref={SITE.address.mapsUrl}
+    openLine={`${todayHours} Today`}
   />
 
   <Footer />
