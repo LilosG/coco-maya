@@ -96,9 +96,8 @@ const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.n
   <FAQSection faqs={event.faqs} label="Questions" title={`${event.name} FAQ`} />
 
   <EventInquiryForm
-    label="Book Your Event"
-    title={`Inquire About Your ${event.name}`}
-    subtitle={`Share your date, headcount, and vision for your ${event.name.toLowerCase()} and we'll follow up within 24 hours with a custom proposal.`}
+    label={`Book Your ${event.name}`}
+    subtitle="Share your date, headcount, and vision below and we'll follow up within 24 hours."
   />
 
   <CTASection

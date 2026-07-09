@@ -3,7 +3,6 @@ import { SITE } from "../data/site";
 
 interface Props {
   label?: string;
-  title?: string;
   subtitle?: string;
   formUrl?: string;
   dark?: boolean;
@@ -11,8 +10,7 @@ interface Props {
 
 const {
   label = "Book Your Event",
-  title = "Start Your Event Inquiry",
-  subtitle = "Tell us your date, headcount, and vision. We'll follow up within 24 hours with a custom proposal.",
+  subtitle,
   formUrl = SITE.inquiryForm.url,
   dark = false,
 } = Astro.props;
@@ -23,13 +21,13 @@ const uid = Math.random().toString(36).slice(2, 9);
 <section class:list={["eif-section", dark && "eif-section--dark"]}>
   <div class="eif-head">
     <span class:list={dark ? "eyebrow-light" : "eyebrow"}>{label}</span>
-    <h2 class:list={["eif-title", dark && "eif-title--dark"]}>{title}</h2>
     {subtitle && (
       <p class:list={["eif-sub", dark && "eif-sub--dark"]}>{subtitle}</p>
     )}
   </div>
 
   <div class="eif-frame">
+    <div class="eif-accent"></div>
     <div class="eif-loading" id={`eif-loading-${uid}`}>
       <span class="eif-loading-dot"></span>
       <span class="eif-loading-dot"></span>
@@ -57,7 +55,7 @@ const uid = Math.random().toString(36).slice(2, 9);
 
 <style>
   .eif-section {
-    padding: 96px 24px;
+    padding: 88px 24px 100px;
     background: var(--color-cream);
   }
   .eif-section--dark {
@@ -66,25 +64,15 @@ const uid = Math.random().toString(36).slice(2, 9);
 
   .eif-head {
     text-align: center;
-    max-width: 640px;
-    margin: 0 auto 3rem;
-  }
-  .eif-title {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-size: clamp(2rem, 4vw, 3rem);
-    color: var(--color-dark);
-    line-height: 1.1;
-  }
-  .eif-title--dark {
-    color: white;
+    max-width: 520px;
+    margin: 0 auto 2rem;
   }
   .eif-sub {
     font-family: var(--font-body);
     font-size: 0.9375rem;
     line-height: 1.6;
     color: rgba(23, 20, 16, 0.55);
-    margin-top: 0.875rem;
+    margin-top: 0.625rem;
   }
   .eif-sub--dark {
     color: rgba(255, 255, 255, 0.55);
@@ -92,19 +80,23 @@ const uid = Math.random().toString(36).slice(2, 9);
 
   .eif-frame {
     position: relative;
-    max-width: 760px;
+    max-width: 680px;
     margin: 0 auto;
     background: white;
-    border: 1px solid rgba(61, 138, 138, 0.14);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05), 0 12px 40px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 4px 16px rgba(23, 20, 16, 0.06), 0 24px 64px rgba(23, 20, 16, 0.12);
     min-height: 500px;
+    overflow: hidden;
+  }
+
+  .eif-accent {
+    height: 4px;
+    background: linear-gradient(to right, var(--color-teal), var(--color-teal-light));
   }
 
   .eif-iframe {
     display: block;
     width: 100%;
-    height: 800px;
-    max-height: 90vh;
+    height: 1500px;
     border: 0;
     opacity: 0;
     transition: opacity 0.4s ease;
@@ -117,7 +109,7 @@ const uid = Math.random().toString(36).slice(2, 9);
 
   .eif-loading {
     position: absolute;
-    inset: 0;
+    inset: 4px 0 0 0;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -147,7 +139,8 @@ const uid = Math.random().toString(36).slice(2, 9);
   }
 
   @media (max-width: 640px) {
-    .eif-section { padding: 72px 16px; }
-    .eif-iframe { height: 900px; }
+    .eif-section { padding: 64px 12px 80px; }
+    .eif-iframe { height: 1650px; }
   }
 </style>
+
