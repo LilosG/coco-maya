@@ -1,6 +1,7 @@
 ---
 import "../styles/global.css";
 import { SITE } from "../data/site";
+import Analytics from "../components/Analytics.astro";
 
 interface Props {
   title: string;
@@ -79,6 +80,7 @@ const schema = {
     {extraSchema.map((block) => (
       <script type="application/ld+json" set:html={JSON.stringify(block)} is:inline />
     ))}
+    <Analytics />
   </head>
   <body>
     <slot />
