@@ -8,6 +8,7 @@ const blog = defineCollection({
     seoTitle: z.string(),
     description: z.string(),
     date: z.coerce.date(),
+    updatedDate: z.coerce.date().optional(),
     image: z.string(),
     imageAlt: z.string(),
   }),

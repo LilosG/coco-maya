@@ -72,6 +72,9 @@ const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.n
         <div class="flex flex-wrap gap-4 mt-4">
           <a href={mailtoHref} class="btn-primary">Email Us</a>
           <a href="/private-events" class="btn-outline">All Private Events</a>
+          {event.relatedPost && (
+            <a href={event.relatedPost.href} class="btn-outline">{event.relatedPost.label}</a>
+          )}
         </div>
       </div>
       <div class="relative">

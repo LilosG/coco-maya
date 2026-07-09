@@ -10,6 +10,7 @@ export interface PrivateEventType {
   seoTitle: string;
   seoDescription: string;
   intro: string[];
+  relatedPost?: { label: string; href: string };
   specs: {
     guests: string;
     duration: string;
@@ -42,6 +43,10 @@ export const PRIVATE_EVENT_TYPES: PrivateEventType[] = [
       "We build bachelorette packages around your group size and vibe, whether that's a relaxed brunch send-off or a full evening buyout with the patio to yourselves.",
       "Most groups book a reserved section of the patio for a few hours, order off a custom drink and small-bites package, and let us handle the rest, timing, seating, and a coordinator who's actually paying attention to your group all day.",
     ],
+    relatedPost: {
+      label: "Read the Bachelorette Guide",
+      href: "/blog/bachelorette-party-san-diego",
+    },
     specs: {
       guests: "8 – 120",
       duration: "2 – 3 hours",
@@ -108,6 +113,10 @@ export const PRIVATE_EVENT_TYPES: PrivateEventType[] = [
       "We handle custom menus, drink packages, and the small details, birthday cake included, so you can actually be at your own party instead of running it.",
       "Milestone birthdays tend to book the full patio or a full buyout, while smaller, more intimate celebrations usually land in the private dining room, warmer, quieter, and still connected to the bar.",
     ],
+    relatedPost: {
+      label: "Read the Rooftop Birthday Guide",
+      href: "/blog/rooftop-birthday-party-venues-san-diego",
+    },
     specs: {
       guests: "10 – 180",
       duration: "2 – 4 hours",
@@ -174,6 +183,10 @@ export const PRIVATE_EVENT_TYPES: PrivateEventType[] = [
       "We build a custom menu around your families' preferences and keep the evening moving so toasts, dinner, and conversation all have their moment.",
       "Many couples use the rehearsal dinner to introduce two families for the first time. We keep the room warm and the pacing relaxed, plated or family-style, so the focus stays on the people at the table.",
     ],
+    relatedPost: {
+      label: "Read the Rehearsal Dinner Guide",
+      href: "/blog/rehearsal-dinner-restaurants-little-italy-san-diego",
+    },
     specs: {
       guests: "15 – 60",
       duration: "3 hours",
@@ -240,6 +253,10 @@ export const PRIVATE_EVENT_TYPES: PrivateEventType[] = [
       "We handle menu customization, timing around presentations or toasts, and AV needs so the logistics stay invisible and the evening runs smoothly.",
       "Corporate bookings range from a breakfast meeting for ten to a full evening buyout for a company-wide gathering. Either way, we build the package around your schedule, not the other way around.",
     ],
+    relatedPost: {
+      label: "Read the Corporate Events Guide",
+      href: "/blog/corporate-event-venues-little-italy-san-diego",
+    },
     specs: {
       guests: "10 – 100",
       duration: "2 – 3 hours",
