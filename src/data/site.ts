@@ -32,7 +32,7 @@ export const SITE = {
   },
 
   order: {
-    url: 'https://inlovewiththecoco.com/order',
+    url: 'https://order.toasttab.com/online/cocomaya-1660-india-st',
     label: 'Order Online',
   },
 
