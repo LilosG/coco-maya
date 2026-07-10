@@ -5,6 +5,7 @@ import Footer from "../../components/Footer.astro";
 import PageHero from "../../components/PageHero.astro";
 import CTASection from "../../components/CTASection.astro";
 import InfoCard from "../../components/InfoCard.astro";
+import MenuShowcase from "../../components/MenuShowcase.astro";
 import { SITE } from "../../data/site";
 import { FEATURED_BRUNCH } from "../../data/menu";
 
@@ -50,6 +51,22 @@ const drinks = [
       <InfoCard label="Location" value="Little Italy" sub="1660 India St, San Diego" />
     </div>
   </section>
+
+  <!-- BRUNCH FAVORITES SHOWCASE -->
+  <div id="menu">
+    <MenuShowcase
+      eyebrow="On the Menu"
+      title="Brunch Favorites"
+      items={FEATURED_BRUNCH.map((item) => ({
+        name: item.name,
+        description: item.description,
+        image: item.image,
+        imageAlt: `${item.name} — brunch at Coco Maya Little Italy San Diego`,
+      }))}
+      ctaLabel="View Full Menu"
+      ctaHref="/menu"
+    />
+  </div>
 
   <div class="cm-divider"></div>
 
@@ -152,38 +169,6 @@ const drinks = [
           width="700" height="700" loading="lazy"
         />
         <div class="absolute -top-4 -left-4 w-full h-full border border-[var(--color-teal)]/25 -z-10 pointer-events-none"></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- BRUNCH MENU -->
-  <section id="menu" class="py-24 px-6 bg-[var(--color-cream)]">
-    <div class="max-w-4xl mx-auto">
-      <div class="mb-12">
-        <span class="eyebrow">On the Menu</span>
-        <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)]">Brunch Favorites</h2>
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 mb-12">
-        {FEATURED_BRUNCH.map((item) => (
-          <div class="cm-media-card group flex flex-col sm:flex-row">
-            <div class="w-full sm:w-32 flex-shrink-0 overflow-hidden aspect-square sm:aspect-auto">
-              <img
-                src={item.image}
-                alt={item.name}
-                class="w-full h-full object-cover"
-                width="128" height="128" loading="lazy"
-              />
-            </div>
-            <div class="p-5 flex-1">
-              <h3 class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-lg mb-1.5">{item.name}</h3>
-              <div class="w-5 h-px bg-[var(--color-teal)] mb-2.5"></div>
-              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/50 text-xs leading-relaxed">{item.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
-      <div class="text-center">
-        <a href="/menu" class="btn-outline">View Full Menu</a>
       </div>
     </div>
   </section>

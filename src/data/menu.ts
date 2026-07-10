@@ -15,6 +15,6 @@ export const FEATURED_FOOD = [
 export const FEATURED_BRUNCH = [
   { name: 'Brunch Sandwich', description: 'Scrambled eggs, bacon, brioche, seasonal fruit, potato wedges', category: 'brunch', image: '/images/food-brunch-sandwich.jpg' },
   { name: 'Brunch Bowl', description: 'Two eggs, black beans, rice, corn, chorizo hash', category: 'brunch', image: '/images/food-brunch-bowl.jpg' },
-  { name: 'Tacos al Fresco', description: 'Fresh tacos on the elevated patio', category: 'brunch', image: '/images/food-tacos-patio.jpg' },
-  { name: 'Mushroom Pasta', description: 'Wild mushroom rigatoni, truffle cream, chives', category: 'dinner', image: '/images/food-mushroom-pasta.jpg' },
+  { name: 'Pork Belly Benedict', description: 'Seared pork belly, poached egg, hollandaise, brioche, avocado', category: 'brunch', image: '/images/food-pork-belly-benedict.jpg' },
+  { name: 'Lobster Benedict', description: 'Poached lobster, poached egg, hollandaise, arugula, brioche', category: 'brunch', image: '/images/food-lobster-benedict.jpg' },
 ] as const;
