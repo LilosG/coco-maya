@@ -135,13 +135,17 @@ const infoBar = [
         {FEATURED_COCKTAILS.map((drink) => (
           <div class="cm-media-card group">
             <div class="aspect-square overflow-hidden">
-              <img
-                src={drink.image}
-                alt={`${drink.name} cocktail at Coco Maya Little Italy San Diego`}
-                class="w-full h-full object-cover"
-                width="400" height="400"
-                loading="lazy"
-              />
+              <picture>
+                <source srcset={drink.image.replace(/\.(jpg|jpeg|png)$/i, ".webp")} type="image/webp" />
+                <img
+                  src={drink.image}
+                  alt={`${drink.name} cocktail at Coco Maya Little Italy San Diego`}
+                  class="w-full h-full object-cover"
+                  width="400" height="400"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </picture>
             </div>
             <div class="p-5 border-t border-[var(--color-teal)]/15">
               <h3 class="font-[family-name:var(--font-stamp)] text-[var(--color-dark)] text-sm tracking-wide mb-1.5">{drink.name}</h3>

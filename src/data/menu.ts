@@ -1,7 +1,7 @@
 export const FEATURED_COCKTAILS = [
-  { name: 'Coco Mojito', description: 'House rum, fresh mint, lime, coconut water, soda', image: '/images/cocktail-mojito.jpg', featured: true },
-  { name: 'Patio Spritz', description: 'Light, floral, and perfect for the elevated patio', image: '/images/cocktail-patio-pair.jpg', featured: true },
-  { name: 'Cocktail Tower', description: 'Our signature pink cocktail tower — four frozen margaritas with fresh florals', image: '/images/cocktail-tower-pink.jpg', featured: true },
+  { name: 'Coconut Marg', description: 'A Coco Maya original', image: '/images/cocktail-coconut-marg.jpg', featured: true },
+  { name: 'Maya Marg', description: 'A Coco Maya original', image: '/images/cocktail-maya-marg.jpg', featured: true },
+  { name: 'Marquesitas Espresso Martini', description: 'A Coco Maya original', image: '/images/cocktail-marquesitas-espresso-martini.jpg', featured: true },
   { name: 'Pineapple Mezcal', description: 'Smoky mezcal, fresh pineapple, orchid garnish', image: '/images/cocktail-pineapple-rocks.jpg', featured: true },
 ] as const;
 
