@@ -65,7 +65,10 @@ import { FEATURED_COCKTAILS, FEATURED_FOOD, FEATURED_BRUNCH } from "../../data/m
         {FEATURED_FOOD.map((item) => (
           <div class="cm-media-card group">
             <div class="aspect-square overflow-hidden">
-              <img src={item.image} alt={item.name} class="w-full h-full object-cover" width="300" height="300" loading="lazy" />
+              <picture>
+                <source srcset={item.image.replace(/\.(jpg|jpeg|png)$/i, ".webp")} type="image/webp" />
+                <img src={item.image} alt={item.name} class="w-full h-full object-cover" width="300" height="300" loading="lazy" decoding="async" />
+              </picture>
             </div>
             <div class="p-5 border-t border-[var(--color-teal)]/12">
               <h3 class="font-[family-name:var(--font-stamp)] text-[var(--color-dark)] text-sm tracking-wide mb-1.5">{item.name}</h3>

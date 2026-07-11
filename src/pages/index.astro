@@ -199,19 +199,23 @@ const infoBar = [
           </h2>
         </div>
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/60 leading-relaxed text-[1.0625rem] lg:pb-2">
-          Modern American coastal cuisine built around fresh ingredients, bold flavors, and plates worth photographing. From skirt steak to lobster flatbread.
+          Modern American coastal cuisine built around fresh ingredients, bold flavors, and plates worth photographing. From prime ribeye to fresh tacos.
         </p>
       </div>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
         {FEATURED_FOOD.map((item) => (
           <div class="group relative overflow-hidden aspect-square">
-            <img
-              src={item.image}
-              alt={`${item.name} at Coco Maya San Diego Little Italy`}
-              class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-              width="500" height="500"
-              loading="lazy"
-            />
+            <picture>
+              <source srcset={item.image.replace(/\.(jpg|jpeg|png)$/i, ".webp")} type="image/webp" />
+              <img
+                src={item.image}
+                alt={`${item.name} at Coco Maya San Diego Little Italy`}
+                class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                width="500" height="500"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
             <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
             <div class="absolute bottom-0 left-0 right-0 p-4">
               <h3 class="font-[family-name:var(--font-stamp)] text-white text-sm tracking-wide">{item.name}</h3>

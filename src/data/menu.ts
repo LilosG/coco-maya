@@ -6,10 +6,10 @@ export const FEATURED_COCKTAILS = [
 ] as const;
 
 export const FEATURED_FOOD = [
-  { name: 'Skirt Steak', description: 'Grilled skirt steak, chimichurri, arugula, pickled onion', category: 'dinner', image: '/images/food-skirt-steak.jpg' },
-  { name: 'Street Tacos', description: 'Seasonal fillings, corn tortilla, cotija, micro herbs', category: 'dinner', image: '/images/food-tacos-chicken.jpg' },
-  { name: 'Lobster Flatbread', description: 'Lobster, mozzarella, fresh basil, tomato', category: 'dinner', image: '/images/food-lobster-flatbread.jpg' },
-  { name: 'The Spread', description: 'A full table of Coco Maya favorites — tacos, steak, seafood, and more', category: 'dinner', image: '/images/food-spread-overhead.jpg' },
+  { name: 'Prime Ribeye', description: 'Grilled prime ribeye, roasted carrots, charred tomato', category: 'dinner', image: '/images/food-prime-ribeye.jpg' },
+  { name: 'Tacos', description: 'Lobster, oxtail, and avocado tacos, corn tortilla, cotija', category: 'dinner', image: '/images/food-tacos-board.jpg' },
+  { name: 'Drunken Mussels', description: 'Mussels, garlic-wine broth, toasted bread', category: 'dinner', image: '/images/food-drunken-mussels.jpg' },
+  { name: 'Maine Lobster Roll', description: 'Maine lobster, toasted roll, lemon, fries', category: 'dinner', image: '/images/food-maine-lobster-roll.jpg' },
 ] as const;
 
 export const FEATURED_BRUNCH = [
