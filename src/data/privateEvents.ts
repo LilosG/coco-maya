@@ -379,8 +379,8 @@ export const PRIVATE_EVENT_TYPES: PrivateEventType[] = [
     eyebrow: "Full Venue Buyouts in Little Italy",
     shortDescription:
       "The patio after dark. City lights, tropical greenery, and the Little Italy skyline.",
-    heroImage: "/images/events-patio-night.jpg",
-    heroImageAlt: "Coco Maya patio at night during a full venue buyout in Little Italy San Diego",
+    heroImage: "/images/events-private-patio-day.jpg",
+    heroImageAlt: "Coco Maya rooftop patio in Little Italy San Diego, available for full venue buyouts",
     seoTitle: "Full Venue Buyout in Little Italy San Diego | Coco Maya Evening Events",
     seoDescription:
       "Book a full evening buyout at Coco Maya in Little Italy, San Diego. Private access to the entire patio, atrium bar, and dining room for up to 180 guests.",
