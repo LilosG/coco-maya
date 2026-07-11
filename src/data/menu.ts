@@ -2,7 +2,7 @@ export const FEATURED_COCKTAILS = [
   { name: 'Coconut Marg', description: 'A Coco Maya original', image: '/images/cocktail-coconut-marg.jpg', featured: true },
   { name: 'Maya Marg', description: 'A Coco Maya original', image: '/images/cocktail-maya-marg.jpg', featured: true },
   { name: 'Marquesitas Espresso Martini', description: 'A Coco Maya original', image: '/images/cocktail-marquesitas-espresso-martini.jpg', featured: true },
-  { name: 'Mango Guava Spritz', description: 'A Coco Maya original', image: '/images/cocktail-mango-guava-spritz.jpg', featured: true },
+  { name: 'Little Italy Southside', description: 'A Coco Maya original', image: '/images/cocktail-little-italy-southside.jpg', featured: true },
 ] as const;
 
 export const FEATURED_FOOD = [
