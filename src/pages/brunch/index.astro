@@ -7,19 +7,12 @@ import CTASection from "../../components/CTASection.astro";
 import InfoCard from "../../components/InfoCard.astro";
 import MenuShowcase from "../../components/MenuShowcase.astro";
 import { SITE } from "../../data/site";
-import { FEATURED_BRUNCH } from "../../data/menu";
+import { FEATURED_BRUNCH, FEATURED_BRUNCH_DRINKS } from "../../data/menu";
 
 const highlights = [
   { icon: "🥂", label: "Bottomless Brunch", body: "Bottomless mimosas, bloody marys, and select cocktails available every Saturday and Sunday." },
   { icon: "🌮", label: "Modern Coastal Plates", body: "Fresh seafood, seasonal produce, and elevated brunch classics from the Coco Maya kitchen." },
   { icon: "🌿", label: "The Elevated Patio", body: "Brunch on one of San Diego most distinctive patios. Pink striped umbrellas, tropical greenery, and the Little Italy skyline." },
-];
-
-const drinks = [
-  { name: "Bottomless Mimosas", description: "Classic, mango, or hibiscus. Keep them coming." },
-  { name: "Bloody Maya", description: "House bloody mary with mezcal, tajin rim, and fresh garnish." },
-  { name: "Paloma Spritz", description: "Tequila, fresh grapefruit, agave, sparkling water." },
-  { name: "Morning Margarita", description: "Blanco tequila, fresh lime, agave, salted rim." },
 ];
 ---
 <BaseLayout
@@ -139,39 +132,18 @@ const drinks = [
   </section>
 
   <!-- BRUNCH DRINKS -->
-  <section class="py-24 px-6 bg-[var(--color-dark)]">
-    <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
-      <div>
-        <span class="eyebrow-light">Brunch Drinks</span>
-        <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.25rem)] text-white leading-tight mb-6">
-          Bottomless and worth it
-        </h2>
-        <div class="rule-light"></div>
-        <p class="font-[family-name:var(--font-body)] text-white/55 leading-relaxed mb-10">
-          Bottomless brunch options available every Saturday and Sunday. Classic mimosas, bloody marys, and Coco Maya originals. Add bottomless to any brunch reservation.
-        </p>
-        <div class="space-y-0 divide-y divide-white/8">
-          {drinks.map((drink) => (
-            <div class="py-4 grid grid-cols-[1fr_auto] gap-4 items-start">
-              <div>
-                <p class="font-[family-name:var(--font-display)] italic text-white text-lg leading-tight">{drink.name}</p>
-                <p class="font-[family-name:var(--font-body)] text-white/45 text-sm mt-1">{drink.description}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-      <div class="relative">
-        <img
-          src="/images/cocktail-patio-pair.jpg"
-          alt="Bottomless brunch mimosas and cocktails — Coco Maya Little Italy San Diego"
-          class="w-full aspect-square object-cover"
-          width="700" height="700" loading="lazy"
-        />
-        <div class="absolute -top-4 -left-4 w-full h-full border border-[var(--color-teal)]/25 -z-10 pointer-events-none"></div>
-      </div>
-    </div>
-  </section>
+  <MenuShowcase
+    eyebrow="Brunch Drinks"
+    title="Bottomless and worth it"
+    subtitle="Bottomless brunch options available every Saturday and Sunday. Add bottomless mimosas to any brunch reservation."
+    items={FEATURED_BRUNCH_DRINKS.map((drink) => ({
+      name: drink.name,
+      description: drink.description,
+      image: drink.image,
+      imageAlt: `${drink.name} — brunch drinks at Coco Maya Little Italy San Diego`,
+    }))}
+    dark={true}
+  />
 
   <!-- PRIVATE BRUNCH CALLOUT -->
   <section class="py-20 px-6 bg-[var(--color-sand-dark)]/30">

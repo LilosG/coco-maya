@@ -12,6 +12,13 @@ export const FEATURED_FOOD = [
   { name: 'Maine Lobster Roll', description: 'Maine lobster, toasted roll, lemon, fries', category: 'dinner', image: '/images/food-maine-lobster-roll.jpg' },
 ] as const;
 
+export const FEATURED_BRUNCH_DRINKS = [
+  { name: 'Bloody Maya', description: 'House bloody mary with mezcal, tajin rim, and fresh garnish', image: '/images/drink-bloody-mary.jpg' },
+  { name: 'Michelada', description: 'A Coco Maya original', image: '/images/drink-michelada.jpg' },
+  { name: 'Mango Guava Spritz', description: 'A Coco Maya original', image: '/images/drink-mango-guava-spritz.jpg' },
+  { name: 'Coco Maya Coctel', description: 'A Coco Maya original', image: '/images/drink-coco-maya-coctel.jpg' },
+] as const;
+
 export const FEATURED_BRUNCH = [
   { name: 'Brunch Sandwich', description: 'Scrambled eggs, bacon, brioche, seasonal fruit, potato wedges', category: 'brunch', image: '/images/food-brunch-sandwich.jpg' },
   { name: 'Brunch Bowl', description: 'Two eggs, black beans, rice, corn, chorizo hash', category: 'brunch', image: '/images/food-brunch-bowl.jpg' },
