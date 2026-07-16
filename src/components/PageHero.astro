@@ -2,12 +2,13 @@
 interface Props {
   label?: string;
   title: string;
+  titleSuffix?: string;
   subtitle?: string;
   image?: string;
   imageAlt?: string;
   tall?: boolean;
 }
-const { label, title, subtitle, image, imageAlt = "", tall = false } = Astro.props;
+const { label, title, titleSuffix, subtitle, image, imageAlt = "", tall = false } = Astro.props;
 ---
 
 <section class:list={[
@@ -38,6 +39,14 @@ const { label, title, subtitle, image, imageAlt = "", tall = false } = Astro.pro
       image ? "text-white" : "text-[var(--color-dark)]"
     ]}>
       {title}
+      {titleSuffix && (
+        <span class:list={[
+          "block font-[family-name:var(--font-stamp)] not-italic text-[clamp(0.85rem,1.8vw,1.15rem)] tracking-[0.08em] mt-3",
+          image ? "text-white/75" : "text-[var(--color-dark)]/55"
+        ]}>
+          {titleSuffix}
+        </span>
+      )}
     </h1>
     {subtitle && (
       <p class:list={[
