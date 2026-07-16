@@ -409,15 +409,4 @@
   .nav-mobile-btn { color: var(--color-dark); }
   .nav-mobile-btn-light { color: white; }
 
-  .nav-btn-phone { color: var(--color-teal); border-color: var(--color-teal); }
-  .nav-btn-phone:hover { background-color: var(--color-teal); color: white; }
-  .nav-btn-phone-light {
-    color: white;
-    border-color: rgba(255,255,255,0.75);
-    background-color: rgba(23,20,16,0.25);
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-  }
-  .nav-btn-phone-light:hover { border-color: white; background-color: rgba(23,20,16,0.4); }
-
 }
