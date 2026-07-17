@@ -7,6 +7,7 @@ import FAQSection from "../components/FAQSection.astro";
 import CTASection from "../components/CTASection.astro";
 import { GENERAL_FAQS } from "../data/faq";
 import { faqPageSchema } from "../lib/schema";
+import { SITE } from "../data/site";
 
 const schema = [faqPageSchema(GENERAL_FAQS)];
 ---
@@ -30,8 +31,8 @@ const schema = [faqPageSchema(GENERAL_FAQS)];
   <CTASection
     title="Still Have a Question?"
     subtitle="Call or email us directly and we'll get you sorted."
-    primaryLabel="Call (619) 943-9439"
-    primaryHref="tel:+16199439439"
+    primaryLabel={`Call ${SITE.phone.display}`}
+    primaryHref={`tel:${SITE.phone.tel}`}
     secondaryLabel="Email Us"
     secondaryHref="mailto:info@inlovewiththecoco.com"
     dark={true}

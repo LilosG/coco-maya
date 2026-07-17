@@ -16,8 +16,8 @@ export const SITE = {
   },
 
   phone: {
-    display: '(619) 943-9439',
-    tel: '+16199439439',
+    display: '(762) 465-8756',
+    tel: '+17624658756',
   },
 
   email: 'info@inlovewiththecoco.com',

@@ -1,4 +1,6 @@
 ---
+import { SITE } from '../data/site';
+
 interface Props {
   interiorImage?: string;
   address?: string;
@@ -14,7 +16,7 @@ const {
   interiorImage = '/images/find-us-interior.jpg',
   address = '1660 India St',
   cityLine = 'Little Italy, San Diego, CA 92101',
-  phone = '(619) 943-9439',
+  phone = SITE.phone.display,
   mapsHref = 'https://maps.google.com/?q=1660+India+St+San+Diego+CA+92101',
   openLine = 'Open Daily',
   accentLabel = 'Rooftop Patio',

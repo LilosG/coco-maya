@@ -1,4 +1,5 @@
 import type { FaqItem } from "../lib/schema";
+import { SITE } from "./site";
 
 export const GENERAL_FAQS: FaqItem[] = [
   {
@@ -49,6 +50,6 @@ export const GENERAL_FAQS: FaqItem[] = [
   {
     question: "How do I contact Coco Maya directly?",
     answer:
-      "Call us at (619) 943-9439 or email info@inlovewiththecoco.com. For private events, include your preferred date and headcount so we can respond with availability.",
+      `Call us at ${SITE.phone.display} or email info@inlovewiththecoco.com. For private events, include your preferred date and headcount so we can respond with availability.`,
   },
 ];
