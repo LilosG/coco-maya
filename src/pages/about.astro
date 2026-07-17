@@ -5,6 +5,7 @@ import Footer from "../components/Footer.astro";
 import PageHero from "../components/PageHero.astro";
 import CTASection from "../components/CTASection.astro";
 import { SITE } from "../data/site";
+import { breadcrumbSchema } from "../lib/schema";
 
 const stats = [
   { value: "1660",       label: "India Street",    sub: "Little Italy, San Diego" },
@@ -12,11 +13,18 @@ const stats = [
   { value: "Elevated",   label: "Rooftop Patio",   sub: "Glass Atrium Bar" },
   { value: "Daily",      label: "Brunch & Dinner",  sub: "9AM–3PM & 5PM nightly" },
 ];
+const schema = [
+  breadcrumbSchema([
+    { name: "Home", url: SITE.url },
+    { name: "About", url: `${SITE.url}/about` },
+  ]),
+];
 ---
 <BaseLayout
   title="About | Coco Maya by Miss Bs | Little Italy San Diego"
   description="Coco Maya by Miss Bs is an elevated modern American coastal restaurant in Little Italy San Diego. Glass atrium, elevated patio, craft cocktails. 1660 India St."
   image="/images/venue-interior-dining.jpg"
+  extraSchema={schema}
 >
   <Nav />
   <PageHero

@@ -8,6 +8,7 @@ import InfoCard from "../../components/InfoCard.astro";
 import MenuShowcase from "../../components/MenuShowcase.astro";
 import { SITE } from "../../data/site";
 import { FEATURED_BRUNCH, FEATURED_BRUNCH_DRINKS } from "../../data/menu";
+import { breadcrumbSchema } from "../../lib/schema";
 
 const highlights = [
   { icon: "🥂", label: "Bottomless Brunch", body: "Bottomless mimosas, bloody marys, and select cocktails available every day of the week." },
@@ -16,11 +17,18 @@ const highlights = [
 ];
 const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 const todayName = dayNames[new Date().getDay()];
+const schema = [
+  breadcrumbSchema([
+    { name: "Home", url: SITE.url },
+    { name: "Brunch", url: `${SITE.url}/brunch` },
+  ]),
+];
 ---
 <BaseLayout
   title="Best Daily Brunch in Little Italy San Diego | Coco Maya"
   description="Best brunch in Little Italy San Diego at Coco Maya, served daily until 3PM. Bottomless mimosas on the rooftop patio, seven days a week. 1660 India St, San Diego CA 92101."
   image="/images/food-tacos-patio.jpg"
+  extraSchema={schema}
 >
   <Nav />
 

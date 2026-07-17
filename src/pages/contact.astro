@@ -3,12 +3,20 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import { SITE } from "../data/site";
+import { breadcrumbSchema } from "../lib/schema";
 const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 const todayName = dayNames[new Date().getDay()];
+const schema = [
+  breadcrumbSchema([
+    { name: "Home", url: SITE.url },
+    { name: "Contact", url: `${SITE.url}/contact` },
+  ]),
+];
 ---
 <BaseLayout
   title="Contact | Coco Maya | 1660 India St San Diego CA 92101"
   description={`Find Coco Maya by Miss Bs at 1660 India St, San Diego CA 92101. Call ${SITE.phone.display}. Open daily in Little Italy San Diego.`}
+  extraSchema={schema}
 >
   <Nav />
   <section class="relative pt-44 pb-28 px-6 bg-[var(--color-cream)]">

@@ -10,7 +10,7 @@ import InfoCard from "../../components/InfoCard.astro";
 import ContentCard from "../../components/ContentCard.astro";
 import { SITE } from "../../data/site";
 import { PRIVATE_EVENT_TYPES } from "../../data/privateEvents";
-import { faqPageSchema } from "../../lib/schema";
+import { faqPageSchema, breadcrumbSchema } from "../../lib/schema";
 
 export function getStaticPaths() {
   return PRIVATE_EVENT_TYPES.map((event) => ({
@@ -20,7 +20,14 @@ export function getStaticPaths() {
 }
 
 const { event } = Astro.props;
-const schema = [faqPageSchema(event.faqs)];
+const schema = [
+  faqPageSchema(event.faqs),
+  breadcrumbSchema([
+    { name: "Home", url: SITE.url },
+    { name: "Private Events", url: `${SITE.url}/private-events` },
+    { name: event.name, url: `${SITE.url}/private-events/${event.slug}` },
+  ]),
+];
 const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.name} Inquiry`)}`;
 ---
 <BaseLayout

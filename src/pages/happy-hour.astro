@@ -8,7 +8,7 @@ import InfoCard from "../components/InfoCard.astro";
 import ContentCard from "../components/ContentCard.astro";
 import FAQSection from "../components/FAQSection.astro";
 import { SITE } from "../data/site";
-import { faqPageSchema } from "../lib/schema";
+import { faqPageSchema, breadcrumbSchema } from "../lib/schema";
 
 const faqs = [
   {
@@ -27,7 +27,13 @@ const faqs = [
       "Reservations are recommended, especially on weekends, but walk-ins are welcome on the patio based on availability.",
   },
 ];
-const schema = [faqPageSchema(faqs)];
+const schema = [
+  faqPageSchema(faqs),
+  breadcrumbSchema([
+    { name: "Home", url: SITE.url },
+    { name: "Rooftop Patio", url: `${SITE.url}/happy-hour` },
+  ]),
+];
 ---
 <BaseLayout
   title="Rooftop Bar & Patio in Little Italy San Diego | Coco Maya"

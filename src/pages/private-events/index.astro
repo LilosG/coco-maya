@@ -8,6 +8,7 @@ import InfoCard from "../../components/InfoCard.astro";
 import EventInquiryForm from "../../components/EventInquiryForm.astro";
 import { SITE } from "../../data/site";
 import { PRIVATE_EVENT_TYPES } from "../../data/privateEvents";
+import { breadcrumbSchema } from "../../lib/schema";
 
 const process = [
   { step: "01", label: "Get in Touch", body: "Email or call us with your date, group size, and what you have in mind. We will respond within 24 hours." },
@@ -21,11 +22,18 @@ const specs = [
   { label: "Patio Capacity",   value: "Up to 120",    note: "Full patio buyout" },
   { label: "Full Venue",       value: "Up to 180",    note: "Indoor + patio combined" },
 ];
+const schema = [
+  breadcrumbSchema([
+    { name: "Home", url: SITE.url },
+    { name: "Private Events", url: `${SITE.url}/private-events` },
+  ]),
+];
 ---
 <BaseLayout
   title="Private Event Venue Little Italy San Diego | Bachelorette & Birthday | Coco Maya"
   description="San Diego's top private event venue in Little Italy. Bachelorette parties, birthday dinners, rehearsal dinners & corporate events at Coco Maya rooftop. 1660 India St, 92101."
   image="/images/events-private-dining-1.jpg"
+  extraSchema={schema}
 >
   <Nav />
 

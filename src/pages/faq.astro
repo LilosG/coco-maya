@@ -6,10 +6,16 @@ import PageHero from "../components/PageHero.astro";
 import FAQSection from "../components/FAQSection.astro";
 import CTASection from "../components/CTASection.astro";
 import { GENERAL_FAQS } from "../data/faq";
-import { faqPageSchema } from "../lib/schema";
+import { faqPageSchema, breadcrumbSchema } from "../lib/schema";
 import { SITE } from "../data/site";
 
-const schema = [faqPageSchema(GENERAL_FAQS)];
+const schema = [
+  faqPageSchema(GENERAL_FAQS),
+  breadcrumbSchema([
+    { name: "Home", url: SITE.url },
+    { name: "FAQ", url: `${SITE.url}/faq` },
+  ]),
+];
 ---
 <BaseLayout
   title="FAQ | Coco Maya | Little Italy San Diego"

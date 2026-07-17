@@ -3,13 +3,21 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import { SITE } from "../data/site";
+import { breadcrumbSchema } from "../lib/schema";
 const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
 const todayName = dayNames[new Date().getDay()];
+const schema = [
+  breadcrumbSchema([
+    { name: "Home", url: SITE.url },
+    { name: "Reservations", url: `${SITE.url}/reservations` },
+  ]),
+];
 ---
 <BaseLayout
   title="Reservations | Coco Maya | Little Italy San Diego"
   description={`Reserve a table at Coco Maya by Miss Bs in Little Italy San Diego. Book online or call ${SITE.phone.display}. 1660 India St.`}
   image="/images/venue-hero-bar.jpg"
+  extraSchema={schema}
 >
   <Nav />
   <section class="relative min-h-screen flex items-center overflow-hidden">

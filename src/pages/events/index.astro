@@ -7,11 +7,19 @@ import CTASection from "../../components/CTASection.astro";
 import EventInquiryForm from "../../components/EventInquiryForm.astro";
 import { SITE } from "../../data/site";
 import { RECURRING_EVENTS } from "../../data/events";
+import { breadcrumbSchema } from "../../lib/schema";
+const schema = [
+  breadcrumbSchema([
+    { name: "Home", url: SITE.url },
+    { name: "Events", url: `${SITE.url}/events` },
+  ]),
+];
 ---
 <BaseLayout
   title="Events | Coco Maya | Little Italy San Diego"
   description="Events at Coco Maya in Little Italy San Diego. Daily brunch, dinner, happy hour, and private events. 1660 India St."
   image="/images/events-patio-night.jpg"
+  extraSchema={schema}
 >
   <Nav />
   <PageHero
