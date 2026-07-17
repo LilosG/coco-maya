@@ -27,6 +27,47 @@ const {
 
 const canonicalURL = new URL(Astro.url.pathname, SITE.url);
 
+// Group consecutive days that share identical hours into single
+// OpeningHoursSpecification entries — the standard schema.org pattern,
+// rather than one entry per day.
+const orderedDays = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
+const hoursByDay = new Map(SITE.hours.map((h) => [h.day, h.hours]));
+
+function parseHoursRange(hours: string) {
+  const [open, close] = hours.split("–").map((s) => s.trim());
+  const to24 = (t: string) => {
+    const m = t.match(/(\d+):(\d+)\s*(AM|PM)/i);
+    if (!m) return t;
+    let [, hh, mm, ap] = m;
+    let hour = parseInt(hh, 10) % 12;
+    if (/PM/i.test(ap)) hour += 12;
+    if (hour === 24) hour = 0;
+    return `${String(hour).padStart(2, "0")}:${mm}`;
+  };
+  return { opens: to24(open), closes: to24(close === "12:00 AM" ? "11:59 PM" : close) };
+}
+
+const openingHoursSpecification: Record<string, unknown>[] = [];
+let i = 0;
+while (i < orderedDays.length) {
+  const day = orderedDays[i];
+  const hours = hoursByDay.get(day)!;
+  const group = [day];
+  let j = i + 1;
+  while (j < orderedDays.length && hoursByDay.get(orderedDays[j]) === hours) {
+    group.push(orderedDays[j]);
+    j++;
+  }
+  const { opens, closes } = parseHoursRange(hours);
+  openingHoursSpecification.push({
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: group.map((d) => `https://schema.org/${d}`),
+    opens,
+    closes,
+  });
+  i = j;
+}
+
 const schema = {
   "@context": "https://schema.org",
   "@type": SITE.schema.type,
@@ -51,6 +92,8 @@ const schema = {
   servesCuisine: SITE.schema.servesCuisine,
   hasMap: SITE.address.mapsUrl,
   sameAs: Object.values(SITE.social),
+  openingHoursSpecification,
+  acceptsReservations: true,
 };
 ---
 

@@ -10,23 +10,25 @@ import { SITE } from "../../data/site";
 import { FEATURED_BRUNCH, FEATURED_BRUNCH_DRINKS } from "../../data/menu";
 
 const highlights = [
-  { icon: "🥂", label: "Bottomless Brunch", body: "Bottomless mimosas, bloody marys, and select cocktails available every Saturday and Sunday." },
+  { icon: "🥂", label: "Bottomless Brunch", body: "Bottomless mimosas, bloody marys, and select cocktails available every day of the week." },
   { icon: "🌮", label: "Modern Coastal Plates", body: "Fresh seafood, seasonal produce, and elevated brunch classics from the Coco Maya kitchen." },
   { icon: "🌿", label: "The Elevated Patio", body: "Brunch on one of San Diego most distinctive patios. Pink striped umbrellas, tropical greenery, and the Little Italy skyline." },
 ];
+const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const todayName = dayNames[new Date().getDay()];
 ---
 <BaseLayout
-  title="Best Brunch in Little Italy San Diego | Coco Maya | Sat & Sun 11AM–3PM"
-  description="Best brunch in Little Italy San Diego at Coco Maya. Bottomless mimosas on the rooftop patio every Saturday & Sunday 11AM–3PM. 1660 India St, San Diego CA 92101."
+  title="Best Daily Brunch in Little Italy San Diego | Coco Maya"
+  description="Best brunch in Little Italy San Diego at Coco Maya, served daily until 3PM. Bottomless mimosas on the rooftop patio, seven days a week. 1660 India St, San Diego CA 92101."
   image="/images/food-tacos-patio.jpg"
 >
   <Nav />
 
   <PageHero
-    label="Saturday and Sunday"
-    title="Weekend Brunch"
+    label="Served Every Day"
+    title="Daily Brunch"
     titleSuffix="Best Brunch in Little Italy, San Diego"
-    subtitle="San Diego best brunch in Little Italy. Modern coastal plates, bottomless options, and craft cocktails on the elevated patio."
+    subtitle="San Diego best brunch in Little Italy, served daily. Modern coastal plates, bottomless options, and craft cocktails on the elevated patio."
     image="/images/food-tacos-patio.jpg"
     imageAlt="Brunch at Coco Maya Little Italy San Diego"
     tall={true}
@@ -39,10 +41,28 @@ const highlights = [
 
   <!-- INFO CARDS -->
   <section class="py-16 px-6 bg-[var(--color-cream)]">
-    <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5">
-      <InfoCard label="Days" value={SITE.brunch.days} />
-      <InfoCard label="Hours" value={SITE.brunch.hours} accent={true} />
+    <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10">
+      <InfoCard label="Days" value="Every Day" />
+      <InfoCard label="Ends" value="3:00 PM" accent={true} />
       <InfoCard label="Location" value="Little Italy" sub="1660 India St, San Diego" />
+    </div>
+
+    <!-- FULL BRUNCH HOURS BY DAY (hours vary by day of week, per GBP) -->
+    <div class="max-w-4xl mx-auto bg-white border border-[var(--color-teal)]/12">
+      <div class="px-6 pt-6 pb-2">
+        <span class="eyebrow">Brunch Hours by Day</span>
+      </div>
+      <div class="divide-y divide-[var(--color-teal)]/10 px-6 pb-6">
+        {SITE.service.brunch.days.map((d) => (
+          <div class:list={[
+            "flex justify-between py-3 font-[family-name:var(--font-body)] text-sm",
+            d.day === todayName ? "text-[var(--color-dark)]" : "text-[var(--color-dark)]/50"
+          ]}>
+            <span class:list={[d.day === todayName ? "text-[var(--color-teal)] font-medium" : ""]}>{d.day}</span>
+            <span>{d.hours}</span>
+          </div>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -74,10 +94,10 @@ const highlights = [
         </h2>
         <div class="rule"></div>
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-5">
-          Weekend brunch at Coco Maya is not just a meal. It is a setting. The glass atrium opens to the San Diego sky, the elevated patio fills with tropical greenery, and the kitchen sends out plates that actually earn the word elevated.
+          Daily brunch at Coco Maya is not just a meal. It is a setting. The glass atrium opens to the San Diego sky, the elevated patio fills with tropical greenery, and the kitchen sends out plates that actually earn the word elevated.
         </p>
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-10">
-          Whether you are celebrating something or just making Saturday morning count, the patio at 1660 India St is the right call. Brunch every Saturday and Sunday from 11 AM to 3 PM.
+          Whether you are celebrating something or just making your morning count, the patio at 1660 India St is the right call. Brunch is served every day of the week, until 3 PM.
         </p>
         <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">Reserve Your Table</a>
       </div>
@@ -136,7 +156,7 @@ const highlights = [
   <MenuShowcase
     eyebrow="Brunch Drinks"
     title="Bottomless and worth it"
-    subtitle="Bottomless brunch options available every Saturday and Sunday. Add bottomless mimosas to any brunch reservation."
+    subtitle="Bottomless brunch options available every day of the week. Add bottomless mimosas to any brunch reservation."
     items={FEATURED_BRUNCH_DRINKS.map((drink) => ({
       name: drink.name,
       description: drink.description,
@@ -163,7 +183,7 @@ const highlights = [
         <div class="cc-card__body">
           <span class="cc-card__label">Make a Reservation</span>
           <p class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl mb-2">Reserve your table now</p>
-          <p class="cc-card__text">Saturday and Sunday 11 AM to 3 PM. Book online or call us directly. Walk-ins welcome based on availability.</p>
+          <p class="cc-card__text">Served daily until 3 PM. Book online or call us directly. Walk-ins welcome based on availability.</p>
           <div class="flex flex-wrap gap-4 mt-6">
             <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">Book Online</a>
             <a href={`tel:${SITE.phone.tel}`} class="btn-outline">{SITE.phone.display}</a>
@@ -175,7 +195,7 @@ const highlights = [
 
   <CTASection
     title="Join Us for Brunch"
-    subtitle="1660 India St, Little Italy San Diego. Saturday and Sunday 11AM to 3PM."
+    subtitle="1660 India St, Little Italy San Diego. Brunch served daily until 3PM."
     primaryLabel="Reserve a Table"
     primaryHref={SITE.reservations.url}
     secondaryLabel="View Full Menu"

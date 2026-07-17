@@ -16,14 +16,14 @@ const todayHours = (() => {
 const infoBar = [
   { label: "Hours Today",     value: todayHours,              sub: null,                  href: null },
   { label: "Rooftop Patio",   value: "Open Daily",            sub: "Glass Atrium Bar",    href: "/happy-hour" },
-  { label: "Weekend Brunch",  value: SITE.brunch.hours,       sub: SITE.brunch.days,      href: "/brunch" },
+  { label: "Daily Brunch",    value: SITE.service.brunch.shortTagline, sub: "Every Day",  href: "/brunch" },
   { label: "Location",        value: SITE.address.neighborhood + ", SD", sub: "1660 India St", href: SITE.address.mapsUrl },
 ];
 ---
 
 <BaseLayout
-  title="Coco Maya | Rooftop Restaurant & Brunch in Little Italy San Diego"
-  description="Modern American coastal cuisine, craft cocktails, and San Diego best brunch. Coco Maya by Miss Bs in Little Italy at 1660 India St, San Diego CA."
+  title="Coco Maya | Rooftop Restaurant & Daily Brunch in Little Italy San Diego"
+  description="Modern American coastal cuisine, craft cocktails, and San Diego best brunch, served daily. Coco Maya by Miss Bs in Little Italy at 1660 India St, San Diego CA."
   image="/images/venue-hero-bar.jpg"
 >
   <Nav />
@@ -102,7 +102,7 @@ const infoBar = [
           Coco Maya brings elevated modern American coastal cuisine to the heart of San Diego's Little Italy. An open-air glass atrium, a stunning teal bar, and a menu that takes both the food and the cocktails seriously.
         </p>
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-10 text-[1.0625rem]">
-          An elevated rooftop patio, weekend brunch, and private dining that transforms any occasion. 1660 India St — right in the middle of everything.
+          An elevated rooftop patio, daily brunch, and private dining that transforms any occasion. 1660 India St — right in the middle of everything.
         </p>
         <div class="flex flex-wrap gap-4">
           <a href="/the-space" class="btn-primary">See The Space</a>
@@ -168,7 +168,7 @@ const infoBar = [
     <div class="absolute inset-0">
       <img
         src="/images/food-tacos-patio.jpg"
-        alt="Weekend brunch at Coco Maya — best brunch in Little Italy San Diego"
+        alt="Daily brunch at Coco Maya — best brunch in Little Italy San Diego"
         class="w-full h-full object-cover object-center"
         width="1800" height="900"
         loading="lazy"
@@ -176,13 +176,13 @@ const infoBar = [
       <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-black/70"></div>
     </div>
     <div class="relative z-10 max-w-3xl mx-auto text-center px-6">
-      <span class="eyebrow-light mx-auto block">Saturday & Sunday 11AM - 3PM</span>
+      <span class="eyebrow-light mx-auto block">Served Daily · Until 3PM</span>
       <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(3.5rem,8vw,6rem)] text-white leading-none mb-3">
-        Weekend Brunch in Little Italy San Diego
+        Daily Brunch in Little Italy San Diego
       </h2>
       <p class="font-[family-name:var(--font-script)] text-white/75 text-3xl mb-8">in Little Italy</p>
       <p class="font-[family-name:var(--font-body)] text-white/80 text-lg max-w-xl mx-auto mb-11 leading-relaxed">
-        San Diego's best brunch on the elevated patio. Bottomless options, modern coastal plates, and craft cocktails every Saturday and Sunday.
+        San Diego's best brunch on the elevated patio. Bottomless options, modern coastal plates, and craft cocktails every day of the week.
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
         <a href="/brunch" class="btn-white">See Brunch Menu</a>
@@ -278,7 +278,7 @@ const infoBar = [
         {[
           { number: "4.5", unit: "★", label: "Google Rating", sub: "Little Italy" },
           { number: "Rooftop", unit: "", label: "Patio & Bar", sub: "Open Daily" },
-          { number: "Sat & Sun", unit: "", label: "Weekend Brunch", sub: "11 AM – 3 PM" },
+          { number: "Daily", unit: "", label: "Brunch & Dinner", sub: "9AM–3PM · 5PM on" },
           { number: "Open", unit: " Daily", label: "1660 India St", sub: "San Diego, CA" },
         ].map((stat) => (
           <div class="cm-dark-grid-cell py-14">

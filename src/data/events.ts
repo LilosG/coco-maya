@@ -1,12 +1,21 @@
 export const RECURRING_EVENTS = [
   {
     slug: 'brunch',
-    name: 'Weekend Brunch',
-    day: 'Saturday & Sunday',
-    time: '11:00 AM – 3:00 PM',
-    highlight: 'Weekend Only',
-    description: 'San Diego\'s best brunch in Little Italy. Bottomless options, modern coastal plates, and craft cocktails on the elevated patio.',
+    name: 'Daily Brunch',
+    day: 'Every Day',
+    time: 'Until 3:00 PM',
+    highlight: 'Served Daily',
+    description: 'San Diego\'s best brunch in Little Italy. Bottomless options, modern coastal plates, and craft cocktails on the elevated patio, served every day of the week.',
     image: '/images/food-brunch-sandwich.jpg',
+  },
+  {
+    slug: 'dinner',
+    name: 'Dinner',
+    day: 'Every Day',
+    time: 'From 5:00 PM',
+    highlight: 'Served Nightly',
+    description: 'Modern American coastal dinner service every night of the week, on the elevated patio or in the glass atrium dining room.',
+    image: '/images/food-prime-ribeye.jpg',
   },
   {
     slug: 'rooftop-bar',

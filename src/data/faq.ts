@@ -5,7 +5,7 @@ export const GENERAL_FAQS: FaqItem[] = [
   {
     question: "Do I need a reservation at Coco Maya?",
     answer:
-      "Reservations are strongly recommended, especially for weekend brunch and Friday or Saturday evenings. You can book a table online through our reservation system, and walk-ins are welcome based on availability.",
+      "Reservations are strongly recommended, especially for brunch and Friday or Saturday evenings. You can book a table online through our reservation system, and walk-ins are welcome based on availability.",
   },
   {
     question: "What are Coco Maya's hours?",
@@ -15,7 +15,12 @@ export const GENERAL_FAQS: FaqItem[] = [
   {
     question: "When is brunch served?",
     answer:
-      "Weekend brunch is served Saturday and Sunday from 11:00 AM to 3:00 PM, featuring modern coastal brunch plates and bottomless drink options on the elevated patio.",
+      "Brunch is served daily until 3:00 PM, featuring modern coastal brunch plates and bottomless drink options on the elevated patio. Start times vary by day: 9:00 AM on Saturday and Sunday, 10:30 AM Monday and Tuesday, and 11:00 AM Wednesday through Friday.",
+  },
+  {
+    question: "When is dinner served?",
+    answer:
+      "Dinner is served nightly starting at 5:00 PM. Sunday through Thursday dinner service runs until 8:00 PM, and Friday and Saturday it runs until 10:30 PM.",
   },
   {
     question: "Is Coco Maya good for large groups?",

@@ -78,7 +78,7 @@ export const PRIVATE_EVENT_TYPES: PrivateEventType[] = [
       {
         question: "Can we do brunch instead of an evening event?",
         answer:
-          "Yes, weekend brunch (Saturday and Sunday, 11 AM to 3 PM) is one of our most popular bachelorette bookings, with bottomless drink options available.",
+          "Yes, brunch (served daily until 3 PM) is one of our most popular bachelorette bookings, with bottomless drink options available.",
       },
       {
         question: "Do you offer decor or photo setups?",
@@ -349,7 +349,7 @@ export const PRIVATE_EVENT_TYPES: PrivateEventType[] = [
       {
         question: "What time of day works best for a baby shower?",
         answer:
-          "Weekend brunch (11 AM to 3 PM) or a weekday late-morning to early-afternoon slot both work well, giving you natural light on the patio.",
+          "Brunch, served daily until 3 PM, or a late-morning to early-afternoon slot both work well, giving you natural light on the patio.",
       },
       {
         question: "Can you accommodate a mix of alcoholic and non-alcoholic guests?",

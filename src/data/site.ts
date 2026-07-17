@@ -51,9 +51,38 @@ export const SITE = {
     detail: 'Elevated Patio & Glass Atrium',
   },
 
-  brunch: {
-    days: 'Saturday & Sunday',
-    hours: '11:00 AM – 3:00 PM',
+  // Service periods within the main operating hours above. Brunch and dinner
+  // both run every day of the week (per Google Business Profile hours) — this
+  // is NOT a weekend-only offering. Keep in sync with GBP if hours change.
+  service: {
+    brunch: {
+      label: 'Daily Brunch',
+      tagline: 'Served daily, until 3:00 PM',
+      shortTagline: 'Daily · Until 3PM',
+      days: [
+        { day: 'Sunday',    hours: '9:00 AM – 3:00 PM' },
+        { day: 'Monday',    hours: '10:30 AM – 3:00 PM' },
+        { day: 'Tuesday',   hours: '10:30 AM – 3:00 PM' },
+        { day: 'Wednesday', hours: '11:00 AM – 3:00 PM' },
+        { day: 'Thursday',  hours: '11:00 AM – 3:00 PM' },
+        { day: 'Friday',    hours: '11:00 AM – 3:00 PM' },
+        { day: 'Saturday',  hours: '9:00 AM – 3:00 PM' },
+      ],
+    },
+    dinner: {
+      label: 'Dinner',
+      tagline: 'Served nightly from 5:00 PM',
+      shortTagline: 'Nightly from 5PM',
+      days: [
+        { day: 'Sunday',    hours: '5:00 PM – 8:00 PM' },
+        { day: 'Monday',    hours: '5:00 PM – 8:00 PM' },
+        { day: 'Tuesday',   hours: '5:00 PM – 8:00 PM' },
+        { day: 'Wednesday', hours: '5:00 PM – 8:00 PM' },
+        { day: 'Thursday',  hours: '5:00 PM – 8:00 PM' },
+        { day: 'Friday',    hours: '5:00 PM – 10:30 PM' },
+        { day: 'Saturday',  hours: '5:00 PM – 10:30 PM' },
+      ],
+    },
   },
 
   social: {
