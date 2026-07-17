@@ -1,4 +1,6 @@
 ---
+import Picture from "./Picture.astro";
+
 interface Props {
   label?: string;
   title: string;
@@ -17,12 +19,13 @@ const { label, title, titleSuffix, subtitle, image, imageAlt = "", tall = false 
 ]}>
   {image && (
     <div class="absolute inset-0">
-      <img
+      <Picture
         src={image}
         alt={imageAlt}
         class="w-full h-full object-cover object-center"
         width="1800" height="900"
         fetchpriority="high"
+        loading="eager"
       />
       <div class="absolute inset-0" style="background: linear-gradient(to top, rgba(0,0,0,0.82) 0%, rgba(0,0,0,0.45) 45%, rgba(0,0,0,0.15) 100%);"></div>
     </div>

@@ -1,5 +1,6 @@
 ---
 import { SITE } from "../data/site";
+import Picture from "./Picture.astro";
 interface Props {
   title?: string;
   subtitle?: string;
@@ -32,7 +33,7 @@ const secondaryRel = secondaryTarget === "_blank" ? "noopener noreferrer" : unde
 
   {image && (
     <div class="absolute inset-0">
-      <img src={image} alt="" class="w-full h-full object-cover" width="1800" height="400" loading="lazy" />
+      <Picture src={image} alt="" class="w-full h-full object-cover" width="1800" height="400" loading="lazy" />
       <div class="absolute inset-0 bg-[var(--color-dark)]/75"></div>
     </div>
   )}

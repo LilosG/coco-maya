@@ -1,4 +1,5 @@
 ---
+import Picture from "../../components/Picture.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
@@ -86,7 +87,7 @@ const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.n
         </div>
       </div>
       <div class="relative">
-        <img
+        <Picture
           src={event.galleryImage}
           alt={event.galleryImageAlt}
           class="w-full aspect-[4/5] object-cover"
@@ -110,7 +111,7 @@ const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.n
         {event.gallery.map((item) => (
           <div class="cm-media-card group">
             <div class="aspect-[4/5] overflow-hidden">
-              <img
+              <Picture
                 src={item.image}
                 alt={item.alt}
                 class="w-full h-full object-cover"
@@ -142,7 +143,7 @@ const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.n
 
   <!-- ATMOSPHERE BREAK -->
   <section class="relative h-[55vh] overflow-hidden">
-    <img
+    <Picture
       src={event.atmosphereImage}
       alt={event.atmosphereImageAlt}
       class="w-full h-full object-cover object-center"

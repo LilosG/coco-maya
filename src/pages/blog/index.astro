@@ -1,4 +1,5 @@
 ---
+import Picture from "../../components/Picture.astro";
 import { getCollection } from "astro:content";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
@@ -26,7 +27,7 @@ const posts = allPosts
         <a href={`/blog/${post.slug}`}
           class:list={["group block border border-[var(--color-teal)]/10 hover:border-[var(--color-teal)]/40 transition-colors overflow-hidden", i === 0 ? "md:col-span-2" : ""]}>
           <div class:list={["overflow-hidden", i === 0 ? "aspect-[21/9]" : "aspect-video"]}>
-            <img src={post.image} alt={post.title}
+            <Picture src={post.image} alt={post.title}
               class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               width={i === 0 ? 1200 : 600} height={i === 0 ? 514 : 338}
               loading={i === 0 ? "eager" : "lazy"} />

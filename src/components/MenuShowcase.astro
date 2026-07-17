@@ -1,4 +1,6 @@
 ---
+import Picture from "./Picture.astro";
+
 interface ShowcaseItem {
   name: string;
   description?: string;
@@ -25,9 +27,6 @@ const {
   ctaHref,
   dark = false,
 } = Astro.props;
-
-// Derive a WebP sibling path for each JPG so callers only ever pass one path.
-const webpOf = (src: string) => src.replace(/\.(jpg|jpeg|png)$/i, ".webp");
 ---
 
 <section class={`ms-section ${dark ? "ms-section--dark" : ""}`} aria-labelledby="ms-title">
@@ -41,17 +40,14 @@ const webpOf = (src: string) => src.replace(/\.(jpg|jpeg|png)$/i, ".webp");
     {items.map((item) => (
       <figure class="ms-item">
         <div class="ms-photo">
-          <picture>
-            <source srcset={webpOf(item.image)} type="image/webp" />
-            <img
-              src={item.image}
-              alt={item.imageAlt ?? item.name}
-              width="800"
-              height="1000"
-              loading="lazy"
-              decoding="async"
-            />
-          </picture>
+          <Picture
+            src={item.image}
+            alt={item.imageAlt ?? item.name}
+            width="800"
+            height="1000"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <figcaption class="ms-caption">
           <span class="ms-name">{item.name}</span>

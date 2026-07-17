@@ -1,0 +1,60 @@
+---
+// Centralized image component. Every image on the site should render
+// through this component rather than a raw <img> tag, so WebP delivery
+// stays consistent without hand-wiring <picture>/<source> everywhere.
+//
+// Local images (public/images/*.jpg|jpeg|png) automatically get a WebP
+// <source> pointing at the sibling .webp file placed alongside the
+// original by the image pipeline. Remote/external images pass straight
+// through as a plain <img>.
+interface Props {
+  src: string;
+  alt: string;
+  class?: string;
+  width?: number | string;
+  height?: number | string;
+  loading?: "lazy" | "eager";
+  decoding?: "async" | "sync" | "auto";
+  fetchpriority?: "high" | "low" | "auto";
+}
+
+const {
+  src,
+  alt,
+  class: className,
+  width,
+  height,
+  loading = "lazy",
+  decoding = "async",
+  fetchpriority,
+} = Astro.props;
+
+const isLocalRaster = /^\/images\/.+\.(jpe?g|png)$/i.test(src);
+const webpSrc = isLocalRaster ? src.replace(/\.(jpe?g|png)$/i, ".webp") : null;
+---
+{webpSrc ? (
+  <picture>
+    <source srcset={webpSrc} type="image/webp" />
+    <img
+      src={src}
+      alt={alt}
+      class={className}
+      width={width}
+      height={height}
+      loading={loading}
+      decoding={decoding}
+      fetchpriority={fetchpriority}
+    />
+  </picture>
+) : (
+  <img
+    src={src}
+    alt={alt}
+    class={className}
+    width={width}
+    height={height}
+    loading={loading}
+    decoding={decoding}
+    fetchpriority={fetchpriority}
+  />
+)}

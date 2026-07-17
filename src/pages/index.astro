@@ -1,4 +1,5 @@
 ---
+import Picture from "../components/Picture.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
@@ -31,7 +32,7 @@ const infoBar = [
   <!-- ── HERO ─────────────────────────────────────────── -->
   <section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
     <div class="absolute inset-0">
-      <img
+      <Picture
         src="/images/venue-hero-bar.jpg"
         alt="Coco Maya rooftop glass atrium bar — restaurant in Little Italy San Diego"
         class="w-full h-full object-cover object-center"
@@ -110,7 +111,7 @@ const infoBar = [
         </div>
       </div>
       <div class="relative">
-        <img
+        <Picture
           src="/images/venue-bar-patio.jpg"
           alt="Coco Maya rooftop patio and glass atrium bar — Little Italy San Diego restaurant"
           class="w-full aspect-[4/5] object-cover"
@@ -140,7 +141,7 @@ const infoBar = [
             <div class="aspect-square overflow-hidden">
               <picture>
                 <source srcset={drink.image.replace(/\.(jpg|jpeg|png)$/i, ".webp")} type="image/webp" />
-                <img
+                <Picture
                   src={drink.image}
                   alt={`${drink.name} cocktail at Coco Maya Little Italy San Diego`}
                   class="w-full h-full object-cover"
@@ -166,7 +167,7 @@ const infoBar = [
   <!-- ── BRUNCH ─────────────────────────────────────────── -->
   <section class="relative py-32 overflow-hidden">
     <div class="absolute inset-0">
-      <img
+      <Picture
         src="/images/food-tacos-patio.jpg"
         alt="Daily brunch at Coco Maya — best brunch in Little Italy San Diego"
         class="w-full h-full object-cover object-center"
@@ -210,7 +211,7 @@ const infoBar = [
           <div class="group relative overflow-hidden aspect-square">
             <picture>
               <source srcset={item.image.replace(/\.(jpg|jpeg|png)$/i, ".webp")} type="image/webp" />
-              <img
+              <Picture
                 src={item.image}
                 alt={`${item.name} at Coco Maya San Diego Little Italy`}
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -240,7 +241,7 @@ const infoBar = [
   <section class="py-28 px-6 bg-[var(--color-cream)]">
     <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
       <div class="relative">
-        <img
+        <Picture
           src="/images/events-private-dining-1.jpg"
           alt="Private event venue in Little Italy San Diego — Coco Maya rooftop dining"
           class="w-full aspect-[3/4] object-cover"

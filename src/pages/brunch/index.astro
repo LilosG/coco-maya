@@ -1,4 +1,5 @@
 ---
+import Picture from "../../components/Picture.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
@@ -110,7 +111,7 @@ const schema = [
         <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">Reserve Your Table</a>
       </div>
       <div class="relative">
-        <img
+        <Picture
           src="/images/venue-patio.jpg"
           alt="Rooftop patio brunch at Coco Maya — best brunch Little Italy San Diego"
           class="w-full aspect-[4/5] object-cover"
@@ -142,7 +143,7 @@ const schema = [
 
   <!-- FULL BLEED ATMOSPHERE IMAGE -->
   <section class="relative h-[50vh] overflow-hidden">
-    <img
+    <Picture
       src="/images/cocktail-happy-hour-group.jpg"
       alt="Coco Maya rooftop patio — brunch and cocktails in Little Italy San Diego"
       class="w-full h-full object-cover object-center"

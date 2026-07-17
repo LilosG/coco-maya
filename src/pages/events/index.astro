@@ -1,4 +1,5 @@
 ---
+import Picture from "../../components/Picture.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
@@ -42,7 +43,7 @@ const schema = [
         {RECURRING_EVENTS.map((event) => (
           <div class="cm-media-card group">
             <div class="relative aspect-video overflow-hidden">
-              <img
+              <Picture
                 src={event.image}
                 alt={`${event.name} at Coco Maya Little Italy San Diego`}
                 class="w-full h-full object-cover"

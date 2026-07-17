@@ -1,4 +1,5 @@
 ---
+import Picture from "../../components/Picture.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
@@ -84,7 +85,7 @@ const schema = [
         </div>
       </div>
       <div class="relative">
-        <img
+        <Picture
           src="/images/events-private-dining-2.jpg"
           alt="Private event dining room at Coco Maya — rooftop venue Little Italy San Diego"
           class="w-full aspect-[4/5] object-cover"
@@ -108,7 +109,7 @@ const schema = [
         {PRIVATE_EVENT_TYPES.map((event) => (
           <a href={`/private-events/${event.slug}`} class="cm-media-card group block">
             <div class="aspect-video overflow-hidden">
-              <img
+              <Picture
                 src={event.heroImage}
                 alt={event.heroImageAlt}
                 class="w-full h-full object-cover"
@@ -147,7 +148,7 @@ const schema = [
 
   <!-- FULL BLEED NIGHT EVENT IMAGE -->
   <section class="relative h-[55vh] overflow-hidden">
-    <img
+    <Picture
       src="/images/events-private-patio-day.jpg"
       alt="Rooftop patio at Coco Maya — private event venue in Little Italy San Diego"
       class="w-full h-full object-cover object-center"

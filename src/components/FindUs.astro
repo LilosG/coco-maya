@@ -1,6 +1,6 @@
 ---
 import { SITE } from '../data/site';
-
+import Picture from "./Picture.astro";
 interface Props {
   interiorImage?: string;
   address?: string;
@@ -35,7 +35,7 @@ const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
   <article class="find-card">
     <div class="photo-side">
       <div class="find-photo">
-        <img src={interiorImage} alt="Coco Maya interior — In Love with the Coast neon wall" loading="lazy" />
+        <Picture src={interiorImage} alt="Coco Maya interior — In Love with the Coast neon wall" loading="lazy" width="700" height="600" />
       </div>
       <div class="map-badge" aria-hidden="true">
         <div class="map">

@@ -1,4 +1,5 @@
 ---
+import Picture from "./Picture.astro";
 interface Props {
   cocktailImage?: string;
   patioImage?: string;
@@ -28,7 +29,7 @@ const {
     <!-- Card 1 — THE COCKTAIL PROGRAM -->
     <article class="hh-card">
       <div class="hh-photo">
-        <img src={cocktailImage} alt="Coco Maya signature cocktails on the rooftop patio" loading="lazy" />
+        <Picture src={cocktailImage} alt="Coco Maya signature cocktails on the rooftop patio" loading="lazy" width="700" height="394" />
       </div>
       <div class="hh-body">
         <span class="hh-tag hh-tag--teal">★ Signature ★</span>
@@ -51,7 +52,7 @@ const {
     <!-- Card 2 — WHERE -->
     <article class="hh-card">
       <div class="hh-photo">
-        <img src={patioImage} alt="The elevated rooftop patio and bar area at Coco Maya" loading="lazy" />
+        <Picture src={patioImage} alt="The elevated rooftop patio and bar area at Coco Maya" loading="lazy" width="700" height="394" />
       </div>
       <div class="hh-body">
         <span class="hh-tag hh-tag--accent">Where</span>
