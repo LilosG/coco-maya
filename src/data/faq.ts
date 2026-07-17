@@ -10,7 +10,7 @@ export const GENERAL_FAQS: FaqItem[] = [
   {
     question: "What are Coco Maya's hours?",
     answer:
-      "We're open daily. Monday through Thursday from 10:30 AM to 8:00 PM, Friday and Saturday from 9:00 AM to 12:00 AM, and Sunday from 9:00 AM to 8:00 PM. Happy hour runs daily from 3:00 to 5:00 PM.",
+      "We're open daily. Monday through Thursday from 10:30 AM to 8:00 PM, Friday and Saturday from 9:00 AM to 12:00 AM, and Sunday from 9:00 AM to 8:00 PM. We don't currently run a discounted happy hour, but the rooftop patio and full cocktail program are available all day, every day, no special time window required.",
   },
   {
     question: "When is brunch served?",
