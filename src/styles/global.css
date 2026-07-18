@@ -17,9 +17,9 @@
 }
 
 @layer base {
-  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  body { background-color: var(--color-cream); color: var(--color-dark); font-family: var(--font-body); line-height: 1.7; overflow-x: hidden; }
   ::selection { background-color: var(--color-teal); color: var(--color-cream); }
-  body { background-color: var(--color-cream); color: var(--color-dark); font-family: var(--font-body); line-height: 1.7; }
   img { display: block; }
 }
 
