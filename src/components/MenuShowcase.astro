@@ -105,15 +105,15 @@ const {
     background: var(--color-sand-dark);
     border: 1px solid rgba(61,138,138,0.14);
   }
-  .ms-photo img,
-  .ms-photo picture {
+  .ms-photo :global(img),
+  .ms-photo :global(picture) {
     display: block; width: 100%; height: 100%;
   }
-  .ms-photo img {
+  .ms-photo :global(img) {
     object-fit: cover; object-position: center;
     transition: transform 0.5s ease;
   }
-  .ms-item:hover .ms-photo img { transform: scale(1.04); }
+  .ms-item:hover .ms-photo :global(img) { transform: scale(1.04); }
 
   .ms-caption {
     display: flex; flex-direction: column; gap: 4px;
