@@ -15,7 +15,7 @@ export const GENERAL_FAQS: FaqItem[] = [
   {
     question: "When is brunch served?",
     answer:
-      "Brunch is served daily until 3:00 PM, featuring modern coastal brunch plates and bottomless drink options on the elevated patio. Start times vary by day: 9:00 AM on Saturday and Sunday, 10:30 AM Monday and Tuesday, and 11:00 AM Wednesday through Friday.",
+      "Brunch is served daily until 3:00 PM, featuring modern coastal brunch plates and bottomless drink options on the elevated patio. Start times vary by day: 9:00 AM on Friday, Saturday, and Sunday, and 10:30 AM Monday through Thursday.",
   },
   {
     question: "When is dinner served?",
