@@ -16,8 +16,8 @@ export const SITE = {
   },
 
   phone: {
-    display: '(762) 465-8756',
-    tel: '+17624658756',
+    display: '(762) 475-8756',
+    tel: '+17624758756',
   },
 
   email: 'info@inlovewiththecoco.com',
