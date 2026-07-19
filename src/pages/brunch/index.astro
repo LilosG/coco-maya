@@ -12,7 +12,7 @@ import { FEATURED_BRUNCH, FEATURED_BRUNCH_DRINKS } from "../../data/menu";
 import { breadcrumbSchema } from "../../lib/schema";
 
 const highlights = [
-  { icon: "🥂", label: "Bottomless Brunch", body: "Bottomless mimosas, bloody marys, and select cocktails available every day of the week." },
+  { icon: "🥂", label: "Brunch Cocktails", body: "Bloody marys and select craft cocktails available every day of the week." },
   { icon: "🌮", label: "Modern Coastal Plates", body: "Fresh seafood, seasonal produce, and elevated brunch classics from the Coco Maya kitchen." },
   { icon: "🌿", label: "The Elevated Patio", body: "Brunch on one of San Diego most distinctive patios. Pink striped umbrellas, tropical greenery, and the Little Italy skyline." },
 ];
@@ -27,7 +27,7 @@ const schema = [
 ---
 <BaseLayout
   title="Best Daily Brunch in Little Italy San Diego | Coco Maya"
-  description="Best brunch in Little Italy San Diego at Coco Maya, served daily until 3PM. Bottomless mimosas on the rooftop patio, seven days a week. 1660 India St, San Diego CA 92101."
+  description="Best brunch in Little Italy San Diego at Coco Maya, served daily until 3PM. Craft cocktails on the rooftop patio, seven days a week. 1660 India St, San Diego CA 92101."
   image="/images/food-tacos-patio.jpg"
   extraSchema={schema}
 >
@@ -37,7 +37,7 @@ const schema = [
     label="Served Every Day"
     title="Daily Brunch"
     titleSuffix="Best Brunch in Little Italy, San Diego"
-    subtitle="San Diego best brunch in Little Italy, served daily. Modern coastal plates, bottomless options, and craft cocktails on the elevated patio."
+    subtitle="San Diego best brunch in Little Italy, served daily. Modern coastal plates and craft cocktails on the elevated patio."
     image="/images/food-tacos-patio.jpg"
     imageAlt="Brunch at Coco Maya Little Italy San Diego"
     tall={true}
@@ -164,8 +164,8 @@ const schema = [
   <!-- BRUNCH DRINKS -->
   <MenuShowcase
     eyebrow="Brunch Drinks"
-    title="Bottomless and worth it"
-    subtitle="Bottomless brunch options available every day of the week. Add bottomless mimosas to any brunch reservation."
+    title="Brunch drinks worth the trip"
+    subtitle="Craft cocktails and brunch classics available every day of the week."
     items={FEATURED_BRUNCH_DRINKS.map((drink) => ({
       name: drink.name,
       description: drink.description,

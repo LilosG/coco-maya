@@ -5,7 +5,7 @@ export const RECURRING_EVENTS = [
     day: 'Every Day',
     time: 'Until 3:00 PM',
     highlight: 'Served Daily',
-    description: 'San Diego\'s best brunch in Little Italy. Bottomless options, modern coastal plates, and craft cocktails on the elevated patio, served every day of the week.',
+    description: 'San Diego\'s best brunch in Little Italy. Modern coastal plates and craft cocktails on the elevated patio, served every day of the week.',
     image: '/images/food-brunch-sandwich.jpg',
   },
   {

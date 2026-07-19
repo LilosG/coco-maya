@@ -78,7 +78,7 @@ export const PRIVATE_EVENT_TYPES: PrivateEventType[] = [
       {
         question: "Can we do brunch instead of an evening event?",
         answer:
-          "Yes, brunch (served daily until 3 PM) is one of our most popular bachelorette bookings, with bottomless drink options available.",
+          "Yes, brunch (served daily until 3 PM) is one of our most popular bachelorette bookings.",
       },
       {
         question: "Do you offer decor or photo setups?",
