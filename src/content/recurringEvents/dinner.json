@@ -1,0 +1,10 @@
+{
+  "order": 2,
+  "slug": "dinner",
+  "name": "Dinner",
+  "day": "Every Day",
+  "time": "From 5:00 PM",
+  "highlight": "Served Nightly",
+  "description": "Modern American coastal dinner service every night of the week, on the elevated patio or in the glass atrium dining room.",
+  "image": "/images/food-prime-ribeye.jpg"
+}

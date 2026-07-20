@@ -6,6 +6,11 @@ const jsonCollection = (path: string) =>
     loader: file(path),
   });
 
+const jsonEntryCollection = (base: string) =>
+  defineCollection({
+    loader: glob({ pattern: "**/*.json", base }),
+  });
+
 const blog = defineCollection({
   loader: glob({ pattern: "**/*.mdx", base: "./src/content/blog" }),
   schema: z.object({
@@ -49,13 +54,13 @@ const privateEventDetailDefaults = jsonCollection("./src/content/privateEventDet
 const blogIndexPage = jsonCollection("./src/content/blogIndexPage.json");
 const blogPostDefaults = jsonCollection("./src/content/blogPostDefaults.json");
 
-const menuCocktails = jsonCollection("./src/content/menuCocktails.json");
-const menuDinner = jsonCollection("./src/content/menuDinner.json");
-const menuBrunchDrinks = jsonCollection("./src/content/menuBrunchDrinks.json");
-const menuBrunchFood = jsonCollection("./src/content/menuBrunchFood.json");
-const recurringEvents = jsonCollection("./src/content/recurringEvents.json");
+const menuCocktails = jsonEntryCollection("./src/content/menuCocktails");
+const menuDinner = jsonEntryCollection("./src/content/menuDinner");
+const menuBrunchDrinks = jsonEntryCollection("./src/content/menuBrunchDrinks");
+const menuBrunchFood = jsonEntryCollection("./src/content/menuBrunchFood");
+const recurringEvents = jsonEntryCollection("./src/content/recurringEvents");
 const upcomingEvents = defineCollection({
-  loader: file("./src/content/upcomingEvents.json"),
+  loader: glob({ pattern: "**/*.json", base: "./src/content/upcomingEvents" }),
   schema: z.object({
     order: z.number().optional(),
     slug: z.string(),
@@ -67,12 +72,12 @@ const upcomingEvents = defineCollection({
     image: z.string().optional(),
   }),
 });
-const privateEventTypes = jsonCollection("./src/content/privateEventTypes.json");
-const privateEventsProcessSteps = jsonCollection("./src/content/privateEventsProcessSteps.json");
-const privateEventsCapacitySpecs = jsonCollection("./src/content/privateEventsCapacitySpecs.json");
-const generalFaqs = jsonCollection("./src/content/generalFaqs.json");
-const happyHourFaqs = jsonCollection("./src/content/happyHourFaqs.json");
-const theSpaceSections = jsonCollection("./src/content/theSpaceSections.json");
+const privateEventTypes = jsonEntryCollection("./src/content/privateEventTypes");
+const privateEventsProcessSteps = jsonEntryCollection("./src/content/privateEventsProcessSteps");
+const privateEventsCapacitySpecs = jsonEntryCollection("./src/content/privateEventsCapacitySpecs");
+const generalFaqs = jsonEntryCollection("./src/content/generalFaqs");
+const happyHourFaqs = jsonEntryCollection("./src/content/happyHourFaqs");
+const theSpaceSections = jsonEntryCollection("./src/content/theSpaceSections");
 
 export const collections = {
   blog,

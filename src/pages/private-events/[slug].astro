@@ -25,7 +25,7 @@ const { event } = Astro.props;
 const [SITE, defaults] = await Promise.all([getSingleton("siteSettings"), getSingleton("privateEventDetailDefaults")]);
 const fill = (value: string) => value.replaceAll("{{eventName}}", event.name).replaceAll("{{eventNameLower}}", event.name.toLowerCase());
 const schema = [
-  faqPageSchema(event.faqs),
+  faqPageSchema(event.faqs ?? []),
   breadcrumbSchema([
     { name: SITE.breadcrumbs.home, url: SITE.url },
     { name: defaults.breadcrumbParentLabel, url: `${SITE.url}/private-events` },
@@ -76,7 +76,7 @@ const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.n
           {event.name} at Coco Maya
         </h2>
         <div class="rule"></div>
-        {event.intro.map((paragraph: string) => (
+        {(event.intro ?? []).map((paragraph: string) => (
           <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-5">
             {paragraph}
           </p>
@@ -111,7 +111,7 @@ const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.n
         </h2>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
-        {event.gallery.map((item: any) => (
+        {(event.gallery ?? []).map((item: any) => (
           <div class="cm-media-card group">
             <div class="aspect-[4/5] overflow-hidden">
               <Picture
@@ -137,7 +137,7 @@ const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.n
         </h2>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-        {event.highlights.map((item: any) => (
+        {(event.highlights ?? []).map((item: any) => (
           <ContentCard label={item.label} body={item.detail} />
         ))}
       </div>

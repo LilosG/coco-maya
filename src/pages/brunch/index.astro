@@ -12,8 +12,8 @@ import { breadcrumbSchema } from "../../lib/schema";
 
 const [SITE, page, FEATURED_BRUNCH, FEATURED_BRUNCH_DRINKS] = await Promise.all([getSingleton("siteSettings"), getSingleton("brunchPage"), getOrderedCollection("menuBrunchFood"), getOrderedCollection("menuBrunchDrinks")]);
 const fill = (value: string, name?: string) => value.replaceAll("{{street}}", SITE.address.street).replaceAll("{{fullAddress}}", `${SITE.address.street}, ${SITE.address.city} ${SITE.address.state} ${SITE.address.zip}`).replaceAll("{{brunchDailyUntil3}}", SITE.serviceMessaging.brunchDailyUntil3).replaceAll("{{name}}", name ?? "");
-const highlights = page.highlights;
-const dayNames = SITE.weekdaysSundayFirst;
+const highlights = page.highlights ?? [];
+const dayNames = SITE.weekdaysSundayFirst ?? [];
 const todayName = dayNames[new Date().getDay()];
 const schema = [
   breadcrumbSchema([
@@ -48,7 +48,7 @@ const schema = [
   <!-- INFO CARDS -->
   <section class="py-16 px-6 bg-[var(--color-cream)]">
     <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10">
-      {page.infoCards.map((card: any) => <InfoCard label={card.label} value={card.value} sub={card.subTemplate ? fill(card.subTemplate) : undefined} accent={card.accent} />)}
+      {(page.infoCards ?? []).map((card: any) => <InfoCard label={card.label} value={card.value} sub={card.subTemplate ? fill(card.subTemplate) : undefined} accent={card.accent} />)}
     </div>
 
     <!-- FULL BRUNCH HOURS BY DAY (hours vary by day of week, per GBP) -->
@@ -57,7 +57,7 @@ const schema = [
         <span class="eyebrow">{page.hoursLabel}</span>
       </div>
       <div class="divide-y divide-[var(--color-teal)]/10 px-6 pb-6">
-        {SITE.service.brunch.days.map((d: any) => (
+        {(SITE.service.brunch.days ?? []).map((d: any) => (
           <div class:list={[
             "flex justify-between py-3 font-[family-name:var(--font-body)] text-sm",
             d.day === todayName ? "text-[var(--color-dark)]" : "text-[var(--color-dark)]/50"

@@ -1,0 +1,88 @@
+{
+  "order": 2,
+  "slug": "birthday-celebrations",
+  "name": "Birthday Celebrations",
+  "eyebrow": "Birthday Parties in Little Italy",
+  "shortDescription": "Custom menus, private dining room, and a space that makes the occasion feel like one.",
+  "heroImage": "/images/events-private-dining-1.jpg",
+  "heroImageAlt": "Private dining room set up for a birthday celebration at Coco Maya Little Italy San Diego",
+  "seoTitle": "Birthday Party Venue in Little Italy San Diego | Coco Maya",
+  "seoDescription": "Celebrate a birthday at Coco Maya's private dining room or elevated patio in Little Italy, San Diego. Custom menus and drink packages for any size group.",
+  "intro": [
+    "From an intimate dinner for ten to a full patio takeover, our private dining room and elevated patio flex to match the celebration you have in mind.",
+    "We handle custom menus, drink packages, and the small details, birthday cake included, so you can actually be at your own party instead of running it.",
+    "Milestone birthdays tend to book the full patio or a full buyout, while smaller, more intimate celebrations usually land in the private dining room, warmer, quieter, and still connected to the bar."
+  ],
+  "relatedPost": {
+    "label": "Read the Rooftop Birthday Guide",
+    "href": "/blog/rooftop-birthday-party-venues-san-diego"
+  },
+  "specs": {
+    "guests": "10 – 180",
+    "duration": "2 – 4 hours",
+    "space": "Room, Patio, or Venue"
+  },
+  "highlights": [
+    {
+      "label": "Private Dining Room",
+      "detail": "An intimate, semi-enclosed space for smaller celebrations, connected to the main bar without being exposed to it."
+    },
+    {
+      "label": "Full Patio Buyout",
+      "detail": "For milestone birthdays, take over the entire elevated patio for the night."
+    },
+    {
+      "label": "Custom Menus & Drink Packages",
+      "detail": "Build a plated, family-style, or passed-apps menu around your group's taste and budget."
+    },
+    {
+      "label": "Cake Service",
+      "detail": "Bring your own cake, we'll handle storage, plating, and timing so it lands at the right moment."
+    },
+    {
+      "label": "Flexible Timing",
+      "detail": "Lunch, dinner, or late-night, we can build around whichever fits your celebration."
+    }
+  ],
+  "galleryImage": "/images/venue-interior-dining.jpg",
+  "galleryImageAlt": "Coco Maya indoor dining room set up for a private birthday celebration",
+  "gallery": [
+    {
+      "image": "/images/venue-interior-dining.jpg",
+      "alt": "Coco Maya indoor private dining room for birthday celebrations"
+    },
+    {
+      "image": "/images/food-spread-overhead.jpg",
+      "alt": "Full table spread of Coco Maya dishes for a birthday party"
+    },
+    {
+      "image": "/images/cocktail-coupe-foam.jpg",
+      "alt": "Craft cocktail service for a birthday celebration at Coco Maya"
+    }
+  ],
+  "atmosphereImage": "/images/venue-bar-to-patio.jpg",
+  "atmosphereImageAlt": "Coco Maya bar opening onto the patio for a birthday celebration",
+  "atmosphereLine": "Indoors or out, the party moves with you, bar to patio, without missing a beat.",
+  "faqs": [
+    {
+      "question": "How far in advance should we book a birthday party?",
+      "answer": "We recommend booking 3 to 4 weeks out for weekend dates, though we can often accommodate shorter notice for smaller groups on weekdays."
+    },
+    {
+      "question": "Can you accommodate a birthday cake?",
+      "answer": "Yes, you're welcome to bring in a cake, and our team can coordinate storage and service timing for you."
+    },
+    {
+      "question": "Is there a minimum spend for private dining room bookings?",
+      "answer": "Minimum spends vary by day of week and time slot. Email us with your date and headcount and we'll send exact numbers with your proposal."
+    },
+    {
+      "question": "Can we bring in outside decor or a party planner?",
+      "answer": "Yes, we regularly work alongside outside decorators and planners. Loop them into your inquiry so we can coordinate setup timing together."
+    },
+    {
+      "question": "Do you offer kid-friendly options for family birthday parties?",
+      "answer": "Yes, our kitchen can build a family-friendly menu alongside the regular offering for celebrations with guests of all ages."
+    }
+  ]
+}

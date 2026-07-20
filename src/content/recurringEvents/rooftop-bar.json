@@ -1,0 +1,10 @@
+{
+  "order": 3,
+  "slug": "rooftop-bar",
+  "name": "Rooftop Patio & Bar",
+  "day": "Daily",
+  "time": "{{openDaily}}",
+  "highlight": "Anytime",
+  "description": "Craft cocktails and the elevated glass atrium patio, open every day of the week for walk-ins and reservations alike.",
+  "image": "/images/cocktail-patio-pair.jpg"
+}

@@ -32,8 +32,9 @@ const canonicalURL = new URL(Astro.url.pathname, SITE.url);
 // Group consecutive days that share identical hours into single
 // OpeningHoursSpecification entries — the standard schema.org pattern,
 // rather than one entry per day.
-const orderedDays = [...SITE.weekdaysSundayFirst.slice(1), SITE.weekdaysSundayFirst[0]];
-const hoursByDay = new Map<string, string>(SITE.hours.map((h: any): [string, string] => [h.day, h.hours]));
+const calendarDays = Array.isArray(SITE.weekdaysSundayFirst) ? SITE.weekdaysSundayFirst : [];
+const orderedDays = calendarDays.length ? [...calendarDays.slice(1), calendarDays[0]] : [];
+const hoursByDay = new Map<string, string>((SITE.hours ?? []).map((h: any): [string, string] => [h.day, h.hours]));
 
 function parseHoursRange(hours: string) {
   const [open, close] = hours.split("–").map((s) => s.trim());
@@ -97,7 +98,7 @@ const schema = {
   priceRange: SITE.schema.priceRange,
   servesCuisine: SITE.schema.servesCuisine,
   hasMap: SITE.address.mapsUrl,
-  sameAs: Object.values(SITE.social),
+  sameAs: Object.values(SITE.social ?? {}),
   openingHoursSpecification,
   acceptsReservations: true,
 };

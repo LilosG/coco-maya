@@ -8,7 +8,7 @@ import CTASection from "../components/CTASection.astro";
 import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../lib/content";
 import { faqPageSchema, breadcrumbSchema } from "../lib/schema";
 const [SITE, page, rawFaqs] = await Promise.all([getSingleton("siteSettings"), getSingleton("faqPage"), getOrderedCollection("generalFaqs")]);
-const GENERAL_FAQS = resolveSiteTokens(rawFaqs, SITE).map((faq: any) => ({ question: faq.question, answer: faq.answer ?? faq.answerTemplate }));
+const GENERAL_FAQS = resolveSiteTokens(rawFaqs, SITE).map((faq: any) => ({ question: faq.question, answer: faq.answer ?? faq.answerTemplate ?? "" }));
 
 const schema = [
   faqPageSchema(GENERAL_FAQS),

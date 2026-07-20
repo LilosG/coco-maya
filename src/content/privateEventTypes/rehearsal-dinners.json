@@ -1,0 +1,88 @@
+{
+  "order": 3,
+  "slug": "rehearsal-dinners",
+  "name": "Rehearsal Dinners",
+  "eyebrow": "Rehearsal Dinners in Little Italy",
+  "shortDescription": "Intimate pre-wedding gatherings with custom menus and the full Coco Maya experience.",
+  "heroImage": "/images/events-table-setting.jpg",
+  "heroImageAlt": "Elegant table setting for a rehearsal dinner at Coco Maya Little Italy San Diego",
+  "seoTitle": "Rehearsal Dinner Venue in Little Italy San Diego | Coco Maya",
+  "seoDescription": "Host your rehearsal dinner at Coco Maya in Little Italy, San Diego. Private dining, custom menus, and a coastal setting the night before your wedding.",
+  "intro": [
+    "The night before the wedding deserves its own atmosphere, warm, personal, and a little less formal than the big day. Our private dining room and patio both work well for rehearsal dinners of 15 to 60 guests.",
+    "We build a custom menu around your families' preferences and keep the evening moving so toasts, dinner, and conversation all have their moment.",
+    "Many couples use the rehearsal dinner to introduce two families for the first time. We keep the room warm and the pacing relaxed, plated or family-style, so the focus stays on the people at the table."
+  ],
+  "relatedPost": {
+    "label": "Read the Rehearsal Dinner Guide",
+    "href": "/blog/rehearsal-dinner-restaurants-little-italy-san-diego"
+  },
+  "specs": {
+    "guests": "15 – 60",
+    "duration": "3 hours",
+    "space": "Private Dining Room"
+  },
+  "highlights": [
+    {
+      "label": "Private Dining Room",
+      "detail": "Seats up to 60 guests, with room to extend into patio seating for larger rehearsal dinners."
+    },
+    {
+      "label": "Custom Multi-Course Menu",
+      "detail": "Plated or family-style, built around what both families actually want to eat."
+    },
+    {
+      "label": "Wine & Cocktail Pairings",
+      "detail": "A curated pairing option for a more formal dinner service, if that's the tone you're after."
+    },
+    {
+      "label": "Space for Toasts",
+      "detail": "Room laid out so speeches and toasts have a natural moment, not an awkward interruption."
+    },
+    {
+      "label": "Planner Coordination",
+      "detail": "We work directly with your wedding planner or day-of coordinator on timing and seating."
+    }
+  ],
+  "galleryImage": "/images/food-lobster-flatbread.jpg",
+  "galleryImageAlt": "Lobster flatbread and coastal cuisine served at a Coco Maya rehearsal dinner",
+  "gallery": [
+    {
+      "image": "/images/food-lobster-flatbread.jpg",
+      "alt": "Lobster flatbread served at a Coco Maya rehearsal dinner"
+    },
+    {
+      "image": "/images/venue-interior-dining.jpg",
+      "alt": "Private dining room set for a rehearsal dinner at Coco Maya"
+    },
+    {
+      "image": "/images/cocktail-wine-glass-burgundy.jpg",
+      "alt": "Wine service for a rehearsal dinner at Coco Maya Little Italy"
+    }
+  ],
+  "atmosphereImage": "/images/venue-arch-patio.jpg",
+  "atmosphereImageAlt": "Coco Maya archway patio setting for an intimate rehearsal dinner",
+  "atmosphereLine": "Warm light, a table set for toasts, the night before everything changes.",
+  "faqs": [
+    {
+      "question": "Can Coco Maya accommodate a rehearsal dinner with 50+ guests?",
+      "answer": "Yes, our private dining room comfortably holds up to 60 guests, and we can extend into patio space for larger rehearsal dinners."
+    },
+    {
+      "question": "Do you offer plated or family-style menus?",
+      "answer": "Both are available. Many rehearsal dinners choose family-style service to keep the evening relaxed and conversational."
+    },
+    {
+      "question": "Can we coordinate with our wedding planner directly?",
+      "answer": "Absolutely. We're glad to work directly with your planner or day-of coordinator to align on timing, seating, and any special requests."
+    },
+    {
+      "question": "Can we do a wine or cocktail pairing for the dinner?",
+      "answer": "Yes, we can build a curated wine or cocktail pairing alongside your menu for a more formal rehearsal dinner service."
+    },
+    {
+      "question": "Is the private dining room fully separated from the rest of the restaurant?",
+      "answer": "It's a semi-private space connected to the main venue, giving you a dedicated area for your group while still being part of Coco Maya's atmosphere."
+    }
+  ]
+}

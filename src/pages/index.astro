@@ -18,8 +18,8 @@ const home = resolveSiteTokens(rawHome, SITE);
 const PRIVATE_EVENT_TYPES = resolveSiteTokens(rawPrivateEventTypes, SITE);
 const fill = (value: string, replacements: Record<string, string>) => Object.entries(replacements).reduce((text, [key, replacement]) => text.replaceAll(`{{${key}}}`, replacement), value);
 const todayHours = (() => {
-  const d = SITE.weekdaysSundayFirst;
-  const h = SITE.hours.find((x: any) => x.day === d[new Date().getDay()]);
+  const d = SITE.weekdaysSundayFirst ?? [];
+  const h = (SITE.hours ?? []).find((x: any) => x.day === d[new Date().getDay()]);
   return h?.hours ?? home.infoBar.closed;
 })();
 
@@ -285,12 +285,12 @@ const infoBar = [
   <section class="bg-[var(--color-dark)]">
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
       <div class="cm-dark-grid" style="grid-template-columns: repeat(4, 1fr);">
-        {home.stats.map((stat: any) => (
+        {(home.stats ?? []).map((stat: any) => (
           <div class="cm-dark-grid-cell py-14">
             <p class="font-[family-name:var(--font-display)] italic text-[var(--color-teal-light)] text-3xl sm:text-4xl mb-2">
               {stat.number}<span class="text-2xl">{stat.unit}</span>
             </p>
-            <p class="font-[family-name:var(--font-stamp)] text-white text-xs tracking-widest uppercase mb-1">{stat.label ?? fill(stat.labelTemplate, { street: SITE.address.street })}</p>
+            <p class="font-[family-name:var(--font-stamp)] text-white text-xs tracking-widest uppercase mb-1">{stat.label ?? (stat.labelTemplate ? fill(stat.labelTemplate, { street: SITE.address.street }) : "")}</p>
             <p class="font-[family-name:var(--font-body)] text-white/35 text-xs">{stat.sub}</p>
           </div>
         ))}

@@ -7,7 +7,7 @@ import { getSingleton } from "../lib/content";
 import { breadcrumbSchema } from "../lib/schema";
 const [SITE, page] = await Promise.all([getSingleton("siteSettings"), getSingleton("reservationsPage")]);
 const fill = (value: string) => value.replaceAll("{{phone}}", SITE.phone.display).replaceAll("{{street}}", SITE.address.street);
-const dayNames = SITE.weekdaysSundayFirst;
+const dayNames = SITE.weekdaysSundayFirst ?? [];
 const todayName = dayNames[new Date().getDay()];
 const schema = [
   breadcrumbSchema([
@@ -55,7 +55,7 @@ const schema = [
       <div class="bg-white/8 backdrop-blur-md border border-white/18 p-8">
         <span class="eyebrow-light mb-6">{page.labels.hours}</span>
         <div class="divide-y divide-white/10">
-          {SITE.hours.map((h: any) => (
+          {(SITE.hours ?? []).map((h: any) => (
             <div class:list={[
               "flex justify-between py-3.5 font-[family-name:var(--font-body)] text-sm",
               h.day === todayName ? "text-white" : "text-white/40"

@@ -1,0 +1,12 @@
+{
+  "order": 3,
+  "label": "Private Dining",
+  "title": "The Dining Room",
+  "body1": "The interior dining room features warm rattan chairs, a hand-woven ceiling, illuminated shelving, and the signature tropical mural. Intimate, curated, and completely private when needed.",
+  "body2": "Available for private event buyouts, rehearsal dinners, and large group bookings.",
+  "image": "/images/venue-interior-dining.jpg",
+  "imageAlt": "Private dining room at Coco Maya Little Italy San Diego",
+  "reverse": false,
+  "summaryLabel": "Private",
+  "summaryValue": "Dining Room"
+}

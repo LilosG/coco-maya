@@ -10,6 +10,7 @@ import { breadcrumbSchema } from "../../lib/schema";
 
 const [SITE, page, spaces] = await Promise.all([getSingleton("siteSettings"), getSingleton("spacePage"), getOrderedCollection("theSpaceSections")]);
 const fill = (value: string) => value.replaceAll("{{street}}", SITE.address.street);
+const barDetail = spaces.find((space) => space?.barDetail)?.barDetail;
 const schema = [
   breadcrumbSchema([
     { name: SITE.breadcrumbs.home, url: SITE.url },
@@ -74,19 +75,19 @@ const schema = [
 
 
   <!-- THE BAR SECTION -->
-  <section class="py-24 px-6 bg-[var(--color-dark)]">
+  {barDetail && <section class="py-24 px-6 bg-[var(--color-dark)]">
     <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
       <div>
-        <span class="eyebrow-light">{spaces[0].barDetail.eyebrow}</span>
+        <span class="eyebrow-light">{barDetail.eyebrow}</span>
         <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2.25rem,4vw,3.5rem)] text-white leading-tight mb-6">
-          {spaces[0].barDetail.title}
+          {barDetail.title}
         </h2>
         <div class="rule-light"></div>
         <p class="font-[family-name:var(--font-body)] text-white/60 leading-relaxed mb-4">
-          {spaces[0].barDetail.body1}
+          {barDetail.body1}
         </p>
         <p class="font-[family-name:var(--font-body)] text-white/60 leading-relaxed mb-10">
-          {spaces[0].barDetail.body2}
+          {barDetail.body2}
         </p>
         <div class="flex flex-wrap gap-4">
           <a href="/menu" class="btn-primary">{page.barCtas.menuLabel}</a>
@@ -95,15 +96,15 @@ const schema = [
       </div>
       <div class="relative">
         <Picture
-          src={spaces[0].barDetail.image}
-          alt={spaces[0].barDetail.imageAlt}
+          src={barDetail.image}
+          alt={barDetail.imageAlt}
           class="w-full aspect-[16/10] object-cover object-center"
           width="700" height="875" loading="lazy"
         />
         <div class="absolute -top-4 -left-4 w-full h-full border border-[var(--color-teal)]/25 -z-10 pointer-events-none"></div>
       </div>
     </div>
-  </section>
+  </section>}
 
   <CTASection
     title={page.cta.title}
