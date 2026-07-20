@@ -1,0 +1,6 @@
+{
+  "coconut-marg": { "order": 1, "name": "Coconut Marg", "description": "A Coco Maya original", "image": "/images/cocktail-coconut-marg.jpg", "featured": true },
+  "maya-marg": { "order": 2, "name": "Maya Marg", "description": "A Coco Maya original", "image": "/images/cocktail-maya-marg.jpg", "featured": true },
+  "marquesitas-espresso-martini": { "order": 3, "name": "Marquesitas Espresso Martini", "description": "A Coco Maya original", "image": "/images/cocktail-marquesitas-espresso-martini.jpg", "featured": true },
+  "little-italy-southside": { "order": 4, "name": "Little Italy Southside", "description": "A Coco Maya original", "image": "/images/cocktail-little-italy-southside.jpg", "featured": true }
+}

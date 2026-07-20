@@ -1,5 +1,6 @@
 ---
 import Picture from "./Picture.astro";
+import { getSingleton, resolveSiteTokens } from "../lib/content";
 interface Props {
   cocktailImage?: string;
   patioImage?: string;
@@ -7,21 +8,23 @@ interface Props {
   addressLine?: string;
 }
 
+const [SITE, rawHome] = await Promise.all([getSingleton("siteSettings"), getSingleton("home")]);
+const home = resolveSiteTokens(rawHome, SITE);
+const content = home.rooftopBar;
 const {
-  cocktailImage = '/images/cocktails.jpg',
-  patioImage = '/images/elevated-patio.jpg',
+  cocktailImage = content.cocktailImage,
+  patioImage = content.patioImage,
   menuHref = '/happy-hour',
-  addressLine = '1660 India St · Little Italy',
+  addressLine = `${SITE.address.street} · ${SITE.address.neighborhood}`,
 } = Astro.props;
 ---
 
 <section class="hh-section" aria-labelledby="hh-title">
   <div class="sec-head">
-    <span class="eyebrow mx-auto block">Open Daily</span>
-    <h2 id="hh-title" class="hh-title">Rooftop Patio &amp; Bar</h2>
+    <span class="eyebrow mx-auto block">{content.eyebrow}</span>
+    <h2 id="hh-title" class="hh-title">{content.title}</h2>
     <p class="hh-sub">
-      Craft cocktails and an open-air glass atrium bar —
-      one of Little Italy's most distinctive rooftop settings, every day of the week.
+      {content.subtitle}
     </p>
   </div>
 
@@ -29,21 +32,21 @@ const {
     <!-- Card 1 — THE COCKTAIL PROGRAM -->
     <article class="hh-card">
       <div class="hh-photo">
-        <Picture src={cocktailImage} alt="Coco Maya signature cocktails on the rooftop patio" loading="lazy" width="700" height="394" />
+        <Picture src={cocktailImage} alt={content.cocktailImageAlt} loading="lazy" width="700" height="394" />
       </div>
       <div class="hh-body">
-        <span class="hh-tag hh-tag--teal">★ Signature ★</span>
+        <span class="hh-tag hh-tag--teal">{content.signatureTag}</span>
         <div class="hh-hours-row">
           <div class="hh-col">
-            <div class="hh-label">The Pour</div>
-            <div class="hh-big">Craft Cocktails</div>
-            <div class="hh-sub-small">Fresh juice, small-batch spirits</div>
+            <div class="hh-label">{content.pourLabel}</div>
+            <div class="hh-big">{content.pourValue}</div>
+            <div class="hh-sub-small">{content.pourSub}</div>
           </div>
           <div class="hh-divider"></div>
           <div class="hh-col hh-col--accent">
-            <div class="hh-label">Signature</div>
-            <div class="hh-big">Cocktail Tower</div>
-            <div class="hh-sub-small">Four margaritas, fresh florals</div>
+            <div class="hh-label">{content.signatureLabel}</div>
+            <div class="hh-big">{content.signatureValue}</div>
+            <div class="hh-sub-small">{content.signatureSub}</div>
           </div>
         </div>
       </div>
@@ -52,13 +55,13 @@ const {
     <!-- Card 2 — WHERE -->
     <article class="hh-card">
       <div class="hh-photo">
-        <Picture src={patioImage} alt="The elevated rooftop patio and bar area at Coco Maya" loading="lazy" width="700" height="394" />
+        <Picture src={patioImage} alt={content.patioImageAlt} loading="lazy" width="700" height="394" />
       </div>
       <div class="hh-body">
-        <span class="hh-tag hh-tag--accent">Where</span>
+        <span class="hh-tag hh-tag--accent">{content.whereTag}</span>
         <div class="hh-where">
-          <div class="hh-label">Location</div>
-          <div class="hh-big">Elevated Patio<br />&amp; Bar Area</div>
+          <div class="hh-label">{content.locationLabel}</div>
+          <div class="hh-big">{content.locationValue1}<br />{content.locationValue2}</div>
           <div class="hh-addr">{addressLine}</div>
         </div>
       </div>
@@ -66,7 +69,7 @@ const {
   </div>
 
   <div class="hh-cta">
-    <a href={menuHref} class="btn-primary">SEE THE ROOFTOP PATIO</a>
+    <a href={menuHref} class="btn-primary">{content.ctaLabel}</a>
   </div>
 </section>
 

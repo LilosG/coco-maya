@@ -1,0 +1,14 @@
+{
+  "singleton": {
+    "logoAlt": "Coco Maya by Miss Bs San Diego",
+    "homeLabel": "Coco Maya",
+    "socialLabels": { "instagram": "Instagram", "facebook": "Facebook" },
+    "brandDescription": "Modern American coastal cuisine and craft cocktails in the heart of Little Italy, San Diego.",
+    "headings": { "explore": "Explore", "hours": "Hours", "findUs": "Find Us" },
+    "reserveLabel": "Reserve a Table",
+    "hospitalityLabel": "Grind & Prosper Hospitality",
+    "copyrightName": "Coco Maya by Miss B's",
+    "sitemap": { "label": "Sitemap", "href": "/sitemap-index.xml" },
+    "credit": { "label": "Website by Lilos Growth", "href": "https://lilosgrowth.com" }
+  }
+}

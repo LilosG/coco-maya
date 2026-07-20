@@ -1,0 +1,6 @@
+{
+  "brunch-sandwich": { "order": 1, "name": "Brunch Sandwich", "description": "Scrambled eggs, bacon, brioche, seasonal fruit, potato wedges", "category": "brunch", "image": "/images/food-brunch-sandwich.jpg" },
+  "brunch-bowl": { "order": 2, "name": "Brunch Bowl", "description": "Two eggs, black beans, rice, corn, chorizo hash", "category": "brunch", "image": "/images/food-brunch-bowl.jpg" },
+  "pork-belly-benedict": { "order": 3, "name": "Pork Belly Benedict", "description": "Seared pork belly, poached egg, hollandaise, brioche, avocado", "category": "brunch", "image": "/images/food-pork-belly-benedict.jpg" },
+  "lobster-benedict": { "order": 4, "name": "Lobster Benedict", "description": "Poached lobster, poached egg, hollandaise, arugula, brioche", "category": "brunch", "image": "/images/food-lobster-benedict.jpg" }
+}

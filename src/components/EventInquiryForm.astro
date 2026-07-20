@@ -1,19 +1,17 @@
 ---
-import { SITE } from "../data/site";
-
 interface Props {
-  label?: string;
+  label: string;
   subtitle?: string;
-  formUrl?: string;
-  ctaLabel?: string;
+  formUrl: string;
+  ctaLabel: string;
   dark?: boolean;
 }
 
 const {
-  label = "Book Your Event",
+  label,
   subtitle,
-  formUrl = SITE.inquiryForm.url,
-  ctaLabel = "Inquire About Your Event",
+  formUrl,
+  ctaLabel,
   dark = false,
 } = Astro.props;
 ---

@@ -1,0 +1,13 @@
+{
+  "reservations": { "order": 1, "question": "Do I need a reservation at Coco Maya?", "answer": "Reservations are strongly recommended, especially for brunch and Friday or Saturday evenings. You can book a table online through our reservation system, and walk-ins are welcome based on availability." },
+  "hours": { "order": 2, "question": "What are Coco Maya's hours?", "answer": "{{generalHoursFaq}}" },
+  "brunch": { "order": 3, "question": "When is brunch served?", "answer": "{{brunchHoursFaq}}" },
+  "dinner": { "order": 4, "question": "When is dinner served?", "answer": "{{dinnerHoursFaq}}" },
+  "large-groups": { "order": 5, "question": "Is Coco Maya good for large groups?", "answer": "Yes. Beyond regular dining, we host private and semi-private events for groups of 20 up to a full venue buyout of 180 guests. See our Private Events page for capacity details and how to book." },
+  "parking": { "order": 6, "question": "Is there parking near Coco Maya?", "answer": "Coco Maya is located at {{street}} in Little Italy, San Diego. Street parking and nearby public lots are available, and the neighborhood is walkable from most Little Italy hotels." },
+  "outdoor-seating": { "order": 7, "question": "Does Coco Maya have outdoor seating?", "answer": "Yes. Our elevated open-air patio is one of the most distinctive spaces in Little Italy, alongside a glass atrium bar and an indoor dining room for cooler evenings." },
+  "private-event": { "order": 8, "question": "Can I host a private event at Coco Maya?", "answer": "Yes. We host bachelorette parties, birthday celebrations, rehearsal dinners, corporate events, baby showers, and full evening buyouts. Email us at {{email}} with your date and group size to start planning." },
+  "dietary": { "order": 9, "question": "Does Coco Maya accommodate dietary restrictions?", "answer": "Our kitchen can accommodate most dietary needs, including vegetarian and gluten-conscious requests. Let your server know when you arrive, or note any restrictions when booking a private event." },
+  "dogs": { "order": 10, "question": "Is Coco Maya dog-friendly?", "answer": "Well-behaved dogs are welcome on our outdoor patio. Please keep pets leashed and clear of walkways for other guests." },
+  "contact": { "order": 11, "question": "How do I contact Coco Maya directly?", "answerTemplate": "Call us at {{phone}} or email {{email}}. For private events, include your preferred date and headcount so we can respond with availability." }
+}

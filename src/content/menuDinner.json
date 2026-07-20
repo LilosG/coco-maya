@@ -1,0 +1,6 @@
+{
+  "prime-ribeye": { "order": 1, "name": "Prime Ribeye", "description": "Grilled prime ribeye, roasted carrots, charred tomato", "category": "dinner", "image": "/images/food-prime-ribeye.jpg" },
+  "tacos": { "order": 2, "name": "Tacos", "description": "Lobster, oxtail, and avocado tacos, corn tortilla, cotija", "category": "dinner", "image": "/images/food-tacos-board.jpg" },
+  "drunken-mussels": { "order": 3, "name": "Drunken Mussels", "description": "Mussels, garlic-wine broth, toasted bread", "category": "dinner", "image": "/images/food-drunken-mussels.jpg" },
+  "maine-lobster-roll": { "order": 4, "name": "Maine Lobster Roll", "description": "Maine lobster, toasted roll, lemon, fries", "category": "dinner", "image": "/images/food-maine-lobster-roll.jpg" }
+}

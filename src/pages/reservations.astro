@@ -3,29 +3,31 @@ import Picture from "../components/Picture.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
-import { SITE } from "../data/site";
+import { getSingleton } from "../lib/content";
 import { breadcrumbSchema } from "../lib/schema";
-const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const [SITE, page] = await Promise.all([getSingleton("siteSettings"), getSingleton("reservationsPage")]);
+const fill = (value: string) => value.replaceAll("{{phone}}", SITE.phone.display).replaceAll("{{street}}", SITE.address.street);
+const dayNames = SITE.weekdaysSundayFirst;
 const todayName = dayNames[new Date().getDay()];
 const schema = [
   breadcrumbSchema([
-    { name: "Home", url: SITE.url },
-    { name: "Reservations", url: `${SITE.url}/reservations` },
+    { name: SITE.breadcrumbs.home, url: SITE.url },
+    { name: page.breadcrumbLabel, url: `${SITE.url}/reservations` },
   ]),
 ];
 ---
 <BaseLayout
-  title="Reservations | Coco Maya | Little Italy San Diego"
-  description={`Reserve a table at Coco Maya by Miss Bs in Little Italy San Diego. Book online or call ${SITE.phone.display}. 1660 India St.`}
-  image="/images/venue-hero-bar.jpg"
+  title={page.seo.title}
+  description={fill(page.seo.descriptionTemplate)}
+  image={page.hero.image}
   extraSchema={schema}
 >
   <Nav />
   <section class="relative min-h-screen flex items-center overflow-hidden">
     <div class="absolute inset-0">
       <Picture
-        src="/images/venue-hero-bar.jpg"
-        alt="Coco Maya Little Italy San Diego"
+        src={page.hero.image}
+        alt={page.hero.imageAlt}
         class="w-full h-full object-cover"
         width="1800" height="1200"
         fetchpriority="high"
@@ -34,26 +36,26 @@ const schema = [
     </div>
     <div class="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-10 py-36 grid lg:grid-cols-2 gap-16 items-center">
       <div>
-        <span class="eyebrow-light">Book Your Table</span>
+        <span class="eyebrow-light">{page.hero.label}</span>
         <h1 class="font-[family-name:var(--font-display)] italic text-[clamp(3.5rem,8vw,6rem)] text-white leading-none mb-3">
-          Reservations
+          {page.hero.title}
           <span class="block font-[family-name:var(--font-stamp)] not-italic text-[clamp(0.95rem,2.2vw,1.35rem)] tracking-[0.08em] text-white/75 mt-3">
-            Coco Maya | Little Italy, San Diego
+            {page.hero.titleSuffix}
           </span>
         </h1>
-        <p class="font-[family-name:var(--font-script)] text-white/65 text-3xl mb-8">at Coco Maya</p>
+        <p class="font-[family-name:var(--font-script)] text-white/65 text-3xl mb-8">{page.hero.script}</p>
         <p class="font-[family-name:var(--font-body)] text-white/70 max-w-md leading-relaxed mb-11">
-          Reserve your table online or call us directly. Walk-ins always welcome based on availability.
+          {page.hero.body}
         </p>
         <div class="flex flex-col sm:flex-row gap-4">
-          <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">Book Online</a>
+          <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">{page.labels.bookOnline}</a>
           <a href={`tel:${SITE.phone.tel}`} class="btn-white">{SITE.phone.display}</a>
         </div>
       </div>
       <div class="bg-white/8 backdrop-blur-md border border-white/18 p-8">
-        <span class="eyebrow-light mb-6">Hours</span>
+        <span class="eyebrow-light mb-6">{page.labels.hours}</span>
         <div class="divide-y divide-white/10">
-          {SITE.hours.map((h) => (
+          {SITE.hours.map((h: any) => (
             <div class:list={[
               "flex justify-between py-3.5 font-[family-name:var(--font-body)] text-sm",
               h.day === todayName ? "text-white" : "text-white/40"
@@ -65,7 +67,7 @@ const schema = [
         </div>
         <div class="border-t border-white/10 mt-4 pt-4">
           <p class="font-[family-name:var(--font-body)] text-white/45 text-xs leading-relaxed">
-            Brunch Daily, Until 3PM &bull; Rooftop Patio Open Daily
+            {SITE.serviceMessaging.brunchPatioSummary}
           </p>
         </div>
       </div>

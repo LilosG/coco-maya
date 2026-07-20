@@ -6,7 +6,7 @@ import Footer from "../../components/Footer.astro";
 import PageHero from "../../components/PageHero.astro";
 import CTASection from "../../components/CTASection.astro";
 import EventInquiryForm from "../../components/EventInquiryForm.astro";
-import { getSingleton } from "../../lib/content";
+import { SITE } from "../../data/site";
 import { breadcrumbSchema } from "../../lib/schema";
 
 export async function getStaticPaths() {
@@ -18,7 +18,6 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const [SITE, defaults] = await Promise.all([getSingleton("siteSettings"), getSingleton("blogPostDefaults")]);
 const { Content } = await render(post);
 const cta = post.data.eventCTA;
 
@@ -47,8 +46,8 @@ const schema = [
     mainEntityOfPage: `${SITE.url}/blog/${post.id}`,
   },
   breadcrumbSchema([
-    { name: SITE.breadcrumbs.home, url: SITE.url },
-    { name: defaults.breadcrumbLabel, url: `${SITE.url}/blog` },
+    { name: "Home", url: SITE.url },
+    { name: "Blog", url: `${SITE.url}/blog` },
     { name: post.data.title, url: `${SITE.url}/blog/${post.id}` },
   ]),
 ];
@@ -86,16 +85,14 @@ const formattedDate = post.data.date.toLocaleDateString("en-US", {
   {cta && (
     <EventInquiryForm
       label={cta.formLabel}
-      subtitle={cta.formSubtitle ?? defaults.inquirySubtitle}
-      formUrl={SITE.inquiryForm.url}
-      ctaLabel={defaults.formCtaLabel}
+      subtitle={cta.formSubtitle ?? "Share your date, headcount, and vision below and we'll follow up within 24 hours."}
     />
   )}
 
   <CTASection
-    title={cta?.title ?? defaults.cta.title}
-    subtitle={cta?.subtitle ?? defaults.cta.subtitle}
-    primaryLabel={cta?.primaryLabel ?? defaults.cta.primaryLabel}
+    title={cta?.title ?? "Ready to Visit?"}
+    subtitle={cta?.subtitle ?? "Reserve your table at Coco Maya in Little Italy."}
+    primaryLabel={cta?.primaryLabel ?? "Reserve a Table"}
     primaryHref={cta?.primaryHref ?? SITE.reservations.url}
     secondaryLabel={cta?.secondaryLabel}
     secondaryHref={cta?.secondaryHref}

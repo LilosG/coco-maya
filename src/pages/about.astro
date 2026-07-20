@@ -5,65 +5,63 @@ import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import PageHero from "../components/PageHero.astro";
 import CTASection from "../components/CTASection.astro";
-import { SITE } from "../data/site";
+import { getSingleton, resolveSiteTokens } from "../lib/content";
 import { breadcrumbSchema } from "../lib/schema";
 
-const stats = [
-  { value: "1660",       label: "India Street",    sub: "Little Italy, San Diego" },
-  { value: "Open Daily", label: "Every Week",       sub: "Mon-Thu 10:30 AM on" },
-  { value: "Elevated",   label: "Rooftop Patio",   sub: "Glass Atrium Bar" },
-  { value: "Daily",      label: "Brunch & Dinner",  sub: "9AM–3PM & 5PM nightly" },
-];
+const [SITE, rawAbout] = await Promise.all([getSingleton("siteSettings"), getSingleton("about")]);
+const about = resolveSiteTokens(rawAbout, SITE);
+const fill = (value: string) => value.replaceAll("{{street}}", SITE.address.street);
+const stats = about.stats;
 const schema = [
   breadcrumbSchema([
-    { name: "Home", url: SITE.url },
-    { name: "About", url: `${SITE.url}/about` },
+    { name: SITE.breadcrumbs.home, url: SITE.url },
+    { name: about.breadcrumbLabel, url: `${SITE.url}/about` },
   ]),
 ];
 ---
 <BaseLayout
-  title="About | Coco Maya by Miss Bs | Little Italy San Diego"
-  description="Coco Maya by Miss Bs is an elevated modern American coastal restaurant in Little Italy San Diego. Glass atrium, elevated patio, craft cocktails. 1660 India St."
-  image="/images/venue-interior-dining.jpg"
+  title={about.seo.title}
+  description={fill(about.seo.descriptionTemplate)}
+  image={about.seo.image}
   extraSchema={schema}
 >
   <Nav />
   <PageHero
-    label="Our Story"
-    title="About Coco Maya"
-    titleSuffix="Our Story in Little Italy, San Diego"
-    subtitle="Elevated modern American coastal cuisine in the heart of Little Italy, San Diego."
-    image="/images/venue-interior-dining.jpg"
-    imageAlt="Coco Maya dining room Little Italy San Diego"
+    label={about.hero.label}
+    title={about.hero.title}
+    titleSuffix={about.hero.titleSuffix}
+    subtitle={about.hero.subtitle}
+    image={about.hero.image}
+    imageAlt={about.hero.imageAlt}
     tall={true}
   />
 
   <section class="py-24 px-6 bg-[var(--color-cream)]">
     <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
       <div>
-        <span class="eyebrow">The Concept</span>
+        <span class="eyebrow">{about.story.eyebrow}</span>
         <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] leading-tight mb-4">
-          Modern Coastal, Elevated
+          {about.story.title}
         </h2>
         <div class="rule"></div>
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-4 text-[1.0625rem]">
-          Coco Maya by Miss Bs is San Diego elevated modern American coastal dining destination. Situated at 1660 India St in the heart of Little Italy, the restaurant is built around a stunning glass atrium bar, an elevated outdoor patio, and a kitchen that takes the food as seriously as the cocktails.
+          {fill(about.story.body1Template)}
         </p>
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-4 text-[1.0625rem]">
-          The menu draws from modern American coastal culinary traditions — fresh seafood, bold flavors, and elevated classics — executed with fine dining precision in a setting that feels genuinely relaxed.
+          {about.story.body2}
         </p>
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-10 text-[1.0625rem]">
-          A walk-in friendly rooftop patio, daily brunch, private events, and a cocktail program that draws from agave traditions and tropical coastal flavors.
+          {about.story.body3}
         </p>
         <div class="flex flex-wrap gap-4">
-          <a href="/the-space" class="btn-primary">See The Space</a>
-          <a href="/menu" class="btn-outline">View the Menu</a>
+          <a href="/the-space" class="btn-primary">{about.story.primaryLabel}</a>
+          <a href="/menu" class="btn-outline">{about.story.secondaryLabel}</a>
         </div>
       </div>
       <div class="relative">
         <Picture
-          src="/images/venue-neon-sign.jpg"
-          alt="In Love with the Coco neon sign at Coco Maya Little Italy San Diego"
+          src={about.story.image}
+          alt={about.story.imageAlt}
           class="w-full aspect-[4/5] object-cover"
           width="700" height="875"
           loading="lazy"
@@ -75,9 +73,9 @@ const schema = [
 
   <section class="bg-[var(--color-dark)] px-6 py-20">
     <div class="max-w-5xl mx-auto">
-      <span class="eyebrow-light mx-auto block text-center mb-12">At a Glance</span>
+      <span class="eyebrow-light mx-auto block text-center mb-12">{about.statsLabel}</span>
       <div class="cm-dark-grid" style="grid-template-columns: repeat(4, 1fr);">
-        {stats.map((s) => (
+        {stats.map((s: any) => (
           <div class="cm-dark-grid-cell py-12">
             <p class="font-[family-name:var(--font-display)] italic text-[var(--color-teal-light)] text-3xl mb-2">{s.value}</p>
             <p class="font-[family-name:var(--font-stamp)] text-white text-xs tracking-widest uppercase mb-1">{s.label}</p>
@@ -92,8 +90,8 @@ const schema = [
     <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
       <div class="relative order-2 lg:order-1">
         <Picture
-          src="/images/venue-bar-to-patio.jpg"
-          alt="Coco Maya bar looking out to the elevated patio in Little Italy"
+          src={about.experience.image}
+          alt={about.experience.imageAlt}
           class="w-full aspect-[4/5] object-cover"
           width="700" height="875"
           loading="lazy"
@@ -101,27 +99,27 @@ const schema = [
         <div class="absolute -top-5 -left-5 w-full h-full border border-[var(--color-teal)]/20 -z-10"></div>
       </div>
       <div class="order-1 lg:order-2">
-        <span class="eyebrow">The Experience</span>
+        <span class="eyebrow">{about.experience.eyebrow}</span>
         <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-4 leading-tight">
-          Indoor meets outdoor in the heart of Little Italy
+          {about.experience.title}
         </h2>
         <div class="rule"></div>
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-4 text-[1.0625rem]">
-          The glass atrium bar connects seamlessly to the elevated outdoor patio. The design reflects the San Diego climate with lush botanical elements, warm natural materials, and a teal palette that ties the whole venue together.
+          {about.experience.body1}
         </p>
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed text-[1.0625rem]">
-          Whether at the bar for an afternoon cocktail or seated on the patio for a private dinner, Coco Maya is a space that makes every occasion feel considered.
+          {about.experience.body2}
         </p>
       </div>
     </div>
   </section>
 
   <CTASection
-    title="Come Experience It"
-    subtitle="1660 India St, Little Italy San Diego. Open daily."
-    primaryLabel="Reserve a Table"
+    title={about.cta.title}
+    subtitle={fill(about.cta.subtitleTemplate)}
+    primaryLabel={about.cta.primaryLabel}
     primaryHref={SITE.reservations.url}
-    secondaryLabel="Get Directions"
+    secondaryLabel={about.cta.secondaryLabel}
     secondaryHref={SITE.address.mapsUrl}
     dark={true}
   />

@@ -1,0 +1,95 @@
+{
+  "singleton": {
+    "name": "Coco Maya",
+    "fullName": "Coco Maya by Miss B's",
+    "tagline": "Modern American Coastal Dining in Little Italy, San Diego",
+    "description": "Modern American coastal cuisine, craft cocktails, and San Diego's best brunch. Coco Maya by Miss B's in Little Italy at 1660 India St.",
+    "url": "https://inlovewiththecoco.com",
+    "address": {
+      "street": "1660 India St",
+      "city": "San Diego",
+      "state": "CA",
+      "zip": "92101",
+      "neighborhood": "Little Italy",
+      "full": "1660 India St, San Diego, CA 92101",
+      "mapsUrl": "https://maps.google.com/?q=1660+India+St+San+Diego+CA+92101"
+    },
+    "phone": { "display": "(762) 475-8756", "tel": "+17624758756" },
+    "email": "info@inlovewiththecoco.com",
+    "reservations": {
+      "url": "https://tables.toasttab.com/restaurants/179fe648-b771-40b6-a75f-9cb86f67a3e4/findTime",
+      "label": "Reserve a Table"
+    },
+    "inquiryForm": {
+      "url": "https://www.toasttab.com/invoice/lead?rx=179fe648-b771-40b6-a75f-9cb86f67a3e4&ot=25f16565-a67d-463c-ad37-b0ffb59c64e5&form=1"
+    },
+    "order": {
+      "url": "https://order.toasttab.com/online/cocomaya-1660-india-st",
+      "label": "Order Online"
+    },
+    "hours": [
+      { "day": "Monday", "open": true, "hours": "10:30 AM – 8:00 PM" },
+      { "day": "Tuesday", "open": true, "hours": "10:30 AM – 8:00 PM" },
+      { "day": "Wednesday", "open": true, "hours": "10:30 AM – 8:00 PM" },
+      { "day": "Thursday", "open": true, "hours": "10:30 AM – 8:00 PM" },
+      { "day": "Friday", "open": true, "hours": "9:00 AM – 12:00 AM" },
+      { "day": "Saturday", "open": true, "hours": "9:00 AM – 12:00 AM" },
+      { "day": "Sunday", "open": true, "hours": "9:00 AM – 8:00 PM" }
+    ],
+    "weekdaysSundayFirst": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    "breadcrumbs": { "home": "Home" },
+    "rooftopBar": { "detail": "Elevated Patio & Glass Atrium" },
+    "service": {
+      "brunch": {
+        "label": "Daily Brunch",
+        "tagline": "Served daily, until 3:00 PM",
+        "shortTagline": "Daily · Until 3PM",
+        "days": [
+          { "day": "Sunday", "hours": "9:00 AM – 3:00 PM" },
+          { "day": "Monday", "hours": "10:30 AM – 3:00 PM" },
+          { "day": "Tuesday", "hours": "10:30 AM – 3:00 PM" },
+          { "day": "Wednesday", "hours": "10:30 AM – 3:00 PM" },
+          { "day": "Thursday", "hours": "10:30 AM – 3:00 PM" },
+          { "day": "Friday", "hours": "9:00 AM – 3:00 PM" },
+          { "day": "Saturday", "hours": "9:00 AM – 3:00 PM" }
+        ]
+      },
+      "dinner": {
+        "label": "Dinner",
+        "tagline": "Served nightly from 5:00 PM",
+        "shortTagline": "Nightly from 5PM",
+        "days": [
+          { "day": "Sunday", "hours": "5:00 PM – 8:00 PM" },
+          { "day": "Monday", "hours": "5:00 PM – 8:00 PM" },
+          { "day": "Tuesday", "hours": "5:00 PM – 8:00 PM" },
+          { "day": "Wednesday", "hours": "5:00 PM – 8:00 PM" },
+          { "day": "Thursday", "hours": "5:00 PM – 8:00 PM" },
+          { "day": "Friday", "hours": "5:00 PM – 10:30 PM" },
+          { "day": "Saturday", "hours": "5:00 PM – 10:30 PM" }
+        ]
+      }
+    },
+    "serviceMessaging": {
+      "openDaily": "Open Daily",
+      "openDailyLower": "Open daily",
+      "openDailyInline": "open daily",
+      "brunchDailyUntil3": "Brunch served daily until 3PM.",
+      "brunchPatioSummary": "Brunch Daily, Until 3PM • Rooftop Patio Open Daily",
+      "generalHoursFaq": "We're open daily. Monday through Thursday from 10:30 AM to 8:00 PM, Friday and Saturday from 9:00 AM to 12:00 AM, and Sunday from 9:00 AM to 8:00 PM. We don't currently run a discounted happy hour, but the rooftop patio and full cocktail program are available all day, every day, no special time window required.",
+      "brunchHoursFaq": "Brunch is served daily until 3:00 PM, featuring modern coastal brunch plates on the elevated patio. Start times vary by day: 9:00 AM on Friday, Saturday, and Sunday, and 10:30 AM Monday through Thursday.",
+      "dinnerHoursFaq": "Dinner is served nightly starting at 5:00 PM. Sunday through Thursday dinner service runs until 8:00 PM, and Friday and Saturday it runs until 10:30 PM."
+    },
+    "social": {
+      "instagram": "https://instagram.com/cocomayasd",
+      "facebook": "https://facebook.com/cocomayasd",
+      "yelp": "https://yelp.com/biz/coco-maya-san-diego"
+    },
+    "schema": {
+      "type": "Restaurant",
+      "addressCountry": "US",
+      "priceRange": "$$$",
+      "servesCuisine": ["Modern American", "Coastal", "Seafood", "Brunch"],
+      "geo": { "lat": 32.7245, "lng": -117.1699 }
+    }
+  }
+}

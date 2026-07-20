@@ -1,21 +1,20 @@
 ---
-import { SITE } from "../data/site";
 import Picture from "./Picture.astro";
 interface Props {
-  title?: string;
+  title: string;
   subtitle?: string;
-  primaryLabel?: string;
-  primaryHref?: string;
+  primaryLabel: string;
+  primaryHref: string;
   secondaryLabel?: string;
   secondaryHref?: string;
   dark?: boolean;
   image?: string;
 }
 const {
-  title = "Ready to Visit?",
-  subtitle = "Reserve your table at Coco Maya in Little Italy.",
-  primaryLabel = "Reserve a Table",
-  primaryHref = SITE.reservations.url,
+  title,
+  subtitle,
+  primaryLabel,
+  primaryHref,
   secondaryLabel,
   secondaryHref,
   dark = false,

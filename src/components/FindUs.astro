@@ -1,5 +1,5 @@
 ---
-import { SITE } from '../data/site';
+import { getSingleton } from '../lib/content';
 import Picture from "./Picture.astro";
 interface Props {
   interiorImage?: string;
@@ -12,15 +12,17 @@ interface Props {
   accentValue?: string;
 }
 
+const [SITE, home] = await Promise.all([getSingleton("siteSettings"), getSingleton("home")]);
+const content = home.findUs;
 const {
-  interiorImage = '/images/find-us-interior.jpg',
-  address = '1660 India St',
-  cityLine = 'Little Italy, San Diego, CA 92101',
+  interiorImage = content.image,
+  address = SITE.address.street,
+  cityLine = `${SITE.address.neighborhood}, ${SITE.address.city}, ${SITE.address.state} ${SITE.address.zip}`,
   phone = SITE.phone.display,
-  mapsHref = 'https://maps.google.com/?q=1660+India+St+San+Diego+CA+92101',
-  openLine = 'Open Daily',
-  accentLabel = 'Rooftop Patio',
-  accentValue = 'Open Daily',
+  mapsHref = SITE.address.mapsUrl,
+  openLine = SITE.serviceMessaging.openDaily,
+  accentLabel = content.accentLabel,
+  accentValue = SITE.serviceMessaging.openDaily,
 } = Astro.props;
 
 const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
@@ -28,14 +30,14 @@ const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
 
 <section class="find-section" aria-labelledby="find-title">
   <div class="sec-head">
-    <span class="eyebrow mx-auto block">Come Visit</span>
-    <h2 id="find-title" class="find-title">Find Us in Little Italy</h2>
+    <span class="eyebrow mx-auto block">{content.eyebrow}</span>
+    <h2 id="find-title" class="find-title">{content.title}</h2>
   </div>
 
   <article class="find-card">
     <div class="photo-side">
       <div class="find-photo">
-        <Picture src={interiorImage} alt="Coco Maya interior — In Love with the Coast neon wall" loading="lazy" width="700" height="600" />
+        <Picture src={interiorImage} alt={content.imageAlt} loading="lazy" width="700" height="600" />
       </div>
       <div class="map-badge" aria-hidden="true">
         <div class="map">
@@ -52,18 +54,18 @@ const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
             <circle cx="68" cy="55" r="4.5" fill="var(--color-teal-dark)" stroke="#fff" stroke-width="1.5" />
           </svg>
         </div>
-        <div class="map-label">India St × W Ash</div>
+        <div class="map-label">{content.mapLabel}</div>
       </div>
     </div>
 
     <div class="info-side">
-      <div class="place-eyebrow">San Diego · Little Italy</div>
+      <div class="place-eyebrow">{content.placeEyebrow}</div>
       <h3 class="place-name">{address}</h3>
       <p class="place-sub">{cityLine}</p>
 
       <div class="fu-fields">
         <div class="fu-field">
-          <span class="fu-field-label">Open</span>
+          <span class="fu-field-label">{content.openLabel}</span>
           <span class="fu-leader"></span>
           <span class="fu-value">{openLine}</span>
         </div>
@@ -73,14 +75,14 @@ const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
           <span class="fu-value">{accentValue}</span>
         </div>
         <div class="fu-field">
-          <span class="fu-field-label">Call</span>
+          <span class="fu-field-label">{content.callLabel}</span>
           <span class="fu-leader"></span>
           <span class="fu-value">{phone}</span>
         </div>
       </div>
 
       <div class="find-actions">
-        <a href={mapsHref} target="_blank" rel="noopener" class="btn-primary">GET DIRECTIONS</a>
+        <a href={mapsHref} target="_blank" rel="noopener" class="btn-primary">{content.directionsLabel}</a>
         <a href={telHref} class="btn-outline">{phone}</a>
       </div>
     </div>
@@ -203,4 +205,3 @@ const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
     .map-badge .map-label { font-size: 8px; }
   }
 </style>
-

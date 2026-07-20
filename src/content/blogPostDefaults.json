@@ -1,0 +1,8 @@
+{
+  "singleton": {
+    "breadcrumbLabel": "Blog",
+    "inquirySubtitle": "Share your date, headcount, and vision, and we'll follow up within 24 hours.",
+    "formCtaLabel": "Inquire About Your Event",
+    "cta": { "title": "Ready to Visit?", "subtitle": "Reserve your table at Coco Maya in Little Italy.", "primaryLabel": "Reserve a Table" }
+  }
+}

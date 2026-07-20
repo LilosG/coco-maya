@@ -1,0 +1,8 @@
+{
+  "singleton": {
+    "breadcrumbLabel": "Reservations",
+    "seo": { "title": "Reservations | Coco Maya | Little Italy San Diego", "descriptionTemplate": "Reserve a table at Coco Maya by Miss Bs in Little Italy San Diego. Book online or call {{phone}}. {{street}}." },
+    "hero": { "label": "Book Your Table", "title": "Reservations", "titleSuffix": "Coco Maya | Little Italy, San Diego", "script": "at Coco Maya", "body": "Reserve your table online or call us directly. Walk-ins always welcome based on availability.", "image": "/images/venue-hero-bar.jpg", "imageAlt": "Coco Maya Little Italy San Diego" },
+    "labels": { "bookOnline": "Book Online", "hours": "Hours" }
+  }
+}

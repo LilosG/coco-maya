@@ -1,7 +1,9 @@
 ---
 import "../styles/global.css";
-import { SITE } from "../data/site";
+import { getSingleton } from "../lib/content";
 import Analytics from "../components/Analytics.astro";
+
+const SITE = await getSingleton("siteSettings");
 
 interface Props {
   title: string;
@@ -30,8 +32,8 @@ const canonicalURL = new URL(Astro.url.pathname, SITE.url);
 // Group consecutive days that share identical hours into single
 // OpeningHoursSpecification entries — the standard schema.org pattern,
 // rather than one entry per day.
-const orderedDays = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
-const hoursByDay = new Map(SITE.hours.map((h) => [h.day, h.hours]));
+const orderedDays = [...SITE.weekdaysSundayFirst.slice(1), SITE.weekdaysSundayFirst[0]];
+const hoursByDay = new Map<string, string>(SITE.hours.map((h: any): [string, string] => [h.day, h.hours]));
 
 function parseHoursRange(hours: string) {
   const [open, close] = hours.split("–").map((s) => s.trim());
@@ -51,7 +53,11 @@ const openingHoursSpecification: Record<string, unknown>[] = [];
 let i = 0;
 while (i < orderedDays.length) {
   const day = orderedDays[i];
-  const hours = hoursByDay.get(day)!;
+  const hours = hoursByDay.get(day);
+  if (!hours?.trim()) {
+    i++;
+    continue;
+  }
   const group = [day];
   let j = i + 1;
   while (j < orderedDays.length && hoursByDay.get(orderedDays[j]) === hours) {
@@ -81,7 +87,7 @@ const schema = {
     addressLocality: SITE.address.city,
     addressRegion: SITE.address.state,
     postalCode: SITE.address.zip,
-    addressCountry: "US",
+    addressCountry: SITE.schema.addressCountry,
   },
   geo: {
     "@type": "GeoCoordinates",
