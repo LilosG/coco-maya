@@ -1,0 +1,84 @@
+{
+  "order": 5,
+  "slug": "baby-showers",
+  "name": "Baby Showers",
+  "eyebrow": "Baby Showers in Little Italy",
+  "shortDescription": "Daytime social gatherings with brunch menus and the lush patio atmosphere.",
+  "heroImage": "/images/venue-patio.jpg",
+  "heroImageAlt": "Coco Maya elevated patio set up for a daytime baby shower in Little Italy San Diego",
+  "seoTitle": "Baby Shower Venue in Little Italy San Diego | Coco Maya",
+  "seoDescription": "Host a baby shower on Coco Maya's elevated patio in Little Italy, San Diego. Brunch menus, daytime availability, and a bright, photo-friendly setting.",
+  "intro": [
+    "Our elevated patio in daylight is one of the prettiest settings in Little Italy for a daytime celebration, bright, open-air, and full of greenery.",
+    "We build baby shower packages around brunch and lunch menus, with room for games, gifts, and the group photo everyone actually wants.",
+    "Most baby showers book a reserved patio section for a late-morning to early-afternoon window, giving the group natural light for photos and enough time to eat, open gifts, and actually visit."
+  ],
+  "specs": {
+    "guests": "10 – 40",
+    "duration": "2 – 3 hours",
+    "space": "Reserved Patio"
+  },
+  "highlights": [
+    {
+      "label": "Bright, Open-Air Patio",
+      "detail": "Daylight setting with greenery, one of the more photogenic daytime spaces in Little Italy."
+    },
+    {
+      "label": "Brunch & Lunch Menus",
+      "detail": "Build a package around our brunch or lunch offerings, suited to a daytime celebration."
+    },
+    {
+      "label": "Reserved Section",
+      "detail": "A dedicated section of the patio for groups of 10 to 40 guests."
+    },
+    {
+      "label": "Space for Gifts & Games",
+      "detail": "We can lay out a gift table or small activity area within your reserved section."
+    },
+    {
+      "label": "Non-Alcoholic Packages",
+      "detail": "Mocktail and non-alcoholic drink options alongside the full cocktail and wine list."
+    }
+  ],
+  "galleryImage": "/images/food-brunch-bowl.jpg",
+  "galleryImageAlt": "Brunch bowl served at a Coco Maya baby shower celebration",
+  "gallery": [
+    {
+      "image": "/images/food-brunch-bowl.jpg",
+      "alt": "Brunch bowl served at a Coco Maya baby shower"
+    },
+    {
+      "image": "/images/elevated-patio.jpg",
+      "alt": "Elevated patio set up for a daytime baby shower at Coco Maya"
+    },
+    {
+      "image": "/images/food-brunch-sandwich.jpg",
+      "alt": "Brunch sandwich plate served at a Coco Maya baby shower celebration"
+    }
+  ],
+  "atmosphereImage": "/images/venue-patio-exterior.jpg",
+  "atmosphereImageAlt": "Coco Maya patio exterior in daylight for a baby shower celebration",
+  "atmosphereLine": "Daylight, greenery, and a patio that photographs as well as it feels to sit on.",
+  "faqs": [
+    {
+      "question": "What time of day works best for a baby shower?",
+      "answer": "Brunch, served daily until 3 PM, or a late-morning to early-afternoon slot both work well, giving you natural light on the patio."
+    },
+    {
+      "question": "Can you accommodate a mix of alcoholic and non-alcoholic guests?",
+      "answer": "Yes, we offer mocktail and non-alcoholic drink packages alongside our full cocktail and wine menu."
+    },
+    {
+      "question": "Is there space for gift tables or a small setup area?",
+      "answer": "Yes, we can reserve space for a gift table or small decor setup within your section. Mention it when you inquire so we can plan the layout."
+    },
+    {
+      "question": "Can we bring our own cake or desserts?",
+      "answer": "Yes, outside cakes and desserts are welcome for baby showers. Let us know ahead of time so we can coordinate storage and service."
+    },
+    {
+      "question": "Is the patio shaded or fully open-air?",
+      "answer": "The elevated patio is open-air with some covered areas. We can discuss seating placement based on time of day and weather when you book."
+    }
+  ]
+}

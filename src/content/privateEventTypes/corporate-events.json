@@ -1,0 +1,88 @@
+{
+  "order": 4,
+  "slug": "corporate-events",
+  "name": "Corporate Events",
+  "eyebrow": "Corporate Events in Little Italy",
+  "shortDescription": "Team dinners and client entertaining in a space that makes an impression.",
+  "heroImage": "/images/events-private-dining-2.jpg",
+  "heroImageAlt": "Corporate event dining setup at Coco Maya Little Italy San Diego",
+  "seoTitle": "Corporate Event Venue in Little Italy San Diego | Coco Maya",
+  "seoDescription": "Book Coco Maya for your next corporate event, team dinner, or client entertaining in Little Italy, San Diego. Private dining, AV support, and custom packages.",
+  "intro": [
+    "Whether it's a quarterly team dinner or entertaining an out-of-town client, Coco Maya gives you a private setting with real character, not another hotel ballroom.",
+    "We handle menu customization, timing around presentations or toasts, and AV needs so the logistics stay invisible and the evening runs smoothly.",
+    "Corporate bookings range from a breakfast meeting for ten to a full evening buyout for a company-wide gathering. Either way, we build the package around your schedule, not the other way around."
+  ],
+  "relatedPost": {
+    "label": "Read the Corporate Events Guide",
+    "href": "/blog/corporate-event-venues-little-italy-san-diego"
+  },
+  "specs": {
+    "guests": "10 – 100",
+    "duration": "2 – 3 hours",
+    "space": "Private Room or Patio"
+  },
+  "highlights": [
+    {
+      "label": "Private Dining or Patio",
+      "detail": "Choose an enclosed space for a focused meeting, or the patio for a more relaxed team dinner."
+    },
+    {
+      "label": "AV Support",
+      "detail": "Basic AV setup available in the private dining room for presentations or toasts."
+    },
+    {
+      "label": "Custom Menus",
+      "detail": "Dietary accommodations built in, no one on your team gets left with the same three options."
+    },
+    {
+      "label": "Group Billing",
+      "detail": "Centralized invoicing and itemized receipts for expense reporting, handled on our end."
+    },
+    {
+      "label": "Daytime Availability",
+      "detail": "Open daily from 10:30 AM (9 AM Fri–Sun), which works well for breakfast meetings or midday gatherings."
+    }
+  ],
+  "galleryImage": "/images/venue-atrium-bar.jpg",
+  "galleryImageAlt": "Coco Maya glass atrium bar area used for corporate event entertaining",
+  "gallery": [
+    {
+      "image": "/images/venue-atrium-bar.jpg",
+      "alt": "Coco Maya glass atrium bar used for corporate entertaining"
+    },
+    {
+      "image": "/images/food-spread-overhead.jpg",
+      "alt": "Full table spread for a corporate dinner at Coco Maya"
+    },
+    {
+      "image": "/images/venue-bar-detail.jpg",
+      "alt": "Bar detail at Coco Maya, private venue for corporate events"
+    }
+  ],
+  "atmosphereImage": "/images/venue-space-hero.jpg",
+  "atmosphereImageAlt": "Coco Maya venue space set up for a corporate event in Little Italy",
+  "atmosphereLine": "A space with real character, built for client dinners that don't feel like client dinners.",
+  "faqs": [
+    {
+      "question": "Can Coco Maya provide a single invoice for corporate billing?",
+      "answer": "Yes, we can set up centralized billing and provide itemized invoices for expense reporting and reimbursement."
+    },
+    {
+      "question": "Is AV equipment available for presentations?",
+      "answer": "We can support basic AV needs in the private dining room. Let us know your requirements in advance so we can confirm setup."
+    },
+    {
+      "question": "Do you host daytime corporate events?",
+      "answer": "Yes, we're open daily starting at 10:30 AM (9 AM Friday through Sunday), which works well for breakfast meetings or midday team gatherings."
+    },
+    {
+      "question": "Can you accommodate a mix of dietary restrictions across a large group?",
+      "answer": "Yes, our kitchen regularly builds menus that account for vegetarian, gluten-conscious, and other dietary needs across a full group."
+    },
+    {
+      "question": "Is Wi-Fi available for a working lunch or meeting?",
+      "answer": "Yes, Wi-Fi is available throughout the venue, suitable for a working lunch or a meeting that runs alongside the meal."
+    }
+  ]
+}

@@ -184,7 +184,7 @@ const schema = [
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-8">
           {page.inquiry.body}
         </p>
-        <div class="space-y-5">{page.inquiry.sellingPoints.map((item: string) => <div class="cm-event-item"><div class="cm-event-item-dot"></div><span class="cm-event-item-label">{item}</span></div>)}</div>
+        <div class="space-y-5">{(page.inquiry.sellingPoints ?? []).map((item: string) => <div class="cm-event-item"><div class="cm-event-item-dot"></div><span class="cm-event-item-label">{item}</span></div>)}</div>
       </div>
       <div class="space-y-5">
         <div class="cc-card">

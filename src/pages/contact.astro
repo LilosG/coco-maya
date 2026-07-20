@@ -7,7 +7,7 @@ import { getSingleton } from "../lib/content";
 import { breadcrumbSchema } from "../lib/schema";
 const [SITE, page] = await Promise.all([getSingleton("siteSettings"), getSingleton("contactPage")]);
 const fill = (value: string) => value.replaceAll("{{fullAddress}}", `${SITE.address.street}, ${SITE.address.city} ${SITE.address.state} ${SITE.address.zip}`).replaceAll("{{phone}}", SITE.phone.display).replaceAll("{{street}}", SITE.address.street);
-const dayNames = SITE.weekdaysSundayFirst;
+const dayNames = SITE.weekdaysSundayFirst ?? [];
 const todayName = dayNames[new Date().getDay()];
 const schema = [
   breadcrumbSchema([
@@ -59,7 +59,7 @@ const schema = [
           <div>
             <span class="eyebrow">{page.labels.hours}</span>
             <div class="divide-y divide-[var(--color-teal)]/10">
-              {SITE.hours.map((h: any) => (
+              {(SITE.hours ?? []).map((h: any) => (
                 <div class:list={[
                   "flex justify-between py-3.5 font-[family-name:var(--font-body)] text-sm",
                   h.day === todayName ? "text-[var(--color-dark)] font-medium" : "text-[var(--color-dark)]/40"

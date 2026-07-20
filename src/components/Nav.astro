@@ -20,7 +20,7 @@ const [SITE, navigation] = await Promise.all([
     </a>
 
     <nav class="hidden lg:flex items-center gap-7" aria-label={navigation.accessibility.mainLabel}>
-      {navigation.main.map((item: any) => (
+      {(navigation.main ?? []).map((item: any) => (
         <a href={item.href} class="nav-link font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase transition-colors duration-200">{item.label}</a>
       ))}
     </nav>
@@ -46,7 +46,7 @@ const [SITE, navigation] = await Promise.all([
     </svg>
   </button>
   <img src="/images/logo-teal.png" alt={navigation.accessibility.mobileLogoAlt} class="h-12 w-auto mb-4" width="160" height="48" />
-  {navigation.main.map((item: any) => (
+  {(navigation.main ?? []).map((item: any) => (
     <a href={item.href} class="font-[family-name:var(--font-stamp)] text-xl tracking-widest uppercase text-[var(--color-dark)] hover:text-[var(--color-teal)] transition-colors">{item.label}</a>
   ))}
   <div class="flex flex-col gap-3 mt-4 w-48">

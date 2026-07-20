@@ -1,0 +1,88 @@
+{
+  "order": 1,
+  "slug": "bachelorette-parties",
+  "name": "Bachelorette Parties",
+  "eyebrow": "Bachelorette Parties in Little Italy",
+  "shortDescription": "The elevated patio, the pink cocktail tower, the view. A bachelorette setting that delivers.",
+  "heroImage": "/images/cocktail-tower-pink.jpg",
+  "heroImageAlt": "Signature pink cocktail tower for a bachelorette party at Coco Maya Little Italy San Diego",
+  "seoTitle": "Bachelorette Party Venue in Little Italy San Diego | Coco Maya",
+  "seoDescription": "Host your bachelorette party on Coco Maya's elevated patio in Little Italy, San Diego. Cocktail towers, custom packages, and a view worth the photos. {{street}}.",
+  "intro": [
+    "Coco Maya's elevated patio was built for exactly this kind of celebration. Open-air, glass atrium bar, and a signature pink cocktail tower that shows up in every photo from the day.",
+    "We build bachelorette packages around your group size and vibe, whether that's a relaxed brunch send-off or a full evening buyout with the patio to yourselves.",
+    "Most groups book a reserved section of the patio for a few hours, order off a custom drink and small-bites package, and let us handle the rest, timing, seating, and a coordinator who's actually paying attention to your group all day."
+  ],
+  "relatedPost": {
+    "label": "Read the Bachelorette Guide",
+    "href": "/blog/bachelorette-party-san-diego"
+  },
+  "specs": {
+    "guests": "8 – 120",
+    "duration": "2 – 3 hours",
+    "space": "Patio or Buyout"
+  },
+  "highlights": [
+    {
+      "label": "Signature Cocktail Tower",
+      "detail": "Four frozen margaritas built around fresh florals, the centerpiece of nearly every bachelorette table here."
+    },
+    {
+      "label": "Reserved Patio Section",
+      "detail": "A dedicated section of the elevated patio for groups of 10 or more, separated from regular seating."
+    },
+    {
+      "label": "Custom Brunch or Dinner Menu",
+      "detail": "Build a package around brunch, happy hour, or a full dinner, whatever fits your day."
+    },
+    {
+      "label": "Photo-Ready Backdrop",
+      "detail": "Skyline views, greenery, and the glass atrium bar, all built for the group photo everyone actually wants."
+    },
+    {
+      "label": "Dedicated Event Coordinator",
+      "detail": "One person on our team owns your event from arrival to last call, so nothing falls through."
+    }
+  ],
+  "galleryImage": "/images/cocktail-group-five.jpg",
+  "galleryImageAlt": "Bachelorette party group with cocktails on the Coco Maya patio in Little Italy",
+  "gallery": [
+    {
+      "image": "/images/cocktail-group-five.jpg",
+      "alt": "Bachelorette party group with cocktails on the Coco Maya patio"
+    },
+    {
+      "image": "/images/venue-patio-skyline.jpg",
+      "alt": "Coco Maya patio with Little Italy skyline view for bachelorette parties"
+    },
+    {
+      "image": "/images/cocktail-negroni-patio.jpg",
+      "alt": "Craft cocktail service on the patio at a Coco Maya bachelorette event"
+    }
+  ],
+  "atmosphereImage": "/images/venue-patio-skyline.jpg",
+  "atmosphereImageAlt": "Coco Maya elevated patio at golden hour with Little Italy skyline",
+  "atmosphereLine": "Golden hour on the patio, skyline behind you, cocktail tower on the table.",
+  "faqs": [
+    {
+      "question": "What's the minimum group size for a bachelorette party at Coco Maya?",
+      "answer": "We can accommodate parties starting around 8 to 10 guests in a reserved patio section, up to full patio buyouts of 120 for larger celebrations."
+    },
+    {
+      "question": "Can we do brunch instead of an evening event?",
+      "answer": "Yes, brunch (served daily until 3 PM) is one of our most popular bachelorette bookings."
+    },
+    {
+      "question": "Do you offer decor or photo setups?",
+      "answer": "We can coordinate light decor and work with outside vendors for photography or florals. Let us know what you have in mind when you inquire."
+    },
+    {
+      "question": "Is there a deposit required to hold the date?",
+      "answer": "Reserved sections and buyouts require a deposit to confirm your date. We'll walk you through exact terms once we have your headcount and date."
+    },
+    {
+      "question": "Can we bring our own decorations, like a sash or banner?",
+      "answer": "Yes, small personal decor (sashes, banners, table confetti) is welcome. For anything larger, check with us first so we can plan placement around the space."
+    }
+  ]
+}

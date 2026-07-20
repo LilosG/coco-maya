@@ -1,0 +1,12 @@
+{
+  "order": 2,
+  "label": "Outdoor Dining",
+  "title": "The Elevated Patio",
+  "body1": "The outdoor patio at Coco Maya is one of the most distinctive dining spaces in San Diego. Pink striped umbrellas, lush tropical greenery, and the Little Italy skyline as the backdrop.",
+  "body2": "Perfect for brunch, an afternoon cocktail, and private events. The patio is available for full buyouts and partial reservations.",
+  "image": "/images/venue-patio-skyline.jpg",
+  "imageAlt": "Elevated patio with city skyline at Coco Maya San Diego",
+  "reverse": true,
+  "summaryLabel": "Outdoor",
+  "summaryValue": "Elevated Patio"
+}

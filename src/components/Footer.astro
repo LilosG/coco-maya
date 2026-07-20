@@ -8,7 +8,7 @@ const [SITE, navigation, footer] = await Promise.all([
 ]);
 const year = new Date().getFullYear();
 const portfolio = GPH_NETWORK.filter((v) => v.url !== SITE.url);
-const days = SITE.weekdaysSundayFirst;
+const days = SITE.weekdaysSundayFirst ?? [];
 const todayName = days[new Date().getDay()];
 ---
 
@@ -50,14 +50,14 @@ const todayName = days[new Date().getDay()];
     <div>
       <h3 class="eyebrow-light mb-5">{footer.headings.explore}</h3>
       <ul class="space-y-2.5">
-        {navigation.main.map((item: any) => (
+        {(navigation.main ?? []).map((item: any) => (
           <li>
             <a href={item.href} class="text-white/50 hover:text-[var(--color-teal-light)] text-sm font-[family-name:var(--font-body)] transition-colors">
               {item.label}
             </a>
           </li>
         ))}
-        {navigation.footerSupplemental.map((item: any) => (
+        {(navigation.footerSupplemental ?? []).map((item: any) => (
           <li><a href={item.href} class="text-white/50 hover:text-[var(--color-teal-light)] text-sm transition-colors">{item.label}</a></li>
         ))}
       </ul>
@@ -66,7 +66,7 @@ const todayName = days[new Date().getDay()];
     <div>
       <h3 class="eyebrow-light mb-5">{footer.headings.hours}</h3>
       <ul class="space-y-0 divide-y divide-white/8">
-        {SITE.hours.map((h: any) => (
+        {(SITE.hours ?? []).map((h: any) => (
           <li class:list={[
             "flex justify-between py-2.5 text-sm font-[family-name:var(--font-body)]",
             h.day === todayName ? "text-[var(--color-teal-light)]" : "text-white/40"

@@ -44,7 +44,7 @@ const schema = [
     <div class="max-w-5xl mx-auto">
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-20">
-        {page.infoCards.map((card: any) => <InfoCard label={card.label} value={card.value} sub={card.subTemplate ? card.subTemplate.replace("{{street}}", SITE.address.street) : undefined} accent={card.accent} />)}
+        {(page.infoCards ?? []).map((card: any) => <InfoCard label={card.label} value={card.value} sub={card.subTemplate ? card.subTemplate.replace("{{street}}", SITE.address.street) : undefined} accent={card.accent} />)}
       </div>
 
       <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -78,7 +78,7 @@ const schema = [
       </div>
 
       <div class="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-5">
-        {page.features.map((item: any) => (
+        {(page.features ?? []).map((item: any) => (
           <ContentCard label={item.label} body={item.body} />
         ))}
       </div>

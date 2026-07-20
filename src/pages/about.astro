@@ -11,7 +11,7 @@ import { breadcrumbSchema } from "../lib/schema";
 const [SITE, rawAbout] = await Promise.all([getSingleton("siteSettings"), getSingleton("about")]);
 const about = resolveSiteTokens(rawAbout, SITE);
 const fill = (value: string) => value.replaceAll("{{street}}", SITE.address.street);
-const stats = about.stats;
+const stats = about.stats ?? [];
 const schema = [
   breadcrumbSchema([
     { name: SITE.breadcrumbs.home, url: SITE.url },
