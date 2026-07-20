@@ -5,8 +5,9 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import PageHero from "../../components/PageHero.astro";
+import { getSingleton } from "../../lib/content";
 
-const allPosts = await getCollection("blog");
+const [allPosts, page] = await Promise.all([getCollection("blog"), getSingleton("blogIndexPage")]);
 const posts = allPosts
   .map((post) => ({
     slug: post.id,
@@ -17,9 +18,9 @@ const posts = allPosts
   }))
   .sort((a, b) => b.date.valueOf() - a.date.valueOf());
 ---
-<BaseLayout title="Blog | Coco Maya | San Diego Dining, Brunch & Little Italy Guides" description="San Diego restaurant guides, brunch recommendations, happy hour guides, and Little Italy content from Coco Maya by Miss B's.">
+<BaseLayout title={page.seo.title} description={page.seo.description}>
   <Nav />
-  <PageHero label="Guides & Stories" title="The Blog" titleSuffix="San Diego Dining & Little Italy Guides" subtitle="San Diego dining guides, brunch recommendations, and Little Italy content from Coco Maya." />
+  <PageHero label={page.hero.label} title={page.hero.title} titleSuffix={page.hero.titleSuffix} subtitle={page.hero.subtitle} />
 
   <section class="py-16 px-6 bg-[var(--color-cream)]">
     <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">

@@ -7,62 +7,57 @@ import PageHero from "../../components/PageHero.astro";
 import CTASection from "../../components/CTASection.astro";
 import InfoCard from "../../components/InfoCard.astro";
 import MenuShowcase from "../../components/MenuShowcase.astro";
-import { SITE } from "../../data/site";
-import { FEATURED_BRUNCH, FEATURED_BRUNCH_DRINKS } from "../../data/menu";
+import { getOrderedCollection, getSingleton } from "../../lib/content";
 import { breadcrumbSchema } from "../../lib/schema";
 
-const highlights = [
-  { icon: "🥂", label: "Brunch Cocktails", body: "Bloody marys and select craft cocktails available every day of the week." },
-  { icon: "🌮", label: "Modern Coastal Plates", body: "Fresh seafood, seasonal produce, and elevated brunch classics from the Coco Maya kitchen." },
-  { icon: "🌿", label: "The Elevated Patio", body: "Brunch on one of San Diego most distinctive patios. Pink striped umbrellas, tropical greenery, and the Little Italy skyline." },
-];
-const dayNames = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+const [SITE, page, FEATURED_BRUNCH, FEATURED_BRUNCH_DRINKS] = await Promise.all([getSingleton("siteSettings"), getSingleton("brunchPage"), getOrderedCollection("menuBrunchFood"), getOrderedCollection("menuBrunchDrinks")]);
+const fill = (value: string, name?: string) => value.replaceAll("{{street}}", SITE.address.street).replaceAll("{{fullAddress}}", `${SITE.address.street}, ${SITE.address.city} ${SITE.address.state} ${SITE.address.zip}`).replaceAll("{{brunchDailyUntil3}}", SITE.serviceMessaging.brunchDailyUntil3).replaceAll("{{name}}", name ?? "");
+const highlights = page.highlights;
+const dayNames = SITE.weekdaysSundayFirst;
 const todayName = dayNames[new Date().getDay()];
 const schema = [
   breadcrumbSchema([
-    { name: "Home", url: SITE.url },
-    { name: "Brunch", url: `${SITE.url}/brunch` },
+    { name: SITE.breadcrumbs.home, url: SITE.url },
+    { name: page.breadcrumbLabel, url: `${SITE.url}/brunch` },
   ]),
 ];
 ---
 <BaseLayout
-  title="Best Daily Brunch in Little Italy San Diego | Coco Maya"
-  description="Best brunch in Little Italy San Diego at Coco Maya, served daily until 3PM. Craft cocktails on the rooftop patio, seven days a week. 1660 India St, San Diego CA 92101."
-  image="/images/food-tacos-patio.jpg"
+  title={page.seo.title}
+  description={fill(page.seo.descriptionTemplate)}
+  image={page.seo.image}
   extraSchema={schema}
 >
   <Nav />
 
   <PageHero
-    label="Served Every Day"
-    title="Daily Brunch"
-    titleSuffix="Best Brunch in Little Italy, San Diego"
-    subtitle="San Diego best brunch in Little Italy, served daily. Modern coastal plates and craft cocktails on the elevated patio."
-    image="/images/food-tacos-patio.jpg"
-    imageAlt="Brunch at Coco Maya Little Italy San Diego"
+    label={page.hero.label}
+    title={page.hero.title}
+    titleSuffix={page.hero.titleSuffix}
+    subtitle={page.hero.subtitle}
+    image={page.hero.image}
+    imageAlt={page.hero.imageAlt}
     tall={true}
   >
     <div class="flex flex-wrap gap-4 mt-8">
-      <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">Reserve a Table</a>
-      <a href="#menu" class="btn-ghost">See the Menu</a>
+      <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">{page.hero.reserveLabel}</a>
+      <a href="#menu" class="btn-ghost">{page.hero.menuLabel}</a>
     </div>
   </PageHero>
 
   <!-- INFO CARDS -->
   <section class="py-16 px-6 bg-[var(--color-cream)]">
     <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10">
-      <InfoCard label="Days" value="Every Day" />
-      <InfoCard label="Ends" value="3:00 PM" accent={true} />
-      <InfoCard label="Location" value="Little Italy" sub="1660 India St, San Diego" />
+      {page.infoCards.map((card: any) => <InfoCard label={card.label} value={card.value} sub={card.subTemplate ? fill(card.subTemplate) : undefined} accent={card.accent} />)}
     </div>
 
     <!-- FULL BRUNCH HOURS BY DAY (hours vary by day of week, per GBP) -->
     <div class="max-w-4xl mx-auto bg-white border border-[var(--color-teal)]/12">
       <div class="px-6 pt-6 pb-2">
-        <span class="eyebrow">Brunch Hours by Day</span>
+        <span class="eyebrow">{page.hoursLabel}</span>
       </div>
       <div class="divide-y divide-[var(--color-teal)]/10 px-6 pb-6">
-        {SITE.service.brunch.days.map((d) => (
+        {SITE.service.brunch.days.map((d: any) => (
           <div class:list={[
             "flex justify-between py-3 font-[family-name:var(--font-body)] text-sm",
             d.day === todayName ? "text-[var(--color-dark)]" : "text-[var(--color-dark)]/50"
@@ -78,15 +73,15 @@ const schema = [
   <!-- BRUNCH FAVORITES SHOWCASE -->
   <div id="menu">
     <MenuShowcase
-      eyebrow="On the Menu"
-      title="Brunch Favorites"
+      eyebrow={page.favorites.eyebrow}
+      title={page.favorites.title}
       items={FEATURED_BRUNCH.map((item) => ({
         name: item.name,
         description: item.description,
         image: item.image,
-        imageAlt: `${item.name} — brunch at Coco Maya Little Italy San Diego`,
+        imageAlt: fill(page.favorites.imageAltTemplate, item.name),
       }))}
-      ctaLabel="View Full Menu"
+      ctaLabel={page.favorites.ctaLabel}
       ctaHref="/menu"
     />
   </div>
@@ -97,23 +92,23 @@ const schema = [
   <section class="py-24 px-6 bg-[var(--color-cream)]">
     <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
       <div>
-        <span class="eyebrow">Brunch · Little Italy San Diego</span>
+        <span class="eyebrow">{page.intro.eyebrow}</span>
         <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2.25rem,4vw,3.5rem)] text-[var(--color-dark)] leading-tight mb-6">
-          Best Brunch in Little Italy San Diego
+          {page.intro.title}
         </h2>
         <div class="rule"></div>
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-5">
-          Daily brunch at Coco Maya is not just a meal. It is a setting. The glass atrium opens to the San Diego sky, the elevated patio fills with tropical greenery, and the kitchen sends out plates that actually earn the word elevated.
+          {page.intro.body1}
         </p>
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-10">
-          Whether you are celebrating something or just making your morning count, the patio at 1660 India St is the right call. Brunch is served every day of the week, until 3 PM.
+          {fill(page.intro.body2Template)}
         </p>
-        <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">Reserve Your Table</a>
+        <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">{page.intro.reserveLabel}</a>
       </div>
       <div class="relative">
         <Picture
-          src="/images/venue-patio.jpg"
-          alt="Rooftop patio brunch at Coco Maya — best brunch Little Italy San Diego"
+          src={page.intro.image}
+          alt={page.intro.imageAlt}
           class="w-full aspect-[4/5] object-cover"
           width="700" height="875" loading="lazy"
         />
@@ -126,11 +121,11 @@ const schema = [
   <section class="py-20 px-6 bg-[var(--color-sand-dark)]/30">
     <div class="max-w-5xl mx-auto">
       <div class="text-center mb-14">
-        <span class="eyebrow">What to Expect</span>
-        <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3rem)] text-[var(--color-dark)]">Everything you need for a great morning</h2>
+        <span class="eyebrow">{page.highlightsHeading.eyebrow}</span>
+        <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3rem)] text-[var(--color-dark)]">{page.highlightsHeading.title}</h2>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-        {highlights.map((h) => (
+        {highlights.map((h: any) => (
           <div class="cm-card">
             <p class="text-3xl mb-4">{h.icon}</p>
             <span class="eyebrow">{h.label}</span>
@@ -144,33 +139,33 @@ const schema = [
   <!-- FULL BLEED ATMOSPHERE IMAGE -->
   <section class="relative h-[50vh] overflow-hidden">
     <Picture
-      src="/images/cocktail-happy-hour-group.jpg"
-      alt="Coco Maya rooftop patio — brunch and cocktails in Little Italy San Diego"
+      src={page.atmosphere.image}
+      alt={page.atmosphere.imageAlt}
       class="w-full h-full object-cover object-center"
       width="1800" height="800" loading="lazy"
     />
     <div class="absolute inset-0" style="background: linear-gradient(to right, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.2) 60%, rgba(0,0,0,0.05) 100%);"></div>
     <div class="absolute inset-0 flex items-center px-8 md:px-20">
       <div class="max-w-lg">
-        <span class="eyebrow-light">The Rooftop Bar Too</span>
+        <span class="eyebrow-light">{page.atmosphere.eyebrow}</span>
         <p class="font-[family-name:var(--font-display)] italic text-white text-[clamp(2rem,4vw,3.25rem)] leading-tight">
-          Stay for cocktails.<br />Open every day.
+          {page.atmosphere.line.split("\n")[0]}<br />{page.atmosphere.line.split("\n")[1]}
         </p>
-        <a href="/happy-hour" class="btn-ghost mt-8 inline-flex">See the Rooftop Patio</a>
+        <a href="/happy-hour" class="btn-ghost mt-8 inline-flex">{page.atmosphere.ctaLabel}</a>
       </div>
     </div>
   </section>
 
   <!-- BRUNCH DRINKS -->
   <MenuShowcase
-    eyebrow="Brunch Drinks"
-    title="Brunch drinks worth the trip"
-    subtitle="Craft cocktails and brunch classics available every day of the week."
+    eyebrow={page.drinks.eyebrow}
+    title={page.drinks.title}
+    subtitle={page.drinks.subtitle}
     items={FEATURED_BRUNCH_DRINKS.map((drink) => ({
       name: drink.name,
       description: drink.description,
       image: drink.image,
-      imageAlt: `${drink.name} — brunch drinks at Coco Maya Little Italy San Diego`,
+      imageAlt: fill(page.drinks.imageAltTemplate, drink.name),
     }))}
     dark={true}
   />
@@ -181,20 +176,20 @@ const schema = [
       <div class="cc-card">
         <div class="cc-card__bar"></div>
         <div class="cc-card__body">
-          <span class="cc-card__label">Private Brunch Events</span>
-          <p class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl mb-2">Brunch buyouts for groups</p>
-          <p class="cc-card__text">Birthdays, bachelorettes, baby showers. Book a private brunch for your group on the patio or in the dining room.</p>
-          <a href="/private-events" class="btn-outline mt-6 self-start">Learn More</a>
+          <span class="cc-card__label">{page.cards.private.label}</span>
+          <p class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl mb-2">{page.cards.private.title}</p>
+          <p class="cc-card__text">{page.cards.private.body}</p>
+          <a href="/private-events" class="btn-outline mt-6 self-start">{page.cards.private.ctaLabel}</a>
         </div>
       </div>
       <div class="cc-card">
         <div class="cc-card__bar"></div>
         <div class="cc-card__body">
-          <span class="cc-card__label">Make a Reservation</span>
-          <p class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl mb-2">Reserve your table now</p>
-          <p class="cc-card__text">Served daily until 3 PM. Book online or call us directly. Walk-ins welcome based on availability.</p>
+          <span class="cc-card__label">{page.cards.reservation.label}</span>
+          <p class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl mb-2">{page.cards.reservation.title}</p>
+          <p class="cc-card__text">{page.cards.reservation.body}</p>
           <div class="flex flex-wrap gap-4 mt-6">
-            <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">Book Online</a>
+            <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">{page.cards.reservation.ctaLabel}</a>
             <a href={`tel:${SITE.phone.tel}`} class="btn-outline">{SITE.phone.display}</a>
           </div>
         </div>
@@ -203,11 +198,11 @@ const schema = [
   </section>
 
   <CTASection
-    title="Join Us for Brunch"
-    subtitle="1660 India St, Little Italy San Diego. Brunch served daily until 3PM."
-    primaryLabel="Reserve a Table"
+    title={page.cta.title}
+    subtitle={fill(page.cta.subtitleTemplate)}
+    primaryLabel={page.cta.primaryLabel}
     primaryHref={SITE.reservations.url}
-    secondaryLabel="View Full Menu"
+    secondaryLabel={page.cta.secondaryLabel}
     secondaryHref="/menu"
     dark={true}
   />

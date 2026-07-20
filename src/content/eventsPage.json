@@ -1,0 +1,11 @@
+{
+  "singleton": {
+    "breadcrumbLabel": "Events",
+    "seo": { "title": "Events | Coco Maya | Little Italy San Diego", "descriptionTemplate": "Events at Coco Maya in Little Italy San Diego. Daily brunch, nightly dinner, and private events. {{street}}.", "image": "/images/events-patio-night.jpg" },
+    "hero": { "label": "Weekly and Special", "title": "Events at Coco Maya", "titleSuffix": "Little Italy, San Diego", "subtitle": "Daily brunch, nightly dinner, and private events in Little Italy.", "image": "/images/events-patio-night.jpg", "imageAlt": "Evening event at Coco Maya patio Little Italy San Diego" },
+    "recurring": { "eyebrow": "Weekly", "title": "Recurring Events" },
+    "promos": { "privateEvents": { "eyebrow": "Private Events", "title": "Host Your Own Event", "body": "Birthdays, bachelorettes, rehearsal dinners, corporate events. Coco Maya has a private event space in Little Italy your guests will remember.", "label": "Learn More" }, "reservations": { "eyebrow": "Reservations", "title": "Book a Table", "bodyTemplate": "Reserve your table online. Walk-ins welcome based on availability. {{openDaily}} in Little Italy at {{street}}.", "label": "Reserve Now" } },
+    "form": { "label": "Plan a Private Event", "subtitle": "Share your date, headcount, and event type, and we'll follow up within 24 hours.", "ctaLabel": "Inquire About Your Event" },
+    "cta": { "title": "See You at Coco Maya", "subtitleTemplate": "{{street}}, Little Italy San Diego. {{openDaily}}.", "primaryLabel": "Reserve a Table", "secondaryLabel": "Private Events" }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "singleton": {
+    "main": [
+      { "label": "Menu", "href": "/menu" },
+      { "label": "Brunch", "href": "/brunch" },
+      { "label": "Events", "href": "/events" },
+      { "label": "Private Events", "href": "/private-events" },
+      { "label": "The Space", "href": "/the-space" },
+      { "label": "Blog", "href": "/blog" },
+      { "label": "About", "href": "/about" }
+    ],
+    "footerSupplemental": [
+      { "label": "Reservations", "href": "/reservations" },
+      { "label": "Rooftop Patio", "href": "/happy-hour" },
+      { "label": "FAQ", "href": "/faq" },
+      { "label": "Contact", "href": "/contact" }
+    ],
+    "actions": {
+      "orderShort": "Order",
+      "orderLong": "Order Online",
+      "reserveShort": "Reserve"
+    },
+    "accessibility": { "homeLabel": "Coco Maya Home", "logoAlt": "Coco Maya by Miss Bs Little Italy San Diego", "mainLabel": "Main navigation", "openMenuLabel": "Open menu", "closeMenuLabel": "Close menu", "mobileLogoAlt": "Coco Maya" }
+  }
+}

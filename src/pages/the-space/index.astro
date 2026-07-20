@@ -5,48 +5,41 @@ import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import PageHero from "../../components/PageHero.astro";
 import CTASection from "../../components/CTASection.astro";
-import { SITE } from "../../data/site";
+import { getOrderedCollection, getSingleton } from "../../lib/content";
 import { breadcrumbSchema } from "../../lib/schema";
 
-const spaces = [
-  { label: "The Bar",        title: "The Glass Atrium",    body1: "The centerpiece of Coco Maya is the open-air glass atrium with a retractable roof that opens to the San Diego sky. Teal bar tiles, rattan bar chairs, hanging botanicals, and a cocktail program worth sitting down for.", body2: "Whether the roof is open or closed, the atmosphere inside the atrium is unlike anything else in Little Italy.", image: "/images/venue-bar-detail.jpg",        imageAlt: "Glass atrium bar at Coco Maya Little Italy San Diego",                  reverse: false },
-  { label: "Outdoor Dining", title: "The Elevated Patio",  body1: "The outdoor patio at Coco Maya is one of the most distinctive dining spaces in San Diego. Pink striped umbrellas, lush tropical greenery, and the Little Italy skyline as the backdrop.",                                   body2: "Perfect for brunch, an afternoon cocktail, and private events. The patio is available for full buyouts and partial reservations.",            image: "/images/venue-patio-skyline.jpg",    imageAlt: "Elevated patio with city skyline at Coco Maya San Diego",             reverse: true  },
-  { label: "Private Dining", title: "The Dining Room",     body1: "The interior dining room features warm rattan chairs, a hand-woven ceiling, illuminated shelving, and the signature tropical mural. Intimate, curated, and completely private when needed.",                                   body2: "Available for private event buyouts, rehearsal dinners, and large group bookings.",                                                image: "/images/venue-interior-dining.jpg",  imageAlt: "Private dining room at Coco Maya Little Italy San Diego",             reverse: false },
-];
+const [SITE, page, spaces] = await Promise.all([getSingleton("siteSettings"), getSingleton("spacePage"), getOrderedCollection("theSpaceSections")]);
+const fill = (value: string) => value.replaceAll("{{street}}", SITE.address.street);
 const schema = [
   breadcrumbSchema([
-    { name: "Home", url: SITE.url },
-    { name: "The Space", url: `${SITE.url}/the-space` },
+    { name: SITE.breadcrumbs.home, url: SITE.url },
+    { name: page.breadcrumbLabel, url: `${SITE.url}/the-space` },
   ]),
 ];
 ---
 <BaseLayout
-  title="The Space | Coco Maya | Glass Atrium and Elevated Patio Little Italy San Diego"
-  description="Coco Maya features a stunning glass atrium bar, elevated outdoor patio, and private dining room in Little Italy San Diego. 1660 India St."
-  image="/images/venue-patio.jpg"
+  title={page.seo.title}
+  description={fill(page.seo.descriptionTemplate)}
+  image={page.seo.image}
   extraSchema={schema}
 >
   <Nav />
   <PageHero
-    label="The Venue"
-    title="The Space"
-    titleSuffix="Glass Atrium & Rooftop Patio in Little Italy, San Diego"
-    subtitle="A glass atrium, an elevated patio, and a teal bar in the heart of Little Italy. There is nothing else like it in San Diego."
-    image="/images/venue-patio.jpg"
-    imageAlt="Coco Maya glass atrium bar Little Italy San Diego"
+    label={page.hero.label}
+    title={page.hero.title}
+    titleSuffix={page.hero.titleSuffix}
+    subtitle={page.hero.subtitle}
+    image={page.hero.image}
+    imageAlt={page.hero.imageAlt}
     tall={true}
   />
 
   <section class="bg-[var(--color-teal)]">
     <div class="max-w-4xl mx-auto px-6 grid grid-cols-3 divide-x divide-white/20 text-center">
-      {[
-        { label: "The Bar",  value: "Glass Atrium"  },
-        { label: "Outdoor",  value: "Elevated Patio" },
-        { label: "Private",  value: "Dining Room"   },
-      ].map((item) => (
+      {spaces.map((item) => (
         <div class="px-6 py-5">
-          <span class="eyebrow-light mb-1">{item.label}</span>
-          <p class="font-[family-name:var(--font-display)] italic text-white text-lg">{item.value}</p>
+          <span class="eyebrow-light mb-1">{item.summaryLabel}</span>
+          <p class="font-[family-name:var(--font-display)] italic text-white text-lg">{item.summaryValue}</p>
         </div>
       ))}
     </div>
@@ -84,26 +77,26 @@ const schema = [
   <section class="py-24 px-6 bg-[var(--color-dark)]">
     <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
       <div>
-        <span class="eyebrow-light">The Bar</span>
+        <span class="eyebrow-light">{spaces[0].barDetail.eyebrow}</span>
         <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2.25rem,4vw,3.5rem)] text-white leading-tight mb-6">
-          The teal bar at the center of it all
+          {spaces[0].barDetail.title}
         </h2>
         <div class="rule-light"></div>
         <p class="font-[family-name:var(--font-body)] text-white/60 leading-relaxed mb-4">
-          The centerpiece of Coco Maya is the teal tile bar — a full-service craft cocktail program built under the glass atrium, surrounded by hanging botanicals and the arched architecture that makes this space instantly recognizable.
+          {spaces[0].barDetail.body1}
         </p>
         <p class="font-[family-name:var(--font-body)] text-white/60 leading-relaxed mb-10">
-          From the first margarita to the last negroni, every drink is made here. The bar seats guests directly, with rattan bar chairs and a marble counter that runs the full length of the space.
+          {spaces[0].barDetail.body2}
         </p>
         <div class="flex flex-wrap gap-4">
-          <a href="/menu" class="btn-primary">See the Menu</a>
-          <a href="/happy-hour" class="btn-ghost">Rooftop Patio &amp; Bar</a>
+          <a href="/menu" class="btn-primary">{page.barCtas.menuLabel}</a>
+          <a href="/happy-hour" class="btn-ghost">{page.barCtas.patioLabel}</a>
         </div>
       </div>
       <div class="relative">
         <Picture
-          src="/images/venue-bar-detail.jpg"
-          alt="The teal bar at Coco Maya Little Italy San Diego"
+          src={spaces[0].barDetail.image}
+          alt={spaces[0].barDetail.imageAlt}
           class="w-full aspect-[16/10] object-cover object-center"
           width="700" height="875" loading="lazy"
         />
@@ -113,11 +106,11 @@ const schema = [
   </section>
 
   <CTASection
-    title="Experience It Yourself"
-    subtitle="Reserve a table or inquire about a private event."
-    primaryLabel="Reserve a Table"
+    title={page.cta.title}
+    subtitle={page.cta.subtitle}
+    primaryLabel={page.cta.primaryLabel}
     primaryHref={SITE.reservations.url}
-    secondaryLabel="Private Events"
+    secondaryLabel={page.cta.secondaryLabel}
     secondaryHref="/private-events"
     dark={true}
   />

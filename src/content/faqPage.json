@@ -1,0 +1,8 @@
+{
+  "singleton": {
+    "breadcrumbLabel": "FAQ",
+    "seo": { "title": "FAQ | Coco Maya | Little Italy San Diego", "description": "Answers to common questions about reservations, hours, brunch, happy hour, private events, and parking at Coco Maya in Little Italy, San Diego.", "image": "/images/venue-hero-bar.jpg" },
+    "hero": { "label": "Good to Know", "title": "Frequently Asked Questions", "titleSuffix": "Coco Maya | Little Italy, San Diego", "subtitle": "Everything you need to know about visiting Coco Maya in Little Italy." },
+    "cta": { "title": "Still Have a Question?", "subtitle": "Call or email us directly and we'll get you sorted.", "primaryLabelTemplate": "Call {{phone}}", "secondaryLabel": "Email Us" }
+  }
+}

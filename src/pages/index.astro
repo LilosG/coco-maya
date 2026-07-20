@@ -3,29 +3,38 @@ import Picture from "../components/Picture.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
-import { SITE } from "../data/site";
-import { FEATURED_COCKTAILS, FEATURED_FOOD } from "../data/menu";
+import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../lib/content";
 import RooftopBar from "../components/RooftopBar.astro";
 import FindUs from "../components/FindUs.astro";
 
+const [SITE, rawHome, FEATURED_COCKTAILS, FEATURED_FOOD, rawPrivateEventTypes] = await Promise.all([
+  getSingleton("siteSettings"),
+  getSingleton("home"),
+  getOrderedCollection("menuCocktails"),
+  getOrderedCollection("menuDinner"),
+  getOrderedCollection("privateEventTypes"),
+]);
+const home = resolveSiteTokens(rawHome, SITE);
+const PRIVATE_EVENT_TYPES = resolveSiteTokens(rawPrivateEventTypes, SITE);
+const fill = (value: string, replacements: Record<string, string>) => Object.entries(replacements).reduce((text, [key, replacement]) => text.replaceAll(`{{${key}}}`, replacement), value);
 const todayHours = (() => {
-  const d = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
-  const h = SITE.hours.find(x => x.day === d[new Date().getDay()]);
-  return h?.hours ?? "Closed";
+  const d = SITE.weekdaysSundayFirst;
+  const h = SITE.hours.find((x: any) => x.day === d[new Date().getDay()]);
+  return h?.hours ?? home.infoBar.closed;
 })();
 
 const infoBar = [
-  { label: "Hours Today",     value: todayHours,              sub: null,                  href: null },
-  { label: "Rooftop Patio",   value: "Open Daily",            sub: "Glass Atrium Bar",    href: "/happy-hour" },
-  { label: "Daily Brunch",    value: SITE.service.brunch.shortTagline, sub: "Every Day",  href: "/brunch" },
-  { label: "Location",        value: SITE.address.neighborhood + ", SD", sub: "1660 India St", href: SITE.address.mapsUrl },
+  { label: home.infoBar.hoursLabel, value: todayHours, sub: null, href: null },
+  { label: home.infoBar.rooftopLabel, value: SITE.serviceMessaging.openDaily, sub: home.infoBar.rooftopSub, href: "/happy-hour" },
+  { label: home.infoBar.brunchLabel, value: SITE.service.brunch.shortTagline, sub: home.infoBar.brunchSub, href: "/brunch" },
+  { label: home.infoBar.locationLabel, value: SITE.address.neighborhood + ", SD", sub: fill(home.infoBar.locationSubTemplate, { street: SITE.address.street }), href: SITE.address.mapsUrl },
 ];
 ---
 
 <BaseLayout
-  title="Coco Maya | Rooftop Restaurant & Daily Brunch in Little Italy San Diego"
-  description="Modern American coastal cuisine, craft cocktails, and San Diego best brunch, served daily. Coco Maya by Miss Bs in Little Italy at 1660 India St, San Diego CA."
-  image="/images/venue-hero-bar.jpg"
+  title={home.seo.title}
+  description={home.seo.description}
+  image={home.seo.image}
 >
   <Nav />
 
@@ -33,8 +42,8 @@ const infoBar = [
   <section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden">
     <div class="absolute inset-0">
       <Picture
-        src="/images/venue-hero-bar.jpg"
-        alt="Coco Maya rooftop glass atrium bar — restaurant in Little Italy San Diego"
+        src={home.hero.image}
+        alt={home.hero.imageAlt}
         class="w-full h-full object-cover object-center"
         width="1800" height="1200"
         fetchpriority="high"
@@ -42,20 +51,20 @@ const infoBar = [
       <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/25 to-black/65"></div>
     </div>
     <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
-      <span class="eyebrow-light mx-auto block">Little Italy, San Diego</span>
+      <span class="eyebrow-light mx-auto block">{home.hero.eyebrow}</span>
       <h1 class="font-[family-name:var(--font-display)] italic text-[clamp(4.5rem,12vw,9rem)] text-white leading-none mb-3">
-        Coco Maya
+        {home.hero.title}
         <span class="block font-[family-name:var(--font-stamp)] not-italic text-[clamp(0.95rem,2.2vw,1.35rem)] tracking-[0.08em] text-white/75 mt-3">
-          Rooftop Restaurant &amp; Bar in Little Italy, San Diego
+          {home.hero.titleSuffix}
         </span>
       </h1>
-      <p class="font-[family-name:var(--font-stamp)] text-white/70 text-xs tracking-[0.3em] uppercase mb-6">by Miss B's</p>
+      <p class="font-[family-name:var(--font-stamp)] text-white/70 text-xs tracking-[0.3em] uppercase mb-6">{home.hero.byline}</p>
       <p class="font-[family-name:var(--font-body)] text-white/80 text-lg max-w-lg mx-auto mb-11 leading-relaxed">
-        Modern American coastal cuisine, craft cocktails, and San Diego's best brunch. Open daily in the heart of Little Italy.
+        {home.hero.body}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">Reserve a Table</a>
-        <a href="/menu" class="btn-ghost">View the Menu</a>
+        <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">{home.hero.primaryLabel}</a>
+        <a href="/menu" class="btn-ghost">{home.hero.secondaryLabel}</a>
       </div>
     </div>
     <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
@@ -93,27 +102,27 @@ const infoBar = [
   <section class="py-28 px-6 bg-[var(--color-cream)]">
     <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
       <div>
-        <span class="eyebrow">Rooftop Restaurant · Little Italy San Diego</span>
+        <span class="eyebrow">{home.brand.eyebrow}</span>
         <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2.5rem,5vw,4rem)] text-[var(--color-dark)] leading-[1.05] mb-5">
-          Where Little Italy<br />
-          <span class="text-[var(--color-teal)]">Comes to Drink Well</span>
+          {home.brand.titleLine1}<br />
+          <span class="text-[var(--color-teal)]">{home.brand.titleLine2}</span>
         </h2>
         <div class="rule"></div>
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-4 text-[1.0625rem]">
-          Coco Maya brings elevated modern American coastal cuisine to the heart of San Diego's Little Italy. An open-air glass atrium, a stunning teal bar, and a menu that takes both the food and the cocktails seriously.
+          {home.brand.body1}
         </p>
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-10 text-[1.0625rem]">
-          An elevated rooftop patio, daily brunch, and private dining that transforms any occasion. 1660 India St — right in the middle of everything.
+          {fill(home.brand.body2Template, { street: SITE.address.street })}
         </p>
         <div class="flex flex-wrap gap-4">
-          <a href="/the-space" class="btn-primary">See The Space</a>
-          <a href="/menu" class="btn-outline">View the Menu</a>
+          <a href="/the-space" class="btn-primary">{home.brand.primaryLabel}</a>
+          <a href="/menu" class="btn-outline">{home.brand.secondaryLabel}</a>
         </div>
       </div>
       <div class="relative">
         <Picture
-          src="/images/venue-bar-patio.jpg"
-          alt="Coco Maya rooftop patio and glass atrium bar — Little Italy San Diego restaurant"
+          src={home.brand.image}
+          alt={home.brand.imageAlt}
           class="w-full aspect-[4/5] object-cover"
           width="800" height="1000"
           loading="lazy"
@@ -127,12 +136,12 @@ const infoBar = [
   <section class="py-28 px-6 bg-[var(--color-dark)]">
     <div class="max-w-7xl mx-auto">
       <div class="text-center mb-16">
-        <span class="eyebrow-light mx-auto block">Craft Program</span>
+        <span class="eyebrow-light mx-auto block">{home.cocktails.eyebrow}</span>
         <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2.5rem,5vw,4rem)] text-white">
-          Craft Cocktails &amp; Rooftop Bar in Little Italy San Diego
+          {home.cocktails.title}
         </h2>
         <p class="font-[family-name:var(--font-body)] text-white/50 mt-4 max-w-md mx-auto">
-          Craft cocktails built for the elevated patio.
+          {home.cocktails.subtitle}
         </p>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
@@ -143,7 +152,7 @@ const infoBar = [
                 <source srcset={drink.image.replace(/\.(jpg|jpeg|png)$/i, ".webp")} type="image/webp" />
                 <Picture
                   src={drink.image}
-                  alt={`${drink.name} cocktail at Coco Maya Little Italy San Diego`}
+                  alt={fill(home.cocktails.imageAltTemplate, { name: drink.name })}
                   class="w-full h-full object-cover"
                   width="400" height="400"
                   loading="lazy"
@@ -159,7 +168,7 @@ const infoBar = [
         ))}
       </div>
       <div class="text-center mt-12">
-        <a href="/menu" class="btn-ghost">Full Cocktail Menu</a>
+        <a href="/menu" class="btn-ghost">{home.cocktails.ctaLabel}</a>
       </div>
     </div>
   </section>
@@ -168,8 +177,8 @@ const infoBar = [
   <section class="relative py-32 overflow-hidden">
     <div class="absolute inset-0">
       <Picture
-        src="/images/food-tacos-patio.jpg"
-        alt="Daily brunch at Coco Maya — best brunch in Little Italy San Diego"
+        src={home.brunch.image}
+        alt={home.brunch.imageAlt}
         class="w-full h-full object-cover object-center"
         width="1800" height="900"
         loading="lazy"
@@ -177,17 +186,17 @@ const infoBar = [
       <div class="absolute inset-0 bg-gradient-to-b from-black/55 via-black/40 to-black/70"></div>
     </div>
     <div class="relative z-10 max-w-3xl mx-auto text-center px-6">
-      <span class="eyebrow-light mx-auto block">Served Daily · Until 3PM</span>
+      <span class="eyebrow-light mx-auto block">{home.brunch.eyebrow}</span>
       <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(3.5rem,8vw,6rem)] text-white leading-none mb-3">
-        Daily Brunch in Little Italy San Diego
+        {home.brunch.title}
       </h2>
-      <p class="font-[family-name:var(--font-script)] text-white/75 text-3xl mb-8">in Little Italy</p>
+      <p class="font-[family-name:var(--font-script)] text-white/75 text-3xl mb-8">{home.brunch.script}</p>
       <p class="font-[family-name:var(--font-body)] text-white/80 text-lg max-w-xl mx-auto mb-11 leading-relaxed">
-        San Diego's best brunch on the elevated patio. Modern coastal plates and craft cocktails every day of the week.
+        {home.brunch.body}
       </p>
       <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/brunch" class="btn-white">See Brunch Menu</a>
-        <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-ghost">Reserve a Table</a>
+        <a href="/brunch" class="btn-white">{home.brunch.primaryLabel}</a>
+        <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-ghost">{home.brunch.secondaryLabel}</a>
       </div>
     </div>
   </section>
@@ -197,13 +206,13 @@ const infoBar = [
     <div class="max-w-7xl mx-auto">
       <div class="grid lg:grid-cols-2 gap-14 items-end mb-14">
         <div>
-          <span class="eyebrow">The Kitchen</span>
+          <span class="eyebrow">{home.food.eyebrow}</span>
           <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2.5rem,5vw,4rem)] text-[var(--color-dark)] leading-tight">
-            Rooftop Dining<br />in Little Italy San Diego
+            {home.food.titleLine1}<br />{home.food.titleLine2}
           </h2>
         </div>
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/60 leading-relaxed text-[1.0625rem] lg:pb-2">
-          Modern American coastal cuisine built around fresh ingredients, bold flavors, and plates worth photographing. From prime ribeye to fresh tacos.
+          {home.food.body}
         </p>
       </div>
       <div class="grid grid-cols-2 lg:grid-cols-4 gap-3">
@@ -213,7 +222,7 @@ const infoBar = [
               <source srcset={item.image.replace(/\.(jpg|jpeg|png)$/i, ".webp")} type="image/webp" />
               <Picture
                 src={item.image}
-                alt={`${item.name} at Coco Maya San Diego Little Italy`}
+                alt={fill(home.food.imageAltTemplate, { name: item.name })}
                 class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 width="500" height="500"
                 loading="lazy"
@@ -229,7 +238,7 @@ const infoBar = [
         ))}
       </div>
       <div class="text-center mt-10">
-        <a href="/menu" class="btn-outline">Full Food Menu</a>
+        <a href="/menu" class="btn-outline">{home.food.ctaLabel}</a>
       </div>
     </div>
   </section>
@@ -242,8 +251,8 @@ const infoBar = [
     <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-20 items-center">
       <div class="relative">
         <Picture
-          src="/images/events-private-dining-1.jpg"
-          alt="Private event venue in Little Italy San Diego — Coco Maya rooftop dining"
+          src={home.privateEvents.image}
+          alt={home.privateEvents.imageAlt}
           class="w-full aspect-[3/4] object-cover"
           width="800" height="1067"
           loading="lazy"
@@ -251,23 +260,23 @@ const infoBar = [
         <div class="absolute -top-5 -left-5 w-full h-full border border-[var(--color-teal)]/20 -z-10"></div>
       </div>
       <div>
-        <span class="eyebrow">Group Bookings</span>
+        <span class="eyebrow">{home.privateEvents.eyebrow}</span>
         <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2.5rem,5vw,4rem)] text-[var(--color-dark)] leading-tight mb-4">
-          Private Events<br />in Little Italy
+          {home.privateEvents.titleLine1}<br />{home.privateEvents.titleLine2}
         </h2>
         <div class="rule"></div>
         <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-8 text-[1.0625rem]">
-          Birthdays, bachelorette parties, rehearsal dinners, corporate events. Coco Maya provides a private event space in San Diego that your guests will actually talk about.
+          {home.privateEvents.body}
         </p>
         <div class="mb-10">
-          {["Bachelorette Parties", "Birthday Celebrations", "Rehearsal Dinners", "Corporate Events", "Baby Showers"].map((item) => (
+          {PRIVATE_EVENT_TYPES.map((item) => (
             <div class="cm-event-item">
               <span class="cm-event-item-dot"></span>
-              <span class="cm-event-item-label">{item}</span>
+              <span class="cm-event-item-label">{item.name}</span>
             </div>
           ))}
         </div>
-        <a href="/private-events" class="btn-primary">Inquire About Your Event</a>
+        <a href="/private-events" class="btn-primary">{home.privateEvents.ctaLabel}</a>
       </div>
     </div>
   </section>
@@ -276,17 +285,12 @@ const infoBar = [
   <section class="bg-[var(--color-dark)]">
     <div class="max-w-7xl mx-auto px-6 lg:px-10">
       <div class="cm-dark-grid" style="grid-template-columns: repeat(4, 1fr);">
-        {[
-          { number: "4.5", unit: "★", label: "Google Rating", sub: "Little Italy" },
-          { number: "Rooftop", unit: "", label: "Patio & Bar", sub: "Open Daily" },
-          { number: "Daily", unit: "", label: "Brunch & Dinner", sub: "9AM–3PM · 5PM on" },
-          { number: "Open", unit: " Daily", label: "1660 India St", sub: "San Diego, CA" },
-        ].map((stat) => (
+        {home.stats.map((stat: any) => (
           <div class="cm-dark-grid-cell py-14">
             <p class="font-[family-name:var(--font-display)] italic text-[var(--color-teal-light)] text-3xl sm:text-4xl mb-2">
               {stat.number}<span class="text-2xl">{stat.unit}</span>
             </p>
-            <p class="font-[family-name:var(--font-stamp)] text-white text-xs tracking-widest uppercase mb-1">{stat.label}</p>
+            <p class="font-[family-name:var(--font-stamp)] text-white text-xs tracking-widest uppercase mb-1">{stat.label ?? fill(stat.labelTemplate, { street: SITE.address.street })}</p>
             <p class="font-[family-name:var(--font-body)] text-white/35 text-xs">{stat.sub}</p>
           </div>
         ))}
@@ -300,9 +304,9 @@ const infoBar = [
     cityLine={`${SITE.address.neighborhood}, ${SITE.address.city}, ${SITE.address.state} ${SITE.address.zip}`}
     phone={SITE.phone.display}
     mapsHref={SITE.address.mapsUrl}
-    openLine={`${todayHours} Today`}
-    accentLabel="Rooftop Patio"
-    accentValue={SITE.rooftopBar.tagline}
+    openLine={`${todayHours} ${home.findUs.todaySuffix}`}
+    accentLabel={home.findUs.accentLabel}
+    accentValue={SITE.serviceMessaging.openDaily}
   />
 
   <Footer />

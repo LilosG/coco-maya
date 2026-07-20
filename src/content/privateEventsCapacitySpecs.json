@@ -1,0 +1,5 @@
+{
+  "indoor": { "order": 1, "label": "Indoor Capacity", "value": "Up to 60", "note": "Private dining room" },
+  "patio": { "order": 2, "label": "Patio Capacity", "value": "Up to 120", "note": "Full patio buyout" },
+  "full-venue": { "order": 3, "label": "Full Venue", "value": "Up to 180", "note": "Indoor + patio combined" }
+}

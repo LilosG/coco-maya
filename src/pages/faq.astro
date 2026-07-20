@@ -5,42 +5,43 @@ import Footer from "../components/Footer.astro";
 import PageHero from "../components/PageHero.astro";
 import FAQSection from "../components/FAQSection.astro";
 import CTASection from "../components/CTASection.astro";
-import { GENERAL_FAQS } from "../data/faq";
+import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../lib/content";
 import { faqPageSchema, breadcrumbSchema } from "../lib/schema";
-import { SITE } from "../data/site";
+const [SITE, page, rawFaqs] = await Promise.all([getSingleton("siteSettings"), getSingleton("faqPage"), getOrderedCollection("generalFaqs")]);
+const GENERAL_FAQS = resolveSiteTokens(rawFaqs, SITE).map((faq: any) => ({ question: faq.question, answer: faq.answer ?? faq.answerTemplate }));
 
 const schema = [
   faqPageSchema(GENERAL_FAQS),
   breadcrumbSchema([
-    { name: "Home", url: SITE.url },
-    { name: "FAQ", url: `${SITE.url}/faq` },
+    { name: SITE.breadcrumbs.home, url: SITE.url },
+    { name: page.breadcrumbLabel, url: `${SITE.url}/faq` },
   ]),
 ];
 ---
 <BaseLayout
-  title="FAQ | Coco Maya | Little Italy San Diego"
-  description="Answers to common questions about reservations, hours, brunch, happy hour, private events, and parking at Coco Maya in Little Italy, San Diego."
-  image="/images/venue-hero-bar.jpg"
+  title={page.seo.title}
+  description={page.seo.description}
+  image={page.seo.image}
   extraSchema={schema}
 >
   <Nav />
 
   <PageHero
-    label="Good to Know"
-    title="Frequently Asked Questions"
-    titleSuffix="Coco Maya | Little Italy, San Diego"
-    subtitle="Everything you need to know about visiting Coco Maya in Little Italy."
+    label={page.hero.label}
+    title={page.hero.title}
+    titleSuffix={page.hero.titleSuffix}
+    subtitle={page.hero.subtitle}
   />
 
   <FAQSection faqs={GENERAL_FAQS} showHeading={false} />
 
   <CTASection
-    title="Still Have a Question?"
-    subtitle="Call or email us directly and we'll get you sorted."
-    primaryLabel={`Call ${SITE.phone.display}`}
+    title={page.cta.title}
+    subtitle={page.cta.subtitle}
+    primaryLabel={page.cta.primaryLabelTemplate.replace("{{phone}}", SITE.phone.display)}
     primaryHref={`tel:${SITE.phone.tel}`}
-    secondaryLabel="Email Us"
-    secondaryHref="mailto:info@inlovewiththecoco.com"
+    secondaryLabel={page.cta.secondaryLabel}
+    secondaryHref={`mailto:${SITE.email}`}
     dark={true}
   />
   <Footer />

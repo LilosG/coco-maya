@@ -4,50 +4,51 @@ import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import CTASection from "../../components/CTASection.astro";
 import PageHero from "../../components/PageHero.astro";
-import { SITE } from "../../data/site";
-import { FEATURED_COCKTAILS, FEATURED_FOOD, FEATURED_BRUNCH } from "../../data/menu";
+import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../../lib/content";
 import { breadcrumbSchema, menuSchema } from "../../lib/schema";
 import Picture from "../../components/Picture.astro";
+const [SITE, rawPage, FEATURED_COCKTAILS, FEATURED_FOOD, FEATURED_BRUNCH] = await Promise.all([getSingleton("siteSettings"), getSingleton("menuPage"), getOrderedCollection("menuCocktails"), getOrderedCollection("menuDinner"), getOrderedCollection("menuBrunchFood")]);
+const page = resolveSiteTokens(rawPage, SITE);
 const schema = [
   breadcrumbSchema([
-    { name: "Home", url: SITE.url },
-    { name: "Menu", url: `${SITE.url}/menu` },
+    { name: SITE.breadcrumbs.home, url: SITE.url },
+    { name: page.breadcrumbLabel, url: `${SITE.url}/menu` },
   ]),
   menuSchema(
     [
-      { name: "Cocktails", items: FEATURED_COCKTAILS },
-      { name: "Food", items: FEATURED_FOOD },
-      { name: "Brunch", items: FEATURED_BRUNCH },
+      { name: page.sections.cocktails.title, items: FEATURED_COCKTAILS },
+      { name: page.sections.food.title, items: FEATURED_FOOD },
+      { name: page.sections.brunch.title, items: FEATURED_BRUNCH },
     ],
     SITE.url
   ),
 ];
 ---
 <BaseLayout
-  title="Menu | Coco Maya by Miss Bs | Little Italy San Diego"
-  description="Full menu at Coco Maya in Little Italy San Diego. Modern American coastal cuisine, craft cocktails, and brunch served daily. 1660 India St."
-  image="/images/food-spread-overhead.jpg"
+  title={page.seo.title}
+  description={page.seo.description}
+  image={page.seo.image}
   extraSchema={schema}
 >
   <Nav />
   <PageHero
-    label="Modern Coastal Cuisine"
-    title="The Menu"
-    titleSuffix="Modern Coastal Cuisine in Little Italy, San Diego"
-    subtitle="Modern coastal plates, craft cocktails, and brunch served daily."
-    image="/images/food-menu-hero.jpg"
-    imageAlt="Full spread of Coco Maya dishes on the patio at Little Italy San Diego"
+    label={page.hero.label}
+    title={page.hero.title}
+    titleSuffix={page.hero.titleSuffix}
+    subtitle={page.hero.subtitle}
+    image={page.hero.image}
+    imageAlt={page.hero.imageAlt}
     tall={false}
   />
 
   <div class="sticky top-0 z-30 bg-[var(--color-cream)]/97 backdrop-blur-md border-b border-[var(--color-teal)]/12 shadow-sm">
     <div class="max-w-7xl mx-auto px-6 flex gap-8 overflow-x-auto py-4">
-      {[["cocktails","Cocktails"],["food","Food"],["brunch","Brunch"]].map(([id, label]) => (
+      {Object.values(page.sections).map((section: any) => (
         <a
-          href={"#" + id}
+          href={"#" + section.id}
           class="font-[family-name:var(--font-stamp)] text-xs tracking-widest uppercase text-[var(--color-dark)]/50 hover:text-[var(--color-teal)] transition-colors whitespace-nowrap"
         >
-          {label}
+          {section.navLabel}
         </a>
       ))}
     </div>
@@ -56,8 +57,8 @@ const schema = [
   <div class="max-w-7xl mx-auto px-6 py-20 space-y-24 bg-[var(--color-cream)]">
 
     <section id="cocktails">
-      <span class="eyebrow">Craft Program</span>
-      <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-10">Cocktails</h2>
+      <span class="eyebrow">{page.sections.cocktails.eyebrow}</span>
+      <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-10">{page.sections.cocktails.title}</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {FEATURED_COCKTAILS.map((drink) => (
           <div class="cm-media-card group">
@@ -74,8 +75,8 @@ const schema = [
     </section>
 
     <section id="food">
-      <span class="eyebrow">The Kitchen</span>
-      <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-10">Food</h2>
+      <span class="eyebrow">{page.sections.food.eyebrow}</span>
+      <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-10">{page.sections.food.title}</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {FEATURED_FOOD.map((item) => (
           <div class="cm-media-card group">
@@ -92,8 +93,8 @@ const schema = [
     </section>
 
     <section id="brunch">
-      <span class="eyebrow">Served Daily</span>
-      <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-2">Brunch</h2>
+      <span class="eyebrow">{page.sections.brunch.eyebrow}</span>
+      <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-2">{page.sections.brunch.title}</h2>
       <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-widest uppercase mb-10">{SITE.service.brunch.tagline}</p>
       <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {FEATURED_BRUNCH.map((item) => (
@@ -113,11 +114,11 @@ const schema = [
   </div>
 
   <CTASection
-    title="Ready to Dine?"
-    subtitle="Reserve your table at Coco Maya in Little Italy."
-    primaryLabel="Reserve a Table"
+    title={page.cta.title}
+    subtitle={page.cta.subtitle}
+    primaryLabel={page.cta.primaryLabel}
     primaryHref={SITE.reservations.url}
-    secondaryLabel="Order Online"
+    secondaryLabel={page.cta.secondaryLabel}
     secondaryHref={SITE.order.url}
     dark={true}
   />

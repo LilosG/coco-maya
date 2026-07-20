@@ -1,0 +1,5 @@
+{
+  "discounted-happy-hour": { "order": 1, "question": "Does Coco Maya have a happy hour?", "answer": "Coco Maya doesn't currently run a discounted happy hour. The full cocktail program and the elevated rooftop patio are open and available every day, no special time window required." },
+  "best-time": { "order": 2, "question": "What are the best times to visit the rooftop patio?", "answer": "The patio is open daily and works well any time, though late afternoon into early evening tends to have the best light for the glass atrium bar and skyline views." },
+  "patio-reservation": { "order": 3, "question": "Do I need a reservation to sit on the patio?", "answer": "Reservations are recommended, especially on weekends, but walk-ins are welcome on the patio based on availability." }
+}

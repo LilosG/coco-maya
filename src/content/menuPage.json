@@ -1,0 +1,9 @@
+{
+  "singleton": {
+    "breadcrumbLabel": "Menu",
+    "seo": { "title": "Menu | Coco Maya by Miss Bs | Little Italy San Diego", "description": "Full menu at Coco Maya in Little Italy San Diego. Modern American coastal cuisine, craft cocktails, and brunch served daily. {{street}}.", "image": "/images/food-spread-overhead.jpg" },
+    "hero": { "label": "Modern Coastal Cuisine", "title": "The Menu", "titleSuffix": "Modern Coastal Cuisine in Little Italy, San Diego", "subtitle": "Modern coastal plates, craft cocktails, and brunch served daily.", "image": "/images/food-menu-hero.jpg", "imageAlt": "Full spread of Coco Maya dishes on the patio at Little Italy San Diego" },
+    "sections": { "cocktails": { "id": "cocktails", "navLabel": "Cocktails", "eyebrow": "Craft Program", "title": "Cocktails" }, "food": { "id": "food", "navLabel": "Food", "eyebrow": "The Kitchen", "title": "Food" }, "brunch": { "id": "brunch", "navLabel": "Brunch", "eyebrow": "Served Daily", "title": "Brunch" } },
+    "cta": { "title": "Ready to Dine?", "subtitle": "Reserve your table at Coco Maya in Little Italy.", "primaryLabel": "Reserve a Table", "secondaryLabel": "Order Online" }
+  }
+}

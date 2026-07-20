@@ -8,48 +8,35 @@ import CTASection from "../components/CTASection.astro";
 import InfoCard from "../components/InfoCard.astro";
 import ContentCard from "../components/ContentCard.astro";
 import FAQSection from "../components/FAQSection.astro";
-import { SITE } from "../data/site";
+import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../lib/content";
 import { faqPageSchema, breadcrumbSchema } from "../lib/schema";
 
-const faqs = [
-  {
-    question: "Does Coco Maya have a happy hour?",
-    answer:
-      "Coco Maya doesn't currently run a discounted happy hour. The full cocktail program and the elevated rooftop patio are open and available every day, no special time window required.",
-  },
-  {
-    question: "What are the best times to visit the rooftop patio?",
-    answer:
-      "The patio is open daily and works well any time, though late afternoon into early evening tends to have the best light for the glass atrium bar and skyline views.",
-  },
-  {
-    question: "Do I need a reservation to sit on the patio?",
-    answer:
-      "Reservations are recommended, especially on weekends, but walk-ins are welcome on the patio based on availability.",
-  },
-];
+const [SITE, rawPage, rawFaqs] = await Promise.all([getSingleton("siteSettings"), getSingleton("happyHourPage"), getOrderedCollection("happyHourFaqs")]);
+const page = resolveSiteTokens(rawPage, SITE);
+const faqs = rawFaqs as { question: string; answer: string }[];
+const fill = (value: string) => value.replaceAll("{{street}}", SITE.address.street).replaceAll("{{openDaily}}", SITE.serviceMessaging.openDailyLower);
 const schema = [
   faqPageSchema(faqs),
   breadcrumbSchema([
-    { name: "Home", url: SITE.url },
-    { name: "Rooftop Patio", url: `${SITE.url}/happy-hour` },
+    { name: SITE.breadcrumbs.home, url: SITE.url },
+    { name: page.breadcrumbLabel, url: `${SITE.url}/happy-hour` },
   ]),
 ];
 ---
 <BaseLayout
-  title="Rooftop Bar & Patio in Little Italy San Diego | Coco Maya"
-  description="Coco Maya's rooftop patio and glass atrium bar in Little Italy, San Diego. Craft cocktails, an elevated open-air setting, open daily. 1660 India St."
-  image="/images/cocktail-negroni-patio.jpg"
+  title={page.seo.title}
+  description={page.seo.description}
+  image={page.seo.image}
   extraSchema={schema}
 >
   <Nav />
   <PageHero
-    label="Open Daily"
-    title="Rooftop Patio & Bar"
-    titleSuffix="Happy Hour in Little Italy, San Diego"
-    subtitle="Craft cocktails and an open-air glass atrium, one of Little Italy's most distinctive rooftop settings."
-    image="/images/cocktail-negroni-patio.jpg"
-    imageAlt="Rooftop patio and glass atrium bar at Coco Maya Little Italy San Diego"
+    label={page.hero.label}
+    title={page.hero.title}
+    titleSuffix={page.hero.titleSuffix}
+    subtitle={page.hero.subtitle}
+    image={page.hero.image}
+    imageAlt={page.hero.imageAlt}
     tall={true}
   />
 
@@ -57,33 +44,31 @@ const schema = [
     <div class="max-w-5xl mx-auto">
 
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-20">
-        <InfoCard label="Open" value="Daily" />
-        <InfoCard label="Setting" value="Elevated Patio" accent={true} />
-        <InfoCard label="Location" value="Glass Atrium Bar" sub="1660 India St, Little Italy" />
+        {page.infoCards.map((card: any) => <InfoCard label={card.label} value={card.value} sub={card.subTemplate ? card.subTemplate.replace("{{street}}", SITE.address.street) : undefined} accent={card.accent} />)}
       </div>
 
       <div class="grid lg:grid-cols-2 gap-16 items-center">
         <div>
-          <span class="eyebrow">The Rooftop Bar</span>
+          <span class="eyebrow">{page.intro.eyebrow}</span>
           <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-4">
-            Little Italy's Rooftop Bar
+            {page.intro.title}
           </h2>
           <div class="rule"></div>
           <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-4 text-[1.0625rem]">
-            Coco Maya's glass atrium bar opens onto an elevated outdoor patio, one of San Diego's most distinctive rooftop settings, surrounded by tropical greenery with views over Little Italy.
+            {page.intro.body1}
           </p>
           <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-10 text-[1.0625rem]">
-            The full craft cocktail program is available daily, no special time window required, whether you're stopping by after work or starting an evening out.
+            {page.intro.body2}
           </p>
           <div class="flex flex-wrap gap-4">
-            <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">Reserve a Table</a>
-            <a href="/menu" class="btn-outline">See Full Menu</a>
+            <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">{page.intro.reserveLabel}</a>
+            <a href="/menu" class="btn-outline">{page.intro.menuLabel}</a>
           </div>
         </div>
         <div class="relative">
           <Picture
-            src="/images/cocktail-negroni-patio.jpg"
-            alt="Craft cocktail on the rooftop patio at Coco Maya"
+            src={page.intro.image}
+            alt={page.intro.imageAlt}
             class="w-full aspect-square object-cover"
             width="600" height="600"
             loading="lazy"
@@ -93,11 +78,7 @@ const schema = [
       </div>
 
       <div class="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-5">
-        {[
-          { label: "Craft Cocktails", body: "House-made cocktails built around fresh juice, small-batch spirits, and seasonal ingredients." },
-          { label: "Signature Tower", body: "Our pink cocktail tower, four frozen margaritas built for the table, is the one most photos end up featuring." },
-          { label: "The Patio", body: "An open-air glass atrium setting, one of the more distinctive rooftop bars in Little Italy." },
-        ].map((item) => (
+        {page.features.map((item: any) => (
           <ContentCard label={item.label} body={item.body} />
         ))}
       </div>
@@ -105,14 +86,14 @@ const schema = [
     </div>
   </section>
 
-  <FAQSection faqs={faqs} label="Good to Know" title="Rooftop Bar FAQ" />
+  <FAQSection faqs={faqs} label={page.faq.label} title={page.faq.title} />
 
   <CTASection
-    title="Visit the Rooftop"
-    subtitle="1660 India St, Little Italy San Diego. Open daily."
-    primaryLabel="Reserve a Table"
+    title={page.cta.title}
+    subtitle={fill(page.cta.subtitleTemplate)}
+    primaryLabel={page.cta.primaryLabel}
     primaryHref={SITE.reservations.url}
-    secondaryLabel="Get Directions"
+    secondaryLabel={page.cta.secondaryLabel}
     secondaryHref={SITE.address.mapsUrl}
     dark={true}
   />

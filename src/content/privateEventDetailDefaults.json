@@ -1,0 +1,13 @@
+{
+  "singleton": {
+    "heroTitleSuffix": "in Little Italy, San Diego",
+    "breadcrumbParentLabel": "Private Events",
+    "labels": { "startPlanning": "Start Planning", "guests": "Guests", "duration": "Typical Duration", "space": "Space", "location": "Little Italy · San Diego", "email": "Email Us", "allEvents": "All Private Events", "setting": "The Setting", "closerLook": "A Closer Look", "included": "What's Included", "questions": "Questions" },
+    "builtForTemplate": "Built for {{eventNameLower}}",
+    "faqTitleTemplate": "{{eventName}} FAQ",
+    "formLabelTemplate": "Book Your {{eventName}}",
+    "formSubtitle": "Share your date, headcount, and vision, and we'll follow up within 24 hours.",
+    "formCtaLabel": "Inquire About Your Event",
+    "cta": { "title": "Ready to Start Planning?", "subtitleTemplate": "Tell us about your {{eventNameLower}} and we'll put together a custom proposal.", "primaryLabel": "Email Us" }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "singleton": {
+    "breadcrumbLabel": "Contact",
+    "seo": { "title": "Contact | Coco Maya | {{street}} San Diego CA 92101", "descriptionTemplate": "Find Coco Maya by Miss Bs at {{fullAddress}}. Call {{phone}}. Open daily in Little Italy San Diego." },
+    "hero": { "label": "Come Find Us", "title": "Contact", "titleSuffixTemplate": "Coco Maya | {{street}}, Little Italy, San Diego" },
+    "labels": { "address": "Address", "phone": "Phone", "hours": "Hours", "directions": "Get Directions", "reserve": "Reserve a Table", "rooftop": "Rooftop Patio" },
+    "image": "/images/venue-arch-patio.jpg",
+    "imageAltTemplate": "Coco Maya by Miss Bs — {{street}} Little Italy San Diego"
+  }
+}
