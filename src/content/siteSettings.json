@@ -12,7 +12,8 @@
       "zip": "92101",
       "neighborhood": "Little Italy",
       "full": "1660 India St, San Diego, CA 92101",
-      "mapsUrl": "https://maps.google.com/?q=1660+India+St+San+Diego+CA+92101"
+      "mapsUrl": "https://maps.google.com/?q=1660+India+St+San+Diego+CA+92101",
+      "mapsPlaceId": "ChIJk2xyLCpV2YARP2uyEW9E4m4"
     },
     "phone": { "display": "(762) 475-8756", "tel": "+17624758756" },
     "email": "info@inlovewiththecoco.com",

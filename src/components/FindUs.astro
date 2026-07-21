@@ -20,12 +20,14 @@ const {
   cityLine = `${SITE.address.neighborhood}, ${SITE.address.city}, ${SITE.address.state} ${SITE.address.zip}`,
   phone = SITE.phone.display,
   mapsHref = SITE.address.mapsUrl,
+  mapsPlaceId = SITE.address.mapsPlaceId,
   openLine = SITE.serviceMessaging.openDaily,
   accentLabel = content.accentLabel,
   accentValue = SITE.serviceMessaging.openDaily,
 } = Astro.props;
 
 const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
+const mapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?key=${import.meta.env.GOOGLE_MAPS_API_KEY}&q=place_id:${mapsPlaceId}`;
 ---
 
 <section class="find-section" aria-labelledby="find-title">
@@ -39,22 +41,14 @@ const telHref = `tel:+1${phone.replace(/[^0-9]/g, '')}`;
       <div class="find-photo">
         <Picture src={interiorImage} alt={content.imageAlt} loading="lazy" width="700" height="600" />
       </div>
-      <div class="map-badge" aria-hidden="true">
-        <div class="map">
-          <svg viewBox="0 0 180 110" preserveAspectRatio="none">
-            <g stroke="var(--color-teal-light)" stroke-width="0.8" opacity="0.7" fill="none">
-              <line x1="0" y1="30" x2="180" y2="22" />
-              <line x1="0" y1="60" x2="180" y2="54" />
-              <line x1="0" y1="90" x2="180" y2="84" />
-              <line x1="40" y1="0" x2="36" y2="110" />
-              <line x1="100" y1="0" x2="96" y2="110" />
-              <line x1="140" y1="0" x2="136" y2="110" />
-            </g>
-            <line x1="70" y1="0" x2="66" y2="110" stroke="var(--color-teal-dark)" stroke-width="2" opacity="0.7" />
-            <circle cx="68" cy="55" r="4.5" fill="var(--color-teal-dark)" stroke="#fff" stroke-width="1.5" />
-          </svg>
-        </div>
-        <div class="map-label">{content.mapLabel}</div>
+      <div class="map-badge" aria-hidden="false">
+        <iframe
+          title={`Map to ${address}`}
+          src={mapsEmbedUrl}
+          class="w-full h-full border-0"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
       </div>
     </div>
 
