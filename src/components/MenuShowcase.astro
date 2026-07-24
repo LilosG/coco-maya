@@ -15,6 +15,7 @@ interface Props {
   items: ShowcaseItem[];
   ctaLabel?: string;
   ctaHref?: string;
+  ctaExternal?: boolean;
   dark?: boolean;
 }
 
@@ -25,6 +26,7 @@ const {
   items = [],
   ctaLabel,
   ctaHref,
+  ctaExternal = false,
   dark = false,
 } = Astro.props;
 ---
@@ -59,7 +61,7 @@ const {
 
   {ctaLabel && ctaHref && (
     <div class="ms-cta">
-      <a href={ctaHref} class="btn-outline">{ctaLabel}</a>
+      <a href={ctaHref} class="btn-outline" target={ctaExternal ? "_blank" : undefined} rel={ctaExternal ? "noopener noreferrer" : undefined}>{ctaLabel}</a>
     </div>
   )}
 </section>

@@ -82,7 +82,8 @@ const schema = [
         imageAlt: fill(page.favorites.imageAltTemplate, item.name),
       }))}
       ctaLabel={page.favorites.ctaLabel}
-      ctaHref="/menu"
+      ctaHref={SITE.fullMenu.url}
+      ctaExternal={true}
     />
   </div>
 
@@ -203,7 +204,7 @@ const schema = [
     primaryLabel={page.cta.primaryLabel}
     primaryHref={SITE.reservations.url}
     secondaryLabel={page.cta.secondaryLabel}
-    secondaryHref="/menu"
+    secondaryHref={SITE.fullMenu.url}
     dark={true}
   />
   <Footer />
