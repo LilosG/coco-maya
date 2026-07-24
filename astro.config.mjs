@@ -9,6 +9,8 @@ import vercel from '@astrojs/vercel';
 
 export default defineConfig({
   site: 'https://inlovewiththecoco.com',
+  trailingSlash: 'never',
+  build: { format: 'file' },
   adapter: vercel(),
   vite: { plugins: [tailwindcss()] },
   integrations: [sitemap(), mdx(), keystatic(), react()],
