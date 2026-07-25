@@ -20,7 +20,11 @@ export async function getStaticPaths() {
 const { post } = Astro.props;
 const [SITE, defaults] = await Promise.all([getSingleton("siteSettings"), getSingleton("blogPostDefaults")]);
 const { Content } = await render(post);
-const cta = post.data.eventCTA;
+// eventCTA is now always present as an object once a post has been opened and
+// saved in Keystatic (its fields just default to blank), so an empty title is
+// what "not using a custom CTA for this post" looks like -- treat that as
+// absent rather than rendering a blank inquiry form / CTA section.
+const cta = post.data.eventCTA?.title ? post.data.eventCTA : undefined;
 
 const publishedISO = post.data.date.toISOString();
 // dateModified reflects updatedDate when a post has actually been edited.
