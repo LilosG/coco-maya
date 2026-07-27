@@ -5,9 +5,10 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import PageHero from "../../components/PageHero.astro";
+import TrustBar from "../../components/TrustBar.astro";
 import { getSingleton } from "../../lib/content";
 
-const [allPosts, page] = await Promise.all([getCollection("blog"), getSingleton("blogIndexPage")]);
+const [allPosts, page, SITE] = await Promise.all([getCollection("blog"), getSingleton("blogIndexPage"), getSingleton("siteSettings")]);
 const posts = allPosts
   .map((post) => ({
     slug: post.id,
@@ -21,6 +22,8 @@ const posts = allPosts
 <BaseLayout title={page.seo.title} description={page.seo.description}>
   <Nav />
   <PageHero label={page.hero.label} title={page.hero.title} titleSuffix={page.hero.titleSuffix} subtitle={page.hero.subtitle} image={page.hero.image} imageAlt={page.hero.imageAlt} />
+
+  <TrustBar site={SITE} />
 
   <section class="py-16 px-6 bg-[var(--color-cream)]">
     <div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">

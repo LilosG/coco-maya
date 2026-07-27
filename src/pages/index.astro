@@ -3,9 +3,10 @@ import Picture from "../components/Picture.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
-import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../lib/content";
+import { getOrderedCollection, getSingleton, resolveSiteTokens, getTodayHours } from "../lib/content";
 import RooftopBar from "../components/RooftopBar.astro";
 import FindUs from "../components/FindUs.astro";
+import TrustBar from "../components/TrustBar.astro";
 
 const [SITE, rawHome, FEATURED_COCKTAILS, FEATURED_FOOD, rawPrivateEventTypes] = await Promise.all([
   getSingleton("siteSettings"),
@@ -17,18 +18,7 @@ const [SITE, rawHome, FEATURED_COCKTAILS, FEATURED_FOOD, rawPrivateEventTypes] =
 const home = resolveSiteTokens(rawHome, SITE);
 const PRIVATE_EVENT_TYPES = resolveSiteTokens(rawPrivateEventTypes, SITE);
 const fill = (value: string, replacements: Record<string, string>) => Object.entries(replacements).reduce((text, [key, replacement]) => text.replaceAll(`{{${key}}}`, replacement), value);
-const todayHours = (() => {
-  const d = SITE.weekdaysSundayFirst ?? [];
-  const h = (SITE.hours ?? []).find((x: any) => x.day === d[new Date().getDay()]);
-  return h?.hours ?? home.infoBar.closed;
-})();
-
-const infoBar = [
-  { label: home.infoBar.hoursLabel, value: todayHours, sub: null, href: null },
-  { label: home.infoBar.rooftopLabel, value: SITE.serviceMessaging.openDaily, sub: home.infoBar.rooftopSub, href: "/happy-hour" },
-  { label: home.infoBar.brunchLabel, value: SITE.service.brunch.shortTagline, sub: home.infoBar.brunchSub, href: "/brunch" },
-  { label: home.infoBar.locationLabel, value: SITE.address.neighborhood + ", SD", sub: fill(home.infoBar.locationSubTemplate, { street: SITE.address.street }), href: SITE.address.mapsUrl },
-];
+const todayHours = getTodayHours(SITE, "Closed");
 ---
 
 <BaseLayout
@@ -75,28 +65,7 @@ const infoBar = [
   </section>
 
   <!-- ── INFO BAR ──────────────────────────────────────── -->
-  <section class="bg-[var(--color-teal)]">
-    <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/20">
-      {infoBar.map((item) => (
-        <div class="flex flex-col items-center justify-center py-6 px-4 text-center">
-          <span class="eyebrow-light mb-2" style="color: rgba(255,255,255,0.55);">{item.label}</span>
-          {item.href ? (
-            <a
-              href={item.href}
-              target={item.href.startsWith("http") ? "_blank" : undefined}
-              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              class="font-[family-name:var(--font-display)] italic text-white text-xl hover:text-white/80 transition-colors leading-tight"
-            >
-              {item.value}
-            </a>
-          ) : (
-            <p class="font-[family-name:var(--font-display)] italic text-white text-xl leading-tight">{item.value}</p>
-          )}
-          {item.sub && <p class="text-white/50 text-xs font-[family-name:var(--font-body)] mt-1">{item.sub}</p>}
-        </div>
-      ))}
-    </div>
-  </section>
+  <TrustBar site={SITE} />
 
   <!-- ── BRAND STATEMENT ───────────────────────────────── -->
   <section class="py-28 px-6 bg-[var(--color-cream)]">

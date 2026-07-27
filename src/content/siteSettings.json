@@ -32,6 +32,7 @@
       "url": "https://cocomayabymissbs.toast.site/order",
       "label": "View Full Menu"
     },
+    "trustBar": { "hoursLabel": "Hours Today", "closed": "Closed", "rooftopLabel": "Rooftop Patio", "rooftopSub": "Glass Atrium Bar", "brunchLabel": "Daily Brunch", "brunchSub": "Every Day", "locationLabel": "Location", "locationSubTemplate": "{{street}}" },
     "hours": [
       { "day": "Monday", "open": true, "hours": "10:30 AM – 8:00 PM" },
       { "day": "Tuesday", "open": true, "hours": "10:30 AM – 8:00 PM" },

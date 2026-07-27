@@ -37,7 +37,7 @@ const schema = [
     imageAlt={page.hero.imageAlt}
     tall={true}
   >
-    <div class="flex flex-wrap gap-4 mt-8">
+    <div class="flex flex-col sm:flex-row flex-wrap gap-4 mt-8 justify-center">
       <a href={`mailto:${SITE.email}?subject=Private Event Inquiry`} class="btn-primary">{page.hero.primaryLabel}</a>
       <a href={`tel:${SITE.phone.tel}`} class="btn-ghost">{SITE.phone.display}</a>
     </div>

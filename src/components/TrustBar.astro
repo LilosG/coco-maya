@@ -1,0 +1,43 @@
+---
+import { getTodayHours } from "../lib/content";
+
+interface Props {
+  site: any;
+}
+const { site } = Astro.props;
+
+const fill = (value: string, replacements: Record<string, string>) =>
+  Object.entries(replacements).reduce((text, [key, replacement]) => text.replaceAll(`{{${key}}}`, replacement), value);
+
+const todayHours = getTodayHours(site, site.trustBar.closed);
+
+const items = [
+  { label: site.trustBar.hoursLabel, value: todayHours, sub: null, href: null },
+  { label: site.trustBar.rooftopLabel, value: site.serviceMessaging.openDaily, sub: site.trustBar.rooftopSub, href: "/happy-hour" },
+  { label: site.trustBar.brunchLabel, value: site.service.brunch.shortTagline, sub: site.trustBar.brunchSub, href: "/brunch" },
+  { label: site.trustBar.locationLabel, value: `${site.address.neighborhood}, SD`, sub: fill(site.trustBar.locationSubTemplate, { street: site.address.street }), href: site.address.mapsUrl },
+];
+---
+
+<section class="bg-[var(--color-teal)]">
+  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/20">
+    {items.map((item) => (
+      <div class="flex flex-col items-center justify-center py-6 px-4 text-center">
+        <span class="eyebrow-light mb-2" style="color: rgba(255,255,255,0.55);">{item.label}</span>
+        {item.href ? (
+          <a
+            href={item.href}
+            target={item.href.startsWith("http") ? "_blank" : undefined}
+            rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+            class="font-[family-name:var(--font-display)] italic text-white text-xl hover:text-white/80 transition-colors leading-tight"
+          >
+            {item.value}
+          </a>
+        ) : (
+          <p class="font-[family-name:var(--font-display)] italic text-white text-xl leading-tight">{item.value}</p>
+        )}
+        {item.sub && <p class="text-white/50 text-xs font-[family-name:var(--font-body)] mt-1">{item.sub}</p>}
+      </div>
+    ))}
+  </div>
+</section>

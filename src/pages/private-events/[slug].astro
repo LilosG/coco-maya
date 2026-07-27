@@ -50,7 +50,7 @@ const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.n
     image={event.heroImage}
     imageAlt={event.heroImageAlt}
   >
-    <div class="flex flex-wrap gap-4 mt-8">
+    <div class="flex flex-col sm:flex-row flex-wrap gap-4 mt-8 justify-center">
       <a href={mailtoHref} class="btn-primary">{defaults.labels.startPlanning}</a>
       <a href={`tel:${SITE.phone.tel}`} class="btn-ghost">{SITE.phone.display}</a>
     </div>

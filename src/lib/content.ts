@@ -13,6 +13,12 @@ export async function getOrderedCollection(collection: string): Promise<any[]> {
     .map((entry) => entry.data as Record<string, any>);
 }
 
+export function getTodayHours(site: any, closedFallback: string): string {
+  const days = site.weekdaysSundayFirst ?? [];
+  const match = (site.hours ?? []).find((x: any) => x.day === days[new Date().getDay()]);
+  return match?.hours ?? closedFallback;
+}
+
 export function resolveSiteTokens<T>(value: T, site: any): T {
   const tokens: Record<string, string> = {
     street: site.address.street,
