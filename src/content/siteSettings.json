@@ -15,7 +15,10 @@
       "mapsUrl": "https://maps.google.com/?q=1660+India+St+San+Diego+CA+92101",
       "mapsPlaceId": "ChIJk2xyLCpV2YARP2uyEW9E4m4"
     },
-    "phone": { "display": "(762) 475-8756", "tel": "+17624758756" },
+    "phone": {
+      "display": "(762) 475-8756",
+      "tel": "+17624758756"
+    },
     "email": "info@inlovewiththecoco.com",
     "reservations": {
       "url": "https://tables.toasttab.com/restaurants/179fe648-b771-40b6-a75f-9cb86f67a3e4/findTime",
@@ -32,32 +35,102 @@
       "url": "https://cocomayabymissbs.toast.site/order",
       "label": "View Full Menu"
     },
-    "trustBar": { "hoursLabel": "Hours Today", "closed": "Closed", "rooftopLabel": "Rooftop Patio", "rooftopSub": "Glass Atrium Bar", "brunchLabel": "Daily Brunch", "brunchSub": "Every Day", "locationLabel": "Location", "locationSubTemplate": "{{street}}" },
+    "trustBar": {
+      "hoursLabel": "Hours Today",
+      "closed": "Closed",
+      "rooftopLabel": "Rooftop Patio",
+      "rooftopSub": "Glass Atrium Bar",
+      "brunchLabel": "Daily Brunch",
+      "brunchSub": "Every Day",
+      "locationLabel": "Location",
+      "locationSubTemplate": "{{street}}"
+    },
     "hours": [
-      { "day": "Monday", "open": true, "hours": "10:30 AM – 8:00 PM" },
-      { "day": "Tuesday", "open": true, "hours": "10:30 AM – 8:00 PM" },
-      { "day": "Wednesday", "open": true, "hours": "10:30 AM – 8:00 PM" },
-      { "day": "Thursday", "open": true, "hours": "10:30 AM – 8:00 PM" },
-      { "day": "Friday", "open": true, "hours": "9:00 AM – 12:00 AM" },
-      { "day": "Saturday", "open": true, "hours": "9:00 AM – 12:00 AM" },
-      { "day": "Sunday", "open": true, "hours": "9:00 AM – 8:00 PM" }
+      {
+        "day": "Monday",
+        "open": true,
+        "hours": "10:30 AM – 9:00 PM"
+      },
+      {
+        "day": "Tuesday",
+        "open": true,
+        "hours": "10:30 AM – 9:00 PM"
+      },
+      {
+        "day": "Wednesday",
+        "open": true,
+        "hours": "10:30 AM – 9:00 PM"
+      },
+      {
+        "day": "Thursday",
+        "open": true,
+        "hours": "10:30 AM – 10:00 PM"
+      },
+      {
+        "day": "Friday",
+        "open": true,
+        "hours": "9:00 AM – 12:00 AM"
+      },
+      {
+        "day": "Saturday",
+        "open": true,
+        "hours": "9:00 AM – 12:00 AM"
+      },
+      {
+        "day": "Sunday",
+        "open": true,
+        "hours": "9:00 AM – 9:00 PM"
+      }
     ],
-    "weekdaysSundayFirst": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-    "breadcrumbs": { "home": "Home" },
-    "rooftopBar": { "detail": "Elevated Patio & Glass Atrium" },
+    "weekdaysSundayFirst": [
+      "Sunday",
+      "Monday",
+      "Tuesday",
+      "Wednesday",
+      "Thursday",
+      "Friday",
+      "Saturday"
+    ],
+    "breadcrumbs": {
+      "home": "Home"
+    },
+    "rooftopBar": {
+      "detail": "Elevated Patio & Glass Atrium"
+    },
     "service": {
       "brunch": {
         "label": "Daily Brunch",
         "tagline": "Served daily, until 3:00 PM",
         "shortTagline": "Daily · Until 3PM",
         "days": [
-          { "day": "Sunday", "hours": "9:00 AM – 3:00 PM" },
-          { "day": "Monday", "hours": "10:30 AM – 3:00 PM" },
-          { "day": "Tuesday", "hours": "10:30 AM – 3:00 PM" },
-          { "day": "Wednesday", "hours": "10:30 AM – 3:00 PM" },
-          { "day": "Thursday", "hours": "10:30 AM – 3:00 PM" },
-          { "day": "Friday", "hours": "9:00 AM – 3:00 PM" },
-          { "day": "Saturday", "hours": "9:00 AM – 3:00 PM" }
+          {
+            "day": "Sunday",
+            "hours": "9:00 AM – 3:00 PM"
+          },
+          {
+            "day": "Monday",
+            "hours": "10:30 AM – 3:00 PM"
+          },
+          {
+            "day": "Tuesday",
+            "hours": "10:30 AM – 3:00 PM"
+          },
+          {
+            "day": "Wednesday",
+            "hours": "10:30 AM – 3:00 PM"
+          },
+          {
+            "day": "Thursday",
+            "hours": "10:30 AM – 3:00 PM"
+          },
+          {
+            "day": "Friday",
+            "hours": "9:00 AM – 3:00 PM"
+          },
+          {
+            "day": "Saturday",
+            "hours": "9:00 AM – 3:00 PM"
+          }
         ]
       },
       "dinner": {
@@ -65,13 +138,34 @@
         "tagline": "Served nightly from 5:00 PM",
         "shortTagline": "Nightly from 5PM",
         "days": [
-          { "day": "Sunday", "hours": "5:00 PM – 8:00 PM" },
-          { "day": "Monday", "hours": "5:00 PM – 8:00 PM" },
-          { "day": "Tuesday", "hours": "5:00 PM – 8:00 PM" },
-          { "day": "Wednesday", "hours": "5:00 PM – 8:00 PM" },
-          { "day": "Thursday", "hours": "5:00 PM – 8:00 PM" },
-          { "day": "Friday", "hours": "5:00 PM – 10:30 PM" },
-          { "day": "Saturday", "hours": "5:00 PM – 10:30 PM" }
+          {
+            "day": "Sunday",
+            "hours": "5:00 PM – 8:00 PM"
+          },
+          {
+            "day": "Monday",
+            "hours": "5:00 PM – 8:00 PM"
+          },
+          {
+            "day": "Tuesday",
+            "hours": "5:00 PM – 8:00 PM"
+          },
+          {
+            "day": "Wednesday",
+            "hours": "5:00 PM – 8:00 PM"
+          },
+          {
+            "day": "Thursday",
+            "hours": "5:00 PM – 8:00 PM"
+          },
+          {
+            "day": "Friday",
+            "hours": "5:00 PM – 10:30 PM"
+          },
+          {
+            "day": "Saturday",
+            "hours": "5:00 PM – 10:30 PM"
+          }
         ]
       }
     },
@@ -94,8 +188,16 @@
       "type": "Restaurant",
       "addressCountry": "US",
       "priceRange": "$$$",
-      "servesCuisine": ["Modern American", "Coastal", "Seafood", "Brunch"],
-      "geo": { "lat": 32.7245, "lng": -117.1699 }
+      "servesCuisine": [
+        "Modern American",
+        "Coastal",
+        "Seafood",
+        "Brunch"
+      ],
+      "geo": {
+        "lat": 32.7245,
+        "lng": -117.1699
+      }
     }
   }
 }
