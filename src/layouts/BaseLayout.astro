@@ -2,6 +2,7 @@
 import "../styles/global.css";
 import { getSingleton } from "../lib/content";
 import Analytics from "../components/Analytics.astro";
+import ConsentBanner from "../components/ConsentBanner.astro";
 
 const SITE = await getSingleton("siteSettings");
 
@@ -146,5 +147,6 @@ const schema = {
   </head>
   <body>
     <slot />
+    <ConsentBanner siteName="Coco Maya" />
   </body>
 </html>
