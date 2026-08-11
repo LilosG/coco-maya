@@ -1,0 +1,63 @@
+---
+import Picture from "./Picture.astro";
+
+interface Props {
+  label: string;
+  title: string;
+  body1?: string;
+  body2?: string;
+  image: string;
+  imageAlt: string;
+  reverse?: boolean;
+  ctaLabel?: string;
+  ctaHref?: string;
+  tall?: boolean;
+}
+
+const {
+  label,
+  title,
+  body1,
+  body2,
+  image,
+  imageAlt,
+  reverse = false,
+  ctaLabel,
+  ctaHref,
+  tall = false,
+} = Astro.props;
+
+const ctaTarget = ctaHref && (ctaHref.startsWith("http") || ctaHref.startsWith("mailto") || ctaHref.startsWith("tel")) ? "_blank" : undefined;
+const ctaRel = ctaTarget === "_blank" ? "noopener noreferrer" : undefined;
+---
+
+<section class:list={["relative overflow-hidden flex items-center", tall ? "min-h-[85vh]" : "min-h-[70vh]"]}>
+  <div class="absolute inset-0">
+    <Picture
+      src={image}
+      alt={imageAlt}
+      class="w-full h-full object-cover object-center"
+      width="1600" height="1200"
+      loading="lazy"
+    />
+    <div class:list={[
+      "absolute inset-0",
+      reverse ? "bg-gradient-to-l from-black/85 via-black/45 to-transparent" : "bg-gradient-to-r from-black/85 via-black/45 to-transparent"
+    ]}></div>
+  </div>
+
+  <div class:list={["relative z-10 w-full flex", reverse ? "justify-end" : "justify-start"]}>
+    <div class:list={["max-w-md px-6 lg:px-16 py-16", reverse ? "text-right" : "text-left"]}>
+      <span class="eyebrow-light mb-1">{label}</span>
+      <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2.25rem,4.5vw,3.75rem)] text-white leading-tight mb-4">
+        {title}
+      </h2>
+      <div class:list={["rule-light", reverse ? "ml-auto" : ""]}></div>
+      {body1 && <p class="font-[family-name:var(--font-body)] text-white/70 leading-relaxed mb-4">{body1}</p>}
+      {body2 && <p class="font-[family-name:var(--font-body)] text-white/70 leading-relaxed">{body2}</p>}
+      {ctaLabel && ctaHref && (
+        <a href={ctaHref} target={ctaTarget} rel={ctaRel} class="btn-primary inline-block mt-8">{ctaLabel}</a>
+      )}
+    </div>
+  </div>
+</section>

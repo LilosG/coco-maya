@@ -4,6 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import PageHero from "../../components/PageHero.astro";
+import FullBleedFeature from "../../components/FullBleedFeature.astro";
 import CTASection from "../../components/CTASection.astro";
 import { getOrderedCollection, getSingleton } from "../../lib/content";
 import { breadcrumbSchema } from "../../lib/schema";
@@ -47,30 +48,15 @@ const schema = [
   </section>
 
   {spaces.map((space) => (
-    <section class="py-24 px-6 bg-[var(--color-cream)]">
-      <div class:list={["max-w-5xl mx-auto grid lg:grid-cols-2 gap-20 items-center", space.reverse ? "lg:grid-flow-dense" : ""]}>
-        <div class:list={[space.reverse ? "lg:col-start-2" : ""]}>
-          <span class="eyebrow">{space.label}</span>
-          <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-4">{space.title}</h2>
-          <div class="rule"></div>
-          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-4 text-[1.0625rem]">{space.body1}</p>
-          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed text-[1.0625rem]">{space.body2}</p>
-        </div>
-        <div class:list={["relative", space.reverse ? "lg:col-start-1 lg:row-start-1" : ""]}>
-          <Picture
-            src={space.image}
-            alt={space.imageAlt}
-            class="w-full aspect-[4/5] object-cover"
-            width="700" height="875"
-            loading="lazy"
-          />
-          <div class:list={[
-            "absolute w-full h-full border border-[var(--color-teal)]/20 -z-10",
-            space.reverse ? "-top-5 -right-5" : "-bottom-5 -right-5"
-          ]}></div>
-        </div>
-      </div>
-    </section>
+    <FullBleedFeature
+      label={space.label}
+      title={space.title}
+      body1={space.body1}
+      body2={space.body2}
+      image={space.image}
+      imageAlt={space.imageAlt}
+      reverse={space.reverse}
+    />
   ))}
 
 
