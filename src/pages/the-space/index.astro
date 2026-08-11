@@ -57,7 +57,7 @@ const schema = [
         image={space.image}
         imageAlt={space.imageAlt}
         reverse={space.reverse}
-        dark={true}
+        dark={space.dark ?? false}
       />
     ) : (
       <FullBleedFeature

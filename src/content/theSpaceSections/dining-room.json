@@ -6,8 +6,9 @@
   "body2": "Available for private event buyouts, rehearsal dinners, and large group bookings.",
   "image": "/images/venue-interior-dining.jpg",
   "imageAlt": "Private dining room at Coco Maya Little Italy San Diego",
-  "reverse": false,
-  "layout": "full-bleed",
+  "reverse": true,
+  "layout": "contained",
+  "dark": false,
   "summaryLabel": "Private",
   "summaryValue": "Dining Room"
 }

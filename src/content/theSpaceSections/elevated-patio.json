@@ -7,7 +7,7 @@
   "image": "/images/venue-patio-skyline.jpg",
   "imageAlt": "Elevated patio with city skyline at Coco Maya San Diego",
   "reverse": true,
-  "layout": "contained",
+  "layout": "full-bleed",
   "summaryLabel": "Outdoor",
   "summaryValue": "Elevated Patio"
 }
