@@ -75,14 +75,14 @@ const schema = [
 
   <!-- THE BAR SECTION -->
   {barDetail && (
-    <ContainedFeature
+    <FullBleedFeature
       label={barDetail.eyebrow}
       title={barDetail.title}
       body1={barDetail.body1}
       body2={barDetail.body2}
       image={barDetail.image}
       imageAlt={barDetail.imageAlt}
-      dark={true}
+      reverse={false}
       ctaLabel={page.barCtas.menuLabel}
       ctaHref="/menu"
       secondaryLabel={page.barCtas.patioLabel}

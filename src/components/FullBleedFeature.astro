@@ -11,6 +11,8 @@ interface Props {
   reverse?: boolean;
   ctaLabel?: string;
   ctaHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
   tall?: boolean;
 }
 
@@ -24,11 +26,13 @@ const {
   reverse = false,
   ctaLabel,
   ctaHref,
+  secondaryLabel,
+  secondaryHref,
   tall = false,
 } = Astro.props;
 
-const ctaTarget = ctaHref && (ctaHref.startsWith("http") || ctaHref.startsWith("mailto") || ctaHref.startsWith("tel")) ? "_blank" : undefined;
-const ctaRel = ctaTarget === "_blank" ? "noopener noreferrer" : undefined;
+const target = (href?: string) => href && (href.startsWith("http") || href.startsWith("mailto") || href.startsWith("tel")) ? "_blank" : undefined;
+const rel = (href?: string) => target(href) ? "noopener noreferrer" : undefined;
 ---
 
 <section class:list={["relative overflow-hidden flex items-center", tall ? "min-h-[85vh]" : "min-h-[70vh]"]}>
@@ -55,8 +59,11 @@ const ctaRel = ctaTarget === "_blank" ? "noopener noreferrer" : undefined;
       <div class:list={["rule-light", reverse ? "ml-auto" : ""]}></div>
       {body1 && <p class="font-[family-name:var(--font-body)] text-white/70 leading-relaxed mb-4">{body1}</p>}
       {body2 && <p class="font-[family-name:var(--font-body)] text-white/70 leading-relaxed">{body2}</p>}
-      {ctaLabel && ctaHref && (
-        <a href={ctaHref} target={ctaTarget} rel={ctaRel} class="btn-primary inline-block mt-8">{ctaLabel}</a>
+      {(ctaLabel || secondaryLabel) && (
+        <div class:list={["flex flex-wrap gap-4 mt-8", reverse ? "justify-end" : "justify-start"]}>
+          {ctaLabel && ctaHref && <a href={ctaHref} target={target(ctaHref)} rel={rel(ctaHref)} class="btn-primary">{ctaLabel}</a>}
+          {secondaryLabel && secondaryHref && <a href={secondaryHref} target={target(secondaryHref)} rel={rel(secondaryHref)} class="btn-ghost">{secondaryLabel}</a>}
+        </div>
       )}
     </div>
   </div>
