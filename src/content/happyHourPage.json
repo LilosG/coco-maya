@@ -6,7 +6,7 @@
     "infoCards": [ { "label": "Open", "value": "Daily" }, { "label": "Setting", "value": "Elevated Patio", "accent": true }, { "label": "Location", "value": "Glass Atrium Bar", "subTemplate": "{{street}}, Little Italy" } ],
     "intro": { "eyebrow": "The Rooftop Bar", "title": "Little Italy's Rooftop Bar", "body1": "Coco Maya's glass atrium bar opens onto an elevated outdoor patio, one of San Diego's most distinctive rooftop settings, surrounded by tropical greenery with views over Little Italy.", "body2": "The full craft cocktail program is available daily, no special time window required, whether you're stopping by after work or starting an evening out.", "image": "/images/cocktail-negroni-patio.jpg", "imageAlt": "Craft cocktail on the rooftop patio at Coco Maya", "reserveLabel": "Reserve a Table", "menuLabel": "See Full Menu" },
     "features": [ { "label": "Craft Cocktails", "body": "House-made cocktails built around fresh juice, small-batch spirits, and seasonal ingredients." }, { "label": "Signature Tower", "body": "Our pink cocktail tower, four frozen margaritas built for the table, is the one most photos end up featuring." }, { "label": "The Patio", "body": "An open-air glass atrium setting, one of the more distinctive rooftop bars in Little Italy." } ],
-    "faq": { "label": "Good to Know", "title": "Rooftop Bar FAQ" },
-    "cta": { "title": "Visit the Rooftop", "subtitleTemplate": "{{street}}, Little Italy San Diego. {{openDailyLower}}.", "primaryLabel": "Reserve a Table", "secondaryLabel": "Get Directions" }
+    "faq": { "label": "Good to Know", "title": "Rooftop Bar FAQ: Little Italy, San Diego" },
+    "cta": { "title": "Visit the Rooftop Bar in Little Italy, San Diego", "subtitleTemplate": "{{street}}, Little Italy San Diego. {{openDailyLower}}.", "primaryLabel": "Reserve a Table", "secondaryLabel": "Get Directions" }
   }
 }
