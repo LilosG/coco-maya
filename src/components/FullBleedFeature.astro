@@ -8,6 +8,7 @@ interface Props {
   body2?: string;
   image: string;
   imageAlt: string;
+  imagePosition?: string;
   reverse?: boolean;
   ctaLabel?: string;
   ctaHref?: string;
@@ -23,6 +24,7 @@ const {
   body2,
   image,
   imageAlt,
+  imagePosition = "center",
   reverse = false,
   ctaLabel,
   ctaHref,
@@ -35,12 +37,13 @@ const target = (href?: string) => href && (href.startsWith("http") || href.start
 const rel = (href?: string) => target(href) ? "noopener noreferrer" : undefined;
 ---
 
-<section class:list={["relative overflow-hidden flex items-center", tall ? "min-h-[85vh]" : "min-h-[70vh]"]}>
+<section class:list={["relative overflow-hidden flex items-center", tall ? "min-h-[90vh]" : "min-h-[78vh]"]}>
   <div class="absolute inset-0">
     <Picture
       src={image}
       alt={imageAlt}
-      class="w-full h-full object-cover object-center"
+      class="w-full h-full object-cover"
+      style={`object-position: ${imagePosition};`}
       width="1600" height="1200"
       loading="lazy"
     />
@@ -51,7 +54,7 @@ const rel = (href?: string) => target(href) ? "noopener noreferrer" : undefined;
   </div>
 
   <div class:list={["relative z-10 w-full flex", reverse ? "justify-end" : "justify-start"]}>
-    <div class:list={["max-w-md px-6 lg:px-16 py-16", reverse ? "text-right" : "text-left"]}>
+    <div class:list={["max-w-lg px-8 sm:px-12 lg:px-24 xl:px-32 py-16", reverse ? "text-right" : "text-left"]}>
       <span class="eyebrow-light mb-1">{label}</span>
       <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2.25rem,4.5vw,3.75rem)] text-white leading-tight mb-4">
         {title}
