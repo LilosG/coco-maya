@@ -107,7 +107,7 @@ const inquiryHref = "/private-events/inquire";
       <div class="text-center mb-12">
         <span class="eyebrow">{defaults.labels.setting}</span>
         <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3rem)] text-[var(--color-dark)]">
-          {defaults.labels.closerLook}
+          {fill(defaults.closerLookTemplate)}
         </h2>
       </div>
       <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
@@ -174,7 +174,7 @@ const inquiryHref = "/private-events/inquire";
   />
 
   <CTASection
-    title={defaults.cta.title}
+    title={fill(defaults.cta.titleTemplate)}
     subtitle={fill(defaults.cta.subtitleTemplate)}
     primaryLabel={defaults.cta.primaryLabel}
     primaryHref={inquiryHref}

@@ -48,7 +48,7 @@ const todayName = days[new Date().getDay()];
     </div>
 
     <div>
-      <h3 class="eyebrow-light mb-5">{footer.headings.explore}</h3>
+      <span class="eyebrow-light mb-5 block">{footer.headings.explore}</span>
       <ul class="space-y-2.5">
         {(navigation.main ?? []).map((item: any) => (
           <li>
@@ -64,7 +64,7 @@ const todayName = days[new Date().getDay()];
     </div>
 
     <div>
-      <h3 class="eyebrow-light mb-5">{footer.headings.hours}</h3>
+      <span class="eyebrow-light mb-5 block">{footer.headings.hours}</span>
       <ul class="space-y-0 divide-y divide-white/8">
         {(SITE.hours ?? []).map((h: any) => (
           <li class:list={[
@@ -82,7 +82,7 @@ const todayName = days[new Date().getDay()];
     </div>
 
     <div>
-      <h3 class="eyebrow-light mb-5">{footer.headings.findUs}</h3>
+      <span class="eyebrow-light mb-5 block">{footer.headings.findUs}</span>
       <address class="not-italic space-y-4 text-sm text-white/50 font-[family-name:var(--font-body)]">
         <p>
           <a href={SITE.address.mapsUrl} target="_blank" rel="noopener noreferrer" class="hover:text-[var(--color-teal-light)] transition-colors leading-relaxed block">
