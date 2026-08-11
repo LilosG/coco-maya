@@ -3,6 +3,7 @@ import "../styles/global.css";
 import { getSingleton } from "../lib/content";
 import Analytics from "../components/Analytics.astro";
 import ConsentBanner from "../components/ConsentBanner.astro";
+import MobileStickyCTA from "../components/MobileStickyCTA.astro";
 
 const SITE = await getSingleton("siteSettings");
 
@@ -145,8 +146,9 @@ const schema = {
     ))}
     <Analytics />
   </head>
-  <body>
+  <body class="pb-[60px] md:pb-0">
     <slot />
     <ConsentBanner siteName="Coco Maya" />
+    <MobileStickyCTA />
   </body>
 </html>
