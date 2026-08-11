@@ -1,0 +1,50 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Nav from "../../components/Nav.astro";
+import Footer from "../../components/Footer.astro";
+import PageHero from "../../components/PageHero.astro";
+import { getSingleton } from "../../lib/content";
+import { breadcrumbSchema } from "../../lib/schema";
+
+const [SITE, page] = await Promise.all([getSingleton("siteSettings"), getSingleton("eventInquiryPage")]);
+
+const schema = [
+  breadcrumbSchema([
+    { name: SITE.breadcrumbs.home, url: SITE.url },
+    { name: "Private Events", url: `${SITE.url}/private-events` },
+    { name: page.hero.title, url: `${SITE.url}/private-events/inquire` },
+  ]),
+];
+---
+<BaseLayout
+  title={page.seo.title}
+  description={page.seo.description}
+  extraSchema={schema}
+  noindex={true}
+>
+  <Nav />
+
+  <PageHero
+    label={page.hero.label}
+    title={page.hero.title}
+    titleSuffix={page.hero.titleSuffix}
+    subtitle={page.hero.subtitle}
+    image={page.hero.image}
+    imageAlt={page.hero.imageAlt}
+  />
+
+  <section class="py-20 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-3xl mx-auto bg-white shadow-[0_4px_16px_rgba(23,20,16,0.06),0_24px_64px_rgba(23,20,16,0.12)] overflow-hidden">
+      <div class="h-1 bg-gradient-to-r from-[var(--color-teal)] to-[var(--color-teal-light)]"></div>
+      <iframe
+        src={SITE.inquiryForm.url}
+        title="Coco Maya private event inquiry form"
+        loading="lazy"
+        class="w-full block"
+        style="min-height: 1400px; border: 0;"
+      ></iframe>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>

@@ -32,7 +32,7 @@ const schema = [
     { name: event.name, url: `${SITE.url}/private-events/${event.slug}` },
   ]),
 ];
-const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.name} Inquiry`)}`;
+const inquiryHref = "/private-events/inquire";
 ---
 <BaseLayout
   title={event.seoTitle}
@@ -51,7 +51,7 @@ const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.n
     imageAlt={event.heroImageAlt}
   >
     <div class="flex flex-col sm:flex-row flex-wrap gap-4 mt-8 justify-center">
-      <a href={mailtoHref} class="btn-primary">{defaults.labels.startPlanning}</a>
+      <a href={inquiryHref} class="btn-primary">{defaults.labels.startPlanning}</a>
       <a href={`tel:${SITE.phone.tel}`} class="btn-ghost">{SITE.phone.display}</a>
     </div>
   </PageHero>
@@ -82,7 +82,7 @@ const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.n
           </p>
         ))}
         <div class="flex flex-wrap gap-4 mt-4">
-          <a href={mailtoHref} class="btn-primary">{defaults.labels.email}</a>
+          <a href={inquiryHref} class="btn-primary">{defaults.labels.email}</a>
           <a href="/private-events" class="btn-outline">{defaults.labels.allEvents}</a>
           {event.relatedPost && (
             <a href={event.relatedPost.href} class="btn-outline">{event.relatedPost.label}</a>
@@ -168,15 +168,16 @@ const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent(`${event.n
   <EventInquiryForm
     label={fill(defaults.formLabelTemplate)}
     subtitle={defaults.formSubtitle}
-    formUrl={SITE.inquiryForm.url}
+    formUrl={inquiryHref}
     ctaLabel={defaults.formCtaLabel}
+    external={false}
   />
 
   <CTASection
     title={defaults.cta.title}
     subtitle={fill(defaults.cta.subtitleTemplate)}
     primaryLabel={defaults.cta.primaryLabel}
-    primaryHref={mailtoHref}
+    primaryHref={inquiryHref}
     secondaryLabel={SITE.phone.display}
     secondaryHref={`tel:${SITE.phone.tel}`}
     dark={true}

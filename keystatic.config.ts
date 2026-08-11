@@ -15,6 +15,7 @@ import eventsPageData from './src/content/eventsPage.json';
 import spacePageData from './src/content/spacePage.json';
 import privateEventsIndexPageData from './src/content/privateEventsIndexPage.json';
 import privateEventDetailDefaultsData from './src/content/privateEventDetailDefaults.json';
+import eventInquiryPageData from './src/content/eventInquiryPage.json';
 import blogIndexPageData from './src/content/blogIndexPage.json';
 import blogPostDefaultsData from './src/content/blogPostDefaults.json';
 import menuCocktailsData from './src/content/menuCocktails.json';
@@ -326,6 +327,7 @@ export default config({
     spacePage: jsonSingleton('The Space', 'spacePage', spacePageData),
     privateEventsIndexPage: jsonSingleton('Private Events', 'privateEventsIndexPage', privateEventsIndexPageData),
     privateEventDetailDefaults: jsonSingleton('Private Event Detail Defaults', 'privateEventDetailDefaults', privateEventDetailDefaultsData),
+    eventInquiryPage: jsonSingleton('Event Inquiry Page', 'eventInquiryPage', eventInquiryPageData),
     blogIndexPage: jsonSingleton('Blog', 'blogIndexPage', blogIndexPageData),
     blogPostDefaults: jsonSingleton('Blog Post Defaults', 'blogPostDefaults', blogPostDefaultsData),
   },

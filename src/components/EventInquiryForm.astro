@@ -5,6 +5,7 @@ interface Props {
   formUrl: string;
   ctaLabel: string;
   dark?: boolean;
+  external?: boolean;
 }
 
 const {
@@ -13,6 +14,7 @@ const {
   formUrl,
   ctaLabel,
   dark = false,
+  external = true,
 } = Astro.props;
 ---
 
@@ -28,8 +30,8 @@ const {
     <div class="eif-accent"></div>
     <a
       href={formUrl}
-      target="_blank"
-      rel="noopener noreferrer"
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
       class="btn-primary eif-cta-btn"
     >
       {ctaLabel}

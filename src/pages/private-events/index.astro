@@ -13,8 +13,7 @@ import { breadcrumbSchema } from "../../lib/schema";
 const [SITE, rawPage, rawPrivateEventTypes, process, specs] = await Promise.all([getSingleton("siteSettings"), getSingleton("privateEventsIndexPage"), getOrderedCollection("privateEventTypes"), getOrderedCollection("privateEventsProcessSteps"), getOrderedCollection("privateEventsCapacitySpecs")]);
 const page = resolveSiteTokens(rawPage, SITE);
 const PRIVATE_EVENT_TYPES = resolveSiteTokens(rawPrivateEventTypes, SITE);
-const mailtoHref = `mailto:${SITE.email}?subject=${encodeURIComponent("Private Event Inquiry")}`;
-const mailtoHrefAtCocoMaya = `mailto:${SITE.email}?subject=${encodeURIComponent("Private Event Inquiry at Coco Maya")}`;
+const inquiryHref = "/private-events/inquire";
 const schema = [
   breadcrumbSchema([
     { name: SITE.breadcrumbs.home, url: SITE.url },
@@ -40,7 +39,7 @@ const schema = [
     tall={true}
   >
     <div class="flex flex-col sm:flex-row flex-wrap gap-4 mt-8 justify-center">
-      <a href={mailtoHref} class="btn-primary">{page.hero.primaryLabel}</a>
+      <a href={inquiryHref} class="btn-primary">{page.hero.primaryLabel}</a>
       <a href={`tel:${SITE.phone.tel}`} class="btn-ghost">{SITE.phone.display}</a>
     </div>
   </PageHero>
@@ -72,7 +71,7 @@ const schema = [
           {page.intro.body2}
         </p>
         <div class="flex flex-wrap gap-4">
-          <a href={mailtoHref} class="btn-primary">{page.intro.emailLabel}</a>
+          <a href={inquiryHref} class="btn-primary">{page.intro.emailLabel}</a>
           <a href="/the-space" class="btn-outline">{page.intro.spaceLabel}</a>
         </div>
       </div>
@@ -153,7 +152,7 @@ const schema = [
         <p class="font-[family-name:var(--font-display)] italic text-white text-[clamp(2rem,4vw,3.25rem)] leading-tight mb-8">
           {page.atmosphere.line}
         </p>
-        <a href={mailtoHref} class="btn-white">{page.atmosphere.ctaLabel}</a>
+        <a href={inquiryHref} class="btn-white">{page.atmosphere.ctaLabel}</a>
       </div>
     </div>
   </section>
@@ -195,7 +194,7 @@ const schema = [
             <span class="cc-card__label">{page.inquiry.emailCard.label}</span>
             <p class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl mb-2">{page.inquiry.emailCard.title}</p>
             <p class="cc-card__text">{page.inquiry.emailCard.body}</p>
-            <a href={mailtoHrefAtCocoMaya} class="btn-primary mt-6 self-start">
+            <a href={inquiryHref} class="btn-primary mt-6 self-start">
               {SITE.email}
             </a>
           </div>
@@ -216,15 +215,16 @@ const schema = [
   <EventInquiryForm
     label={page.form.label}
     subtitle={page.form.subtitle}
-    formUrl={SITE.inquiryForm.url}
+    formUrl="/private-events/inquire"
     ctaLabel={page.form.ctaLabel}
+    external={false}
   />
 
   <CTASection
     title={page.cta.title}
     subtitle={page.cta.subtitle}
     primaryLabel={page.cta.primaryLabel}
-    primaryHref={mailtoHref}
+    primaryHref={inquiryHref}
     secondaryLabel={SITE.phone.display}
     secondaryHref={`tel:${SITE.phone.tel}`}
     dark={true}
