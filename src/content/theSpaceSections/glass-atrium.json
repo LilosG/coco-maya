@@ -7,6 +7,7 @@
   "image": "/images/venue-bar-detail.jpg",
   "imageAlt": "Glass atrium bar at Coco Maya Little Italy San Diego",
   "reverse": false,
+  "layout": "full-bleed",
   "summaryLabel": "The Bar",
   "summaryValue": "Glass Atrium",
   "barDetail": {

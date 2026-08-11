@@ -1,0 +1,73 @@
+---
+import Picture from "./Picture.astro";
+
+interface Props {
+  label: string;
+  title: string;
+  body1?: string;
+  body2?: string;
+  image: string;
+  imageAlt: string;
+  reverse?: boolean;
+  dark?: boolean;
+  ctaLabel?: string;
+  ctaHref?: string;
+  secondaryLabel?: string;
+  secondaryHref?: string;
+}
+
+const {
+  label,
+  title,
+  body1,
+  body2,
+  image,
+  imageAlt,
+  reverse = false,
+  dark = false,
+  ctaLabel,
+  ctaHref,
+  secondaryLabel,
+  secondaryHref,
+} = Astro.props;
+
+const target = (href?: string) => href && (href.startsWith("http") || href.startsWith("mailto") || href.startsWith("tel")) ? "_blank" : undefined;
+const rel = (href?: string) => target(href) ? "noopener noreferrer" : undefined;
+---
+
+<section class:list={["py-24 px-6", dark ? "bg-[var(--color-dark)]" : "bg-[var(--color-cream)]"]}>
+  <div class:list={["max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center", reverse ? "lg:grid-flow-dense" : ""]}>
+    <div class:list={[reverse ? "lg:col-start-2" : ""]}>
+      <span class:list={dark ? "eyebrow-light" : "eyebrow"}>{label}</span>
+      <h2 class:list={[
+        "font-[family-name:var(--font-display)] italic text-[clamp(2.25rem,4vw,3.5rem)] leading-tight mb-6",
+        dark ? "text-white" : "text-[var(--color-dark)]"
+      ]}>
+        {title}
+      </h2>
+      <div class:list={dark ? "rule-light" : "rule"}></div>
+      {body1 && <p class:list={["font-[family-name:var(--font-body)] leading-relaxed mb-4", dark ? "text-white/60" : "text-[var(--color-dark)]/65"]}>{body1}</p>}
+      {body2 && <p class:list={["font-[family-name:var(--font-body)] leading-relaxed", (ctaLabel || secondaryLabel) ? "mb-10" : "", dark ? "text-white/60" : "text-[var(--color-dark)]/65"]}>{body2}</p>}
+      {(ctaLabel || secondaryLabel) && (
+        <div class="flex flex-wrap gap-4">
+          {ctaLabel && ctaHref && <a href={ctaHref} target={target(ctaHref)} rel={rel(ctaHref)} class="btn-primary">{ctaLabel}</a>}
+          {secondaryLabel && secondaryHref && <a href={secondaryHref} target={target(secondaryHref)} rel={rel(secondaryHref)} class="btn-ghost">{secondaryLabel}</a>}
+        </div>
+      )}
+    </div>
+    <div class:list={["relative", reverse ? "lg:col-start-1 lg:row-start-1" : ""]}>
+      <Picture
+        src={image}
+        alt={imageAlt}
+        class="w-full aspect-[16/10] object-cover object-center"
+        width="700" height="875"
+        loading="lazy"
+      />
+      <div class:list={[
+        "absolute w-full h-full border -z-10 pointer-events-none",
+        dark ? "border-[var(--color-teal)]/25" : "border-[var(--color-teal)]/20",
+        reverse ? "-top-4 -right-4" : "-bottom-5 -right-5"
+      ]}></div>
+    </div>
+  </div>
+</section>
