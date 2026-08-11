@@ -53,8 +53,11 @@ const rel = (href?: string) => target(href) ? "noopener noreferrer" : undefined;
     ]}></div>
   </div>
 
-  <div class:list={["relative z-10 w-full flex", reverse ? "justify-end" : "justify-start"]}>
-    <div class:list={["max-w-lg px-8 sm:px-12 lg:px-24 xl:px-32 py-16", reverse ? "text-right" : "text-left"]}>
+  <div
+    class:list={["relative z-10 w-full flex", reverse ? "justify-end" : "justify-start"]}
+    style="padding-left: clamp(1.5rem, 8vw, 8rem); padding-right: clamp(1.5rem, 8vw, 8rem);"
+  >
+    <div class:list={["max-w-lg py-16", reverse ? "text-right" : "text-left"]}>
       <span class="eyebrow-light mb-1">{label}</span>
       <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2.25rem,4.5vw,3.75rem)] text-white leading-tight mb-4">
         {title}
