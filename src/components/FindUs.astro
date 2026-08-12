@@ -1,6 +1,7 @@
 ---
 import { getSingleton } from '../lib/content';
 import Picture from "./Picture.astro";
+import MapEmbed from "./MapEmbed.astro";
 interface Props {
   interiorImage?: string;
   address?: string;
@@ -42,13 +43,11 @@ const mapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?key=${import.me
         <Picture src={interiorImage} alt={content.imageAlt} loading="lazy" width="700" height="600" />
       </div>
       <div class="map-badge" aria-hidden="false">
-        <iframe
-          title={`Map to ${address}`}
+        <MapEmbed
           src={mapsEmbedUrl}
-          class="w-full h-full border-0"
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"
-        ></iframe>
+          title={`Map to ${address}`}
+          iframeClass="w-full h-full border-0"
+        />
       </div>
     </div>
 

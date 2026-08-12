@@ -4,74 +4,124 @@ const GA_ID = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 {GA_ID && (
   <script is:inline define:vars={{ GA_ID }}>
     (function () {
-      var STORAGE_KEY = 'lilos-consent-v1';
-      var MAX_AGE_MS = 365 * 24 * 60 * 60 * 1000;
+      var NEW_KEY = 'lilos-privacy-v1';
+      var OLD_KEY = 'lilos-consent-v1';
 
-      function readStoredConsent() {
+      function readRecord(key) {
         try {
-          var raw = localStorage.getItem(STORAGE_KEY);
+          var raw = localStorage.getItem(key);
           if (!raw) return null;
-          var parsed = JSON.parse(raw);
-          if (!parsed || typeof parsed.ts !== 'number') return null;
-          if (Date.now() - parsed.ts > MAX_AGE_MS) return null;
-          return parsed;
+          var p = JSON.parse(raw);
+          if (!p || typeof p.ts !== 'number') return null;
+          return p;
         } catch (e) {
           return null;
         }
       }
 
-      function initAnalytics() {
-        if (window.__lilosGA4Loaded) return;
-        window.__lilosGA4Loaded = true;
-
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
-        document.head.appendChild(s);
-
-        window.dataLayer = window.dataLayer || [];
-        window.gtag = function () { window.dataLayer.push(arguments); };
-        window.gtag('js', new Date());
-        window.gtag('config', GA_ID);
-
-        // Toast click-tracking — unchanged from prior implementation.
-        // Only attached once consent is granted and gtag actually exists,
-        // so no click data is observed or sent before that.
-        document.addEventListener('click', function (e) {
-          const link = e.target.closest('a[href*="toasttab.com"], a[href^="tel:"]');
-          if (!link) return;
-
-          let eventName = 'toast_link_click';
-          if (link.href.startsWith('tel:')) {
-            eventName = 'phone_click';
-          } else {
-            try {
-              const host = new URL(link.href).hostname;
-              if (host.includes('tables.toasttab.com')) eventName = 'reservation_click';
-              else if (host.includes('order.toasttab.com')) eventName = 'order_click';
-              else if (link.href.includes('invoice/lead')) eventName = 'inquiry_form_click';
-              else if (link.href.toLowerCase().includes('gift')) eventName = 'gift_card_click';
-            } catch (err) {}
-          }
-
-          if (typeof gtag === 'function') {
-            gtag('event', eventName, {
-              link_url: link.href,
-              page_path: window.location.pathname,
-            });
-          }
-        }, { passive: true });
+      function writeRecord(optOut) {
+        try {
+          localStorage.setItem(NEW_KEY, JSON.stringify({ optOut: optOut, ts: Date.now() }));
+        } catch (e) {}
       }
 
-      var stored = readStoredConsent();
-      if (stored && stored.analytics) {
-        initAnalytics();
+      // Migrate old consent record if new key is absent.
+      // analytics === false in old record → permanent opt-out (honored, never expired).
+      // analytics === true or no old record → default to opted in (no stored record needed).
+      function migrate() {
+        if (readRecord(NEW_KEY)) return; // new key already present, nothing to do
+        var old = readRecord(OLD_KEY);
+        if (!old) return;
+        if (old.analytics === false) {
+          try {
+            localStorage.setItem(NEW_KEY, JSON.stringify({ optOut: true, ts: old.ts }));
+          } catch (e) {}
+        }
+        // analytics === true → no stored record; defaults to opted in
       }
 
-      // The consent banner (rendered once, site-wide) dispatches this event
-      // when the visitor clicks Accept. Analytics only initializes here —
-      // never on page load, never speculatively.
-      window.addEventListener('lilos-consent-accepted', initAnalytics);
+      migrate();
+
+      var record = readRecord(NEW_KEY);
+      var isOptedOut = record ? record.optOut === true : false;
+
+      // Expose runtime API before any early-return so the banner and footer
+      // panel can always call these methods.
+      window.lilosPrivacy = {
+        optOut: function () {
+          writeRecord(true);
+          window['ga-disable-' + GA_ID] = true;
+        },
+        optIn: function () {
+          writeRecord(false);
+          window['ga-disable-' + GA_ID] = false;
+        },
+        isOptedOut: function () {
+          if (navigator.globalPrivacyControl === true) return true;
+          var r = readRecord(NEW_KEY);
+          return !!(r && r.optOut === true);
+        }
+      };
+
+      // GPC: do not load GA4, do not write a stored record.
+      if (navigator.globalPrivacyControl === true) {
+        return;
+      }
+
+      if (isOptedOut) {
+        window['ga-disable-' + GA_ID] = true;
+        return;
+      }
+
+      // Opted in — load GA4 immediately.
+      window.__lilosGA4Loaded = true;
+      window.dataLayer = window.dataLayer || [];
+      window.gtag = function () { window.dataLayer.push(arguments); };
+
+      // Deny all ad-related storage before the script loads.
+      window.gtag('consent', 'default', {
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        analytics_storage: 'granted'
+      });
+
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + encodeURIComponent(GA_ID);
+      document.head.appendChild(s);
+
+      window.gtag('js', new Date());
+      window.gtag('config', GA_ID, {
+        allow_google_signals: false,
+        allow_ad_personalization_signals: false
+      });
+
+      // Toast click-tracking — unchanged from prior implementation.
+      document.addEventListener('click', function (e) {
+        const link = e.target.closest('a[href*="toasttab.com"], a[href^="tel:"]');
+        if (!link) return;
+
+        let eventName = 'toast_link_click';
+        if (link.href.startsWith('tel:')) {
+          eventName = 'phone_click';
+        } else {
+          try {
+            const host = new URL(link.href).hostname;
+            if (host.includes('tables.toasttab.com')) eventName = 'reservation_click';
+            else if (host.includes('order.toasttab.com')) eventName = 'order_click';
+            else if (link.href.includes('invoice/lead')) eventName = 'inquiry_form_click';
+            else if (link.href.toLowerCase().includes('gift')) eventName = 'gift_card_click';
+          } catch (err) {}
+        }
+
+        if (typeof gtag === 'function') {
+          gtag('event', eventName, {
+            link_url: link.href,
+            page_path: window.location.pathname,
+          });
+        }
+      }, { passive: true });
     })();
   </script>
 )}

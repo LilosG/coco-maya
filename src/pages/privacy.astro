@@ -1,0 +1,301 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import { getSingleton } from "../lib/content";
+
+const SITE = await getSingleton("siteSettings");
+---
+<BaseLayout
+  title="Privacy Policy — Coco Maya"
+  description="Privacy policy and your privacy choices for Coco Maya, San Diego."
+>
+  <Nav />
+
+  <section class="relative pt-44 pb-28 px-6 bg-[var(--color-cream)]">
+    <div class="absolute inset-x-0 top-0 h-1 bg-[var(--color-teal)]"></div>
+    <div class="max-w-3xl mx-auto">
+
+      <div class="mb-14">
+        <span class="eyebrow">Legal</span>
+        <h1 class="font-[family-name:var(--font-display)] italic text-[clamp(3rem,7vw,5rem)] text-[var(--color-dark)] leading-tight">
+          Privacy Policy
+        </h1>
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/50 text-sm mt-4">
+          Effective date: {new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+        </p>
+      </div>
+
+      <div class="prose-section space-y-12">
+
+        <!-- Notice at Collection -->
+        <div>
+          <h2 class="section-heading">Notice at Collection</h2>
+          <div class="rule"></div>
+
+          <h3 class="sub-heading">What we collect</h3>
+          <p class="body-text">
+            When you visit this website, we collect internet and network activity information: pages viewed, the website that referred you here, your approximate location derived from your IP address, and your device and browser type. We also collect online identifiers such as cookie IDs assigned by our analytics service.
+          </p>
+
+          <h3 class="sub-heading">Why we collect it</h3>
+          <p class="body-text">
+            We use this information solely to measure site traffic and improve the website. We do not use it for any other purpose.
+          </p>
+
+          <h3 class="sub-heading">Who receives it</h3>
+          <p class="body-text">
+            This information is sent to Google, acting as a service provider under Google's data processing terms. Google Analytics is configured on this property with advertising signals and ads personalization disabled.
+          </p>
+
+          <h3 class="sub-heading">What we do not do</h3>
+          <p class="body-text">
+            We do not sell your personal information. We do not share it for cross-context behavioral advertising. Google Signals and ads personalization are disabled on this Analytics property, and all ad-related storage is denied.
+          </p>
+
+          <h3 class="sub-heading">Retention</h3>
+          <p class="body-text">
+            Event-level data is retained for 14 months, after which it is automatically deleted from Google Analytics.
+          </p>
+        </div>
+
+        <!-- Your Privacy Choices -->
+        <div id="choices">
+          <h2 class="section-heading">Your Privacy Choices</h2>
+          <div class="rule"></div>
+          <p class="body-text">
+            You can opt out of Google Analytics measurement at any time. Your choice is stored in your browser and has no expiry — it will remain in effect until you change it here.
+          </p>
+          <p class="body-text">
+            If your browser sends a <a href="https://globalprivacycontrol.org" target="_blank" rel="noopener noreferrer" class="text-link">Global Privacy Control</a> signal, we honor it automatically and do not load Google Analytics.
+          </p>
+
+          <div id="privacy-toggle-panel" class="privacy-toggle-panel">
+            <div class="privacy-toggle-row">
+              <div>
+                <p class="privacy-toggle-label" id="privacy-toggle-status">Checking…</p>
+                <p class="privacy-toggle-sub">Google Analytics on this site</p>
+              </div>
+              <button type="button" id="privacy-toggle-btn" class="lilos-btn lilos-btn-secondary" aria-pressed="false">
+                …
+              </button>
+            </div>
+          </div>
+
+          <p class="body-text mt-6">
+            You can also opt out globally using the <a href="https://tools.google.com/dlpage/gaoptout" target="_blank" rel="noopener noreferrer" class="text-link">Google Analytics Opt-out Browser Add-on</a>.
+          </p>
+        </div>
+
+        <!-- California Residents -->
+        <div>
+          <h2 class="section-heading">California Residents</h2>
+          <div class="rule"></div>
+          <p class="body-text">
+            Under the California Consumer Privacy Act (CCPA), California residents have the right to know what personal information is collected about them, the right to delete their personal information, and the right to correct inaccurate personal information.
+          </p>
+          <p class="body-text">
+            To exercise any of these rights, or if you have questions about our privacy practices, please contact us:
+          </p>
+          <address class="not-italic mt-4 space-y-1 font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 text-[1.0625rem]">
+            <p><strong class="text-[var(--color-dark)]">Coco Maya</strong></p>
+            <p>{SITE.address.street}, {SITE.address.city}, {SITE.address.state} {SITE.address.zip}</p>
+            <p>
+              <a href={`tel:${SITE.phone.tel}`} class="text-link">{SITE.phone.display}</a>
+            </p>
+            <p>
+              <a href={`mailto:${SITE.email}`} class="text-link">{SITE.email}</a>
+            </p>
+          </address>
+        </div>
+
+        <!-- Analytics details -->
+        <div>
+          <h2 class="section-heading">About Google Analytics</h2>
+          <div class="rule"></div>
+          <p class="body-text">
+            We use Google Analytics 4 (GA4) to understand how visitors use this website. Google Analytics uses cookies and similar technologies to collect and report website usage statistics. Google's privacy practices are described in the <a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" class="text-link">Google Privacy Policy</a>.
+          </p>
+          <p class="body-text">
+            This property is configured with <code class="text-[0.875em] bg-[var(--color-sand)] px-1.5 py-0.5">allow_google_signals: false</code> and <code class="text-[0.875em] bg-[var(--color-sand)] px-1.5 py-0.5">allow_ad_personalization_signals: false</code>. Ad storage, ad user data, and ad personalization are all set to <em>denied</em>.
+          </p>
+        </div>
+
+        <!-- Changes -->
+        <div>
+          <h2 class="section-heading">Changes to This Policy</h2>
+          <div class="rule"></div>
+          <p class="body-text">
+            If we make material changes to this policy, we will update the effective date above. We encourage you to review this page periodically.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <Footer />
+</BaseLayout>
+
+<style>
+  .section-heading {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: clamp(1.75rem, 3vw, 2.5rem);
+    color: var(--color-dark);
+    margin-bottom: 0.5rem;
+  }
+
+  .sub-heading {
+    font-family: var(--font-stamp);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-teal);
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .body-text {
+    font-family: var(--font-body);
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: rgba(23, 20, 16, 0.65);
+    margin-bottom: 1rem;
+  }
+
+  .text-link {
+    color: var(--color-teal);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .text-link:hover {
+    color: var(--color-teal-dark);
+  }
+
+  /* Privacy toggle panel */
+  .privacy-toggle-panel {
+    margin-top: 1.5rem;
+    background: white;
+    border: 1px solid rgba(61, 138, 138, 0.15);
+    padding: 1.25rem 1.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  .privacy-toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .privacy-toggle-label {
+    font-family: var(--font-body);
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-dark);
+    margin: 0;
+  }
+
+  .privacy-toggle-sub {
+    font-family: var(--font-body);
+    font-size: 0.8125rem;
+    color: rgba(23, 20, 16, 0.45);
+    margin: 0.125rem 0 0;
+  }
+
+  .lilos-btn {
+    font-size: 0.875rem;
+    font-weight: 600;
+    padding: 0.5rem 1.125rem;
+    border-radius: 0.375rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: opacity 0.15s ease;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .lilos-btn:hover { opacity: 0.85; }
+
+  .lilos-btn-primary {
+    background: var(--color-teal);
+    color: white;
+    border-color: var(--color-teal);
+  }
+
+  .lilos-btn-secondary {
+    background: transparent;
+    color: var(--color-teal);
+    border-color: var(--color-teal);
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    var btn = document.getElementById('privacy-toggle-btn');
+    var statusEl = document.getElementById('privacy-toggle-status');
+
+    function isGPC() {
+      return navigator.globalPrivacyControl === true;
+    }
+
+    function refresh() {
+      if (!btn || !statusEl) return;
+
+      if (isGPC()) {
+        statusEl.textContent = 'Opted out (Global Privacy Control)';
+        btn.textContent = 'Opted out via browser';
+        btn.disabled = true;
+        btn.setAttribute('aria-pressed', 'true');
+        return;
+      }
+
+      var optedOut = window.lilosPrivacy
+        ? window.lilosPrivacy.isOptedOut()
+        : (function () {
+            try {
+              var r = JSON.parse(localStorage.getItem('lilos-privacy-v1') || 'null');
+              return !!(r && r.optOut === true);
+            } catch (e) { return false; }
+          })();
+
+      if (optedOut) {
+        statusEl.textContent = 'Opted out — analytics not loaded';
+        btn.textContent = 'Opt back in';
+        btn.className = 'lilos-btn lilos-btn-primary';
+        btn.setAttribute('aria-pressed', 'true');
+      } else {
+        statusEl.textContent = 'Opted in — analytics active';
+        btn.textContent = 'Opt out';
+        btn.className = 'lilos-btn lilos-btn-secondary';
+        btn.setAttribute('aria-pressed', 'false');
+      }
+    }
+
+    if (btn) {
+      btn.addEventListener('click', function () {
+        var currentlyOptedOut = window.lilosPrivacy
+          ? window.lilosPrivacy.isOptedOut()
+          : false;
+
+        if (currentlyOptedOut) {
+          if (window.lilosPrivacy) window.lilosPrivacy.optIn();
+          else {
+            try { localStorage.setItem('lilos-privacy-v1', JSON.stringify({ optOut: false, ts: Date.now() })); } catch (e) {}
+          }
+        } else {
+          if (window.lilosPrivacy) window.lilosPrivacy.optOut();
+          else {
+            try { localStorage.setItem('lilos-privacy-v1', JSON.stringify({ optOut: true, ts: Date.now() })); } catch (e) {}
+          }
+        }
+        refresh();
+      });
+    }
+
+    refresh();
+  })();
+</script>

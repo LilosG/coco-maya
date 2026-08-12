@@ -1,0 +1,116 @@
+---
+interface Props {
+  src: string;
+  title: string;
+  iframeClass?: string;
+  placeholderImg?: string;
+}
+
+const { src, title, iframeClass = 'w-full h-full border-0', placeholderImg } = Astro.props;
+---
+
+<div class="map-embed-wrap" data-src={src} data-title={title} data-iframe-class={iframeClass}>
+  {placeholderImg ? (
+    <img src={placeholderImg} alt="Map location preview" class="w-full h-full object-cover" loading="lazy" />
+  ) : (
+    <div class="map-embed-neutral" aria-hidden="true">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="map-embed-pin">
+        <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/>
+        <circle cx="12" cy="9" r="2.5"/>
+      </svg>
+    </div>
+  )}
+  <div class="map-embed-ui">
+    <button type="button" class="map-embed-btn">Load map</button>
+    <p class="map-embed-notice">Connects to Google</p>
+  </div>
+</div>
+
+<style>
+  .map-embed-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: rgba(61, 138, 138, 0.08);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  .map-embed-neutral {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(61, 138, 138, 0.08);
+  }
+
+  .map-embed-pin {
+    width: 28px;
+    height: 28px;
+    color: var(--color-teal, #3D8A8A);
+    opacity: 0.5;
+  }
+
+  .map-embed-ui {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    background: rgba(253, 250, 244, 0.72);
+    backdrop-filter: blur(2px);
+  }
+
+  .map-embed-btn {
+    font-family: var(--font-stamp, "Oswald", sans-serif);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: white;
+    background: var(--color-teal, #3D8A8A);
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: background 0.15s;
+    white-space: nowrap;
+  }
+
+  .map-embed-btn:hover {
+    background: var(--color-teal-dark, #2A6060);
+  }
+
+  .map-embed-notice {
+    font-family: var(--font-body, "DM Sans", sans-serif);
+    font-size: 8px;
+    color: rgba(23, 20, 16, 0.45);
+    margin: 0;
+    text-align: center;
+  }
+</style>
+
+<script is:inline>
+  (function () {
+    document.querySelectorAll('.map-embed-wrap').forEach(function (el) {
+      var btn = el.querySelector('.map-embed-btn');
+      if (!btn) return;
+      btn.addEventListener('click', function () {
+        var src = el.dataset.src;
+        var title = el.dataset.title;
+        var cls = el.dataset.iframeClass || '';
+        var iframe = document.createElement('iframe');
+        iframe.src = src;
+        iframe.title = title;
+        iframe.loading = 'lazy';
+        iframe.referrerPolicy = 'no-referrer';
+        if (cls) iframe.className = cls;
+        el.replaceWith(iframe);
+      });
+    });
+  })();
+</script>
