@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "node scripts/optimize-cms-images.mjs",
+    "prebuild": "node scripts/optimize-cms-images.mjs && node scripts/fetch-google-rating.mjs",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
