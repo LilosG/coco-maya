@@ -7,6 +7,12 @@ import MobileStickyCTA from "../components/MobileStickyCTA.astro";
 
 const SITE = await getSingleton("siteSettings");
 
+const googleRating = SITE.schema.googleRating ? parseFloat(SITE.schema.googleRating) : null;
+const reviewCount = parseInt(import.meta.env.PUBLIC_GOOGLE_REVIEW_COUNT || "0", 10);
+const aggregateRating = (googleRating && reviewCount > 0)
+  ? { "@type": "AggregateRating", ratingValue: googleRating, bestRating: 5, worstRating: 1, reviewCount }
+  : null;
+
 interface Props {
   title: string;
   description?: string;
@@ -80,10 +86,12 @@ while (i < orderedDays.length) {
 const schema = {
   "@context": "https://schema.org",
   "@type": SITE.schema.type,
+  "@id": `${SITE.url}/#restaurant`,
   name: SITE.fullName,
   description: SITE.description,
   url: SITE.url,
   telephone: SITE.phone.tel,
+  email: SITE.email,
   address: {
     "@type": "PostalAddress",
     streetAddress: SITE.address.street,
@@ -103,6 +111,11 @@ const schema = {
   sameAs: Object.values(SITE.social ?? {}),
   openingHoursSpecification,
   acceptsReservations: true,
+  areaServed: [
+    { "@type": "Place", name: SITE.address.neighborhood },
+    { "@type": "City", name: SITE.address.city },
+  ],
+  ...(aggregateRating && { aggregateRating }),
 };
 ---
 

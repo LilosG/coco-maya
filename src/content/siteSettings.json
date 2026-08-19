@@ -188,6 +188,7 @@
       "type": "Restaurant",
       "addressCountry": "US",
       "priceRange": "$$$",
+      "googleRating": "4.5",
       "servesCuisine": [
         "Modern American",
         "Coastal",

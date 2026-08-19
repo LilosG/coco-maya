@@ -1,5 +1,21 @@
 {
   "redirects": [
-    { "source": "/:path+/", "destination": "/:path+", "permanent": true }
+    { "source": "/:path+/",                             "destination": "/:path+",          "permanent": true },
+    { "source": "/home",                                 "destination": "/",                "permanent": true },
+    { "source": "/gallery",                              "destination": "/the-space",       "permanent": true },
+    { "source": "/san-diego-coco-maya-food-menu",        "destination": "/menu",            "permanent": true },
+    { "source": "/join-our-team",                        "destination": "/contact",         "permanent": true },
+    { "source": "/cocktails",                            "destination": "/menu",            "permanent": true },
+    { "source": "/menus/daytime-menu",                   "destination": "/brunch",          "permanent": true },
+    { "source": "/menus/dinner-menu",                    "destination": "/menu",            "permanent": true },
+    { "source": "/menus/happy-hour",                     "destination": "/happy-hour",      "permanent": true },
+    { "source": "/menus/cocktails",                      "destination": "/menu",            "permanent": true },
+    { "source": "/events/happy-hour",                    "destination": "/happy-hour",      "permanent": true },
+    { "source": "/popmenu-ordering-event",               "destination": "/",                "permanent": true },
+    { "source": "/webpack/:path*",                       "destination": "/",                "permanent": true },
+    { "source": "/order/:path*",                         "destination": "/menu",            "permanent": true },
+    { "source": "/online/:path*",                        "destination": "/menu",            "permanent": true },
+    { "source": "/tracking/:path*",                      "destination": "/",                "permanent": true },
+    { "source": "/items/:path*",                         "destination": "/menu",            "permanent": true }
   ]
 }
