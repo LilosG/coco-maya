@@ -1,7 +1,7 @@
 {
   "singleton": {
     "breadcrumbLabel": "Brunch",
-    "seo": { "title": "Best Daily Brunch in Little Italy San Diego | Coco Maya", "descriptionTemplate": "Best brunch in Little Italy San Diego at Coco Maya, served daily until 3PM. Craft cocktails on the rooftop patio, seven days a week. {{fullAddress}}.", "image": "/images/food-tacos-patio.jpg" },
+    "seo": { "title": "Best Daily Brunch in Little Italy San Diego | Coco Maya", "descriptionTemplate": "Best brunch in Little Italy, San Diego at Coco Maya. Served daily until 3PM — rooftop patio, craft cocktails, seven days a week.", "image": "/images/food-tacos-patio.jpg" },
     "hero": { "label": "Served Every Day", "title": "Daily Brunch", "titleSuffix": "Best Brunch in Little Italy, San Diego", "subtitle": "San Diego best brunch in Little Italy, served daily. Modern coastal plates and craft cocktails on the elevated patio.", "image": "/images/food-tacos-patio.jpg", "imageAlt": "Brunch at Coco Maya Little Italy San Diego", "reserveLabel": "Reserve a Table", "menuLabel": "See the Menu" },
     "infoCards": [ { "label": "Days", "value": "Every Day" }, { "label": "Ends", "value": "3:00 PM", "accent": true }, { "label": "Location", "value": "Little Italy", "subTemplate": "{{street}}, San Diego" } ],
     "hoursLabel": "Brunch Hours by Day",
