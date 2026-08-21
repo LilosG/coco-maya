@@ -3,6 +3,7 @@
     "main": [
       { "label": "Menu", "href": "/menu" },
       { "label": "Brunch", "href": "/brunch" },
+      { "label": "Happy Hour", "href": "/happy-hour" },
       { "label": "Events", "href": "/events" },
       { "label": "Private Events", "href": "/private-events" },
       { "label": "The Space", "href": "/the-space" },
@@ -11,7 +12,7 @@
     ],
     "footerSupplemental": [
       { "label": "Reservations", "href": "/reservations" },
-      { "label": "Rooftop Patio", "href": "/happy-hour" },
+      { "label": "Happy Hour", "href": "/happy-hour" },
       { "label": "FAQ", "href": "/faq" },
       { "label": "Contact", "href": "/contact" }
     ],

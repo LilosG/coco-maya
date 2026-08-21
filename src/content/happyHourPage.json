@@ -1,12 +1,120 @@
 {
   "singleton": {
-    "breadcrumbLabel": "Rooftop Patio",
-    "seo": { "title": "Rooftop Bar & Patio in Little Italy San Diego | Coco Maya", "description": "Coco Maya's rooftop patio and glass atrium bar in Little Italy, San Diego. Craft cocktails, an elevated open-air setting, {{openDailyInline}}. {{street}}.", "image": "/images/cocktail-negroni-patio.jpg" },
-    "hero": { "label": "{{openDaily}}", "title": "Rooftop Patio & Bar", "titleSuffix": "Happy Hour in Little Italy, San Diego", "subtitle": "Craft cocktails and an open-air glass atrium, one of Little Italy's most distinctive rooftop settings.", "image": "/images/cocktail-negroni-patio.jpg", "imageAlt": "Rooftop patio and glass atrium bar at Coco Maya Little Italy San Diego" },
-    "infoCards": [ { "label": "Open", "value": "Daily" }, { "label": "Setting", "value": "Elevated Patio", "accent": true }, { "label": "Location", "value": "Glass Atrium Bar", "subTemplate": "{{street}}, Little Italy" } ],
-    "intro": { "eyebrow": "The Rooftop Bar", "title": "Little Italy's Rooftop Bar", "body1": "Coco Maya's glass atrium bar opens onto an elevated outdoor patio, one of San Diego's most distinctive rooftop settings, surrounded by tropical greenery with views over Little Italy.", "body2": "The full craft cocktail program is available daily, no special time window required, whether you're stopping by after work or starting an evening out.", "image": "/images/cocktail-negroni-patio.jpg", "imageAlt": "Craft cocktail on the rooftop patio at Coco Maya", "reserveLabel": "Reserve a Table", "menuLabel": "See Full Menu" },
-    "features": [ { "label": "Craft Cocktails", "body": "House-made cocktails built around fresh juice, small-batch spirits, and seasonal ingredients." }, { "label": "Signature Tower", "body": "Our pink cocktail tower, four frozen margaritas built for the table, is the one most photos end up featuring." }, { "label": "The Patio", "body": "An open-air glass atrium setting, one of the more distinctive rooftop bars in Little Italy." } ],
-    "faq": { "label": "Good to Know", "title": "Rooftop Bar FAQ: Little Italy, San Diego" },
-    "cta": { "title": "Visit the Rooftop Bar in Little Italy, San Diego", "subtitleTemplate": "{{street}}, Little Italy San Diego. {{openDailyLower}}.", "primaryLabel": "Reserve a Table", "secondaryLabel": "Get Directions" }
+    "breadcrumbLabel": "Happy Hour",
+    "seo": {
+      "title": "Happy Hour in Little Italy San Diego | Coco Maya",
+      "description": "Happy hour at Coco Maya in Little Italy, San Diego. Mon–Fri, 4–6 PM. Craft cocktails and bites on the rooftop patio. {{street}}.",
+      "image": "/images/cocktail-negroni-patio.jpg"
+    },
+    "hero": {
+      "label": "Mon–Fri, 4–6 PM",
+      "title": "Happy Hour",
+      "titleSuffix": "Little Italy, San Diego",
+      "subtitle": "Craft cocktails and rooftop bites, Monday through Friday from 4 to 6 PM on the elevated patio.",
+      "image": "/images/cocktail-negroni-patio.jpg",
+      "imageAlt": "Craft cocktails on the rooftop patio at Coco Maya Little Italy San Diego"
+    },
+    "infoCards": [
+      { "label": "Days", "value": "Mon–Fri" },
+      { "label": "Hours", "value": "4–6 PM", "accent": true },
+      { "label": "Location", "value": "Rooftop Patio", "subTemplate": "{{street}}, Little Italy" }
+    ],
+    "intro": {
+      "eyebrow": "Happy Hour at Coco Maya",
+      "title": "Rooftop Bites & Cocktails, Every Weekday",
+      "body1": "Happy hour runs Monday through Friday, 4:00–6:00 PM, on Coco Maya's elevated glass atrium patio in Little Italy. A dedicated menu of shareable bites and house cocktails, designed for the hour between the workday and the evening.",
+      "body2": "Walk-ins are welcome during happy hour. Reservations are recommended if you're bringing a group.",
+      "image": "/images/cocktail-negroni-patio.jpg",
+      "imageAlt": "Happy hour cocktails on the rooftop patio at Coco Maya",
+      "reserveLabel": "Reserve a Table",
+      "menuLabel": "See Full Menu"
+    },
+    "food": [
+      {
+        "order": 1,
+        "name": "Meatball Sub",
+        "description": "Two meatballs, frankfurter roll, sauce, melted mozzarella",
+        "image": "",
+        "imageAlt": "Meatball sub at Coco Maya happy hour"
+      },
+      {
+        "order": 2,
+        "name": "HH Pizza: Chefs Wim Pizza",
+        "description": "Chefs Call",
+        "image": "",
+        "imageAlt": "Chef's pizza at Coco Maya happy hour"
+      },
+      {
+        "order": 3,
+        "name": "Girls Dinner",
+        "description": "Truffle fries & caesar",
+        "image": "",
+        "imageAlt": "Truffle fries and caesar at Coco Maya happy hour"
+      },
+      {
+        "order": 4,
+        "name": "Fried Chicken",
+        "description": "Two pieces, compressed watermelon",
+        "image": "",
+        "imageAlt": "Fried chicken with compressed watermelon at Coco Maya happy hour"
+      }
+    ],
+    "drinks": [
+      {
+        "order": 1,
+        "name": "Oroma Espresso Martini or Carajillo",
+        "description": "Two ways to get the espresso hit",
+        "image": "",
+        "imageAlt": "Espresso martini at Coco Maya happy hour"
+      },
+      {
+        "order": 2,
+        "name": "Main Character Energy",
+        "subtitle": "An army-navy tiki riff",
+        "description": "Vodka, pear, orgeat, orange blossom water",
+        "image": "",
+        "imageAlt": "Main Character Energy cocktail at Coco Maya happy hour"
+      },
+      {
+        "order": 3,
+        "name": "Out of Office",
+        "subtitle": "A Kentucky mule riff",
+        "description": "Bourbon, peach, lemon, falernum, ginger beer",
+        "image": "",
+        "imageAlt": "Out of Office cocktail at Coco Maya happy hour"
+      },
+      {
+        "order": 4,
+        "name": "Gin-Othy",
+        "subtitle": "A Washington apple riff",
+        "description": "Gin, pear cognac, spiced apple cordial, caramelized pineapple, lemon",
+        "image": "",
+        "imageAlt": "Gin-Othy cocktail at Coco Maya happy hour"
+      }
+    ],
+    "foodSection": {
+      "eyebrow": "Happy Hour Bites",
+      "title": "The Food Menu"
+    },
+    "drinksSection": {
+      "eyebrow": "Happy Hour Cocktails",
+      "title": "The Drink Menu",
+      "subtitle": "Every cocktail is available during happy hour — these are the four built specifically for it."
+    },
+    "features": [
+      { "label": "The Menu", "body": "A compact set of shareable bites and four house cocktails built specifically for the happy hour window." },
+      { "label": "The Setting", "body": "An elevated glass atrium patio, one of Little Italy's more distinctive spots to sit down for a drink after work." },
+      { "label": "The Hours", "body": "Monday through Friday, 4:00–6:00 PM. Walk-ins welcome, reservations recommended for groups." }
+    ],
+    "faq": {
+      "label": "Good to Know",
+      "title": "Happy Hour FAQ: Little Italy, San Diego"
+    },
+    "cta": {
+      "title": "Happy Hour in Little Italy, Mon–Fri 4–6 PM",
+      "subtitleTemplate": "{{street}}, Little Italy San Diego. Walk-ins welcome.",
+      "primaryLabel": "Reserve a Table",
+      "secondaryLabel": "Get Directions"
+    }
   }
 }

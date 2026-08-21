@@ -8,6 +8,7 @@ import CTASection from "../components/CTASection.astro";
 import InfoCard from "../components/InfoCard.astro";
 import ContentCard from "../components/ContentCard.astro";
 import FAQSection from "../components/FAQSection.astro";
+import MenuShowcase from "../components/MenuShowcase.astro";
 import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../lib/content";
 import { faqPageSchema, breadcrumbSchema } from "../lib/schema";
 
@@ -22,6 +23,20 @@ const schema = [
     { name: page.breadcrumbLabel, url: `${SITE.url}/happy-hour` },
   ]),
 ];
+
+const foodItems = (page.food ?? []).map((item: any) => ({
+  name: item.name,
+  description: item.description,
+  image: item.image || undefined,
+  imageAlt: item.imageAlt,
+}));
+
+const drinkItems = (page.drinks ?? []).map((item: any) => ({
+  name: item.name,
+  description: item.subtitle ? `${item.subtitle} · ${item.description}` : item.description,
+  image: item.image || undefined,
+  imageAlt: item.imageAlt,
+}));
 ---
 <BaseLayout
   title={page.seo.title}
@@ -77,12 +92,32 @@ const schema = [
         </div>
       </div>
 
-      <div class="mt-20 grid grid-cols-1 sm:grid-cols-3 gap-5">
+    </div>
+  </section>
+
+  <MenuShowcase
+    eyebrow={page.foodSection.eyebrow}
+    title={page.foodSection.title}
+    items={foodItems}
+  />
+
+  <div class="cm-divider"></div>
+
+  <MenuShowcase
+    eyebrow={page.drinksSection.eyebrow}
+    title={page.drinksSection.title}
+    subtitle={page.drinksSection.subtitle}
+    items={drinkItems}
+    dark={true}
+  />
+
+  <section class="py-24 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
         {(page.features ?? []).map((item: any) => (
           <ContentCard label={item.label} body={item.body} />
         ))}
       </div>
-
     </div>
   </section>
 

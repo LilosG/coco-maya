@@ -4,7 +4,7 @@ import Picture from "./Picture.astro";
 interface ShowcaseItem {
   name: string;
   description?: string;
-  image: string;
+  image?: string;
   imageAlt?: string;
 }
 
@@ -42,14 +42,16 @@ const {
     {items.map((item) => (
       <figure class="ms-item">
         <div class="ms-photo">
-          <Picture
-            src={item.image}
-            alt={item.imageAlt ?? item.name}
-            width="800"
-            height="1000"
-            loading="lazy"
-            decoding="async"
-          />
+          {item.image ? (
+            <Picture
+              src={item.image}
+              alt={item.imageAlt ?? item.name}
+              width="800"
+              height="1000"
+              loading="lazy"
+              decoding="async"
+            />
+          ) : null}
         </div>
         <figcaption class="ms-caption">
           <span class="ms-name">{item.name}</span>

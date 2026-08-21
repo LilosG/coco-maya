@@ -134,6 +134,18 @@
           }
         ]
       },
+      "happyHour": {
+        "label": "Happy Hour",
+        "tagline": "Mon–Fri, 4:00–6:00 PM",
+        "shortTagline": "Mon–Fri · 4–6 PM",
+        "days": [
+          { "day": "Monday", "hours": "4:00 PM – 6:00 PM" },
+          { "day": "Tuesday", "hours": "4:00 PM – 6:00 PM" },
+          { "day": "Wednesday", "hours": "4:00 PM – 6:00 PM" },
+          { "day": "Thursday", "hours": "4:00 PM – 6:00 PM" },
+          { "day": "Friday", "hours": "4:00 PM – 6:00 PM" }
+        ]
+      },
       "dinner": {
         "label": "Dinner",
         "tagline": "Served nightly from 5:00 PM",
@@ -176,7 +188,9 @@
       "openDailyInline": "open daily",
       "brunchDailyUntil3": "Brunch served daily until 3PM.",
       "brunchPatioSummary": "Brunch Daily, Until 3PM • Rooftop Patio Open Daily",
-      "generalHoursFaq": "We're open daily. Monday through Thursday from 10:30 AM to 8:00 PM, Friday and Saturday from 9:00 AM to 12:00 AM, and Sunday from 9:00 AM to 8:00 PM. We don't currently run a discounted happy hour, but the rooftop patio and full cocktail program are available all day, every day, no special time window required.",
+      "generalHoursFaq": "We're open daily. Monday through Wednesday from 10:30 AM to 9:00 PM, Thursday from 10:30 AM to midnight, Friday and Saturday from 9:00 AM to midnight, and Sunday from 9:00 AM to 9:00 PM. Happy hour runs Monday through Friday, 4:00–6:00 PM, with a dedicated food and cocktail menu.",
+      "happyHourSummary": "Mon–Fri, 4:00–6:00 PM",
+      "happyHourInline": "happy hour Mon–Fri, 4–6 PM",
       "brunchHoursFaq": "Brunch is served daily until 3:00 PM, featuring modern coastal brunch plates on the elevated patio. Start times vary by day: 9:00 AM on Friday, Saturday, and Sunday, and 10:30 AM Monday through Thursday.",
       "dinnerHoursFaq": "Dinner is served nightly starting at 5:00 PM. Sunday through Thursday dinner service runs until 8:00 PM, and Friday and Saturday it runs until 10:30 PM."
     },
