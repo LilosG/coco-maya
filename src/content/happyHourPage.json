@@ -17,8 +17,8 @@
       "imagePosition": "object-center"
     },
     "infoCards": [
-      { "label": "Days", "value": "Mon–Fri" },
-      { "label": "Hours", "value": "4–6 PM", "accent": true },
+      { "label": "Days", "value": "Mon–Fri", "subTemplate": "Weekday Happy Hour" },
+      { "label": "Hours", "value": "4–6 PM", "accent": true, "subTemplate": "Walk-Ins Welcome" },
       { "label": "Location", "value": "Rooftop Patio", "subTemplate": "{{street}}, Little Italy" }
     ],
     "intro": {
