@@ -6,6 +6,7 @@ import Footer from "../components/Footer.astro";
 import PageHero from "../components/PageHero.astro";
 import TrustBar from "../components/TrustBar.astro";
 import CTASection from "../components/CTASection.astro";
+import InfoCard from "../components/InfoCard.astro";
 import ContentCard from "../components/ContentCard.astro";
 import FAQSection from "../components/FAQSection.astro";
 import MenuShowcase from "../components/MenuShowcase.astro";
@@ -59,23 +60,10 @@ const drinkItems = (page.drinks ?? []).map((item: any) => ({
 
   <TrustBar site={SITE} />
 
-  <!-- Happy Hour Key Info: Days / Hours / Location -->
-  <section class="hh-stats" aria-label="Happy hour hours and location">
-    <div class="hh-stats__inner">
-      <div class="hh-stats__item">
-        <span class="hh-stats__label">Days</span>
-        <p class="hh-stats__value">Mon–Fri</p>
-      </div>
-      <div class="hh-stats__divider" aria-hidden="true"></div>
-      <div class="hh-stats__item">
-        <span class="hh-stats__label">Hours</span>
-        <p class="hh-stats__value hh-stats__value--accent">4–6 PM</p>
-      </div>
-      <div class="hh-stats__divider" aria-hidden="true"></div>
-      <div class="hh-stats__item">
-        <span class="hh-stats__label">Location</span>
-        <p class="hh-stats__value hh-stats__value--sm">Little Italy</p>
-        <p class="hh-stats__sub">1660 India St, San Diego CA</p>
+  <section class="py-24 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-5xl mx-auto">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5 mb-20">
+        {(page.infoCards ?? []).map((card: any) => <InfoCard label={card.label} value={card.value} sub={card.subTemplate ? card.subTemplate.replace("{{street}}", SITE.address.street) : undefined} accent={card.accent} />)}
       </div>
     </div>
   </section>
@@ -153,78 +141,3 @@ const drinkItems = (page.drinks ?? []).map((item: any) => ({
   />
   <Footer />
 </BaseLayout>
-
-<style>
-  /* ── Happy Hour Stats Strip ───────────────────────────── */
-  .hh-stats {
-    background-color: var(--color-dark-mid);
-    padding: 3.5rem 1.5rem;
-    border-top: 1px solid rgba(255,255,255,0.04);
-  }
-
-  .hh-stats__inner {
-    max-width: 56rem;
-    margin: 0 auto;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0;
-  }
-
-  .hh-stats__item {
-    flex: 1;
-    text-align: center;
-    padding: 0.5rem 2rem;
-  }
-
-  .hh-stats__divider {
-    width: 1px;
-    height: 3.5rem;
-    background: rgba(255,255,255,0.1);
-    flex-shrink: 0;
-  }
-
-  .hh-stats__label {
-    font-family: var(--font-stamp);
-    font-size: 0.625rem;
-    font-weight: 500;
-    letter-spacing: 0.28em;
-    text-transform: uppercase;
-    color: rgba(126,207,191,0.55);
-    display: block;
-    margin-bottom: 0.6rem;
-  }
-
-  .hh-stats__value {
-    font-family: var(--font-display);
-    font-style: italic;
-    font-weight: 400;
-    font-size: clamp(2rem, 4.5vw, 3.25rem);
-    line-height: 1;
-    color: #fff;
-    margin: 0;
-  }
-
-  .hh-stats__value--accent {
-    color: var(--color-teal-light);
-  }
-
-  .hh-stats__value--sm {
-    font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-  }
-
-  .hh-stats__sub {
-    font-family: var(--font-body);
-    font-size: 0.6875rem;
-    color: rgba(255,255,255,0.3);
-    margin-top: 0.5rem;
-    letter-spacing: 0.02em;
-  }
-
-  @media (max-width: 600px) {
-    .hh-stats { padding: 2.5rem 1.25rem; }
-    .hh-stats__inner { flex-direction: column; gap: 2rem; }
-    .hh-stats__divider { width: 2.5rem; height: 1px; }
-    .hh-stats__item { padding: 0; }
-  }
-</style>
