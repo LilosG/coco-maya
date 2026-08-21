@@ -2,17 +2,19 @@
   "singleton": {
     "breadcrumbLabel": "Happy Hour",
     "seo": {
-      "title": "Happy Hour in Little Italy San Diego | Coco Maya",
-      "description": "Happy hour at Coco Maya in Little Italy, San Diego. Mon–Fri, 4–6 PM. Craft cocktails and bites on the rooftop patio. {{street}}.",
-      "image": "/images/cocktail-negroni-patio.jpg"
+      "title": "Happy Hour in Little Italy, San Diego | Mon–Fri 4–6 PM | Coco Maya",
+      "description": "Happy hour at Coco Maya by Miss B's in Little Italy, San Diego: Monday–Friday, 4:00–6:00 PM. Craft cocktails and rooftop bites on the elevated glass atrium patio at 1660 India St.",
+      "image": "/images/cocktail-negroni-patio.jpg",
+      "keywords": "happy hour little italy san diego, happy hour little italy, coco maya happy hour, rooftop happy hour san diego, little italy happy hour 4-6pm, happy hour india street san diego, weekday happy hour little italy"
     },
     "hero": {
-      "label": "Mon–Fri, 4–6 PM",
+      "label": "Mon–Fri, 4:00–6:00 PM",
       "title": "Happy Hour",
-      "titleSuffix": "Little Italy, San Diego",
-      "subtitle": "Craft cocktails and rooftop bites, Monday through Friday from 4 to 6 PM on the elevated patio.",
+      "titleSuffix": "Coco Maya · Little Italy, San Diego",
+      "subtitle": "Rooftop bites and craft cocktails Monday through Friday, 4–6 PM, on the elevated glass atrium patio.",
       "image": "/images/cocktail-negroni-patio.jpg",
-      "imageAlt": "Craft cocktails on the rooftop patio at Coco Maya Little Italy San Diego"
+      "imageAlt": "Happy hour cocktails on the rooftop patio at Coco Maya, Little Italy San Diego",
+      "imagePosition": "object-top"
     },
     "infoCards": [
       { "label": "Days", "value": "Mon–Fri" },
@@ -20,8 +22,8 @@
       { "label": "Location", "value": "Rooftop Patio", "subTemplate": "{{street}}, Little Italy" }
     ],
     "intro": {
-      "eyebrow": "Happy Hour at Coco Maya",
-      "title": "Rooftop Bites & Cocktails, Every Weekday",
+      "eyebrow": "Happy Hour at Coco Maya, Little Italy",
+      "title": "Rooftop Happy Hour, Mon–Fri 4–6 PM",
       "body1": "Happy hour runs Monday through Friday, 4:00–6:00 PM, on Coco Maya's elevated glass atrium patio in Little Italy. A dedicated menu of shareable bites and house cocktails, designed for the hour between the workday and the evening.",
       "body2": "Walk-ins are welcome during happy hour. Reservations are recommended if you're bringing a group.",
       "image": "/images/cocktail-negroni-patio.jpg",
@@ -94,12 +96,12 @@
     ],
     "foodSection": {
       "eyebrow": "Happy Hour Bites",
-      "title": "The Food Menu"
+      "title": "Happy Hour Food Menu"
     },
     "drinksSection": {
       "eyebrow": "Happy Hour Cocktails",
-      "title": "The Drink Menu",
-      "subtitle": "Every cocktail is available during happy hour — these are the four built specifically for it."
+      "title": "Happy Hour Cocktail Menu",
+      "subtitle": "Four cocktails built specifically for the 4–6 PM window at Coco Maya's rooftop bar in Little Italy."
     },
     "features": [
       { "label": "The Menu", "body": "A compact set of shareable bites and four house cocktails built specifically for the happy hour window." },
@@ -108,10 +110,10 @@
     ],
     "faq": {
       "label": "Good to Know",
-      "title": "Happy Hour FAQ: Little Italy, San Diego"
+      "title": "Happy Hour FAQ: Coco Maya, Little Italy San Diego"
     },
     "cta": {
-      "title": "Happy Hour in Little Italy, Mon–Fri 4–6 PM",
+      "title": "Visit Happy Hour at Coco Maya, Little Italy",
       "subtitleTemplate": "{{street}}, Little Italy San Diego. Walk-ins welcome.",
       "primaryLabel": "Reserve a Table",
       "secondaryLabel": "Get Directions"
