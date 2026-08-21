@@ -10,6 +10,7 @@ import InfoCard from "../components/InfoCard.astro";
 import ContentCard from "../components/ContentCard.astro";
 import FAQSection from "../components/FAQSection.astro";
 import MenuShowcase from "../components/MenuShowcase.astro";
+import FullBleedFeature from "../components/FullBleedFeature.astro";
 import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../lib/content";
 import { faqPageSchema, breadcrumbSchema } from "../lib/schema";
 
@@ -101,6 +102,18 @@ const drinkItems = (page.drinks ?? []).map((item: any) => ({
       </div>
     </div>
   </section>
+
+  <FullBleedFeature
+    label={page.patioFeature.label}
+    title={page.patioFeature.title}
+    body1={page.patioFeature.body1}
+    body2={page.patioFeature.body2}
+    image={page.patioFeature.image}
+    imageAlt={page.patioFeature.imageAlt}
+    imagePosition={page.patioFeature.imagePosition}
+    ctaLabel={page.patioFeature.ctaLabel}
+    ctaHref={SITE.reservations.url}
+  />
 
   <MenuShowcase
     eyebrow={page.foodSection.eyebrow}

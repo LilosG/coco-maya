@@ -12,9 +12,9 @@
       "title": "Happy Hour",
       "titleSuffix": "Coco Maya · Little Italy, San Diego",
       "subtitle": "Rooftop bites and craft cocktails Monday through Friday, 4–6 PM, on the elevated glass atrium patio.",
-      "image": "/images/cocktail-negroni-patio.jpg",
-      "imageAlt": "Happy hour cocktails on the rooftop patio at Coco Maya, Little Italy San Diego",
-      "imagePosition": "object-top"
+      "image": "/images/bar-counter-disco-balls.jpg",
+      "imageAlt": "Rooftop bar with disco balls at Coco Maya happy hour, Little Italy San Diego",
+      "imagePosition": "object-center"
     },
     "infoCards": [
       { "label": "Days", "value": "Mon–Fri" },
@@ -26,8 +26,8 @@
       "title": "Rooftop Happy Hour, Mon–Fri 4–6 PM",
       "body1": "Happy hour runs Monday through Friday, 4:00–6:00 PM, on Coco Maya's elevated glass atrium patio in Little Italy. A dedicated menu of shareable bites and house cocktails, designed for the hour between the workday and the evening.",
       "body2": "Walk-ins are welcome during happy hour. Reservations are recommended if you're bringing a group.",
-      "image": "/images/cocktail-negroni-patio.jpg",
-      "imageAlt": "Happy hour cocktails on the rooftop patio at Coco Maya",
+      "image": "/images/banana-leaf-neon-corridor.jpg",
+      "imageAlt": "Neon-lit banana leaf mural at Coco Maya, Little Italy San Diego",
       "reserveLabel": "Reserve a Table",
       "menuLabel": "See Full Menu"
     },
@@ -94,6 +94,16 @@
         "imageAlt": "Gin-Othy cocktail at Coco Maya happy hour"
       }
     ],
+    "patioFeature": {
+      "label": "The Rooftop Patio",
+      "title": "Golden Hour, Every Weekday",
+      "body1": "Pink umbrellas, string lights, and the glass atrium roof overhead. This is where Little Italy comes to unwind after work.",
+      "body2": "Grab a seat at the bar or claim a table under the umbrellas. Either way, it's the best hour of the workday.",
+      "image": "/images/rooftop-patio-umbrellas.jpg",
+      "imageAlt": "Rooftop patio with pink umbrellas at Coco Maya happy hour, Little Italy San Diego",
+      "imagePosition": "center 40%",
+      "ctaLabel": "Reserve a Table"
+    },
     "foodSection": {
       "eyebrow": "Happy Hour Bites",
       "title": "Happy Hour Food Menu"
