@@ -36,28 +36,28 @@
         "order": 1,
         "name": "Meatball Sub",
         "description": "Two meatballs, frankfurter roll, sauce, melted mozzarella",
-        "image": "",
+        "image": "/images/hh-meatball-sub.jpg",
         "imageAlt": "Meatball sub at Coco Maya happy hour"
       },
       {
         "order": 2,
         "name": "HH Pizza: Chefs Wim Pizza",
         "description": "Chefs Call",
-        "image": "",
+        "image": "/images/hh-chefs-wim-pizza.jpg",
         "imageAlt": "Chef's pizza at Coco Maya happy hour"
       },
       {
         "order": 3,
         "name": "Girls Dinner",
         "description": "Truffle fries & caesar",
-        "image": "",
+        "image": "/images/hh-girls-dinner.jpg",
         "imageAlt": "Truffle fries and caesar at Coco Maya happy hour"
       },
       {
         "order": 4,
         "name": "Fried Chicken",
         "description": "Two pieces, compressed watermelon",
-        "image": "",
+        "image": "/images/hh-fried-chicken.jpg",
         "imageAlt": "Fried chicken with compressed watermelon at Coco Maya happy hour"
       }
     ],
