@@ -12,19 +12,12 @@ import FAQSection from "../components/FAQSection.astro";
 import MenuShowcase from "../components/MenuShowcase.astro";
 import FullBleedFeature from "../components/FullBleedFeature.astro";
 import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../lib/content";
-import { faqPageSchema, breadcrumbSchema } from "../lib/schema";
+import { faqPageSchema, breadcrumbSchema, menuSchema, recurringEventSchema } from "../lib/schema";
 
 const [SITE, rawPage, rawFaqs] = await Promise.all([getSingleton("siteSettings"), getSingleton("happyHourPage"), getOrderedCollection("happyHourFaqs")]);
 const page = resolveSiteTokens(rawPage, SITE);
 const faqs = rawFaqs as { question: string; answer: string }[];
 const fill = (value: string) => value.replaceAll("{{street}}", SITE.address.street);
-const schema = [
-  faqPageSchema(faqs),
-  breadcrumbSchema([
-    { name: SITE.breadcrumbs.home, url: SITE.url },
-    { name: page.breadcrumbLabel, url: `${SITE.url}/happy-hour` },
-  ]),
-];
 
 const foodItems = (page.food ?? []).map((item: any) => ({
   name: item.name,
@@ -39,12 +32,42 @@ const drinkItems = (page.drinks ?? []).map((item: any) => ({
   image: item.image || undefined,
   imageAlt: item.imageAlt,
 }));
+
+const schema = [
+  faqPageSchema(faqs),
+  breadcrumbSchema([
+    { name: SITE.breadcrumbs.home, url: SITE.url },
+    { name: page.breadcrumbLabel, url: `${SITE.url}/happy-hour` },
+  ]),
+  recurringEventSchema({
+    name: "Happy Hour at Coco Maya",
+    description: "Weekday happy hour on the elevated rooftop patio in Little Italy, San Diego: craft cocktails and shareable bites, Monday through Friday, 4:00-6:00 PM.",
+    url: `${SITE.url}/happy-hour`,
+    daysOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+    startTime: "16:00",
+    endTime: "18:00",
+    placeName: SITE.fullName,
+    address: {
+      streetAddress: SITE.address.street,
+      addressLocality: SITE.address.city,
+      addressRegion: SITE.address.state,
+      postalCode: SITE.address.zip,
+      addressCountry: "US",
+    },
+  }),
+  menuSchema(
+    [
+      { name: "Happy Hour Food", items: foodItems },
+      { name: "Happy Hour Cocktails", items: drinkItems },
+    ],
+    SITE.url
+  ),
+];
 ---
 <BaseLayout
   title={page.seo.title}
   description={page.seo.description}
   image={page.seo.image}
-  keywords={page.seo.keywords}
   extraSchema={schema}
 >
   <Nav />
