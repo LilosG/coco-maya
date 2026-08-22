@@ -65,7 +65,7 @@
       {
         "day": "Thursday",
         "open": true,
-        "hours": "10:30 AM – 12:00 AM"
+        "hours": "10:30 AM – 10:00 PM"
       },
       {
         "day": "Friday",
@@ -139,11 +139,26 @@
         "tagline": "Mon–Fri, 4:00–6:00 PM",
         "shortTagline": "Mon–Fri · 4–6 PM",
         "days": [
-          { "day": "Monday", "hours": "4:00 PM – 6:00 PM" },
-          { "day": "Tuesday", "hours": "4:00 PM – 6:00 PM" },
-          { "day": "Wednesday", "hours": "4:00 PM – 6:00 PM" },
-          { "day": "Thursday", "hours": "4:00 PM – 6:00 PM" },
-          { "day": "Friday", "hours": "4:00 PM – 6:00 PM" }
+          {
+            "day": "Monday",
+            "hours": "4:00 PM – 6:00 PM"
+          },
+          {
+            "day": "Tuesday",
+            "hours": "4:00 PM – 6:00 PM"
+          },
+          {
+            "day": "Wednesday",
+            "hours": "4:00 PM – 6:00 PM"
+          },
+          {
+            "day": "Thursday",
+            "hours": "4:00 PM – 6:00 PM"
+          },
+          {
+            "day": "Friday",
+            "hours": "4:00 PM – 6:00 PM"
+          }
         ]
       },
       "dinner": {
