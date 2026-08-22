@@ -10,13 +10,14 @@ interface Props {
   imageAlt?: string;
   imagePosition?: string;
   tall?: boolean;
+  longTitle?: boolean;
 }
-const { label, title, titleSuffix, subtitle, image, imageAlt = "", imagePosition = "object-center", tall = false } = Astro.props;
+const { label, title, titleSuffix, subtitle, image, imageAlt = "", imagePosition = "object-center", tall = false, longTitle = false } = Astro.props;
 ---
 
 <section class:list={[
   "relative overflow-hidden flex items-center justify-center",
-  tall ? "min-h-[90vh]" : "min-h-[70vh]"
+  longTitle ? "min-h-[55vh]" : (tall ? "min-h-[90vh]" : "min-h-[70vh]")
 ]}>
   {image && (
     <div class="absolute inset-0">
@@ -35,11 +36,11 @@ const { label, title, titleSuffix, subtitle, image, imageAlt = "", imagePosition
     <div class="absolute inset-0 bg-gradient-to-b from-[var(--color-teal)]/6 to-transparent"></div>
   )}
 
-  <div class="relative z-10 w-full max-w-4xl mx-auto px-6 text-center">
+  <div class:list={["relative z-10 w-full mx-auto px-6 text-center", longTitle ? "max-w-3xl" : "max-w-4xl"]}>
     {label && <span class="eyebrow-light tracking-[0.25em] mx-auto block mb-4">{label}</span>}
     <h1 class:list={[
       "font-[family-name:var(--font-display)] italic leading-[1.05] mb-6",
-      tall ? "text-[clamp(4.5rem,11vw,8.5rem)]" : "text-[clamp(4rem,10vw,7.5rem)]",
+      longTitle ? "text-[clamp(2rem,4.2vw,3.25rem)]" : (tall ? "text-[clamp(4.5rem,11vw,8.5rem)]" : "text-[clamp(4rem,10vw,7.5rem)]"),
       image ? "text-white" : "text-[var(--color-dark)]"
     ]}>
       {title}
