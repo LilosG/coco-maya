@@ -36,9 +36,9 @@ const { label, title, titleSuffix, subtitle, image, imageAlt = "", imagePosition
   )}
 
   <div class="relative z-10 w-full max-w-4xl mx-auto px-6 text-center">
-    {label && <span class="eyebrow-light tracking-[0.25em] mx-auto block">{label}</span>}
+    {label && <span class="eyebrow-light tracking-[0.25em] mx-auto block mb-4">{label}</span>}
     <h1 class:list={[
-      "font-[family-name:var(--font-display)] italic leading-[0.92] mb-6",
+      "font-[family-name:var(--font-display)] italic leading-[1.05] mb-6",
       tall ? "text-[clamp(4.5rem,11vw,8.5rem)]" : "text-[clamp(4rem,10vw,7.5rem)]",
       image ? "text-white" : "text-[var(--color-dark)]"
     ]}>
