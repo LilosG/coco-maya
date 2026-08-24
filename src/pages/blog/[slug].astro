@@ -98,7 +98,7 @@ const formattedDate = post.data.date.toLocaleDateString("en-US", {
   )}
 
   <CTASection
-    title={cta?.title ?? defaults.cta.title}
+    title={cta?.title ?? post.data.ctaTitle ?? defaults.cta.title}
     subtitle={cta?.subtitle ?? defaults.cta.subtitle}
     primaryLabel={cta?.primaryLabel ?? defaults.cta.primaryLabel}
     primaryHref={cta?.primaryHref ?? SITE.reservations.url}

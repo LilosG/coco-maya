@@ -33,6 +33,11 @@ const blog = defineCollection({
         formSubtitle: z.string().optional(),
       })
       .optional(),
+    // Lightweight override for just the closing CTASection's heading, for
+    // posts that don't need the full eventCTA object (which also renders
+    // an EventInquiryForm block -- appropriate for posts about bookable
+    // private events, not for general content/guide posts).
+    ctaTitle: z.string().optional(),
   }),
 });
 
