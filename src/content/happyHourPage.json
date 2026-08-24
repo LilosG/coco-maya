@@ -65,7 +65,7 @@
         "order": 1,
         "name": "Oroma Espresso Martini or Carajillo",
         "description": "Two ways to get the espresso hit",
-        "image": "",
+        "image": "/images/cocktail-marquesitas-espresso-martini.jpg",
         "imageAlt": "Espresso martini at Coco Maya happy hour"
       },
       {
@@ -73,7 +73,7 @@
         "name": "Main Character Energy",
         "subtitle": "An army-navy tiki riff",
         "description": "Vodka, pear, orgeat, orange blossom water",
-        "image": "",
+        "image": "/images/hh-main-character-energy.jpg",
         "imageAlt": "Main Character Energy cocktail at Coco Maya happy hour"
       },
       {
@@ -81,7 +81,7 @@
         "name": "Out of Office",
         "subtitle": "A Kentucky mule riff",
         "description": "Bourbon, peach, lemon, falernum, ginger beer",
-        "image": "",
+        "image": "/images/hh-out-of-office.jpg",
         "imageAlt": "Out of Office cocktail at Coco Maya happy hour"
       },
       {
@@ -89,7 +89,7 @@
         "name": "Gin-Othy",
         "subtitle": "A Washington apple riff",
         "description": "Gin, pear cognac, spiced apple cordial, caramelized pineapple, lemon",
-        "image": "",
+        "image": "/images/hh-gin-othy.jpg",
         "imageAlt": "Gin-Othy cocktail at Coco Maya happy hour"
       }
     ],
