@@ -30,6 +30,10 @@
       "reserveLabel": "Reserve a Table",
       "menuLabel": "See Full Menu"
     },
+    "relatedPost": {
+      "label": "Read the Happy Hour Guide",
+      "href": "/blog/best-happy-hour-little-italy"
+    },
     "food": [
       {
         "order": 1,

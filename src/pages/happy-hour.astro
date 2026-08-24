@@ -110,6 +110,9 @@ const schema = [
           <div class="flex flex-wrap gap-4">
             <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">{page.intro.reserveLabel}</a>
             <a href="/menu" class="btn-outline">{page.intro.menuLabel}</a>
+            {page.relatedPost && (
+              <a href={page.relatedPost.href} class="btn-outline">{page.relatedPost.label}</a>
+            )}
           </div>
         </div>
         <div class="relative">
