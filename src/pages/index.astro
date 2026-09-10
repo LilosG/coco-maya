@@ -7,6 +7,8 @@ import { getOrderedCollection, getSingleton, resolveSiteTokens, getTodayHours } 
 import RooftopBar from "../components/RooftopBar.astro";
 import FindUs from "../components/FindUs.astro";
 import TrustBar from "../components/TrustBar.astro";
+import PromotionModal from "../components/PromotionModal.astro";
+import { PROMOTION_CONFIG } from "../config/promotion";
 
 const [SITE, rawHome, FEATURED_COCKTAILS, FEATURED_FOOD, rawPrivateEventTypes] = await Promise.all([
   getSingleton("siteSettings"),
@@ -26,6 +28,8 @@ const todayHours = getTodayHours(SITE, "Closed");
   description={home.seo.description}
   image={home.seo.image}
 >
+  <PromotionModal siteSlug={PROMOTION_CONFIG.venueSlug} />
+
   <Nav />
 
   <!-- ── HERO ─────────────────────────────────────────── -->
