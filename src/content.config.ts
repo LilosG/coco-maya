@@ -56,6 +56,7 @@ const eventsPage = jsonCollection("./src/content/eventsPage.json");
 const spacePage = jsonCollection("./src/content/spacePage.json");
 const privateEventsIndexPage = jsonCollection("./src/content/privateEventsIndexPage.json");
 const privateEventDetailDefaults = jsonCollection("./src/content/privateEventDetailDefaults.json");
+const commercialLandingPages = jsonCollection("./src/content/commercialLandingPages.json");
 const eventInquiryPage = jsonCollection("./src/content/eventInquiryPage.json");
 const blogIndexPage = jsonCollection("./src/content/blogIndexPage.json");
 const blogPostDefaults = jsonCollection("./src/content/blogPostDefaults.json");
@@ -102,6 +103,7 @@ export const collections = {
   spacePage,
   privateEventsIndexPage,
   privateEventDetailDefaults,
+  commercialLandingPages,
   eventInquiryPage,
   blogIndexPage,
   blogPostDefaults,
