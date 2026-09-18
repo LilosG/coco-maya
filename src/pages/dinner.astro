@@ -1,0 +1,20 @@
+---
+import CommercialLandingPage from "../components/CommercialLandingPage.astro";
+import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../lib/content";
+
+const [SITE, rawPages, dinnerItems] = await Promise.all([
+  getSingleton("siteSettings"),
+  getSingleton("commercialLandingPages"),
+  getOrderedCollection("menuDinner")
+]);
+const pages = resolveSiteTokens(rawPages, SITE);
+const page = pages.dinner;
+const menuItems = dinnerItems.map((item: any) => ({
+  name: item.name,
+  description: item.description,
+  image: item.image,
+  imageAlt: item.imageAlt ?? `${item.name} at Coco Maya Little Italy San Diego`,
+}));
+---
+
+<CommercialLandingPage page={page} site={SITE} menuItems={menuItems} />
