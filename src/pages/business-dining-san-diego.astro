@@ -1,6 +1,6 @@
 ---
 import CommercialLandingPage from "../components/CommercialLandingPage.astro";
-import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../lib/content";
+import { getSingleton, resolveSiteTokens } from "../lib/content";
 
 const [SITE, rawPages] = await Promise.all([
   getSingleton("siteSettings"),
