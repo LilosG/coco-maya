@@ -1,0 +1,88 @@
+{
+  "order": 7,
+  "slug": "holiday-parties",
+  "name": "Holiday Parties & Company Celebrations",
+  "eyebrow": "Holiday Parties in Little Italy",
+  "shortDescription": "Company holiday parties, year-end dinners, and team celebrations with private dining, patio, and full-venue options in Little Italy.",
+  "heroImage": "/images/events-private-dining-2.jpg",
+  "heroImageAlt": "Private dining setup for a company holiday party at Coco Maya in Little Italy San Diego",
+  "seoTitle": "Holiday Party Venue San Diego | Company Celebrations | Coco Maya",
+  "seoDescription": "Plan a company holiday party or year-end celebration at Coco Maya in Little Italy, San Diego. Private dining, patio, custom menus, and full-venue options.",
+  "intro": [
+    "Bring the team together for a holiday dinner, year-end celebration, client gathering, or company party in the heart of Little Italy. Coco Maya offers flexible private-event spaces for groups that want something more distinctive than a traditional banquet room.",
+    "Choose an intimate dining setup, an elevated patio gathering, or a larger venue configuration based on your headcount and the way you want the event to feel. Our team can coordinate the menu, drinks, timing, and event details around your group.",
+    "Holiday bookings can be built around a seated dinner, cocktail-style gathering, team celebration, or larger company event. Tell us your date, expected guest count, and priorities, and we will help match the format to the right space."
+  ],
+  "relatedPost": {
+    "label": "Read the Corporate Events Guide",
+    "href": "/blog/corporate-event-venues-little-italy-san-diego"
+  },
+  "specs": {
+    "guests": "20 – 180",
+    "duration": "2 – 4 hours",
+    "space": "Room, Patio, or Venue"
+  },
+  "highlights": [
+    {
+      "label": "Flexible Event Spaces",
+      "detail": "Choose private dining, patio space, or a larger venue configuration based on your group size and event format."
+    },
+    {
+      "label": "Custom Menus & Drink Packages",
+      "detail": "Build food and beverage service around a seated dinner, social gathering, or company-wide celebration."
+    },
+    {
+      "label": "Company & Client Celebrations",
+      "detail": "Host team dinners, year-end gatherings, client appreciation events, and broader seasonal celebrations without limiting the event to one holiday."
+    },
+    {
+      "label": "Event Coordination",
+      "detail": "Our team can coordinate timing, seating, vendor details, and other event logistics from planning through service."
+    },
+    {
+      "label": "AV & Vendor Coordination",
+      "detail": "For events that need presentations, remarks, decor, or outside vendors, share the requirements in advance so the setup can be planned with the venue."
+    }
+  ],
+  "galleryImage": "/images/venue-interior-dining.jpg",
+  "galleryImageAlt": "Coco Maya dining room arranged for a private holiday celebration in Little Italy San Diego",
+  "gallery": [
+    {
+      "image": "/images/venue-interior-dining.jpg",
+      "alt": "Private dining room at Coco Maya for a company holiday dinner"
+    },
+    {
+      "image": "/images/food-spread-overhead.jpg",
+      "alt": "Shared dining spread for a holiday party at Coco Maya"
+    },
+    {
+      "image": "/images/venue-atrium-bar.jpg",
+      "alt": "Coco Maya glass atrium bar for a company celebration in Little Italy"
+    }
+  ],
+  "atmosphereImage": "/images/venue-bar-patio.jpg",
+  "atmosphereImageAlt": "Coco Maya bar and patio prepared for an evening company celebration in Little Italy",
+  "atmosphereLine": "A year-end gathering should feel like a celebration, not another meeting.",
+  "faqs": [
+    {
+      "question": "Can Coco Maya host a company holiday party in San Diego?",
+      "answer": "Yes. Coco Maya hosts company holiday parties, year-end dinners, team celebrations, and client gatherings in Little Italy, with private dining, patio, and larger venue options based on the size and format of the event."
+    },
+    {
+      "question": "How many guests can Coco Maya accommodate for a holiday party?",
+      "answer": "Private-event configurations can accommodate groups from approximately 20 guests up to 180 guests for a full-venue event. The best space depends on your headcount, service style, and preferred setup."
+    },
+    {
+      "question": "Can we host a holiday dinner instead of a cocktail-style party?",
+      "answer": "Yes. Holiday events can be planned around a seated dinner, a more social food-and-drink format, or a combination of both. Share the experience you want when you inquire so the team can recommend the right setup."
+    },
+    {
+      "question": "Can Coco Maya accommodate dietary restrictions for a company event?",
+      "answer": "Yes. Dietary needs can be considered when planning the event menu. Include any known requirements with your inquiry so they can be incorporated into the proposal and menu planning."
+    },
+    {
+      "question": "How far in advance should we inquire about a holiday party?",
+      "answer": "Earlier is better for preferred November and December dates, especially for larger groups and weekend events. Availability varies, so send your date and expected headcount as soon as your planning window is established."
+    }
+  ]
+}
