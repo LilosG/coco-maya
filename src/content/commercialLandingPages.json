@@ -1,0 +1,343 @@
+{
+  "singleton": {
+    "dinner": {
+      "url": "/dinner",
+      "breadcrumbLabel": "Dinner",
+      "seo": {
+        "title": "Dinner in Little Italy San Diego | Rooftop Dining | Coco Maya",
+        "description": "Dinner at Coco Maya in Little Italy, San Diego: modern American coastal plates, craft cocktails, rooftop patio dining, group dinners, and reservations.",
+        "image": "/images/food-spread-overhead.jpg"
+      },
+      "hero": {
+        "label": "Dinner · Little Italy San Diego",
+        "title": "Dinner in Little Italy",
+        "titleSuffix": "Modern Coastal Dining at Coco Maya",
+        "subtitle": "Modern American coastal plates, craft cocktails, and rooftop dining in the heart of Little Italy.",
+        "image": "/images/food-spread-overhead.jpg",
+        "imageAlt": "Dinner spread at Coco Maya in Little Italy San Diego",
+        "primaryLabel": "Reserve a Table",
+        "primaryHref": "/reservations",
+        "secondaryLabel": "View the Menu",
+        "secondaryHref": "/menu"
+      },
+      "infoCards": [
+        { "label": "Service", "value": "Dinner", "sub": "Modern coastal plates" },
+        { "label": "Setting", "value": "Rooftop Patio", "sub": "Indoor and outdoor dining", "accent": true },
+        { "label": "Location", "value": "Little Italy", "sub": "{{street}}, San Diego" }
+      ],
+      "intro": {
+        "label": "Dinner at Coco Maya",
+        "title": "A Little Italy dinner built around the whole evening",
+        "body1": "Coco Maya pairs modern American coastal cooking with a cocktail-driven rooftop setting in Little Italy. Dinner can be a date night, a client meal, a table with friends, or the start of a larger night downtown.",
+        "body2": "The dinner menu centers on seafood, shareable plates, and larger-format favorites, with the glass atrium bar and elevated patio giving the meal a setting that feels distinctly San Diego.",
+        "image": "/images/venue-bar-patio.jpg",
+        "imageAlt": "Coco Maya rooftop bar and patio during dinner service in Little Italy",
+        "ctaLabel": "See the Full Menu",
+        "ctaHref": "/menu",
+        "secondaryLabel": "Reserve Dinner",
+        "secondaryHref": "/reservations"
+      },
+      "menuSection": {
+        "eyebrow": "Dinner Menu",
+        "title": "Dinner favorites at Coco Maya",
+        "subtitle": "A sample of the dinner dishes featured on the current Coco Maya menu.",
+        "ctaLabel": "View Full Menu",
+        "ctaHref": "/menu"
+      },
+      "useCases": {
+        "eyebrow": "Plan Your Dinner",
+        "title": "Dinner for dates, groups, and business",
+        "items": [
+          { "label": "Date Night", "body": "Cocktails, rooftop seating, and a full dinner menu for an evening in Little Italy." },
+          { "label": "Dinner With Friends", "body": "Shareable plates and flexible seating for groups meeting for dinner before or after a night downtown." },
+          { "label": "Business Dinners", "body": "Host clients, colleagues, or visiting teams with a restaurant setting that works for conversation and a full meal." },
+          { "label": "Larger Groups", "body": "For larger dinner parties or dedicated space, move from a standard reservation into Coco Maya's private-event planning flow." }
+        ]
+      },
+      "feature": {
+        "label": "Group & Business Dining",
+        "title": "Need more than a standard dinner reservation?",
+        "body1": "Coco Maya can accommodate business dinners, team meals, and larger group gatherings that need more planning than a standard table reservation.",
+        "body2": "For dedicated space, custom menus, or company events, the private-events team can help match the group to the right setup.",
+        "image": "/images/events-private-dining-2.jpg",
+        "imageAlt": "Group dinner setup at Coco Maya in Little Italy San Diego",
+        "ctaLabel": "Explore Group Dining",
+        "ctaHref": "/group-dining-little-italy-san-diego",
+        "secondaryLabel": "Corporate Events",
+        "secondaryHref": "/private-events/corporate-events"
+      },
+      "related": {
+        "eyebrow": "Explore More",
+        "title": "More ways to dine at Coco Maya",
+        "items": [
+          { "label": "Happy Hour", "body": "Weekday rooftop happy hour before dinner.", "href": "/happy-hour" },
+          { "label": "Group Dining", "body": "Planning dinner for a larger group in Little Italy.", "href": "/group-dining-little-italy-san-diego" },
+          { "label": "Private Events", "body": "Dedicated spaces and custom event planning.", "href": "/private-events" }
+        ]
+      },
+      "faqs": [
+        { "question": "Does Coco Maya serve dinner in Little Italy?", "answer": "Yes. Coco Maya serves dinner in Little Italy, San Diego, with modern American coastal dishes, cocktails, indoor dining, and rooftop patio seating." },
+        { "question": "Can I make a dinner reservation at Coco Maya?", "answer": "Yes. Dinner reservations can be made through Coco Maya's reservation page, and walk-in availability may vary by day and time." },
+        { "question": "Is Coco Maya a good option for a business dinner?", "answer": "Coco Maya hosts business dinners, client meals, and team gatherings. Larger groups or events that need dedicated space can also use the private-events planning process." },
+        { "question": "Can Coco Maya accommodate a large dinner group?", "answer": "Yes. Smaller groups can use the standard reservation flow, while larger parties and groups that need dedicated space can inquire through private events." }
+      ],
+      "cta": {
+        "title": "Reserve Dinner in Little Italy",
+        "subtitle": "Plan dinner at Coco Maya, then explore happy hour, group dining, or private-event options for a larger gathering.",
+        "primaryLabel": "Reserve a Table",
+        "primaryHref": "/reservations",
+        "secondaryLabel": "View the Menu",
+        "secondaryHref": "/menu"
+      }
+    },
+    "conventionDining": {
+      "url": "/restaurants-near-san-diego-convention-center",
+      "breadcrumbLabel": "Convention Center Dining",
+      "seo": {
+        "title": "Restaurant Near San Diego Convention Center | Coco Maya",
+        "description": "Looking for dining near the San Diego Convention Center? Coco Maya in Little Italy offers lunch, happy hour, dinner, group dining, and corporate event options.",
+        "image": "/images/venue-hero-bar.jpg"
+      },
+      "hero": {
+        "label": "Convention & Conference Dining · San Diego",
+        "title": "Dining Near the San Diego Convention Center",
+        "titleSuffix": "Little Italy Lunch, Happy Hour & Dinner",
+        "subtitle": "A Little Italy option for convention attendees, exhibitors, clients, teams, and groups looking beyond the immediate Convention Center blocks.",
+        "image": "/images/venue-hero-bar.jpg",
+        "imageAlt": "Coco Maya rooftop restaurant and bar in Little Italy San Diego",
+        "primaryLabel": "Reserve a Table",
+        "primaryHref": "/reservations",
+        "secondaryLabel": "Plan a Group",
+        "secondaryHref": "/group-dining-little-italy-san-diego"
+      },
+      "infoCards": [
+        { "label": "Neighborhood", "value": "Little Italy", "sub": "Downtown San Diego" },
+        { "label": "Options", "value": "Lunch to Dinner", "sub": "Plus weekday happy hour", "accent": true },
+        { "label": "Groups", "value": "Small to Private", "sub": "Reservations and event planning" }
+      ],
+      "intro": {
+        "label": "Convention Dining in San Diego",
+        "title": "Take the meeting out of the convention hall",
+        "body1": "Coco Maya is in Little Italy, north of the San Diego Convention Center within downtown San Diego. It gives conference attendees and visiting teams another dining district to consider for client meals, post-session drinks, and group dinners.",
+        "body2": "Use a standard reservation for a smaller lunch or dinner, meet for weekday happy hour, or move into group dining and private events when the headcount or format needs more coordination.",
+        "image": "/images/venue-patio-skyline.jpg",
+        "imageAlt": "Coco Maya rooftop patio in Little Italy for convention dining in San Diego",
+        "ctaLabel": "See Dinner",
+        "ctaHref": "/dinner",
+        "secondaryLabel": "Happy Hour",
+        "secondaryHref": "/happy-hour"
+      },
+      "useCases": {
+        "eyebrow": "For Convention Week",
+        "title": "From one-on-one client meals to full team events",
+        "items": [
+          { "label": "Client Lunches", "body": "Step away from the show floor for a seated meal with clients, partners, or prospects." },
+          { "label": "Post-Session Happy Hour", "body": "Meet after conference sessions for weekday rooftop drinks and bites in Little Italy." },
+          { "label": "Team Dinners", "body": "Bring colleagues together after a day of meetings with a full dinner and cocktail program." },
+          { "label": "Corporate Events", "body": "For dedicated space, larger groups, presentations, or centralized planning, use Coco Maya's corporate-event options." }
+        ]
+      },
+      "feature": {
+        "label": "Business & Group Dining",
+        "title": "One restaurant, several levels of planning",
+        "body1": "Not every convention meal needs to become a private event. Coco Maya supports standard reservations for smaller groups and a separate planning path when the gathering becomes a larger team dinner or corporate event.",
+        "body2": "That makes it possible to keep the experience appropriate to the size of the group rather than forcing every business meal into the same format.",
+        "image": "/images/events-private-dining-2.jpg",
+        "imageAlt": "Corporate group dining setup at Coco Maya near downtown San Diego conventions",
+        "ctaLabel": "Business Dining",
+        "ctaHref": "/business-dining-san-diego",
+        "secondaryLabel": "Corporate Events",
+        "secondaryHref": "/private-events/corporate-events"
+      },
+      "related": {
+        "eyebrow": "Plan the Meal",
+        "title": "Choose the right Coco Maya experience",
+        "items": [
+          { "label": "Business Dining", "body": "Client meals, team dinners, and work-related dining.", "href": "/business-dining-san-diego" },
+          { "label": "Happy Hour", "body": "Weekday drinks and bites after conference sessions.", "href": "/happy-hour" },
+          { "label": "Corporate Events", "body": "Private and larger-format company gatherings.", "href": "/private-events/corporate-events" }
+        ]
+      },
+      "faqs": [
+        { "question": "Is Coco Maya near the San Diego Convention Center?", "answer": "Coco Maya is in Little Italy, within downtown San Diego and north of the Convention Center. It is an option for attendees who want to dine outside the immediate Convention Center and Gaslamp blocks." },
+        { "question": "Can convention attendees make a normal restaurant reservation?", "answer": "Yes. Smaller groups and individual attendees can use the standard reservation flow for dining at Coco Maya." },
+        { "question": "Can Coco Maya host a convention group dinner?", "answer": "Yes. Coco Maya can accommodate group dinners, and larger gatherings or groups that need dedicated space can use the private-events inquiry process." },
+        { "question": "Does Coco Maya have options for after-conference drinks?", "answer": "Yes. Coco Maya has a weekday happy hour Monday through Friday from 4–6 PM, along with its regular cocktail and dining service." }
+      ],
+      "cta": {
+        "title": "Plan Dining During Your San Diego Convention",
+        "subtitle": "Reserve for a smaller group or use Coco Maya's group and corporate-event options when the gathering needs more space or coordination.",
+        "primaryLabel": "Reserve a Table",
+        "primaryHref": "/reservations",
+        "secondaryLabel": "Plan a Corporate Event",
+        "secondaryHref": "/private-events/corporate-events"
+      }
+    },
+    "businessDining": {
+      "url": "/business-dining-san-diego",
+      "breadcrumbLabel": "Business Dining",
+      "seo": {
+        "title": "Business Lunch & Dinner San Diego | Client Dining | Coco Maya",
+        "description": "Business dining at Coco Maya in Little Italy, San Diego for client lunches, team dinners, visiting executives, happy hours, and larger corporate groups.",
+        "image": "/images/events-private-dining-2.jpg"
+      },
+      "hero": {
+        "label": "Business Dining · Little Italy San Diego",
+        "title": "Business Dining in San Diego",
+        "titleSuffix": "Client Lunches, Team Dinners & Corporate Groups",
+        "subtitle": "A Little Italy setting for client meals, team dinners, visiting colleagues, and business gatherings of different sizes.",
+        "image": "/images/events-private-dining-2.jpg",
+        "imageAlt": "Business dinner setup at Coco Maya in Little Italy San Diego",
+        "primaryLabel": "Reserve a Table",
+        "primaryHref": "/reservations",
+        "secondaryLabel": "Corporate Events",
+        "secondaryHref": "/private-events/corporate-events"
+      },
+      "infoCards": [
+        { "label": "Meals", "value": "Lunch & Dinner", "sub": "Plus weekday happy hour" },
+        { "label": "Groups", "value": "Flexible", "sub": "Reservations to private events", "accent": true },
+        { "label": "Location", "value": "Little Italy", "sub": "{{street}}, San Diego" }
+      ],
+      "intro": {
+        "label": "Client & Team Dining",
+        "title": "Business meals that still feel like San Diego",
+        "body1": "Coco Maya gives client lunches, team dinners, and visiting colleagues a setting with more personality than a conference room or hotel restaurant while keeping the meal straightforward to plan.",
+        "body2": "Smaller parties can reserve normally. Larger groups, company dinners, and events that require dedicated space, AV coordination, or centralized planning can move into the corporate-events process.",
+        "image": "/images/venue-interior-dining.jpg",
+        "imageAlt": "Coco Maya dining room for a business lunch or client dinner in San Diego",
+        "ctaLabel": "See Dinner",
+        "ctaHref": "/dinner",
+        "secondaryLabel": "Plan a Corporate Event",
+        "secondaryHref": "/private-events/corporate-events"
+      },
+      "useCases": {
+        "eyebrow": "Business Use Cases",
+        "title": "Match the restaurant experience to the meeting",
+        "items": [
+          { "label": "Client Lunches", "body": "A seated meal for client conversations, visiting partners, or smaller working groups." },
+          { "label": "Executive & Client Dinners", "body": "Dinner and cocktails in Little Italy for entertaining visiting clients or leadership teams." },
+          { "label": "Team Happy Hours", "body": "A weekday option for colleagues who want a less formal gathering after work or conference sessions." },
+          { "label": "Company Events", "body": "Private dining, patio, and larger venue configurations for events that need a dedicated planning process." }
+        ]
+      },
+      "feature": {
+        "label": "Convention & Conference Business",
+        "title": "Hosting clients during a San Diego conference?",
+        "body1": "Convention weeks often create several different needs at once: one-on-one client meals, team dinners, post-session drinks, and larger hosted gatherings.",
+        "body2": "Coco Maya's Convention Center dining guide connects those different use cases so teams can choose the right booking path for each one.",
+        "image": "/images/venue-patio-skyline.jpg",
+        "imageAlt": "Little Italy rooftop patio for business dining during San Diego conferences",
+        "ctaLabel": "Convention Dining Guide",
+        "ctaHref": "/restaurants-near-san-diego-convention-center",
+        "secondaryLabel": "Group Dining",
+        "secondaryHref": "/group-dining-little-italy-san-diego"
+      },
+      "related": {
+        "eyebrow": "Business Planning",
+        "title": "Related dining and event options",
+        "items": [
+          { "label": "Convention Dining", "body": "Dining options for attendees, exhibitors, and visiting teams.", "href": "/restaurants-near-san-diego-convention-center" },
+          { "label": "Group Dining", "body": "A middle ground between a standard table and a private event.", "href": "/group-dining-little-italy-san-diego" },
+          { "label": "Holiday Parties", "body": "Company holiday parties and year-end celebrations.", "href": "/private-events/holiday-parties" }
+        ]
+      },
+      "faqs": [
+        { "question": "Can I book Coco Maya for a business lunch in San Diego?", "answer": "Yes. Smaller business lunches can use Coco Maya's standard reservation flow, depending on availability." },
+        { "question": "Is Coco Maya suitable for a client dinner?", "answer": "Yes. Coco Maya hosts client dinners and business meals in Little Italy, with dinner, cocktails, and indoor or rooftop patio seating." },
+        { "question": "What if our business group needs private space?", "answer": "Groups that need dedicated space, custom planning, AV support, or a larger event format can use Coco Maya's corporate-events inquiry process." },
+        { "question": "Can we plan a team happy hour at Coco Maya?", "answer": "Yes. Coco Maya's weekday happy hour runs Monday through Friday from 4–6 PM. Reservations are recommended for groups." }
+      ],
+      "cta": {
+        "title": "Plan a Business Meal at Coco Maya",
+        "subtitle": "Reserve a table for a smaller meal or move into corporate-event planning when your group needs dedicated space or additional coordination.",
+        "primaryLabel": "Reserve a Table",
+        "primaryHref": "/reservations",
+        "secondaryLabel": "Corporate Events",
+        "secondaryHref": "/private-events/corporate-events"
+      }
+    },
+    "groupDining": {
+      "url": "/group-dining-little-italy-san-diego",
+      "breadcrumbLabel": "Group Dining",
+      "seo": {
+        "title": "Group Dining Little Italy San Diego | Coco Maya",
+        "description": "Plan group dining at Coco Maya in Little Italy, San Diego. Standard reservations for smaller parties plus private dining and event options for larger groups.",
+        "image": "/images/food-spread-overhead.jpg"
+      },
+      "hero": {
+        "label": "Group Dining · Little Italy San Diego",
+        "title": "Group Dining in Little Italy",
+        "titleSuffix": "From Dinner Reservations to Private Events",
+        "subtitle": "A clear path for dinner with friends, business groups, celebrations, and larger gatherings at Coco Maya.",
+        "image": "/images/food-spread-overhead.jpg",
+        "imageAlt": "Shared group dinner at Coco Maya in Little Italy San Diego",
+        "primaryLabel": "Reserve a Table",
+        "primaryHref": "/reservations",
+        "secondaryLabel": "Private Events",
+        "secondaryHref": "/private-events"
+      },
+      "infoCards": [
+        { "label": "Smaller Groups", "value": "Reserve", "sub": "Use standard reservations" },
+        { "label": "Larger Groups", "value": "Plan Ahead", "sub": "Private-event options available", "accent": true },
+        { "label": "Setting", "value": "Little Italy", "sub": "Indoor and rooftop options" }
+      ],
+      "intro": {
+        "label": "Dinner With a Group",
+        "title": "Choose the right booking path for your party",
+        "body1": "Group dining is not always the same thing as a private event. Smaller parties may only need a normal dinner reservation, while larger celebrations, business groups, and hosted gatherings may need dedicated space or a custom setup.",
+        "body2": "Coco Maya keeps those paths separate so you can start with the simplest option that fits the group and move into private-event planning only when the size or format calls for it.",
+        "image": "/images/venue-interior-dining.jpg",
+        "imageAlt": "Dining room at Coco Maya for group dining in Little Italy San Diego",
+        "ctaLabel": "See Dinner",
+        "ctaHref": "/dinner",
+        "secondaryLabel": "Explore Private Events",
+        "secondaryHref": "/private-events"
+      },
+      "useCases": {
+        "eyebrow": "Group Occasions",
+        "title": "One table, a team dinner, or a full celebration",
+        "items": [
+          { "label": "Friends & Family", "body": "Dinner for birthdays, reunions, visiting friends, and other social groups that fit a standard restaurant reservation." },
+          { "label": "Business Groups", "body": "Team dinners, client meals, and visiting colleagues who need a group-friendly restaurant in Little Italy." },
+          { "label": "Convention Groups", "body": "Conference attendees and exhibitors looking for a group meal away from the immediate Convention Center blocks." },
+          { "label": "Private Celebrations", "body": "When the group needs dedicated space, custom menus, or a larger format, use the private-events planning process." }
+        ]
+      },
+      "feature": {
+        "label": "When to Use Private Events",
+        "title": "More people or more moving parts?",
+        "body1": "If the gathering needs dedicated space, custom food and beverage planning, presentations, decor, or a larger guest count, private-event planning is the more appropriate path.",
+        "body2": "Coco Maya's private-event options include indoor, patio, and full-venue configurations, depending on the group and event format.",
+        "image": "/images/events-private-dining-1.jpg",
+        "imageAlt": "Private event dining setup for a large group at Coco Maya Little Italy",
+        "ctaLabel": "Explore Private Events",
+        "ctaHref": "/private-events",
+        "secondaryLabel": "Start Planning",
+        "secondaryHref": "/private-events/inquire"
+      },
+      "related": {
+        "eyebrow": "Group Options",
+        "title": "Continue planning",
+        "items": [
+          { "label": "Dinner", "body": "Dinner menu and restaurant experience in Little Italy.", "href": "/dinner" },
+          { "label": "Business Dining", "body": "Client lunches, team dinners, and work-related groups.", "href": "/business-dining-san-diego" },
+          { "label": "Holiday Parties", "body": "Company celebrations and year-end private events.", "href": "/private-events/holiday-parties" }
+        ]
+      },
+      "faqs": [
+        { "question": "Can I make a regular reservation for a group at Coco Maya?", "answer": "Yes. Smaller groups can use the standard reservation flow. Availability and seating options depend on the date and time." },
+        { "question": "When should a group use the private-events inquiry instead?", "answer": "Use the private-events inquiry when the gathering needs dedicated space, a custom event format, additional coordination, or a larger guest count than a standard reservation can reasonably support." },
+        { "question": "Can Coco Maya host a business group dinner?", "answer": "Yes. Coco Maya hosts business groups, client dinners, team meals, and larger corporate events in Little Italy." },
+        { "question": "Can convention groups dine at Coco Maya?", "answer": "Yes. Convention attendees and visiting teams can reserve for smaller groups or use group and corporate-event planning for larger gatherings." }
+      ],
+      "cta": {
+        "title": "Plan Group Dining in Little Italy",
+        "subtitle": "Start with a reservation for a smaller group or use private-event planning when the gathering needs dedicated space and coordination.",
+        "primaryLabel": "Reserve a Table",
+        "primaryHref": "/reservations",
+        "secondaryLabel": "Private Events",
+        "secondaryHref": "/private-events"
+      }
+    }
+  }
+}

@@ -15,6 +15,7 @@ import eventsPageData from './src/content/eventsPage.json';
 import spacePageData from './src/content/spacePage.json';
 import privateEventsIndexPageData from './src/content/privateEventsIndexPage.json';
 import privateEventDetailDefaultsData from './src/content/privateEventDetailDefaults.json';
+import commercialLandingPagesData from './src/content/commercialLandingPages.json';
 import eventInquiryPageData from './src/content/eventInquiryPage.json';
 import blogIndexPageData from './src/content/blogIndexPage.json';
 import blogPostDefaultsData from './src/content/blogPostDefaults.json';
@@ -302,7 +303,7 @@ export default config({
   ui: {
     brand: { name: 'Coco Maya Website CMS' },
     navigation: {
-      Website: ['home', 'about', 'contactPage', 'reservationsPage', 'faqPage', 'happyHourPage', 'brunchPage', 'menuPage', 'eventsPage', 'spacePage', 'privateEventsIndexPage', 'privateEventDetailDefaults', 'blogIndexPage', 'blogPostDefaults'],
+      Website: ['home', 'about', 'contactPage', 'reservationsPage', 'faqPage', 'happyHourPage', 'brunchPage', 'menuPage', 'eventsPage', 'spacePage', 'privateEventsIndexPage', 'privateEventDetailDefaults', 'commercialLandingPages', 'blogIndexPage', 'blogPostDefaults'],
       Menu: ['menuCocktails', 'menuDinner', 'menuBrunchDrinks', 'menuBrunchFood'],
       Events: ['recurringEvents', 'upcomingEvents', 'privateEventTypes', 'privateEventsProcessSteps', 'privateEventsCapacitySpecs'],
       FAQs: ['generalFaqs', 'happyHourFaqs'],
@@ -327,6 +328,7 @@ export default config({
     spacePage: jsonSingleton('The Space', 'spacePage', spacePageData),
     privateEventsIndexPage: jsonSingleton('Private Events', 'privateEventsIndexPage', privateEventsIndexPageData),
     privateEventDetailDefaults: jsonSingleton('Private Event Detail Defaults', 'privateEventDetailDefaults', privateEventDetailDefaultsData),
+    commercialLandingPages: jsonSingleton('Commercial Landing Pages', 'commercialLandingPages', commercialLandingPagesData),
     eventInquiryPage: jsonSingleton('Event Inquiry Page', 'eventInquiryPage', eventInquiryPageData),
     blogIndexPage: jsonSingleton('Blog', 'blogIndexPage', blogIndexPageData),
     blogPostDefaults: jsonSingleton('Blog Post Defaults', 'blogPostDefaults', blogPostDefaultsData),

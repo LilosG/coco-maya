@@ -1,0 +1,14 @@
+---
+import CommercialLandingPage from "../components/CommercialLandingPage.astro";
+import { getSingleton, resolveSiteTokens } from "../lib/content";
+
+const [SITE, rawPages] = await Promise.all([
+  getSingleton("siteSettings"),
+  getSingleton("commercialLandingPages")
+]);
+const pages = resolveSiteTokens(rawPages, SITE);
+const page = pages.businessDining;
+
+---
+
+<CommercialLandingPage page={page} site={SITE} />

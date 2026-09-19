@@ -62,6 +62,11 @@ const formattedDate = post.data.date.toLocaleDateString("en-US", {
   day: "numeric",
   year: "numeric",
 });
+const formattedUpdatedDate = (post.data.updatedDate ?? post.data.date).toLocaleDateString("en-US", {
+  month: "long",
+  day: "numeric",
+  year: "numeric",
+});
 ---
 <BaseLayout
   title={post.data.seoTitle}
@@ -83,8 +88,15 @@ const formattedDate = post.data.date.toLocaleDateString("en-US", {
   />
 
   <article class="py-20 px-6 bg-[var(--color-cream)]">
-    <div class="max-w-2xl mx-auto blog-content">
-      <Content />
+    <div class="max-w-2xl mx-auto">
+      <div class="article-meta" aria-label="Article information">
+        <span>By {SITE.fullName}</span>
+        <span aria-hidden="true">·</span>
+        <span>{post.data.updatedDate ? `Updated ${formattedUpdatedDate}` : `Published ${formattedDate}`}</span>
+      </div>
+      <div class="blog-content">
+        <Content />
+      </div>
     </div>
   </article>
 
@@ -110,6 +122,17 @@ const formattedDate = post.data.date.toLocaleDateString("en-US", {
 </BaseLayout>
 
 <style>
+  .article-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+    font-family: var(--font-stamp);
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: rgba(23, 20, 16, 0.5);
+  }
   .blog-content {
     font-family: var(--font-body);
     font-size: 1.0625rem;
@@ -124,6 +147,15 @@ const formattedDate = post.data.date.toLocaleDateString("en-US", {
     margin-top: 2.75rem;
     margin-bottom: 1.25rem;
     line-height: 1.2;
+  }
+  .blog-content :global(h3) {
+    font-family: var(--font-body);
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-dark);
+    margin-top: 2rem;
+    margin-bottom: 0.875rem;
+    line-height: 1.4;
   }
   .blog-content :global(p) {
     margin-bottom: 1.5rem;
