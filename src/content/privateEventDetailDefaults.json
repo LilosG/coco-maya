@@ -2,13 +2,28 @@
   "singleton": {
     "heroTitleSuffix": "in Little Italy, San Diego",
     "breadcrumbParentLabel": "Private Events",
-    "labels": { "startPlanning": "Start Planning", "guests": "Guests", "duration": "Typical Duration", "space": "Space", "location": "Little Italy · San Diego", "email": "Email Us", "allEvents": "All Private Events", "setting": "The Setting", "included": "What's Included", "questions": "Questions" },
-    "closerLookTemplate": "A Closer Look at {{eventName}} in Little Italy",
-    "builtForTemplate": "Built for {{eventNameLower}} in Little Italy, San Diego",
+    "labels": {
+      "startPlanning": "Start Planning",
+      "guests": "Guests",
+      "duration": "Typical Duration",
+      "space": "Space",
+      "location": "Little Italy · San Diego",
+      "email": "Email Us",
+      "allEvents": "All Private Events",
+      "setting": "The Setting",
+      "included": "What's Included",
+      "questions": "Questions"
+    },
+    "closerLookTemplate": "The Setting for {{eventName}}",
+    "builtForTemplate": "What's Included for {{eventName}}",
     "faqTitleTemplate": "{{eventName}} FAQ",
     "formLabelTemplate": "Book Your {{eventName}}",
     "formSubtitle": "Share your date, headcount, and vision, and we'll follow up within 24 hours.",
     "formCtaLabel": "Inquire About Your Event",
-    "cta": { "titleTemplate": "Ready to Plan {{eventName}}?", "subtitleTemplate": "Tell us about your {{eventNameLower}} and we'll put together a custom proposal.", "primaryLabel": "Email Us" }
+    "cta": {
+      "titleTemplate": "Ready to Plan {{eventName}}?",
+      "subtitleTemplate": "Tell us about your {{eventNameLower}} and we'll put together a custom proposal.",
+      "primaryLabel": "Email Us"
+    }
   }
 }
