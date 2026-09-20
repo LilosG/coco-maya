@@ -4,6 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import PageHero from "../../components/PageHero.astro";
+import TrustBar from "../../components/TrustBar.astro";
 import CTASection from "../../components/CTASection.astro";
 import FAQSection from "../../components/FAQSection.astro";
 import EventInquiryForm from "../../components/EventInquiryForm.astro";
@@ -49,12 +50,16 @@ const inquiryHref = "/private-events/inquire";
     subtitle={event.shortDescription}
     image={event.heroImage}
     imageAlt={event.heroImageAlt}
+    imageFocus={event.heroImageFocus ?? "50% 50%"}
+    imageFocusMobile={event.heroImageFocusMobile ?? event.heroImageFocus ?? "50% 50%"}
   >
     <div class="flex flex-col sm:flex-row flex-wrap gap-4 mt-8 justify-center">
       <a href={inquiryHref} class="btn-primary">{defaults.labels.startPlanning}</a>
       <a href={`tel:${SITE.phone.tel}`} class="btn-ghost">{SITE.phone.display}</a>
     </div>
   </PageHero>
+
+  <TrustBar site={SITE} />
 
   <!-- SPECS -->
   <section class="py-16 px-6 bg-[var(--color-cream)]">

@@ -9,10 +9,12 @@ interface Props {
   image?: string;
   imageAlt?: string;
   imagePosition?: string;
+  imageFocus?: string;
+  imageFocusMobile?: string;
   tall?: boolean;
   longTitle?: boolean;
 }
-const { label, title, titleSuffix, subtitle, image, imageAlt = "", imagePosition = "object-center", tall = false, longTitle = false } = Astro.props;
+const { label, title, titleSuffix, subtitle, image, imageAlt = "", imagePosition = "object-center", imageFocus = "50% 50%", imageFocusMobile = imageFocus, tall = false, longTitle = false } = Astro.props;
 ---
 
 <section class:list={[
@@ -24,7 +26,8 @@ const { label, title, titleSuffix, subtitle, image, imageAlt = "", imagePosition
       <Picture
         src={image}
         alt={imageAlt}
-        class={`w-full h-full object-cover ${imagePosition}`}
+        class={`hero-image w-full h-full object-cover ${imagePosition}`}
+        style={`--hero-focus: ${imageFocus}; --hero-focus-mobile: ${imageFocusMobile};`}
         width="1800" height="900"
         fetchpriority="high"
         loading="eager"
@@ -64,3 +67,10 @@ const { label, title, titleSuffix, subtitle, image, imageAlt = "", imagePosition
     <slot />
   </div>
 </section>
+
+<style>
+  .hero-image { object-position: var(--hero-focus-mobile, 50% 50%); }
+  @media (min-width: 768px) {
+    .hero-image { object-position: var(--hero-focus, 50% 50%); }
+  }
+</style>
