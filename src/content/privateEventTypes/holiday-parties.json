@@ -10,8 +10,8 @@
   "seoDescription": "Plan a company holiday party or year-end celebration at Coco Maya in Little Italy, San Diego. Private dining, patio, custom menus, and full-venue options.",
   "intro": [
     "Coco Maya hosts company holiday parties, year-end dinners, team celebrations, and client gatherings in Little Italy for groups from approximately 20 guests up to 180 guests depending on the space and format.",
-    "Use the private dining room for a more focused seated dinner, the elevated patio for a social celebration, or a larger venue configuration when the group needs more room to circulate. Holiday events can be structured around dinner, cocktails, remarks, recognition, or a hybrid format.",
-    "The event team can coordinate custom menus and drink packages, dietary requirements, timing, seating, basic AV needs, decor or outside-vendor logistics, and centralized company billing so the operational details are handled before guests arrive."
+    "The setting can be matched to the event: a more focused private dining experience, an elevated patio gathering, or a larger venue configuration when the group needs room for cocktails, dinner, remarks, recognition, and social time in one place.",
+    "Food and beverage can be planned around seated dinners, reception-style service, or a hybrid format. The event team can also coordinate dietary requirements, timing, seating, basic AV needs, decor or outside-vendor logistics, and centralized company billing before the event."
   ],
   "relatedPost": {
     "label": "Read the Corporate Holiday Party Guide",
@@ -25,23 +25,23 @@
   "highlights": [
     {
       "label": "20–180 Guest Options",
-      "detail": "Holiday-event configurations can scale from planned company dinners to larger full-venue celebrations, with the right setup determined by headcount and event format."
+      "detail": "Coco Maya can scale from a planned company dinner to a larger full-venue celebration. The right configuration depends on headcount, service style, and how much of the evening needs to be programmed."
     },
     {
-      "label": "Private Dining or Rooftop Patio",
-      "detail": "Choose a more focused indoor dinner, a social patio gathering, or a larger venue configuration depending on how you want guests to interact."
+      "label": "Private Dining & Rooftop Options",
+      "detail": "Choose a more focused indoor dinner, a social patio gathering, or a larger venue configuration depending on whether the priority is conversation, cocktails, presentations, or a full celebration."
     },
     {
-      "label": "Custom Menus & Drink Packages",
-      "detail": "Food and beverage can be planned around seated dinners, cocktail-style gatherings, or hybrid events, with dietary requirements coordinated in advance."
+      "label": "Custom Food & Beverage",
+      "detail": "Menus and drink packages can be planned around seated dinners, cocktail-style gatherings, or a mix of both, with dietary requirements addressed during planning."
     },
     {
       "label": "AV, Decor & Vendor Coordination",
-      "detail": "For leadership remarks, recognition, presentations, florals, photography, or outside vendors, share the requirements early so the space and service timeline can be planned around them."
+      "detail": "For leadership remarks, recognition, presentations, florals, photography, or outside vendors, share those requirements early so the space and service timeline can be built around them."
     },
     {
       "label": "Company Billing & Event Coordination",
-      "detail": "Larger company gatherings can be planned with centralized billing, coordinated timing, and one event-planning path instead of several separate restaurant reservations."
+      "detail": "Larger company gatherings can use centralized billing and a single event-planning path instead of managing multiple restaurant reservations, tabs, and timing separately."
     }
   ],
   "galleryImage": "/images/venue-interior-dining.jpg",
@@ -84,5 +84,7 @@
       "question": "How far in advance should we inquire about a holiday party?",
       "answer": "Earlier is better for preferred November and December dates, especially for larger groups and weekend events. Availability varies, so send your date and expected headcount as soon as your planning window is established."
     }
-  ]
+  ],
+  "heroImageFocus": "50% 38%",
+  "heroImageFocusMobile": "50% 34%"
 }
