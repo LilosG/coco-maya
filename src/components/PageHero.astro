@@ -29,7 +29,7 @@ const mobileFocus = imageFocusMobile ?? imageFocus ?? "50% 50%";
       <Picture
         src={image}
         alt={imageAlt}
-        class:list={["w-full h-full object-cover", imagePosition, hasCustomFocus && "hero-image--focused"]}
+        class={`${hasCustomFocus ? "hero-image--focused " : ""}w-full h-full object-cover ${imagePosition}`}
         style={hasCustomFocus ? `--hero-focus: ${desktopFocus}; --hero-focus-mobile: ${mobileFocus};` : undefined}
         width="1800" height="900"
         fetchpriority="high"
