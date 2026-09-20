@@ -114,12 +114,13 @@ const schema = [
         <Picture
           src={page.logistics.image}
           alt={page.logistics.imageAlt}
-          class="w-full aspect-[16/10] object-cover"
+          class="w-full aspect-[4/5] object-cover"
           style="object-position: center 50%;"
-          width="800"
-          height="500"
+          width="700"
+          height="875"
           loading="lazy"
         />
+        <div class="absolute -bottom-4 -left-4 w-full h-full border border-[var(--color-teal)]/20 -z-10 pointer-events-none"></div>
       </div>
       <div class="lg:order-2 order-1">
         <span class="eyebrow">{page.logistics.label}</span>
