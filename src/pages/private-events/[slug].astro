@@ -53,6 +53,7 @@ const inquiryHref = "/private-events/inquire";
     imageFocus={event.heroImageFocus ?? "50% 50%"}
     imageFocusMobile={event.heroImageFocusMobile ?? event.heroImageFocus ?? "50% 50%"}
     tall={true}
+    longTitle={event.longTitle ?? false}
   >
     <div class="flex flex-col sm:flex-row flex-wrap gap-4 mt-8 justify-center">
       <a href={inquiryHref} class="btn-primary">{defaults.labels.startPlanning}</a>
