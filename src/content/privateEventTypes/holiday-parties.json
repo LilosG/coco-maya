@@ -3,15 +3,15 @@
   "slug": "holiday-parties",
   "name": "Holiday Parties & Company Celebrations",
   "eyebrow": "Holiday Parties in Little Italy",
-  "shortDescription": "Company holiday parties, year-end dinners, and team celebrations with private dining, patio, and full-venue options in Little Italy.",
+  "shortDescription": "Company holiday parties, year-end dinners, client celebrations, and team gatherings with private dining, patio, and full-venue options for 20 to 180 guests in Little Italy.",
   "heroImage": "/images/coco-maya-holiday-parties-hero.avif",
   "heroImageAlt": "Company holiday party guests dining around a decorated table at Coco Maya in Little Italy San Diego",
   "seoTitle": "Holiday Party Venue San Diego | Company Celebrations | Coco Maya",
   "seoDescription": "Plan a company holiday party or year-end celebration at Coco Maya in Little Italy, San Diego. Private dining, patio, custom menus, and full-venue options.",
   "intro": [
-    "Bring the team together for a holiday dinner, year-end celebration, client gathering, or company party in the heart of Little Italy. Coco Maya offers flexible private-event spaces for groups that want something more distinctive than a traditional banquet room.",
-    "Choose an intimate dining setup, an elevated patio gathering, or a larger venue configuration based on your headcount and the way you want the event to feel. Our team can coordinate the menu, drinks, timing, and event details around your group.",
-    "Holiday bookings can be built around a seated dinner, cocktail-style gathering, team celebration, or larger company event. Tell us your date, expected guest count, and priorities, and we will help match the format to the right space."
+    "Coco Maya's holiday-party program is built for companies that want a year-end gathering to feel like a night out in San Diego rather than another hotel or conference-room function. Groups can plan a seated dinner, cocktail-style celebration, client event, or a larger company party around the size and purpose of the gathering.",
+    "Private-event configurations range from approximately 20 guests to full-venue events of up to 180, with private dining, patio, and larger venue options available depending on the format. The team can coordinate custom food and beverage service, dietary needs, timing, seating, decor or vendor requirements, and the flow of the evening.",
+    "For business groups that need more structure, Coco Maya's corporate-event capabilities include centralized billing and itemized invoices, daytime availability, Wi-Fi, and basic AV support in the private dining room when arranged in advance. That makes the same venue workable for a leadership dinner, client appreciation event, awards gathering, or full-company holiday celebration."
   ],
   "relatedPost": {
     "label": "Read the Corporate Holiday Party Guide",
@@ -24,24 +24,28 @@
   },
   "highlights": [
     {
-      "label": "Flexible Event Spaces",
-      "detail": "Choose private dining, patio space, or a larger venue configuration based on your group size and event format."
+      "label": "Private Dining, Patio, or Full Venue",
+      "detail": "Match the space to the event rather than forcing every company into the same format. Holiday configurations can scale from a planned dinner to a larger full-venue celebration."
     },
     {
       "label": "Custom Menus & Drink Packages",
-      "detail": "Build food and beverage service around a seated dinner, social gathering, or company-wide celebration."
+      "detail": "Build food and beverage service around a seated dinner, cocktail-style gathering, or hybrid event, with dietary requirements incorporated during planning."
     },
     {
       "label": "Company & Client Celebrations",
-      "detail": "Host team dinners, year-end gatherings, client appreciation events, and broader seasonal celebrations without limiting the event to one holiday."
+      "detail": "Use the space for team dinners, year-end parties, client appreciation events, leadership gatherings, awards, and broader seasonal celebrations."
     },
     {
-      "label": "Event Coordination",
-      "detail": "Our team can coordinate timing, seating, vendor details, and other event logistics from planning through service."
+      "label": "Centralized Business Billing",
+      "detail": "Corporate groups can coordinate centralized billing and itemized invoicing so expense reporting is handled as part of the event plan rather than at the end of the night."
     },
     {
-      "label": "AV & Vendor Coordination",
-      "detail": "For events that need presentations, remarks, decor, or outside vendors, share the requirements in advance so the setup can be planned with the venue."
+      "label": "AV, Decor & Vendor Coordination",
+      "detail": "Basic AV can be coordinated in the private dining room, and the event team can plan around remarks, decor, florals, photography, or other approved outside vendors."
+    },
+    {
+      "label": "Daytime or Evening Formats",
+      "detail": "Coco Maya is open daily, creating options for holiday brunches, lunches, afternoon gatherings, happy-hour events, and traditional evening celebrations."
     }
   ],
   "galleryImage": "/images/venue-interior-dining.jpg",
@@ -83,6 +87,15 @@
     {
       "question": "How far in advance should we inquire about a holiday party?",
       "answer": "Earlier is better for preferred November and December dates, especially for larger groups and weekend events. Availability varies, so send your date and expected headcount as soon as your planning window is established."
+    },
+    {
+      "question": "Can Coco Maya handle company billing for a holiday party?",
+      "answer": "Yes. Corporate events can use centralized billing and itemized invoices, which can simplify expense reporting and reimbursement for company-hosted events."
+    },
+    {
+      "question": "Can we include remarks or a presentation during the event?",
+      "answer": "Yes. Basic AV support is available in the private dining room when requirements are confirmed in advance. Share presentation, timing, and equipment needs during planning so service and AV can be coordinated together."
     }
-  ]
-}
+  ],
+  "showTrustBar": true
+}\n

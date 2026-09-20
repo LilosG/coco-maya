@@ -1,14 +1,72 @@
 ---
-import CommercialLandingPage from "../components/CommercialLandingPage.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Nav from "../components/Nav.astro";
+import Footer from "../components/Footer.astro";
+import PageHero from "../components/PageHero.astro";
+import TrustBar from "../components/TrustBar.astro";
+import ContainedFeature from "../components/ContainedFeature.astro";
+import FullBleedFeature from "../components/FullBleedFeature.astro";
+import ContentCard from "../components/ContentCard.astro";
+import InfoCard from "../components/InfoCard.astro";
+import FAQSection from "../components/FAQSection.astro";
+import CTASection from "../components/CTASection.astro";
 import { getSingleton, resolveSiteTokens } from "../lib/content";
+import { breadcrumbSchema, faqPageSchema } from "../lib/schema";
 
-const [SITE, rawPages] = await Promise.all([
-  getSingleton("siteSettings"),
-  getSingleton("commercialLandingPages")
-]);
-const pages = resolveSiteTokens(rawPages, SITE);
-const page = pages.conventionDining;
-
+const [SITE, rawPages] = await Promise.all([getSingleton("siteSettings"), getSingleton("commercialLandingPages")]);
+const page = resolveSiteTokens(rawPages, SITE).conventionDining;
+const schema = [
+  breadcrumbSchema([{ name: SITE.breadcrumbs.home, url: SITE.url }, { name: page.breadcrumbLabel, url: `${SITE.url}${page.url}` }]),
+  faqPageSchema(page.faqs),
+];
 ---
 
-<CommercialLandingPage page={page} site={SITE} />
+<BaseLayout title={page.seo.title} description={page.seo.description} image={page.seo.image} extraSchema={schema}>
+  <Nav />
+  <PageHero label={page.hero.label} title={page.hero.title} titleSuffix={page.hero.titleSuffix} subtitle={page.hero.subtitle} image={page.hero.image} imageAlt={page.hero.imageAlt} tall={true}>
+    <div class="flex flex-col sm:flex-row flex-wrap gap-4 mt-8 justify-center">
+      <a href={SITE.reservations.url} target="_blank" rel="noopener noreferrer" class="btn-primary">{page.hero.primaryLabel}</a>
+      <a href={page.hero.secondaryHref} class="btn-ghost">{page.hero.secondaryLabel}</a>
+    </div>
+  </PageHero>
+
+  <TrustBar site={SITE} />
+
+  <ContainedFeature label={page.intro.label} title={page.intro.title} body1={page.intro.body1} body2={page.intro.body2} image={page.intro.image} imageAlt={page.intro.imageAlt} ctaLabel={page.intro.ctaLabel} ctaHref={page.intro.ctaHref} secondaryLabel={page.intro.secondaryLabel} secondaryHref={page.intro.secondaryHref} />
+
+  <section class="py-24 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-14">
+        <span class="eyebrow">Convention Week Dining</span>
+        <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.25rem)] text-[var(--color-dark)]">Match the meal to the time you actually have</h2>
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/60 leading-relaxed mt-4 max-w-3xl mx-auto">A quick break between sessions, a client meal, post-show drinks, and a hosted company dinner are different planning problems. Choose the booking path around the purpose of the meal rather than treating every convention group the same.</p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">{page.useCases.items.map((item: any) => <ContentCard label={item.label} body={item.body} />)}</div>
+    </div>
+  </section>
+
+  <section class="py-16 px-6 bg-[var(--color-sand-dark)]/25">
+    <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5">
+      <InfoCard label="Daytime Dining" value={SITE.service.brunch.shortTagline} sub="Useful for client lunches and working meals" />
+      <InfoCard label="After Sessions" value={SITE.service.happyHour.shortTagline} sub="Weekday drinks and bites" accent={true} />
+      <InfoCard label="Dinner" value={SITE.service.dinner.shortTagline} sub="Client dinners and team meals" />
+    </div>
+  </section>
+
+  <FullBleedFeature label={page.feature.label} title={page.feature.title} body1={page.feature.body1} body2={page.feature.body2} image={page.feature.image} imageAlt={page.feature.imageAlt} imagePosition="center" reverse={true} ctaLabel={page.feature.ctaLabel} ctaHref={page.feature.ctaHref} secondaryLabel={page.feature.secondaryLabel} secondaryHref={page.feature.secondaryHref} />
+
+  <section class="py-20 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12"><span class="eyebrow">{page.related.eyebrow}</span><h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3rem)] text-[var(--color-dark)]">{page.related.title}</h2></div>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+        {page.related.items.map((item: any) => (
+          <a href={item.href} class="cc-card group block"><div class="cc-card__bar"></div><div class="cc-card__body"><span class="cc-card__label">{item.label}</span><p class="cc-card__text">{item.body}</p><span class="font-[family-name:var(--font-body)] text-[var(--color-teal)] text-sm mt-5 inline-block group-hover:underline">Learn More</span></div></a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FAQSection faqs={page.faqs} label="Convention Dining" title="Planning Around the Convention Center" />
+  <CTASection title={page.cta.title} subtitle={page.cta.subtitle} primaryLabel={page.cta.primaryLabel} primaryHref={SITE.reservations.url} secondaryLabel={page.cta.secondaryLabel} secondaryHref={page.cta.secondaryHref} dark={true} />
+  <Footer />
+</BaseLayout>
