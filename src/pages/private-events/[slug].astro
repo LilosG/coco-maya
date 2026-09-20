@@ -56,6 +56,8 @@ const inquiryHref = "/private-events/inquire";
     </div>
   </PageHero>
 
+  {event.showTrustBar && <TrustBar site={SITE} />}
+
   <!-- SPECS -->
   <section class="py-16 px-6 bg-[var(--color-cream)]">
     <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5">
