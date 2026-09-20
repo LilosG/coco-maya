@@ -19,7 +19,7 @@ const { label, title, titleSuffix, subtitle, image, imageAlt = "", imagePosition
 
 <section class:list={[
   "relative overflow-hidden flex items-center justify-center",
-  longTitle ? "min-h-[55vh]" : (tall ? "min-h-[90vh]" : "min-h-[70vh]")
+  tall ? "min-h-[90vh]" : "min-h-[70vh]"
 ]}>
   {image && (
     <div class="absolute inset-0">
