@@ -1,13 +1,13 @@
 ---
+import Picture from "../components/Picture.astro";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import PageHero from "../components/PageHero.astro";
 import TrustBar from "../components/TrustBar.astro";
 import InfoCard from "../components/InfoCard.astro";
-import ContainedFeature from "../components/ContainedFeature.astro";
-import FullBleedFeature from "../components/FullBleedFeature.astro";
 import ContentCard from "../components/ContentCard.astro";
+import FullBleedFeature from "../components/FullBleedFeature.astro";
 import FAQSection from "../components/FAQSection.astro";
 import CTASection from "../components/CTASection.astro";
 import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../lib/content";
@@ -30,6 +30,7 @@ const schema = [
 ---
 <BaseLayout title={page.seo.title} description={page.seo.description} image={page.seo.image} extraSchema={schema}>
   <Nav />
+
   <PageHero
     label={page.hero.label}
     title={page.hero.title}
@@ -37,6 +38,8 @@ const schema = [
     subtitle={page.hero.subtitle}
     image={page.hero.image}
     imageAlt={page.hero.imageAlt}
+    imageFocus={page.hero.imageFocus}
+    imageFocusMobile={page.hero.imageFocusMobile}
     longTitle={true}
   >
     <div class="flex flex-col sm:flex-row flex-wrap gap-4 mt-8 justify-center">
@@ -53,18 +56,33 @@ const schema = [
     </div>
   </section>
 
-  <ContainedFeature
-    label={page.intro.label}
-    title={page.intro.title}
-    body1={page.intro.body1}
-    body2={page.intro.body2}
-    image={page.intro.image}
-    imageAlt={page.intro.imageAlt}
-    ctaLabel="See Dinner"
-    ctaHref="/dinner"
-    secondaryLabel="Reserve a Table"
-    secondaryHref={SITE.reservations.url}
-  />
+  <section class="py-24 px-6 bg-[var(--color-cream)]">
+    <div class="max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <span class="eyebrow">{page.intro.label}</span>
+        <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2.25rem,4vw,3.5rem)] text-[var(--color-dark)] leading-tight mb-6">{page.intro.title}</h2>
+        <div class="rule"></div>
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-5 text-[1.0625rem]">{page.intro.body1}</p>
+        <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/65 leading-relaxed mb-10 text-[1.0625rem]">{page.intro.body2}</p>
+        <div class="flex flex-wrap gap-4">
+          <a href="/dinner" class="btn-primary">See Dinner</a>
+          <a href="/happy-hour" class="btn-outline">After-Work Happy Hour</a>
+        </div>
+      </div>
+      <div class="relative">
+        <Picture
+          src={page.intro.image}
+          alt={page.intro.imageAlt}
+          class="w-full aspect-[4/5] object-cover"
+          style="object-position: center 48%;"
+          width="700"
+          height="875"
+          loading="lazy"
+        />
+        <div class="absolute -bottom-4 -right-4 w-full h-full border border-[var(--color-teal)]/20 -z-10 pointer-events-none"></div>
+      </div>
+    </div>
+  </section>
 
   <section class="py-24 px-6 bg-[var(--color-sand-dark)]/30">
     <div class="max-w-5xl mx-auto">
@@ -81,18 +99,18 @@ const schema = [
   {corporate && (
     <section class="py-24 px-6 bg-[var(--color-cream)]">
       <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-14">
-          <span class="eyebrow">Corporate Event Support</span>
-          <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3rem)] text-[var(--color-dark)]">When a business meal becomes a hosted event</h2>
-          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/55 max-w-2xl mx-auto mt-4 leading-relaxed">
-            Coco Maya's existing corporate-event program adds operational support when the group needs more than a normal restaurant reservation.
+        <div class="max-w-3xl mx-auto text-center mb-14">
+          <span class="eyebrow">Corporate Events at Coco Maya</span>
+          <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3rem)] text-[var(--color-dark)]">When the meal needs dedicated space and event support</h2>
+          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/60 mt-5 leading-relaxed">
+            Coco Maya's established corporate-event program covers the requirements that go beyond a normal restaurant reservation, including dedicated space, menu planning, AV needs, and centralized company billing.
           </p>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
           {corporate.highlights.slice(0,4).map((item: any) => <ContentCard label={item.label} body={item.detail} />)}
         </div>
         <div class="flex justify-center mt-10">
-          <a href="/private-events/corporate-events" class="btn-outline">Explore Corporate Events</a>
+          <a href="/private-events/corporate-events" class="btn-primary">Explore Corporate Events</a>
         </div>
       </div>
     </section>
@@ -105,6 +123,7 @@ const schema = [
     body2={page.feature.body2}
     image={page.feature.image}
     imageAlt={page.feature.imageAlt}
+    imagePosition="center 45%"
     ctaLabel={page.feature.ctaLabel}
     ctaHref={page.feature.ctaHref}
     secondaryLabel={page.feature.secondaryLabel}
@@ -112,17 +131,23 @@ const schema = [
   />
 
   <section class="py-20 px-6 bg-[var(--color-cream)]">
-    <div class="max-w-5xl mx-auto grid md:grid-cols-3 gap-6">
-      {page.related.items.map((item: any) => (
-        <a href={item.href} class="cc-card group block">
-          <div class="cc-card__bar"></div>
-          <div class="cc-card__body">
-            <span class="cc-card__label">{item.label}</span>
-            <p class="cc-card__text">{item.body}</p>
-            <span class="text-[var(--color-teal)] text-sm mt-5 inline-block group-hover:underline">Learn More</span>
-          </div>
-        </a>
-      ))}
+    <div class="max-w-5xl mx-auto">
+      <div class="text-center mb-12">
+        <span class="eyebrow">{page.related.eyebrow}</span>
+        <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3rem)] text-[var(--color-dark)]">{page.related.title}</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        {page.related.items.map((item: any) => (
+          <a href={item.href} class="cc-card group block">
+            <div class="cc-card__bar"></div>
+            <div class="cc-card__body">
+              <span class="cc-card__label">{item.label}</span>
+              <p class="cc-card__text">{item.body}</p>
+              <span class="text-[var(--color-teal)] text-sm mt-5 inline-block group-hover:underline">Learn More</span>
+            </div>
+          </a>
+        ))}
+      </div>
     </div>
   </section>
 
