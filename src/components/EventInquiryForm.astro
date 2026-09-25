@@ -65,10 +65,12 @@ const {
   }
 
   .eif-cta {
+    position: relative;
     max-width: 680px;
     margin: 0 auto;
     background: white;
-    box-shadow: 0 4px 16px rgba(23, 20, 16, 0.06), 0 24px 64px rgba(23, 20, 16, 0.12);
+    border: 1px solid var(--border-elevated);
+    box-shadow: var(--shadow-elevated);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -82,10 +84,7 @@ const {
     right: 0;
     height: 4px;
     background: linear-gradient(to right, var(--color-teal), var(--color-teal-light));
-  }
-
-  .eif-cta {
-    position: relative;
+    box-shadow: 0 1px 8px rgba(61,138,138,0.4);
   }
 
   .eif-cta-btn {
