@@ -4,6 +4,7 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import PageHero from "../../components/PageHero.astro";
+import TrustBar from "../../components/TrustBar.astro";
 import CTASection from "../../components/CTASection.astro";
 import EventInquiryForm from "../../components/EventInquiryForm.astro";
 import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../../lib/content";
@@ -34,6 +35,7 @@ const schema = [
     imageAlt={page.hero.imageAlt}
     tall={true}
   />
+  <TrustBar site={SITE} />
 
   <section class="py-24 px-6 bg-[var(--color-cream)]">
     <div class="max-w-6xl mx-auto">

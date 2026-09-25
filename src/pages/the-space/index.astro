@@ -5,6 +5,7 @@ import Footer from "../../components/Footer.astro";
 import PageHero from "../../components/PageHero.astro";
 import FullBleedFeature from "../../components/FullBleedFeature.astro";
 import ContainedFeature from "../../components/ContainedFeature.astro";
+import TrustBar from "../../components/TrustBar.astro";
 import CTASection from "../../components/CTASection.astro";
 import { getOrderedCollection, getSingleton } from "../../lib/content";
 import { breadcrumbSchema } from "../../lib/schema";
@@ -90,6 +91,8 @@ const schema = [
       secondaryHref="/happy-hour"
     />
   )}
+
+  <TrustBar site={SITE} />
 
   <CTASection
     title={page.cta.title}

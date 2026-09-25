@@ -4,6 +4,7 @@ import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import CTASection from "../../components/CTASection.astro";
 import PageHero from "../../components/PageHero.astro";
+import TrustBar from "../../components/TrustBar.astro";
 import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../../lib/content";
 import { breadcrumbSchema, menuSchema } from "../../lib/schema";
 import Picture from "../../components/Picture.astro";
@@ -40,6 +41,7 @@ const schema = [
     imageAlt={page.hero.imageAlt}
     tall={false}
   />
+  <TrustBar site={SITE} />
 
   <div class="sticky top-0 z-30 bg-[var(--color-cream)]/97 backdrop-blur-md border-b border-[var(--color-teal)]/12 shadow-sm">
     <div class="max-w-7xl mx-auto px-6 flex gap-8 overflow-x-auto py-4">

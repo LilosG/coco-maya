@@ -1,8 +1,26 @@
 ---
 import { getTodayHours } from "../lib/content";
 
+interface TrustBarSite {
+  trustBar: {
+    hoursLabel: string;
+    closed: string;
+    rooftopLabel: string;
+    rooftopSub: string;
+    brunchLabel: string;
+    brunchSub: string;
+    locationLabel: string;
+    locationSubTemplate: string;
+  };
+  hours: Array<{ day: string; open: boolean; hours: string }>;
+  weekdaysSundayFirst: string[];
+  serviceMessaging: { openDaily: string };
+  service: { brunch: { shortTagline: string } };
+  address: { neighborhood: string; street: string; mapsUrl: string };
+}
+
 interface Props {
-  site: any;
+  site: TrustBarSite;
 }
 const { site } = Astro.props;
 
@@ -19,25 +37,27 @@ const items = [
 ];
 ---
 
-<section class="bg-[var(--color-teal)]">
-  <div class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-2 lg:grid-cols-4 divide-x divide-white/20">
+<section class="bg-[var(--color-teal)]" aria-label="Restaurant hours and info">
+  <dl class="max-w-7xl mx-auto px-6 lg:px-10 grid grid-cols-2 sm:grid-cols-4 divide-x divide-white/20">
     {items.map((item) => (
       <div class="flex flex-col items-center justify-center py-6 px-4 text-center">
-        <span class="eyebrow-light mb-2" style="color: rgba(255,255,255,0.55);">{item.label}</span>
-        {item.href ? (
-          <a
-            href={item.href}
-            target={item.href.startsWith("http") ? "_blank" : undefined}
-            rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
-            class="font-[family-name:var(--font-display)] italic text-white text-xl hover:text-white/80 transition-colors leading-tight"
-          >
-            {item.value}
-          </a>
-        ) : (
-          <p class="font-[family-name:var(--font-display)] italic text-white text-xl leading-tight">{item.value}</p>
-        )}
-        {item.sub && <p class="text-white/50 text-xs font-[family-name:var(--font-body)] mt-1">{item.sub}</p>}
+        <dt class="eyebrow-light mb-2 text-white/55">{item.label}</dt>
+        <dd>
+          {item.href ? (
+            <a
+              href={item.href}
+              target={item.href.startsWith("http") ? "_blank" : undefined}
+              rel={item.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              class="font-[family-name:var(--font-display)] italic text-white text-xl hover:text-white/80 transition-colors leading-tight"
+            >
+              {item.value}
+            </a>
+          ) : (
+            <p class="font-[family-name:var(--font-display)] italic text-white text-xl leading-tight">{item.value}</p>
+          )}
+          {item.sub && <p class="text-white/50 text-xs font-[family-name:var(--font-body)] mt-1">{item.sub}</p>}
+        </dd>
       </div>
     ))}
-  </div>
+  </dl>
 </section>
