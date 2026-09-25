@@ -84,6 +84,7 @@ const privateEventsProcessSteps = jsonEntryCollection("./src/content/privateEven
 const privateEventsCapacitySpecs = jsonEntryCollection("./src/content/privateEventsCapacitySpecs");
 const generalFaqs = jsonEntryCollection("./src/content/generalFaqs");
 const happyHourFaqs = jsonEntryCollection("./src/content/happyHourFaqs");
+const eventsFaqs = jsonEntryCollection("./src/content/eventsFaqs");
 const theSpaceSections = jsonEntryCollection("./src/content/theSpaceSections");
 
 export const collections = {
@@ -118,5 +119,6 @@ export const collections = {
   privateEventsCapacitySpecs,
   generalFaqs,
   happyHourFaqs,
+  eventsFaqs,
   theSpaceSections,
 };

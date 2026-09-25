@@ -80,13 +80,24 @@ function nextOccurrenceISO(daysOfWeek: string[], time: string): string {
   return now.toISOString();
 }
 
+export interface RecurringEventSchedule {
+  daysOfWeek: string[]; // e.g. ["Monday", "Tuesday", ...]
+  startTime: string; // 24hr "HH:MM"
+  endTime: string; // 24hr "HH:MM"
+}
+
 export interface RecurringEventInput {
   name: string;
   description: string;
   url: string;
-  daysOfWeek: string[]; // e.g. ["Monday", "Tuesday", ...]
-  startTime: string; // 24hr "HH:MM"
-  endTime: string; // 24hr "HH:MM"
+  /**
+   * One or more weekly schedules. Most recurring offers (happy hour) run a
+   * single schedule; ones whose hours actually vary by day (brunch closes
+   * earlier some days, dinner runs later Thu-Sat) should pass one entry per
+   * distinct day-group instead of averaging/rounding to a single window --
+   * structured data must match what's stated on the page, not approximate it.
+   */
+  schedules: RecurringEventSchedule[];
   address: {
     streetAddress: string;
     addressLocality: string;
@@ -99,21 +110,28 @@ export interface RecurringEventInput {
 
 /**
  * Builds a schema.org Event with a recurring weekly eventSchedule, for
- * ongoing specials like a weekday happy hour. Distinct from the sitewide
- * Restaurant schema's general opening hours -- this tells search engines
- * and AI answer engines (AEO/GEO) about the specific recurring offer
- * itself, not just when the doors are open.
+ * ongoing specials like a weekday happy hour or daily brunch. Distinct from
+ * the sitewide Restaurant schema's general opening hours -- this tells
+ * search engines and AI answer engines (AEO/GEO) about the specific
+ * recurring offer itself, not just when the doors are open.
  *
  * Google's Event structured data requires a top-level startDate even when
  * eventSchedule is used for recurrence ("The startDate property is
  * required to help identify the unique event" -- Google never wants it
  * removed, even for cancelled events). startDate/endDate here are computed
- * as the next upcoming occurrence, giving Google a concrete, always-valid
- * anchor date without claiming a false historical start.
+ * as the earliest upcoming occurrence across all schedules, giving Google a
+ * concrete, always-valid anchor date without claiming a false historical
+ * start.
  */
 export function recurringEventSchema(input: RecurringEventInput) {
-  const startDate = nextOccurrenceISO(input.daysOfWeek, input.startTime);
-  const endDate = nextOccurrenceISO(input.daysOfWeek, input.endTime);
+  const occurrences = input.schedules
+    .map((s) => ({
+      start: nextOccurrenceISO(s.daysOfWeek, s.startTime),
+      end: nextOccurrenceISO(s.daysOfWeek, s.endTime),
+    }))
+    .sort((a, b) => a.start.localeCompare(b.start));
+  const { start: startDate, end: endDate } = occurrences[0];
+
   return {
     "@context": "https://schema.org",
     "@type": "Event",
@@ -124,14 +142,14 @@ export function recurringEventSchema(input: RecurringEventInput) {
     endDate,
     eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
     eventStatus: "https://schema.org/EventScheduled",
-    eventSchedule: {
+    eventSchedule: input.schedules.map((s) => ({
       "@type": "Schedule",
-      byDay: input.daysOfWeek.map((d) => `https://schema.org/${d}`),
-      startTime: input.startTime,
-      endTime: input.endTime,
+      byDay: s.daysOfWeek.map((d) => `https://schema.org/${d}`),
+      startTime: s.startTime,
+      endTime: s.endTime,
       scheduleTimezone: "America/Los_Angeles",
       repeatFrequency: "P1W",
-    },
+    })),
     location: {
       "@type": "Place",
       name: input.placeName,

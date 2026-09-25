@@ -7,6 +7,7 @@ interface Props {
   subtitle?: string;
   faqs: FaqItem[];
   dark?: boolean;
+  bg?: "cream" | "sand";
   showHeading?: boolean;
 }
 
@@ -16,11 +17,13 @@ const {
   subtitle,
   faqs = [],
   dark = false,
+  bg = "cream",
   showHeading = true,
 } = Astro.props;
+const sectionBg = dark ? "bg-[var(--color-dark)]" : bg === "sand" ? "bg-[var(--color-sand)]" : "bg-[var(--color-cream)]";
 ---
 
-<section class:list={["py-24 px-6", dark ? "bg-[var(--color-dark)]" : "bg-[var(--color-cream)]"]}>
+<section class:list={["py-24 px-6", sectionBg]}>
   <div class="max-w-3xl mx-auto">
     {showHeading && (
       <div class="text-center mb-14">

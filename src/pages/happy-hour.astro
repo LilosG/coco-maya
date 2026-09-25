@@ -43,9 +43,9 @@ const schema = [
     name: "Happy Hour at Coco Maya",
     description: "Weekday happy hour on the elevated rooftop patio in Little Italy, San Diego: craft cocktails and shareable bites, Monday through Friday, 4:00-6:00 PM.",
     url: `${SITE.url}/happy-hour`,
-    daysOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-    startTime: "16:00",
-    endTime: "18:00",
+    schedules: [
+      { daysOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], startTime: "16:00", endTime: "18:00" },
+    ],
     placeName: SITE.fullName,
     address: {
       streetAddress: SITE.address.street,

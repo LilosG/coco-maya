@@ -8,16 +8,59 @@ import TrustBar from "../../components/TrustBar.astro";
 import ContainedFeature from "../../components/ContainedFeature.astro";
 import CTASection from "../../components/CTASection.astro";
 import EventInquiryForm from "../../components/EventInquiryForm.astro";
+import FAQSection from "../../components/FAQSection.astro";
 import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../../lib/content";
-import { breadcrumbSchema } from "../../lib/schema";
-const [SITE, page, rawRecurringEvents] = await Promise.all([getSingleton("siteSettings"), getSingleton("eventsPage"), getOrderedCollection("recurringEvents")]);
+import { breadcrumbSchema, recurringEventSchema, faqPageSchema } from "../../lib/schema";
+const [SITE, page, rawRecurringEvents, rawEventsFaqs] = await Promise.all([getSingleton("siteSettings"), getSingleton("eventsPage"), getOrderedCollection("recurringEvents"), getOrderedCollection("eventsFaqs")]);
 const RECURRING_EVENTS = resolveSiteTokens(rawRecurringEvents, SITE);
+const EVENTS_FAQS = rawEventsFaqs as { question: string; answer: string }[];
 const fill = (value: string) => value.replaceAll("{{street}}", SITE.address.street).replaceAll("{{openDaily}}", SITE.serviceMessaging.openDailyLower);
+const eventAddress = {
+  streetAddress: SITE.address.street,
+  addressLocality: SITE.address.city,
+  addressRegion: SITE.address.state,
+  postalCode: SITE.address.zip,
+  addressCountry: "US",
+};
 const schema = [
   breadcrumbSchema([
     { name: SITE.breadcrumbs.home, url: SITE.url },
     { name: page.breadcrumbLabel, url: `${SITE.url}/events` },
   ]),
+  faqPageSchema(EVENTS_FAQS),
+  recurringEventSchema({
+    name: "Daily Brunch at Coco Maya",
+    description: "Daily brunch on the elevated rooftop patio in Little Italy, San Diego, served every day until 3:00 PM.",
+    url: `${SITE.url}/brunch`,
+    schedules: [
+      { daysOfWeek: ["Sunday", "Friday", "Saturday"], startTime: "09:00", endTime: "15:00" },
+      { daysOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"], startTime: "10:30", endTime: "15:00" },
+    ],
+    placeName: SITE.fullName,
+    address: eventAddress,
+  }),
+  recurringEventSchema({
+    name: "Happy Hour at Coco Maya",
+    description: "Weekday happy hour on the elevated rooftop patio in Little Italy, San Diego: craft cocktails and shareable bites, Monday through Friday, 4:00-6:00 PM.",
+    url: `${SITE.url}/happy-hour`,
+    schedules: [
+      { daysOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], startTime: "16:00", endTime: "18:00" },
+    ],
+    placeName: SITE.fullName,
+    address: eventAddress,
+  }),
+  recurringEventSchema({
+    name: "Dinner at Coco Maya",
+    description: "Modern American coastal dinner service every night of the week in Little Italy, San Diego, on the elevated patio or in the glass atrium dining room.",
+    url: `${SITE.url}/dinner`,
+    schedules: [
+      { daysOfWeek: ["Sunday", "Monday", "Tuesday", "Wednesday"], startTime: "17:00", endTime: "20:00" },
+      { daysOfWeek: ["Thursday"], startTime: "17:00", endTime: "21:00" },
+      { daysOfWeek: ["Friday", "Saturday"], startTime: "17:00", endTime: "22:30" },
+    ],
+    placeName: SITE.fullName,
+    address: eventAddress,
+  }),
 ];
 ---
 <BaseLayout
@@ -122,6 +165,14 @@ const schema = [
     subtitle={page.form.subtitle}
     formUrl={SITE.inquiryForm.url}
     ctaLabel={page.form.ctaLabel}
+  />
+
+  <FAQSection
+    faqs={EVENTS_FAQS}
+    label={page.faq.label}
+    title={page.faq.title}
+    subtitle={page.faq.subtitle}
+    bg="sand"
   />
 
   <CTASection

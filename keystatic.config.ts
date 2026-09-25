@@ -29,6 +29,7 @@ import privateEventsProcessStepsData from './src/content/privateEventsProcessSte
 import privateEventsCapacitySpecsData from './src/content/privateEventsCapacitySpecs.json';
 import generalFaqsData from './src/content/generalFaqs.json';
 import happyHourFaqsData from './src/content/happyHourFaqs.json';
+import eventsFaqsData from './src/content/eventsFaqs.json';
 import theSpaceSectionsData from './src/content/theSpaceSections.json';
 
 type JsonObject = Record<string, unknown>;
@@ -306,7 +307,7 @@ export default config({
       Website: ['home', 'about', 'contactPage', 'reservationsPage', 'faqPage', 'happyHourPage', 'brunchPage', 'menuPage', 'eventsPage', 'spacePage', 'privateEventsIndexPage', 'privateEventDetailDefaults', 'commercialLandingPages', 'blogIndexPage', 'blogPostDefaults'],
       Menu: ['menuCocktails', 'menuDinner', 'menuBrunchDrinks', 'menuBrunchFood'],
       Events: ['recurringEvents', 'upcomingEvents', 'privateEventTypes', 'privateEventsProcessSteps', 'privateEventsCapacitySpecs'],
-      FAQs: ['generalFaqs', 'happyHourFaqs'],
+      FAQs: ['generalFaqs', 'happyHourFaqs', 'eventsFaqs'],
       'The Space': ['theSpaceSections'],
       Blog: ['blog'],
       'Site Settings': ['siteSettings', 'navigation', 'footer'],
@@ -378,6 +379,7 @@ export default config({
     privateEventsCapacitySpecs: jsonCollection('Private Events Capacity', 'privateEventsCapacitySpecs', privateEventsCapacitySpecsData, 'label', 'Capacity Name'),
     generalFaqs: jsonCollection('General FAQs', 'generalFaqs', generalFaqsData, 'question', 'Question'),
     happyHourFaqs: jsonCollection('Happy Hour FAQs', 'happyHourFaqs', happyHourFaqsData, 'question', 'Question'),
+    eventsFaqs: jsonCollection('Events FAQs', 'eventsFaqs', eventsFaqsData, 'question', 'Question'),
     theSpaceSections: jsonCollection('Space Sections', 'theSpaceSections', theSpaceSectionsData, 'title', 'Section Title'),
   },
 });
