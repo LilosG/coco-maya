@@ -1,5 +1,5 @@
 ---
-import Picture from "./Picture.astro";
+import MediaCardGrid from "./MediaCardGrid.astro";
 
 interface ShowcaseItem {
   name: string;
@@ -38,27 +38,8 @@ const {
     {subtitle && <p class="ms-subtitle">{subtitle}</p>}
   </div>
 
-  <div class="ms-grid" style={`--ms-cols:${Math.min(items.length, 4)}`}>
-    {items.map((item) => (
-      <figure class="ms-item">
-        <div class="ms-photo">
-          {item.image ? (
-            <Picture
-              src={item.image}
-              alt={item.imageAlt ?? item.name}
-              width="800"
-              height="1000"
-              loading="lazy"
-              decoding="async"
-            />
-          ) : null}
-        </div>
-        <figcaption class="ms-caption">
-          <span class="ms-name">{item.name}</span>
-          {item.description && <span class="ms-desc">{item.description}</span>}
-        </figcaption>
-      </figure>
-    ))}
+  <div class="ms-grid-wrap">
+    <MediaCardGrid items={items} aspect="portrait" />
   </div>
 
   {ctaLabel && ctaHref && (
@@ -95,54 +76,18 @@ const {
   }
   .ms-section--dark .ms-subtitle { color: rgba(255,255,255,0.6); }
 
-  .ms-grid {
-    max-width: 1280px; margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(var(--ms-cols, 4), 1fr);
-    gap: 24px;
+  .ms-grid-wrap {
+    max-width: 1280px;
+    margin: 0 auto;
   }
-
-  .ms-item { margin: 0; }
-  .ms-photo {
-    aspect-ratio: 4 / 5;
-    overflow: hidden;
-    background: var(--color-sand-dark);
-    border: 1px solid rgba(61,138,138,0.14);
-  }
-  .ms-photo :global(img),
-  .ms-photo :global(picture) {
-    display: block; width: 100%; height: 100%;
-  }
-  .ms-photo :global(img) {
-    object-fit: cover; object-position: center;
-    transition: transform 0.5s ease;
-  }
-  .ms-item:hover .ms-photo :global(img) { transform: scale(1.04); }
-
-  .ms-caption {
-    display: flex; flex-direction: column; gap: 4px;
-    padding-top: 14px; text-align: center;
-  }
-  .ms-name {
-    font-family: var(--font-display); font-style: italic;
-    font-size: 1.25rem; color: var(--color-dark);
-  }
-  .ms-section--dark .ms-name { color: white; }
-  .ms-desc {
-    font-family: var(--font-body); font-size: 0.8125rem;
-    color: rgba(23,20,16,0.5); line-height: 1.5;
-  }
-  .ms-section--dark .ms-desc { color: rgba(255,255,255,0.55); }
 
   .ms-cta { display: flex; justify-content: center; margin-top: 48px; }
 
   @media (max-width: 960px) {
     .ms-section { padding: 80px 40px; }
-    .ms-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   }
   @media (max-width: 560px) {
     .ms-section { padding: 64px 20px; }
-    .ms-grid { grid-template-columns: 1fr; gap: 28px; }
     .ms-head { margin-bottom: 36px; }
   }
 </style>

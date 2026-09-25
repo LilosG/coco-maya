@@ -1,0 +1,43 @@
+---
+import Picture from "./Picture.astro";
+
+interface MediaItem {
+  name: string;
+  description?: string;
+  image?: string;
+  imageAlt?: string;
+}
+
+interface Props {
+  items: MediaItem[];
+  cols?: number;
+  aspect?: "portrait" | "square";
+}
+
+const { items = [], cols = 4, aspect = "portrait" } = Astro.props;
+const dims = aspect === "square" ? { width: "500", height: "500" } : { width: "800", height: "1000" };
+---
+
+<div class="mc-grid" style={`--mc-cols:${Math.min(items.length, cols)}`}>
+  {items.map((item) => (
+    <figure class="mc-card">
+      <div class:list={["mc-photo", aspect === "square" && "mc-photo--square"]}>
+        {item.image && (
+          <Picture
+            src={item.image}
+            alt={item.imageAlt ?? item.name}
+            width={dims.width}
+            height={dims.height}
+            loading="lazy"
+            decoding="async"
+          />
+        )}
+      </div>
+      <div class="mc-bar"></div>
+      <figcaption class="mc-caption">
+        <span class="mc-name">{item.name}</span>
+        {item.description && <span class="mc-desc">{item.description}</span>}
+      </figcaption>
+    </figure>
+  ))}
+</div>

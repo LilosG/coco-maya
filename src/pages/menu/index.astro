@@ -5,9 +5,9 @@ import Footer from "../../components/Footer.astro";
 import CTASection from "../../components/CTASection.astro";
 import PageHero from "../../components/PageHero.astro";
 import TrustBar from "../../components/TrustBar.astro";
+import MediaCardGrid from "../../components/MediaCardGrid.astro";
 import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../../lib/content";
 import { breadcrumbSchema, menuSchema } from "../../lib/schema";
-import Picture from "../../components/Picture.astro";
 const [SITE, rawPage, FEATURED_COCKTAILS, FEATURED_FOOD, FEATURED_BRUNCH] = await Promise.all([getSingleton("siteSettings"), getSingleton("menuPage"), getOrderedCollection("menuCocktails"), getOrderedCollection("menuDinner"), getOrderedCollection("menuBrunchFood")]);
 const page = resolveSiteTokens(rawPage, SITE);
 const schema = [
@@ -61,56 +61,20 @@ const schema = [
     <section id="cocktails">
       <span class="eyebrow">{page.sections.cocktails.eyebrow}</span>
       <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-10">{page.sections.cocktails.title}</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {FEATURED_COCKTAILS.map((drink) => (
-          <div class="cm-media-card group">
-            <div class="aspect-square overflow-hidden">
-<Picture src={drink.image} alt={drink.name} class="w-full h-full object-cover" width="300" height="300" loading="lazy" decoding="async" />
-            </div>
-            <div class="p-5 border-t border-[var(--color-teal)]/12">
-              <h3 class="font-[family-name:var(--font-stamp)] text-[var(--color-dark)] text-sm tracking-wide mb-1.5">{drink.name}</h3>
-              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/45 text-xs leading-relaxed">{drink.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <MediaCardGrid items={FEATURED_COCKTAILS} aspect="square" />
     </section>
 
     <section id="food">
       <span class="eyebrow">{page.sections.food.eyebrow}</span>
       <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-10">{page.sections.food.title}</h2>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {FEATURED_FOOD.map((item) => (
-          <div class="cm-media-card group">
-            <div class="aspect-square overflow-hidden">
-<Picture src={item.image} alt={item.name} class="w-full h-full object-cover" width="300" height="300" loading="lazy" decoding="async" />
-            </div>
-            <div class="p-5 border-t border-[var(--color-teal)]/12">
-              <h3 class="font-[family-name:var(--font-stamp)] text-[var(--color-dark)] text-sm tracking-wide mb-1.5">{item.name}</h3>
-              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/45 text-xs leading-relaxed">{item.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <MediaCardGrid items={FEATURED_FOOD} aspect="square" />
     </section>
 
     <section id="brunch">
       <span class="eyebrow">{page.sections.brunch.eyebrow}</span>
       <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-2">{page.sections.brunch.title}</h2>
       <p class="font-[family-name:var(--font-stamp)] text-[var(--color-teal)] text-xs tracking-widest uppercase mb-10">{SITE.service.brunch.tagline}</p>
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        {FEATURED_BRUNCH.map((item) => (
-          <div class="cm-media-card group">
-            <div class="aspect-square overflow-hidden">
-              <Picture src={item.image} alt={item.name} class="w-full h-full object-cover" width="300" height="300" loading="lazy" decoding="async" />
-            </div>
-            <div class="p-5 border-t border-[var(--color-teal)]/12">
-              <h3 class="font-[family-name:var(--font-stamp)] text-[var(--color-dark)] text-sm tracking-wide mb-1.5">{item.name}</h3>
-              <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/45 text-xs leading-relaxed">{item.description}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      <MediaCardGrid items={FEATURED_BRUNCH} aspect="square" />
     </section>
 
   </div>
