@@ -8,12 +8,17 @@ interface Props {
   body2?: string;
   image: string;
   imageAlt: string;
+  imagePosition?: string;
+  aspect?: string;
   reverse?: boolean;
   dark?: boolean;
+  bg?: "cream" | "sand";
   ctaLabel?: string;
   ctaHref?: string;
   secondaryLabel?: string;
   secondaryHref?: string;
+  tertiaryLabel?: string;
+  tertiaryHref?: string;
 }
 
 const {
@@ -23,19 +28,26 @@ const {
   body2,
   image,
   imageAlt,
+  imagePosition = "center",
+  aspect = "16/10",
   reverse = false,
   dark = false,
+  bg = "cream",
   ctaLabel,
   ctaHref,
   secondaryLabel,
   secondaryHref,
+  tertiaryLabel,
+  tertiaryHref,
 } = Astro.props;
 
 const target = (href?: string) => href && (href.startsWith("http") || href.startsWith("mailto") || href.startsWith("tel")) ? "_blank" : undefined;
 const rel = (href?: string) => target(href) ? "noopener noreferrer" : undefined;
+const secondaryClass = dark ? "btn-ghost" : "btn-outline";
+const sectionBg = dark ? "bg-[var(--color-dark)]" : bg === "sand" ? "bg-[var(--color-sand)]" : "bg-[var(--color-cream)]";
 ---
 
-<section class:list={["py-24 px-6", dark ? "bg-[var(--color-dark)]" : "bg-[var(--color-cream)]"]}>
+<section class:list={["py-24 px-6", sectionBg]}>
   <div class:list={["max-w-5xl mx-auto grid lg:grid-cols-2 gap-16 items-center", reverse ? "lg:grid-flow-dense" : ""]}>
     <div class:list={[reverse ? "lg:col-start-2" : ""]}>
       <span class:list={dark ? "eyebrow-light" : "eyebrow"}>{label}</span>
@@ -46,12 +58,21 @@ const rel = (href?: string) => target(href) ? "noopener noreferrer" : undefined;
         {title}
       </h2>
       <div class:list={dark ? "rule-light" : "rule"}></div>
-      {body1 && <p class:list={["font-[family-name:var(--font-body)] leading-relaxed mb-4", dark ? "text-white/60" : "text-[var(--color-dark)]/65"]}>{body1}</p>}
-      {body2 && <p class:list={["font-[family-name:var(--font-body)] leading-relaxed", (ctaLabel || secondaryLabel) ? "mb-10" : "", dark ? "text-white/60" : "text-[var(--color-dark)]/65"]}>{body2}</p>}
-      {(ctaLabel || secondaryLabel) && (
+      {body1 ? (
+        <>
+          <p class:list={["font-[family-name:var(--font-body)] leading-relaxed mb-5", dark ? "text-white/60" : "text-[var(--color-dark)]/65"]}>{body1}</p>
+          {body2 && <p class:list={["font-[family-name:var(--font-body)] leading-relaxed mb-10", dark ? "text-white/60" : "text-[var(--color-dark)]/65"]}>{body2}</p>}
+        </>
+      ) : (
+        <div class:list={["font-[family-name:var(--font-body)] leading-relaxed [&>p]:mb-5 last:[&>p]:mb-10", dark ? "text-white/60" : "text-[var(--color-dark)]/65"]}>
+          <slot name="body" />
+        </div>
+      )}
+      {(ctaLabel || secondaryLabel || tertiaryLabel) && (
         <div class="flex flex-wrap gap-4">
           {ctaLabel && ctaHref && <a href={ctaHref} target={target(ctaHref)} rel={rel(ctaHref)} class="btn-primary">{ctaLabel}</a>}
-          {secondaryLabel && secondaryHref && <a href={secondaryHref} target={target(secondaryHref)} rel={rel(secondaryHref)} class="btn-ghost">{secondaryLabel}</a>}
+          {secondaryLabel && secondaryHref && <a href={secondaryHref} target={target(secondaryHref)} rel={rel(secondaryHref)} class={secondaryClass}>{secondaryLabel}</a>}
+          {tertiaryLabel && tertiaryHref && <a href={tertiaryHref} target={target(tertiaryHref)} rel={rel(tertiaryHref)} class={secondaryClass}>{tertiaryLabel}</a>}
         </div>
       )}
     </div>
@@ -59,7 +80,8 @@ const rel = (href?: string) => target(href) ? "noopener noreferrer" : undefined;
       <Picture
         src={image}
         alt={imageAlt}
-        class="w-full aspect-[16/10] object-cover object-center"
+        class="w-full object-cover object-center"
+        style={`aspect-ratio: ${aspect};${imagePosition !== "center" ? ` object-position: ${imagePosition};` : ""}`}
         width="700" height="875"
         loading="lazy"
       />
