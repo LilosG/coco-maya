@@ -10,6 +10,15 @@ const year = new Date().getFullYear();
 const portfolio = GPH_NETWORK.filter((v) => v.url !== SITE.url);
 const days = SITE.weekdaysSundayFirst ?? [];
 const todayName = days[new Date().getDay()];
+const seenHrefs = new Set<string>();
+const exploreLinks = [...(navigation.main ?? []), ...(navigation.footerSupplemental ?? [])].filter((item: any) => {
+  if (seenHrefs.has(item.href)) return false;
+  seenHrefs.add(item.href);
+  return true;
+});
+const exploreMid = Math.ceil(exploreLinks.length / 2);
+const exploreCol1 = exploreLinks.slice(0, exploreMid);
+const exploreCol2 = exploreLinks.slice(exploreMid);
 ---
 
 <footer class="bg-[var(--color-dark)] text-[var(--color-sand)]">
@@ -49,18 +58,26 @@ const todayName = days[new Date().getDay()];
 
     <div>
       <span class="eyebrow-light mb-5 block">{footer.headings.explore}</span>
-      <ul class="space-y-2.5">
-        {(navigation.main ?? []).map((item: any) => (
-          <li>
-            <a href={item.href} class="text-white/50 hover:text-[var(--color-teal-light)] text-sm font-[family-name:var(--font-body)] transition-colors">
-              {item.label}
-            </a>
-          </li>
-        ))}
-        {(navigation.footerSupplemental ?? []).map((item: any) => (
-          <li><a href={item.href} class="text-white/50 hover:text-[var(--color-teal-light)] text-sm transition-colors">{item.label}</a></li>
-        ))}
-      </ul>
+      <div class="grid grid-cols-2 gap-x-6">
+        <ul class="space-y-2.5">
+          {exploreCol1.map((item: any) => (
+            <li>
+              <a href={item.href} class="text-white/50 hover:text-[var(--color-teal-light)] text-sm font-[family-name:var(--font-body)] transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+        <ul class="space-y-2.5">
+          {exploreCol2.map((item: any) => (
+            <li>
+              <a href={item.href} class="text-white/50 hover:text-[var(--color-teal-light)] text-sm font-[family-name:var(--font-body)] transition-colors">
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
 
     <div>
