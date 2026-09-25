@@ -1,0 +1,11 @@
+{
+  "order": 2,
+  "slug": "happy-hour",
+  "name": "Happy Hour",
+  "day": "Mon–Fri",
+  "time": "4:00–6:00 PM",
+  "highlight": "Weekdays",
+  "description": "Rooftop happy hour Monday through Friday, 4 to 6 PM, with shareable bites and craft cocktails on the elevated glass atrium patio.",
+  "image": "/images/cocktail-happy-hour-group.jpg",
+  "href": "/happy-hour"
+}

@@ -5,6 +5,7 @@ import Nav from "../../components/Nav.astro";
 import Footer from "../../components/Footer.astro";
 import PageHero from "../../components/PageHero.astro";
 import TrustBar from "../../components/TrustBar.astro";
+import ContainedFeature from "../../components/ContainedFeature.astro";
 import CTASection from "../../components/CTASection.astro";
 import EventInquiryForm from "../../components/EventInquiryForm.astro";
 import { getOrderedCollection, getSingleton, resolveSiteTokens } from "../../lib/content";
@@ -37,15 +38,33 @@ const schema = [
   />
   <TrustBar site={SITE} />
 
+  <ContainedFeature
+    label={page.intro.eyebrow}
+    title={page.intro.title}
+    body1={fill(page.intro.body1)}
+    body2={page.intro.body2}
+    image={page.intro.image}
+    imageAlt={page.intro.imageAlt}
+    aspect="4/5"
+    bg="sand"
+    reverse={true}
+    ctaLabel={page.intro.ctaLabel}
+    ctaHref={page.intro.ctaHref}
+  />
+
   <section class="py-24 px-6 bg-[var(--color-cream)]">
     <div class="max-w-6xl mx-auto">
-      <div class="mb-16">
+      <div class="mb-16 max-w-2xl">
         <span class="eyebrow">{page.recurring.eyebrow}</span>
-        <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)]">{page.recurring.title}</h2>
+        <h2 class="font-[family-name:var(--font-display)] italic text-[clamp(2rem,4vw,3.5rem)] text-[var(--color-dark)] mb-6">{page.recurring.title}</h2>
+        <div class="rule"></div>
+        {page.recurring.subtitle && (
+          <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/60 leading-relaxed">{page.recurring.subtitle}</p>
+        )}
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
         {RECURRING_EVENTS.map((event) => (
-          <div class="cm-media-card group">
+          <a href={event.href} class="cm-media-card group block">
             <div class="relative aspect-video overflow-hidden">
               <Picture
                 src={event.image}
@@ -62,14 +81,14 @@ const schema = [
               </div>
             </div>
             <div class="p-7">
-              <h3 class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl mb-2">{event.name}</h3>
+              <h3 class="font-[family-name:var(--font-display)] italic text-[var(--color-dark)] text-2xl mb-2 group-hover:text-[var(--color-teal)] transition-colors">{event.name}</h3>
               <div class="flex items-center gap-3 mb-4">
                 <div class="w-4 h-px bg-[var(--color-teal)]"></div>
                 <span class="eyebrow mb-0">{event.day} &bull; {event.time}</span>
               </div>
               <p class="font-[family-name:var(--font-body)] text-[var(--color-dark)]/55 text-sm leading-relaxed">{event.description}</p>
             </div>
-          </div>
+          </a>
         ))}
       </div>
     </div>
@@ -80,6 +99,7 @@ const schema = [
       <div class="cm-dark-grid-cell py-14 text-left">
         <span class="eyebrow-light mb-4">{page.promos.privateEvents.eyebrow}</span>
         <h3 class="font-[family-name:var(--font-display)] italic text-white text-3xl mb-4">{page.promos.privateEvents.title}</h3>
+        <div class="rule-light"></div>
         <p class="font-[family-name:var(--font-body)] text-white/50 leading-relaxed mb-8 text-sm">
           {page.promos.privateEvents.body}
         </p>
@@ -88,6 +108,7 @@ const schema = [
       <div class="cm-dark-grid-cell py-14 text-left">
         <span class="eyebrow-light mb-4">{page.promos.reservations.eyebrow}</span>
         <h3 class="font-[family-name:var(--font-display)] italic text-white text-3xl mb-4">{page.promos.reservations.title}</h3>
+        <div class="rule-light"></div>
         <p class="font-[family-name:var(--font-body)] text-white/50 leading-relaxed mb-8 text-sm">
           {fill(page.promos.reservations.bodyTemplate)}
         </p>
@@ -110,6 +131,7 @@ const schema = [
     primaryHref={SITE.reservations.url}
     secondaryLabel={page.cta.secondaryLabel}
     secondaryHref="/private-events"
+    dark={true}
   />
   <Footer />
 </BaseLayout>

@@ -6,5 +6,6 @@
   "time": "Until 3:00 PM",
   "highlight": "Served Daily",
   "description": "San Diego's best brunch in Little Italy. Modern coastal plates and craft cocktails on the elevated patio, served every day of the week.",
-  "image": "/images/food-brunch-sandwich.jpg"
+  "image": "/images/food-brunch-sandwich.jpg",
+  "href": "/brunch"
 }
