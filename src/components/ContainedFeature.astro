@@ -77,18 +77,19 @@ const sectionBg = dark ? "bg-[var(--color-dark)]" : bg === "sand" ? "bg-[var(--c
       )}
     </div>
     <div class:list={["relative", reverse ? "lg:col-start-1 lg:row-start-1" : ""]}>
-      <Picture
-        src={image}
-        alt={imageAlt}
-        class="w-full object-cover object-center"
-        style={`aspect-ratio: ${aspect};${imagePosition !== "center" ? ` object-position: ${imagePosition};` : ""}`}
-        width="700" height="875"
-        loading="lazy"
-      />
+      <div class:list={["cf-photo", dark && "cf-photo--dark"]}>
+        <Picture
+          src={image}
+          alt={imageAlt}
+          class="w-full object-cover object-center"
+          style={`aspect-ratio: ${aspect};${imagePosition !== "center" ? ` object-position: ${imagePosition};` : ""}`}
+          width="700" height="875"
+          loading="lazy"
+        />
+      </div>
       <div class:list={[
-        "absolute w-full h-full border -z-10 pointer-events-none",
-        dark ? "border-[var(--color-teal)]/25" : "border-[var(--color-teal)]/20",
-        reverse ? "-top-4 -right-4" : "-bottom-5 -right-5"
+        "absolute w-full h-full border border-[var(--color-teal)]/30 -z-10 pointer-events-none",
+        reverse ? "-top-5 -right-5" : "-bottom-6 -right-6"
       ]}></div>
     </div>
   </div>
