@@ -18,7 +18,7 @@ const dark = variant === "dark";
       const isToday = d.day === todayName;
       return (
         <div class:list={["ht-table__row", isToday && "ht-table__row--today"]}>
-          <dt>{d.day}</dt>
+          <dt>{d.day}{isToday && <span class="ht-table__today-badge">Today</span>}</dt>
           <dd>{d.hours}</dd>
         </div>
       );
