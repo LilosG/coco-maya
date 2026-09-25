@@ -86,8 +86,9 @@ const schema = [
 
   <section class="pt-24 pb-8 px-6 bg-[var(--color-cream)]">
     <div class="max-w-5xl mx-auto">
-      <div class="grid grid-cols-1 sm:grid-cols-3 gap-5">
+      <div class="relative grid grid-cols-1 sm:grid-cols-3 gap-5">
         {(page.infoCards ?? []).map((card: any) => <InfoCard label={card.label} value={card.value} sub={card.subTemplate ? card.subTemplate.replace("{{street}}", SITE.address.street) : undefined} accent={card.accent} />)}
+        <div class="hidden sm:block absolute -z-10 -bottom-4 -right-4 w-full h-full border border-[var(--color-teal)]/20 pointer-events-none"></div>
       </div>
     </div>
   </section>

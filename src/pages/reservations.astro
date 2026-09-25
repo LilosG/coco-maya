@@ -4,6 +4,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
 import Nav from "../components/Nav.astro";
 import Footer from "../components/Footer.astro";
 import TrustBar from "../components/TrustBar.astro";
+import HoursTable from "../components/HoursTable.astro";
 import { getSingleton } from "../lib/content";
 import { breadcrumbSchema } from "../lib/schema";
 const [SITE, page] = await Promise.all([getSingleton("siteSettings"), getSingleton("reservationsPage")]);
@@ -53,19 +54,8 @@ const schema = [
           <a href={`tel:${SITE.phone.tel}`} class="btn-white">{SITE.phone.display}</a>
         </div>
       </div>
-      <div class="bg-white/8 backdrop-blur-md border border-white/18 p-8">
-        <h2 class="eyebrow-light mb-6 block">Reservation Hours</h2>
-        <div class="divide-y divide-white/10">
-          {(SITE.hours ?? []).map((h: any) => (
-            <div class:list={[
-              "flex justify-between py-3.5 font-[family-name:var(--font-body)] text-sm",
-              h.day === todayName ? "text-white" : "text-white/40"
-            ]}>
-              <span class:list={[h.day === todayName ? "text-[var(--color-teal-light)] font-medium" : ""]}>{h.day}</span>
-              <span>{h.hours}</span>
-            </div>
-          ))}
-        </div>
+      <div>
+        <HoursTable heading="Reservation Hours" days={SITE.hours ?? []} todayName={todayName} variant="dark" />
         <div class="border-t border-white/10 mt-4 pt-4">
           <p class="font-[family-name:var(--font-body)] text-white/45 text-xs leading-relaxed">
             {SITE.serviceMessaging.brunchPatioSummary}

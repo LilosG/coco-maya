@@ -65,10 +65,11 @@ const inquiryHref = "/private-events/inquire";
 
   <!-- SPECS -->
   <section class="py-16 px-6 bg-[var(--color-cream)]">
-    <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5">
+    <div class="relative max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5">
       <InfoCard label={defaults.labels.guests} value={event.specs.guests} accent={true} />
       <InfoCard label={defaults.labels.duration} value={event.specs.duration} />
       <InfoCard label={defaults.labels.space} value={event.specs.space} />
+      <div class="hidden sm:block absolute -z-10 -bottom-4 -right-4 w-full h-full border border-[var(--color-teal)]/20 pointer-events-none"></div>
     </div>
   </section>
 

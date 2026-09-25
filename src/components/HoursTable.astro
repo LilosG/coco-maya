@@ -1,0 +1,27 @@
+---
+interface Props {
+  heading: string;
+  days: Array<{ day: string; hours: string }>;
+  todayName: string;
+  variant?: "light" | "dark";
+}
+const { heading, days, todayName, variant = "light" } = Astro.props;
+const dark = variant === "dark";
+---
+
+<div class:list={["ht-table", dark && "ht-table--dark"]}>
+  <div class="ht-table__header">
+    <span class:list={dark ? "eyebrow-light" : "eyebrow"}>{heading}</span>
+  </div>
+  <dl class="ht-table__rows">
+    {days.map((d) => {
+      const isToday = d.day === todayName;
+      return (
+        <div class:list={["ht-table__row", isToday && "ht-table__row--today"]}>
+          <dt>{d.day}</dt>
+          <dd>{d.hours}</dd>
+        </div>
+      );
+    })}
+  </dl>
+</div>

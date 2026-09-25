@@ -219,17 +219,19 @@
     border: 1px solid rgba(61,138,138,0.12);
     overflow: hidden;
     display: flex;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05), 0 8px 28px rgba(0,0,0,0.07);
-    transition: box-shadow 0.3s, transform 0.25s;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.06), 0 10px 32px rgba(0,0,0,0.08);
+    transition: box-shadow 0.3s, transform 0.25s, border-color 0.25s;
   }
   .ic-card:hover {
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08), 0 16px 40px rgba(0,0,0,0.10);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.10), 0 20px 48px rgba(0,0,0,0.12);
     transform: translateY(-3px);
+    border-color: rgba(61,138,138,0.35);
   }
   .ic-card__bar {
-    width: 3px;
+    width: 5px;
     flex-shrink: 0;
     background: linear-gradient(to bottom, var(--color-teal), var(--color-teal-light));
+    box-shadow: 1px 0 6px rgba(61,138,138,0.35);
   }
   .ic-card__body {
     padding: 2rem 1.75rem;
@@ -286,6 +288,68 @@
   }
   .ic-card--accent .ic-card__sub {
     color: rgba(255,255,255,0.38);
+  }
+
+  /* ── HoursTable component ────────────────────────────── */
+
+  .ht-table {
+    background-color: white;
+    border: 1px solid rgba(61,138,138,0.12);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05), 0 8px 28px rgba(0,0,0,0.07);
+  }
+  .ht-table__header {
+    padding: 1.5rem 1.5rem 0.5rem;
+  }
+  .ht-table__rows {
+    padding: 0 1.5rem 1.5rem;
+  }
+  .ht-table__row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem 0.75rem;
+    margin: 0 -0.75rem;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    color: rgba(23,20,16,0.45);
+    border-bottom: 1px solid rgba(61,138,138,0.10);
+    border-radius: 4px;
+    transition: background-color 0.2s;
+  }
+  .ht-table__row:last-child {
+    border-bottom: none;
+  }
+  .ht-table__row dt {
+    font-weight: 500;
+  }
+  .ht-table__row--today {
+    background-color: rgba(61,138,138,0.08);
+    color: var(--color-dark);
+    font-weight: 500;
+    border-bottom-color: transparent;
+  }
+  .ht-table__row--today dt {
+    color: var(--color-teal);
+    font-weight: 600;
+  }
+
+  /* HoursTable dark variant — frosted glass panel for dark/image heroes */
+  .ht-table--dark {
+    background-color: rgba(255,255,255,0.06);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: none;
+  }
+  .ht-table--dark .ht-table__row {
+    color: rgba(255,255,255,0.4);
+    border-bottom-color: rgba(255,255,255,0.10);
+  }
+  .ht-table--dark .ht-table__row--today {
+    background-color: rgba(255,255,255,0.10);
+    color: white;
+    border-bottom-color: transparent;
+  }
+  .ht-table--dark .ht-table__row--today dt {
+    color: var(--color-teal-light);
   }
 
   /* ── ContentCard component ───────────────────────────── */

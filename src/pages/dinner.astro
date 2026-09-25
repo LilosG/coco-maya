@@ -7,6 +7,7 @@ import PageHero from "../components/PageHero.astro";
 import TrustBar from "../components/TrustBar.astro";
 import CTASection from "../components/CTASection.astro";
 import InfoCard from "../components/InfoCard.astro";
+import HoursTable from "../components/HoursTable.astro";
 import MenuShowcase from "../components/MenuShowcase.astro";
 import ContentCard from "../components/ContentCard.astro";
 import FAQSection from "../components/FAQSection.astro";
@@ -19,6 +20,8 @@ const [SITE, rawPages, dinnerItems] = await Promise.all([
   getOrderedCollection("menuDinner"),
 ]);
 const page = resolveSiteTokens(rawPages, SITE).dinner;
+const dayNames = SITE.weekdaysSundayFirst ?? [];
+const todayName = dayNames[new Date().getDay()];
 const items = dinnerItems.map((item: any) => ({
   name: item.name,
   description: item.description,
@@ -57,18 +60,12 @@ const schema = [
   <TrustBar site={SITE} />
 
   <section class="py-16 px-6 bg-[var(--color-cream)]">
-    <div class="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10">
+    <div class="relative max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-3 gap-5 mb-10">
       {page.infoCards.map((card: any) => <InfoCard label={card.label} value={card.value} sub={card.sub} accent={card.accent} />)}
+      <div class="hidden sm:block absolute -z-10 -bottom-4 -right-4 w-full h-full border border-[var(--color-teal)]/20 pointer-events-none"></div>
     </div>
-    <div class="max-w-4xl mx-auto bg-white border border-[var(--color-teal)]/12">
-      <div class="px-6 pt-6 pb-2"><span class="eyebrow">Dinner Hours</span></div>
-      <div class="divide-y divide-[var(--color-teal)]/10 px-6 pb-6">
-        {SITE.service.dinner.days.map((d: any) => (
-          <div class="flex justify-between py-3 font-[family-name:var(--font-body)] text-sm text-[var(--color-dark)]/60">
-            <span>{d.day}</span><span>{d.hours}</span>
-          </div>
-        ))}
-      </div>
+    <div class="max-w-4xl mx-auto">
+      <HoursTable heading="Dinner Hours" days={SITE.service.dinner.days} todayName={todayName} />
     </div>
   </section>
 
